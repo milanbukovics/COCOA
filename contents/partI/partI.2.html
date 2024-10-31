@@ -104,24 +104,60 @@ Chapter Objectives
 </section>
 <section id="derivation-of-i-v-characteristics" class="level2">
 <h2 class="anchored" data-anchor-id="derivation-of-i-v-characteristics">2-1-1 Derivation of I-V Characteristics</h2>
-<p>The basic structure of an <strong>enhancement mode n-channel</strong> MOSFET is shown in Figure 2-1(a). It consists of a lightly doped p-substrate (<strong>bulk</strong>), two heavily doped n-type regions (<strong>source</strong> and <strong>drain</strong>) and a conductive gate electrode that is isolated from the substrate using a thin silicon dioxide layer of thick- ness tox. Other important geometry parameters of this device include the <strong>channel length</strong> <em>L</em> (distance between the source and drain) and the <strong>channel width</strong> <em>W</em>.</p>
-<p><img src="images/png/figure2.1.png" class="img-fluid" style="width:100.0%"></p>
-<p><strong>Figure 2-1:</strong> (a) Cross-section of an n-channel MOSFET. (b) Schematic symbol.</p>
-<!-- QUESTION Where should be the picture 2-1 placed? is it good as I did it? -->
-<p>&nbsp;&nbsp;&nbsp;As we shall see, the name “n-channel” stems from the fact that this device conducts current by forming an n-type layer underneath the gate. A p-channel device can be constructed similarly using an n-type bulk and p-type source/drain regions. The differentiating details between n- and <strong>p-channel</strong> devices are summarized in Section 2-1-2. For the time being, we will use the n-channel device to dis- cuss the basic principles. <!-- QUESTION do we want to have an embedded link to Section 2-2 ? --> In order to study the electrical behavior of a MOSFET, it is useful to define a schematic symbol and conventions for electrical variables as shown in Figure 2-1(b). <!-- QUESTION EMBEDDED link PICTURE FOR FIGURE 2-1B? --> The variables <span class="math inline">\(V_{GS}\)</span>, <span class="math inline">\(V_{DS}\)</span>, and <span class="math inline">\(V_{BS}\)</span> describe the voltages between the respective terminals using the commonly used ordered subscript convention <span class="math inline">\(V_{XY}\)</span> = <span class="math inline">\(V_{X}\)</span> – <span class="math inline">\(V_{Y}\)</span>. The current flowing into the drain node is labeled <span class="math inline">\(I_{D}\)</span>.</p>
+<p>The basic structure of an <strong>enhancement mode n-channel</strong> MOSFET is shown in <strong>?@fig-2.1</strong>. It consists of a lightly doped p-substrate (<strong>bulk</strong>), two heavily doped n-type regions (<strong>source</strong> and <strong>drain</strong>) and a conductive gate electrode that is isolated from the substrate using a thin silicon dioxide layer of thick- ness tox. Other important geometry parameters of this device include the <strong>channel length</strong> <em>L</em> (distance between the source and drain) and the <strong>channel width</strong> <em>W</em>.</p>
+<p>&nbsp;&nbsp;&nbsp;As we shall see, the name “n-channel” stems from the fact that this device conducts current by forming an n-type layer underneath the gate. A p-channel device can be constructed similarly using an n-type bulk and p-type source/drain regions. The differentiating details between n- and <strong>p-channel</strong> devices are summarized in <a href="#Section-2-1-2">Section-2-1-2</a>. For the time being, we will use the n-channel device to dis- cuss the basic principles.</p>
+<div id="fig-2.1a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.1a.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: (a) Cross-section of an n-channel MOSFET.
+</figcaption>
+</figure>
+</div>
+<div id="fig-2.1b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.1b.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: (b) Schematic symbol.
+</figcaption>
+</figure>
+</div>
+<p>In order to study the electrical behavior of a MOSFET, it is useful to define a schematic symbol and conventions for electrical variables as shown in <a href="#fig-2.1b" class="quarto-xref">Figure&nbsp;2</a>.</p>
+<!-- QUESTION should I separate figure 2.1 a and b to two separate pictures? -->
+<p>The variables <span class="math inline">\(V_{GS}\)</span>, <span class="math inline">\(V_{DS}\)</span>, and <span class="math inline">\(V_{BS}\)</span> describe the voltages between the respective terminals using the commonly used ordered subscript convention <span class="math inline">\(V_{XY}\)</span> = <span class="math inline">\(V_{X}\)</span> – <span class="math inline">\(V_{Y}\)</span>. The current flowing into the drain node is labeled <span class="math inline">\(I_{D}\)</span>.</p>
 <p>&nbsp;&nbsp;&nbsp;<!-- QUESTION are three spaces enough as indentation? --> It is important to note that the MOSFET device considered here is perfectly symmetric; i.e., the drain and source terminal labels can be interchanged. It is a common convention to assign the source to the lower potential of these two terminals, since this terminal is the source of electrons that enable the flow of current. We will see later that this convention, together with the arrow that marks the source (and the direction of current flow), provides useful intuition when reading a larger circuit schematic.</p>
 <p>&nbsp;&nbsp;&nbsp;We now begin our analysis of the MOSFET device by considering the condition shown in Figure 2-2(a), where the bulk and source are connected to a reference potential (GND), <span class="math inline">\(V_{GS}\)</span> = 0V and <span class="math inline">\(V_{DS}\)</span> = 0 V. Under this condition, the drain and source terminals are isolated by two reverse-biased pn-junctions and their <strong>depletion regions</strong>, which prevent any significant flow of current. Applying a positive voltage at the drain (<span class="math inline">\(V_{DS}\)</span> &gt; 0V) increases the reverse-bias at the drain-bulk junction and will only increase the width of the depletion region at the drain, while <span class="math inline">\(I_{D}\)</span> = 0 is still maintained (to first-order).</p>
 <p>&nbsp;&nbsp;&nbsp;Consider now <span class="math inline">\(V_{GS}\)</span> = 0 as shown in Figure 2-2(b).<!-- QUESTION embedded link to picture?--> This positive voltage at the gate attracts electrons from the source. With increasing <span class="math inline">\(V_{GS}\)</span>, a larger amount of electrons is supplied by the source, and ultimately, a so-called <strong>inversion layer</strong> forms underneath the gate. The voltage <span class="math inline">\(V_{GS}\)</span> at which a significant number of mobile electrons underneath the gate become available is called the <strong>threshold voltage</strong> of the transistor, or <span class="math inline">\(V_{t}\)</span>. In order to differentiate the threshold voltages and other device parameters of n-and p-channel devices, we will utilize the subscripts n and p throughout this module. E.g., we denote the threshold voltage for n-channels and p-channels as <span class="math inline">\(V_{Tn}\)</span> and <span class="math inline">\(V_{Tp}\)</span>., respectively.</p>
-<p><img src="images/png/figure2.2.png" class="img-fluid" style="width:100.0%"></p>
-<p><strong>Figure 2-2:</strong> (a) n-channel MOSFET with <span class="math inline">\(V_{GS}\)</span> = 0 and (b) <span class="math inline">\(V_{GS}\)</span> &gt; <span class="math inline">\(V_{Tn}\)</span>.</p>
-<!-- FIXME FIGUE OUT HOW TO MAKE THE PICTURE IN THE CENTER IF IT IS NOT 100% SIZE-->
+<div id="fig-2.2a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.2a.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: (a) n-channel MOSFET with <span class="math inline">\(V_{GS}\)</span> = 0
+</figcaption>
+</figure>
+</div>
+<div id="fig-2.2b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.2b.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: (b) <span class="math inline">\(V_{GS}\)</span> &gt; <span class="math inline">\(V_{Tn}\)</span>.
+</figcaption>
+</figure>
+</div>
 <p>&nbsp;&nbsp;&nbsp;With the inversion layer under the gate, the drain and source regions are now “connected” through a conductive path and any voltage between these terminals (<span class="math inline">\(V_{GS}\)</span> &gt; 0) will result in a flow of drain current. How can we calculate this current? In order to answer this question, the following approximations are useful:</p>
 <p>&nbsp;&nbsp;&nbsp;<strong>1.</strong> The current primarily depends on the number of mobile electrons in the channel times their velocity.</p>
 <p>&nbsp;&nbsp;&nbsp;<strong>2.</strong> The number of mobile electrons in the channel is set by the vertical electric field from the gate to the conductive channel (<strong>gradual channel approximation</strong>).</p>
 <p>&nbsp;&nbsp;&nbsp;<strong>3.</strong> The threshold voltage is constant along the channel; this assumption neglects the so-called body effect.</p>
 <p>&nbsp;&nbsp;&nbsp;<strong>4.</strong> The velocity of the electrons traveling from the source to the drain is proportional to the lateral electric field in the channel.</p>
-<p>&nbsp;&nbsp;&nbsp;Figure 2-2(b)<!--QUESTION embedded picture?--> establishes relevant variables for further analysis. The auxiliary variable <em>y</em> ranges from 0 to <em>L</em> and is used to express electrical quantities as a function of the distance from the source. The inversion layer charge density (per unit area) and voltage at position <em>y</em> in the channel are denoted as <span class="math inline">\(Q_{n}(y)\)</span> and <span class="math inline">\(V_{y}\)</span>, respectively. With these conventions in place, we can translate the above-listed assumptions into the following equations:</p>
-<p>eqations !</p>
+<p>&nbsp;&nbsp;&nbsp;<a href="#fig-2.2b" class="quarto-xref">Figure&nbsp;4</a> establishes relevant variables for further analysis. The auxiliary variable <em>y</em> ranges from 0 to <em>L</em> and is used to express electrical quantities as a function of the distance from the source. The inversion layer charge density (per unit area) and voltage at position <em>y</em> in the channel are denoted as <span class="math inline">\(Q_{n}(y)\)</span> and <span class="math inline">\(V_{y}\)</span>, respectively. With these conventions in place, we can translate the above-listed assumptions into the following equations:</p>
 </section>
 </section>
 </div>
