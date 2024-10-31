@@ -59,7 +59,7 @@ between the source and drain) and the **channel width** *W*.
 
 
 
-
+@fig-2.1 shows
 
 <!-- QUESTION Where should be the picture 2-1 placed? is it good as I did it? -->
 
