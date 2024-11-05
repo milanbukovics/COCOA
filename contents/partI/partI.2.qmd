@@ -148,8 +148,8 @@ function of the distance from the source. The inversion layer charge density (pe
 we can translate the above-listed assumptions into
 the following equations:
 
-
-
+equation 1 
+equation two 
 
 
 </div>
