@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>parti.2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="partI.2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="partI.2_files/libs/quarto-html/quarto.js"></script>
+<script src="partI.2_files/libs/quarto-html/popper.min.js"></script>
+<script src="partI.2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="partI.2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="partI.2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="partI.2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="partI.2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="partI.2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="partI.2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<div style="text-align: justify">
+<!-- TODO: make sides look nice -->
+<!-- picture numbers, equation numbers are different from part1 -->
+<!-- TODO example references -->
+<section id="sec-introduction" class="level1">
+<h1>Introduction</h1>
+<p>With the development of the integrated circuit, the semiconductor industry is undoubtedly the most influential industry to appear in our society. Its impact on almost every person in the world exceeds that of any other industry since the beginning of the Industrial Revolution. The reasons for its success are as follows:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Chapter Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Review the MOSFET device structure and basic operation as described by the square-law model.</li>
+<li>Introduce large- and small-signal analysis tech- niques using the common-source voltage ampli- fier as a motivating example.</li>
+<li>Derive a small-signal model for the MOSFET device, consisting of a transconductance and out- put resistance element.</li>
+<li>Provide a feel for potential inaccuracies and range limitations of simple modeling expressions.</li>
+</ul>
+</div>
+</div>
+<section id="first-order-mosfet-model" class="level2">
+<h2 class="anchored" data-anchor-id="first-order-mosfet-model">2-1 First-Order MOSFET Model</h2>
+<p>The device-level derivations of this section assume familiarity with basic solid-state physics and electro- statics. For a ground-up treatment from first princi- ples, the reader is referred to introductory solid-state device material (see Reference 1).</p>
+</section>
+<section id="derivation-of-i-v-characteristics" class="level2">
+<h2 class="anchored" data-anchor-id="derivation-of-i-v-characteristics">2-1-1 Derivation of I-V Characteristics</h2>
+<p>The basic structure of an <strong>enhancement mode n-channel</strong> MOSFET is shown in <a href="#fig-2.1a" class="quarto-xref">Figure&nbsp;2</a>. It consists of a lightly doped p-substrate (<strong>bulk</strong>), two heavily doped n-type regions (<strong>source</strong> and <strong>drain</strong>) and a conductive gate electrode that is isolated from the substrate using a thin silicon dioxide layer of thick- ness tox. Other important geometry parameters of this device include the <strong>channel length</strong> <em>L</em> (distance between the source and drain) and the <strong>channel width</strong> <em>W</em>.</p>
+<p>&nbsp;&nbsp;&nbsp;As we shall see, the name “n-channel” stems from the fact that this device conducts current by forming an n-type layer underneath the gate. A <strong>p-channel</strong> device can be constructed similarly using an n-type bulk and p-type source/drain regions. The differentiating details between n- and p-channel devices are summarized in <a href="#Section%202-1-2">Section 2-1-2</a>. For the time being, we will use the n-channel device to discuss the basic principles.</p>
+<div id="fig-1.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure1.1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Block diagram of a mixed-signal system.
+</figcaption>
+</figure>
+</div>
+<div id="fig-2.1a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.1a.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: (a) Cross-section of an n-channel MOSFET.
+</figcaption>
+</figure>
+</div>
+<div id="fig-2.1b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.1b.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: (b) Schematic symbol.
+</figcaption>
+</figure>
+</div>
+<p>In order to study the electrical behavior of a MOSFET, it is useful to define a schematic symbol and conventions for electrical variables as shown in <a href="#fig-2.1b" class="quarto-xref">Figure&nbsp;3</a> .</p>
+<!-- QUESTION should I separate figure 2.1 a and b to two separate pictures? -->
+<p>The variables <span class="math inline">\(V_{GS}\)</span>, <span class="math inline">\(V_{DS}\)</span>, and <span class="math inline">\(V_{BS}\)</span> describe the voltages between the respective terminals using the commonly used ordered subscript convention <span class="math inline">\(V_{XY}\)</span> = <span class="math inline">\(V_{X}\)</span> – <span class="math inline">\(V_{Y}\)</span>. The current flowing into the drain node is labeled <span class="math inline">\(I_{D}\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;<!-- QUESTION are three spaces enough as indentation? --> It is important to note that the MOSFET device considered here is perfectly symmetric; i.e., the drain and source terminal labels can be interchanged. It is a common convention to assign the source to the lower potential of these two terminals, since this terminal is the source of electrons that enable the flow of current. We will see later that this convention, together with the arrow that marks the source (and the direction of current flow), provides useful intuition when reading a larger circuit schematic.</p>
+<p>&nbsp;&nbsp;&nbsp;We now begin our analysis of the MOSFET device by considering the condition shown in Figure 2-2(a), where the bulk and source are connected to a reference potential (GND), <span class="math inline">\(V_{GS}\)</span> = 0V and <span class="math inline">\(V_{DS}\)</span> = 0 V. Under this condition, the drain and source terminals are isolated by two reverse-biased pn-junctions and their <strong>depletion regions</strong>, which prevent any significant flow of current. Applying a positive voltage at the drain (<span class="math inline">\(V_{DS}\)</span> &gt; 0V) increases the reverse-bias at the drain-bulk junction and will only increase the width of the depletion region at the drain, while <span class="math inline">\(I_{D}\)</span> = 0 is still maintained (to first-order).</p>
+<p>&nbsp;&nbsp;&nbsp;Consider now <span class="math inline">\(V_{GS}\)</span> = 0 as shown in <a href="#fig-2.2b" class="quarto-xref">Figure&nbsp;5</a>. This positive voltage at the gate attracts electrons from the source. With increasing <span class="math inline">\(V_{GS}\)</span>, a larger amount of electrons is supplied by the source, and ultimately, a so-called <strong>inversion layer</strong> forms underneath the gate. The voltage <span class="math inline">\(V_{GS}\)</span> at which a significant number of mobile electrons underneath the gate become available is called the <strong>threshold voltage</strong> of the transistor, or <span class="math inline">\(V_{t}\)</span>. In order to differentiate the threshold voltages and other device parameters of n-and p-channel devices, we will utilize the subscripts n and p throughout this module. E.g., we denote the threshold voltage for n-channels and p-channels as <span class="math inline">\(V_{Tn}\)</span> and <span class="math inline">\(V_{Tp}\)</span>., respectively.</p>
+<div id="fig-2.2a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.2a.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: (a) n-channel MOSFET with <span class="math inline">\(V_{GS}\)</span> = 0
+</figcaption>
+</figure>
+</div>
+<div id="fig-2.2b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.2b.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: (b) <span class="math inline">\(V_{GS}\)</span> &gt; <span class="math inline">\(V_{Tn}\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;With the inversion layer under the gate, the drain and source regions are now “connected” through a conductive path and any voltage between these terminals (<span class="math inline">\(V_{GS}\)</span> &gt; 0) will result in a flow of drain current. How can we calculate this current? In order to answer this question, the following approximations are useful:</p>
+<p>&nbsp;&nbsp;&nbsp;<strong>1.</strong> The current primarily depends on the number of mobile electrons in the channel times their velocity.</p>
+<p>&nbsp;&nbsp;&nbsp;<strong>2.</strong> The number of mobile electrons in the channel is set by the vertical electric field from the gate to the conductive channel (<strong>gradual channel approximation</strong>).</p>
+<p>&nbsp;&nbsp;&nbsp;<strong>3.</strong> The threshold voltage is constant along the channel; this assumption neglects the so-called body effect.</p>
+<p>&nbsp;&nbsp;&nbsp;<strong>4.</strong> The velocity of the electrons traveling from the source to the drain is proportional to the lateral electric field in the channel.</p>
+<p>&nbsp;&nbsp;&nbsp;<a href="#fig-2.2b" class="quarto-xref">Figure&nbsp;5</a> establishes relevant variables for further analysis. The auxiliary variable <em>y</em> ranges from 0 to <em>L</em> and is used to express electrical quantities as a function of the distance from the source. The inversion layer charge density (per unit area) and voltage at position <em>y</em> in the channel are denoted as <span class="math inline">\(Q_{n}(y)\)</span> and <span class="math inline">\(V_{y}\)</span>, respectively. With these conventions in place, we can translate the above-listed assumptions into the following equations:</p>
+<p><span id="eq-2.1"><span class="math display">\[
+I_D(y) =  {W} \cdot Q_n \cdot v(y)
+\tag{1}\]</span></span></p>
+<p><span id="eq-2.2"><span class="math display">\[
+Q_n(y) = -C_{ox} \cdot (V_{GS}  -  V(y) - V_{Tn})
+\tag{2}\]</span></span></p>
+<p><span id="eq-2.3"><span class="math display">\[
+v(y) = -\mu_n \cdot E_y
+\tag{3}\]</span></span></p>
+<p>In these expressions, <em>v</em> is the velocity of the carriers, <span class="math inline">\(C_{ox}\)</span> is the <strong>gate capacitance</strong> per unit area (between the gate electrode and the conductive channel). The term <em>μn</em> is called <strong>mobility</strong>, and it relates the drift velocity of the carriers to the local electric field.</p>
+<p>&nbsp;&nbsp;&nbsp;As indicated in <a href="#eq-2.2" class="quarto-xref">Equation&nbsp;2</a>, the mobile charge den- sity at coordinate y depends on the local potential, since the voltage across the oxide is given by <span class="math inline">\(V_{GS}\)</span> – V(y). An inversion layer is present at any location under the gate where this voltage difference is larger than the threshold (<span class="math inline">\(V_{Tn}\)</span>). Assuming that the inver- sion layer extends from source to drain [as drawn in <a href="#fig-2.2b" class="quarto-xref">Figure&nbsp;5</a>], we have V(L) = <span class="math inline">\(V_{DS}\)</span> and <span class="math inline">\(Q_{n}\)</span>(L) = –<span class="math inline">\(C_{ox}\)</span> (<span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> – <span class="math inline">\(V_{DS}\)</span>). This implies that <span class="math inline">\(V_{DS}\)</span> cannotexceed <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> for an inversion layer that extends across the entire channel. For the time being, we will solve for the drain current for this condition and later extend the obtained result for the case of <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;Now, by combining <a href="#eq-2.1" class="quarto-xref">Equation&nbsp;1</a> through <a href="#eq-2.3" class="quarto-xref">Equation&nbsp;3</a> and noting that the electric field is given by E(<em>y</em>) = <em>d</em>V(<em>y</em>) / <em>dy</em> , we can write</p>
+<p><span id="eq-2.4"><span class="math display">\[
+I_D(y) =  \mu_n C_{ox} W \cdot (V_{GS} - V_y - V_{Tn}) \frac{dV_y}{dy}
+\tag{4}\]</span></span></p>
+<p>This result describes the current density profile along the channel. The terminal current, <span class="math inline">\(I_{D}\)</span>, can be found by separating the variables and integrating along the direction of <em>y</em></p>
+<p><span id="eq-2.5"><span class="math display">\[
+\int_0^L I_D(y) \, dy = \mu_n C_{ox} W \int_0^{V_{DS}} (V_{GS} - V(y) - V_{Tn}) \, dV
+\tag{5}\]</span></span></p>
+<p>which yields a closed-form solution for the drain current</p>
+<p><span id="eq-2.6"><span class="math display">\[
+\boxed{ I_D = \mu_n C_{ox} \frac{W}{L} \left( V_{GS} - V_{Tn} - \frac{V_{DS}}{2} \right) V_{DS} }
+\tag{6}\]</span></span></p>
+<p>Note that this expression is valid for <span class="math inline">\(V_{DS}\)</span> &lt; <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>, as assumed above. In order to extend the obtained result for <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>, we continue by inspecting the shape of the inversion layer for various <span class="math inline">\(V_{DS}\)</span> (see <a href="#fig-2.3" class="quarto-xref">Figure&nbsp;6</a>). For <span class="math inline">\(V_{DS}\)</span> = 0 V [case (a)], no current flows and V(<em>y</em>) = 0 for all <em>y</em>. Provided that <span class="math inline">\(V_{GS}\)</span> &gt; <span class="math inline">\(V_{Tn}\)</span>, a uniform inversion layer exists underneath the gate. For small <span class="math inline">\(V_{DS}\)</span> &gt; 0, a current flows in the inversion layer, which causes increasing V(<em>y</em>) and decreasing inversion layer charge along the channel. As <span class="math inline">\(V_{DS}\)</span> approaches <span class="math inline">\(V_{GS}\)</span> - <span class="math inline">\(V_{Tn}\)</span>, <span class="math inline">\(Q_{n}\)</span>(<em>L</em>) approaches zero with a point of diminishing charge at the drain. This effect is called <strong>pinch-off</strong>.</p>
+<div id="fig-2.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.3.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Channel profile for varying <span class="math inline">\(V_{DS}\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;What happens when we increase <span class="math inline">\(V_{DS}\)</span> beyond the point of pinch-off? Further analysis based on solving the two-dimensional <strong>Poisson Equation</strong> at the drain predicts that the pinch-off point will move from <em>L</em> to <em>L – ΔL</em>, where <em>ΔL</em> is small relative to <em>L</em>. Even though no inversion layer exists in the region from <em>L – ΔL</em> to <em>L</em>, the device still conducts current. The charges arriving at <em>y = L – ΔL</em> are being swept to the drain by the electric field present in the depletion region of the surrounding pn junction.</p>
+<p>&nbsp;&nbsp;&nbsp;To first-order, and neglecting the small change in channel length <em>ΔL</em>, the current becomes independent of <span class="math inline">\(V_{DS}\)</span> and is approximately given by the current at the onset of pinch-off, i.e., at <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>. Substituting this condition into <a href="#eq-2.6" class="quarto-xref">Equation&nbsp;6</a>, we obtain</p>
+<p><span id="eq-2.7"><span class="math display">\[
+\boxed{I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2}
+\tag{7}\]</span></span></p>
+<p>for <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>.</p>
+<p><a href="#eq-2.6" class="quarto-xref">Equation&nbsp;6</a> and <a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a> are plotted in <a href="#fig-2.4" class="quarto-xref">Figure&nbsp;7</a> as a function of <span class="math inline">\(V_{DS}\)</span> and some fixed <span class="math inline">\(V_{GS}\)</span> &gt; <span class="math inline">\(V_{Tn}\)</span>. The operating region for <span class="math inline">\(V_{DS}\)</span> &lt; <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> is commonly called the <strong>triode region</strong>. This name stems from the direct dependence of the drain current on the drain-source voltage, which is qualitatively similar to the behavior of vacuum tube “triodes.” The region <span class="math inline">\(V_{DS}\)</span> ≥ <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> is called the <strong>saturation region</strong> due to the saturation in current at large <span class="math inline">\(V_{DS}\)</span>. In this region, the device operates essentially like a current source; the current is (to first-order) independent of the applied <span class="math inline">\(V_{DS}\)</span> and <span class="math inline">\(I_{D}\)</span> = <span class="math inline">\(I_{Dsat}\)</span> = constant. The quantity <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> is often called <strong>gate overdrive</strong>.</p>
+<div id="fig-2.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.4.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: (a) n-channel I-V characteristic for a fixed value of <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>= 2V. (b) I-V plots with varying <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> (drain characteristic). Parameters: <em>μCox = 50 μA/<span class="math inline">\(V^2\)</span> </em> and <em>W/L</em> = 10.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;The drain-source voltage at which the drain current saturates is called <span class="math inline">\(V_{DSat}\)</span>. From the above first-order analysis, it is clear that <span class="math inline">\(V_{DSat}\)</span> = <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>. Nonetheless, it is useful to distinguish between these two quantities, because they may differ significantly when a more elaborate device model is used. <span class="math inline">\(V_{DSat}\)</span> is generally not exactly equal to <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> when second-order effects, for example related to small geometries and modern device structures, are considered.</p>
+<p>&nbsp;&nbsp;&nbsp;From a circuit perspective, the device’s behavior in the triode region is similar to a resistor: the current increases monotonically with increasing terminal voltage. Even though the dependence of <span class="math inline">\(I_{D}\)</span> on <span class="math inline">\(V_{DS}\)</span> is nonlinear (as seen from <a href="#eq-2.6" class="quarto-xref">Equation&nbsp;6</a>), it is some- times useful to approximate the characteristic using a linear I-V law, shown as a dashed line in <a href="#fig-2.4" class="quarto-xref">Figure&nbsp;7</a> Figure 2-4(a). For <span class="math inline">\(V_{DS}\)</span> &lt;&lt; <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> , we can approximate <a href="#eq-2.6" class="quarto-xref">Equation&nbsp;6</a> Eq. (2.6) as <!-- FIXME fix figure --></p>
+<p><span id="eq-2.8"><span class="math display">\[
+I_D \equiv \mu_n C_{ox} \frac{W}{L} (V_{GS} - V_{Tn}) V_{DS}
+\tag{8}\]</span></span></p>
+<p>Under this approximation, <span class="math inline">\(I_{D}\)</span> depends linearly on <span class="math inline">\(V_{DS}\)</span>, and we can define the so-called <strong>on-resistance</strong> of the device as</p>
+<p><span id="eq-2.9"><span class="math display">\[
+R_{on} = \frac{V_{DS}}{I_D} \equiv \frac{1}{\mu_n C_{ox} \frac{W}{L} (V_{GS} - V_{Tn})}
+\tag{9}\]</span></span></p>
+<p>It is interesting to interpret the dependencies in this expression using basic intuition. Increasing the aspect ratio <em>W /L</em> decreases <span class="math inline">\(R_{on}\)</span> since the conductive path becomes shorter and/or wider; this is a basic property of any conductor. The on-resistance also decreases with increasing <span class="math inline">\(C_{ox}\)</span> and <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>; this is because the inversion charge increases with these quantities (<em>Q = CV</em>). Larger mobility (<span class="math inline">\(μ_{n}\)</span>) means that the carriers travel faster for the same applied voltages (electric field). This increases the current (charge per unit of time) and therefore also results in smaller <span class="math inline">\(R_{on}\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;As seen from <a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a>, the magnitude of the drain current in saturation depends on the square of the gate overdrive <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>. This is further illustrated in <a href="#fig-2.4" class="quarto-xref">Figure&nbsp;7</a> <!-- FIXME fix figure --> Figure 2-4(b), which shows I-V plots for increasing multiples of <span class="math inline">\(V_{GS1}\)</span> – <span class="math inline">\(V_{Tn}\)</span> = 1V. Doubling and tripling the gate overdrive increases the saturation current by factors of four and nine, respectively. Note that <span class="math inline">\(R_{on}\)</span> is reduced only by factors of two and three in these cases, respectively.</p>
+<p>The plot in <a href="#fig-2.4" class="quarto-xref">Figure&nbsp;7</a> <!-- FIXME fix figure --> Figure 2-4(b) is often called the <strong>drain characteristic</strong>, because the drain-source voltage (as opposed to the gate-source voltage, which is included as a parameter on the curves), is swept along the x-axis. Alternatively, the term <strong>output characteristic</strong> is sometimes used, primarily because <span class="math inline">\(V_{DS}\)</span> can often be viewed as the output port voltage of the device; we will see this in the example discussed in <a href="#Section%202-2">Section 2-2</a></p>
+<p>Another commonly used characterization plot for MOSFETs is the so-called <strong>transfer characteristic</strong>, which shows the drain current as a function of <span class="math inline">\(V_{GS}\)</span> for a fixed value of <span class="math inline">\(V_{DS}\)</span>. If <span class="math inline">\(V_{DS}\)</span> is chosen large enough such that the device operates in the saturation region for all applied <span class="math inline">\(V_{GS}\)</span>, <span class="math inline">\(I_{D}\)</span> follows from <a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a> Eq. (2.7) and the plot is shaped like a parabola as drawn in Figure 2-5.</p>
+<div id="fig-2.5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.5.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Plot of n-channel drain current as a function of <span class="math inline">\(V_{GS}\)</span> (transfer characteristic). Parameters: <span class="math inline">\(V_{DS}\)</span> = 5 V, <span class="math inline">\(μC_{ox}\)</span> = 50μA/<span class="math inline">\(V^2\)</span>,<span class="math inline">\(V_{Tn}\)</span> = 0.5 V, and <em>W/L</em> = 10.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;Table 2-1 summarizes the first-order MOSFET I-V relationships that were discussed in this section. This set of equations (and extended versions thereof) is often called the <strong>square-law model</strong> since one of its primary features is the quadratic dependence of the saturation current on <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>. When working with this device model, it is important to remember that it predicts the behavior of real MOSFETs only with limited accuracy. This is primarily so because we have made several simplifications in the model’s derivation. The most significant shortcom ings that result from these assumptions can be summarized as follows:</p>
+<ol type="1">
+<li><p>In reality, the saturation current has a weak dependence on <span class="math inline">\(V_{DS}\)</span>. This is primarily due to a shortening of the channel length (<em>ΔL</em>) with increasing <span class="math inline">\(V_{DS}\)</span> and also due to the drain voltage dependence of the mobile charge in the channel. We will address this issue in <a href="#Section%202-2">Section 2-2</a>.</p></li>
+<li><p>For transistors built in modern technologies, several second-order effects related to small geometries and large electric fields become significant. This typically results in a saturation current law exponent that is less than two, and <span class="math inline">\(V_{DSat}\)</span> &lt; <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span>. In addition, the drain current does not scale strictly proportional to <em>1/L</em> and the threshold voltage is not constant, but a function of the drain voltage.</p></li>
+<li><p>For <span class="math inline">\(V_{GS}\)</span> &lt; <span class="math inline">\(V_{Tn}\)</span> the device is not completely off, but carries a small current that exponentially depends on <span class="math inline">\(V_{GS}\)</span>. This operating region is called the <strong>sub-threshold region</strong>.</p></li>
+<li><p>For small values of <span class="math inline">\(V_{GS}\)</span> &lt; <span class="math inline">\(V_{Tn}\)</span>, on the order of a few tens of millivolts, the region underneath the gate is only moderately inverted, and the square law model tends to predict the drain current with poor accuracy.</p></li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 28%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Amplfier Type</strong></th>
+<th><strong>Input Quantity</strong></th>
+<th><strong>Output Quantity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Voltage Amplifier</td>
+<td>Voltage</td>
+<td>Voltage</td>
+</tr>
+<tr class="even">
+<td>Current Amplifier</td>
+<td>Current</td>
+<td>Current</td>
+</tr>
+<tr class="odd">
+<td>Transconductance Amplifier</td>
+<td>Voltage</td>
+<td>Current</td>
+</tr>
+<tr class="even">
+<td>Transresistance Amplifier</td>
+<td>Current</td>
+<td>Voltage</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| | |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| “ON” | “OFF” |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<span class="math inline">\(V_{GS}\)</span> ≥ <span class="math inline">\(V_{Tn}\)</span> |<span class="math inline">\(V_{GS}\)</span> ≥ <span class="math inline">\(V_{Tn}\)</span> |</div>
+<p>|:———————:|:———————————————————————:|:——————-:| | <span class="math inline">\(V_{DS}\)</span> &lt; <span class="math inline">\(V_{DSat}\)</span> |<span class="math inline">\(I_D\)</span>=<span class="math inline">\(\mu_n C_{ox}\frac{W}L (V_{GS}\)</span>-<span class="math inline">\(V_{Tn}-\frac{V_{DS}}{2}) V_{DS}\)</span>| | | | | |<br>
+| <span class="math inline">\(V_{DS}\)</span> ≥ <span class="math inline">\(V_{DSat}\)</span> |<span class="math inline">\(I_D\)</span>=<span class="math inline">\(\frac{1}{2}\mu_n C_{ox}\frac{W}L (V_{GS}\)</span>-<span class="math inline">\(V_{Tn}\)</span>)<span class="math inline">\(^2\)</span> | | | | | |</p>
+<p>&nbsp;&nbsp;&nbsp;Despite these shortcomings, the first-order MOSFET model possesses many of the critical features needed to study the fundamentals of analog circuit design. Many of the second-order effects not featured in the basic model can be treated using advanced device physics and often result in a high-complexity model that is unsuitable for hand-calculations and intuition building.</p>
+<p>&nbsp;&nbsp;&nbsp;Within the range of circuits treated in this mod ule, we typically begin by applying the first-order model. Then, only when the circuit appears to be sensitive to second-order dependencies not covered by this model, we will look for extensions. A treatment in this fashion has the advantage that the reader can develop a feel for where and when modeling extensions and parameter accuracy are critical.</p>
+<p>&nbsp;&nbsp;&nbsp;In general, the tradeoff between modeling accuracy and complexity is a recurring theme at all levels of analog circuit design; the issue is not limited to the introductory material covered in this module. More accurate models can always be generated at the expense of complexity and time. An experienced analog designer will often use the simplest possible model that will predict the behavior of his or her circuit with sufficient (but not perfect) accuracy. This also implies that analog circuit designers must always be on the lookout for model inadequacies. We will encounter and discuss situations where either model expansions or critical insight on modeling accuracy are needed throughout this module.</p>
+</section>
+<section id="p-channel-mosfet" class="level2">
+<h2 class="anchored" data-anchor-id="p-channel-mosfet">2-1-2 P-Channel MOSFET</h2>
+<p>The n-channel MOSFET discussed so far conducts current through an electron inversion layer in a p-type bulk. Similarly, we can construct a <strong>p-channel</strong> device that operates based on forming an inversion layer of holes in an n-type bulk. The structure of such a MOSFET, which consists of p+ source and drain regions in an n-type bulk, is shown in <a href="#fig-2.6" class="quarto-xref">Figure&nbsp;9</a>. In many process technologies, the n-type bulk region is formed by creating an n-type well (<strong>n-well</strong>) in the p-type substrate that is used to form n-channels. Such a technology is called an <strong>n-well technology</strong>. In general, a technology that offers both n- and p-channel devices is called <strong>CMOS</strong> technol- ogy, where CMOS stands for Complementary Metal-Oxide-Semiconductor.</p>
+<div id="fig-2.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.6.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: (a) Cross-section of a p-channel MOSFET. (b) Schematic symbol.)
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;The drain current equations for a p-channel MOSFET can be derived using exactly the same approach as used for the n-channel device since the basic physics are the same. For a p-channel device, the gate must be made negative with respect to the p-type source in order to form an inversion layer of holes; the threshold voltage <span class="math inline">\(V_{Tp}\)</span> is therefore typically negative. Since holes drift across the channel from the source to the drain in the p-channel MOSFET, the drain voltage must be negative with respect to the source, and the drain current (defined as flowing into the drain terminal) is negative. Therefore, in the on-state of the transistor, <span class="math inline">\(V_{GS}\)</span> and <span class="math inline">\(V_{DS}\)</span> are negative quantities, and the source lies at the highest poten- tial among the four terminals. The drain current for a p-channel in saturation, i.e., <span class="math inline">\(V_{GS}\)</span> &lt; <span class="math inline">\(V_{DS}\)</span> and <span class="math inline">\(V_{DS}\)</span> ≤ <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tp}\)</span>, is given by</p>
+<p><span id="eq-2.10"><span class="math display">\[
+{I_D = -\frac{1}{2} \mu_p C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tp})^2}
+\tag{10}\]</span></span></p>
+<p>A practical problem for the circuit designer is to keep track of the minus signs and negative quantities in the p-channel equations. A solution to this issue is to “think positive,” and work with the physically intuitive positive quantities <span class="math inline">\(V_{SG}\)</span> (instead of <span class="math inline">\(V_{GS}\)</span>), <span class="math inline">\(V_{SD}\)</span> (instead of <span class="math inline">\(V_{DS}\)</span>) in all hand calculations. Following this approach, we can rewrite <a href="#eq-2.10" class="quarto-xref">Equation&nbsp;10</a> as</p>
+<p><span id="eq-2.11"><span class="math display">\[
+-{I_D = \frac{1}{2} \mu_p C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tp})^2}
+\tag{11}\]</span></span></p>
+<p>Note that the right-hand side of this equation yields a positive number. The minus sign included on the left-hand side remains necessary because <span class="math inline">\(I_D\)</span>, as defined in <a href="#fig-2.6" class="quarto-xref">Figure&nbsp;9</a>(b), is a negative quantity.</p>
+</section>
+<section id="standard-technology-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="standard-technology-parameters">2-1-3 Standard Technology Parameters</h2>
+<p>For use throughout this module, it is convenient to define standard MOSFET parameter values as given in Table 2-2. The chosen values are representative of a CMOS technology with a minimum channel length, or <strong>feature size</strong> of 1 μm. As we learn more about the behavior of MOSFETs in later sections, this list of parameters will grow and we will augment it as needed.</p>
+<p>&nbsp;&nbsp;&nbsp; In the context of defining these parameters, it is important to make a clear distinction between <strong>technology parameters</strong> and <strong>design parameters</strong>. Technology parameters are typically fixed in the sense that a circuit designer cannot alter their values. For instance, the mobility in a MOSFET depends on how the transistor is made, and the underlying recipe remains unchanged and will be reused for an extended time to manufacture a large variety and quantity of integrated circuits. In most modern CMOS technologies, the width and length of a MOSFET remain as the only parameters that the circuit designer can choose (within appropriate limits) to alter the device’s electrical behavior.</p>
+<p>&nbsp;&nbsp;&nbsp;In determining the transistor geometries, the designer will usually work with electrical variables and parameters that describe the circuit and its functionality, for example in terms of currents and voltages. From these electrical descriptions and specifications, the widths and lengths of the transistors are then calculated, and sometimes adjusted via an iterative process. In this task, intermediate electrical parameters, as for instance the gate overdrive of a MOSFET, are also legitimately viewed as parameters that are under the control of the circuit designer.</p>
+<p><strong>Example 2-1: P-Channel Drain Current Caculation</strong></p>
+<p>A p-channel transistor is operated with the following terminal voltages relative to ground: <span class="math inline">\(V_{G}\)</span> = 2.5 V, <span class="math inline">\(V_{S}\)</span> = <span class="math inline">\(V_{B}\)</span> = 5 V, <span class="math inline">\(V_{D}\)</span> = 1 V. Calculate the drain current <span class="math inline">\(I_D\)</span> using the standard technology parameters given in Table 2-2 and assuming <em>W/L</em> = 5.</p>
+<p><strong>SOLUTION</strong></p>
+<p>From the given terminal voltages, we find <span class="math inline">\(V_{SG}\)</span> = 5 V – 2.5 V = 2.5 V and <span class="math inline">\(V_{SD}\)</span> = 5 V – 1 V = 4 V. Since <span class="math inline">\(V_{SG}\)</span> &gt; <span class="math inline">\(V_{Tp}\)</span>, the transistor is on, and since <span class="math inline">\(V_{SD}\)</span> &gt; <span class="math inline">\(V_{SG}\)</span> + <span class="math inline">\(V_{Tp}\)</span> = 2.5 V – 0.5 V = 2 V, it operates in saturation. Therefore, using <a href="#eq-2.11" class="quarto-xref">Equation&nbsp;11</a> we find</p>
+<!-- FIXME typo for mu_n , changed it to mu_p -->
+<p><span class="math display">\[
+-{I_D = \frac{1}{2} \mu_p C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tp})^2}
+\]</span> <span class="math display">\[
+-{I_D = \frac{1}{2} \cdot 25\frac{μA}{V^2} \cdot 5 \cdot (2.5 V - 0.5V)^2 = 250μA}
+\]</span></p>
+<p><span class="math display">\[
+-I_D = -250μA
+\]</span></p>
+<!--   QUESTION aligh equations? in part I.1 there is no such thing -->
+<table class="caption-top table">
+<caption><strong>Table 2-2</strong>: Standard technology parameters for the first-order MOSFET model.</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 31%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Parameter</strong></th>
+<th style="text-align: center;"><strong>n-channel MOSFET</strong></th>
+<th style="text-align: center;"><strong>p-channel MOSFET</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Threshold voltage</td>
+<td style="text-align: center;"><span class="math inline">\(V_{Tn}\)</span> = 0.5V</td>
+<td style="text-align: center;"><span class="math inline">\(V_{Tp}\)</span> = -0.5V</td>
+</tr>
+<tr class="even">
+<td>Transconductance parameter</td>
+<td style="text-align: center;"><span class="math inline">\(μ_nC_{ox}= 50μA/V^2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(μ_pC_{ox}= 25μA/V^2\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="building-a-common-source-voltage-amplifier" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-common-source-voltage-amplifier">2-2 Building a Common-Source Voltage Amplifier</h2>
+<p>We will now utilize our first-order understanding of MOSFETs to construct a basic voltage amplifier. We begin by noting that the drain current in all regions of operation can be controlled by varying the gate-source voltage. One way to utilize this effect to build a voltage amplifier is to apply the input such that it controls <span class="math inline">\(V_{GS}\)</span>. An output voltage can then be generated by letting the drain current flow through a resistor, as shown in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a). The top terminal of the resistor is connected to a <strong>supply voltage</strong>, <span class="math inline">\(V_{DD}\)</span>. In this scheme, a larger <span class="math inline">\(V_{IN}\)</span> causes the drain current to increase and <span class="math inline">\(V_{OUT}\)</span> to decrease, since a larger <span class="math inline">\(V_{IN}\)</span> makes the transistor a “better conductor” (more inversion charge), which forces the voltage at the output port closer to ground. This type of circuit is therefore categorized as an <strong>inverting amplifier</strong>. Furthermore, this transistor stage is called a <strong>common-source amplifier</strong>, since the source terminal of the MOSFET is common to the input and output ports of the circuit.</p>
+<div id="fig-2.7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.7.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: (a) Basic common-source amplifier schematic. (b) Voltage transfer characteristic for <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D\)</span> = 5 kΩ, and <em>W/L</em> = 20.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="voltage-transfer-characteristic" class="level2">
+<h2 class="anchored" data-anchor-id="voltage-transfer-characteristic">2-2-1 Voltage Transfer Characteristic</h2>
+<p>In order to derive the voltage transfer characteristic of the circuit (<span class="math inline">\(V_{OUT}\)</span> as a function of <span class="math inline">\(V_{IN}\)</span>) we begin by applying Kirchhoff’s laws at the output node. This yields</p>
+<p><span id="eq-2.12"><span class="math display">\[
+V_{OUT} = V_{DD} - I_D R_D
+\tag{12}\]</span></span></p>
+<p>The drain current ID in this expression depends on <span class="math inline">\(V_{GS}\)</span> and <span class="math inline">\(V_{DS}\)</span> of the transistor, as described in Table 2-1. Given the structure of the circuit in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a), we note that <span class="math inline">\(V_{GS}\)</span> = <span class="math inline">\(V_{IN}\)</span> and <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{OUT}\)</span>. Using this information, we can construct a piecewise function that relates the input and output voltages of the circuit. For this derivation, imagine that we sweep <span class="math inline">\(V_{IN}\)</span> from 0 V to the supply voltage, <span class="math inline">\(V_{DD}\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;First, we note that for <span class="math inline">\(V_{IN}\)</span> = <span class="math inline">\(V_{GS}\)</span> &lt; <span class="math inline">\(V_{Tn}\)</span>, no current flows in the transistor; this implies <span class="math inline">\(V_{OUT}\)</span> = <span class="math inline">\(V_{DD}\)</span>. This behavior is shown in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b) as a horizontal line for the input voltage range 0 ≤ <span class="math inline">\(V_{IN}\)</span> &lt; <span class="math inline">\(V_{Tn}\)</span>, between points A and the vertical line at <span class="math inline">\(V_{Tn}\)</span>. As <span class="math inline">\(V_{IN}\)</span> increases to values greater than or equal to <span class="math inline">\(V_{Tn}\)</span>, the transistor conducts current, and <span class="math inline">\(V_{OUT}\)</span> must be less than <span class="math inline">\(V_{DD}\)</span>. In order to calculate how <span class="math inline">\(V_{OUT}\)</span> changes as a function of <span class="math inline">\(V_{IN}\)</span>, we must first determine the tran- sistor’s region of operation. As we increase <span class="math inline">\(V_{IN}\)</span> above <span class="math inline">\(V_{Tn}\)</span>, does the MOSFET operate in saturation or in the triode region?</p>
+<p>&nbsp;&nbsp;&nbsp;To answer this question, we must determine if <span class="math inline">\(V_{DS}\)</span> is smaller or larger than <span class="math inline">\(V_{GS}\)</span> - <span class="math inline">\(V_{Tn}\)</span>. For <span class="math inline">\(V_{IN}\)</span> just above <span class="math inline">\(V_{Tn}\)</span>, <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> is smaller than <span class="math inline">\(V_{DS}\)</span>, which is still close to <span class="math inline">\(V_{DD}\)</span> at the onset of current conduction. Therefore, the device must initially operate in saturation as we transition from the “OFF” state of the transistor into the region where <span class="math inline">\(I_D\)</span> &gt; 0. Under this condition, the output voltage is given by</p>
+<p><span id="eq-2.13"><span class="math display">\[
+V_{OUT}=V_{DD} - R_D \cdot \frac{1}{2} \mu_n C_{ox} \frac{W}{L}(V_{IN}-V_{Tn})^2
+\tag{13}\]</span></span></p>
+<p>and the voltage transfer characteristic shows a drop that is quadratic in <span class="math inline">\(V_{IN}\)</span> as seen in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b).</p>
+<p>&nbsp;&nbsp;&nbsp;As we continue to increase <span class="math inline">\(V_{IN}\)</span>, <span class="math inline">\(V_{GS}\)</span> - <span class="math inline">\(V_{Tn}\)</span> also increases while <span class="math inline">\(V_{OUT}\)</span> continues to decrease. At a sufficiently large <span class="math inline">\(V_{IN}\)</span>, <span class="math inline">\(V_{DS}\)</span> can approach <span class="math inline">\(V_{GS}\)</span> - <span class="math inline">\(V_{Tn}\)</span> and the condition for current saturation may no longer hold; the device then transitions into the triode region. The input voltage at which this transition occurs (point C in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b)) can be computed by setting the right-hand side of <a href="#eq-2.13" class="quarto-xref">Equation&nbsp;13</a> equal to <span class="math inline">\(V_{IN}\)</span> – <span class="math inline">\(V_{Tn}\)</span>, and solving for <span class="math inline">\(V_{IN}\)</span>. It is interesting to note that graphically, point C can be found through the intersection of the voltage transfer characteristic with the line <span class="math inline">\(V_{IN}\)</span> – <span class="math inline">\(V_{Tn}\)</span>. The intersect corresponds to the point where <span class="math inline">\(V_{OUT}\)</span> = <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{IN}\)</span> – <span class="math inline">\(V_{Tn}\)</span> = <span class="math inline">\(V_{GS}\)</span> - <span class="math inline">\(V_{Tn}\)</span>, i.e., the transition point between saturation and triode for the MOSFET.</p>
+<p>&nbsp;&nbsp;&nbsp;For the region where the MOSFET operates in the triode region, we have</p>
+<p><span id="eq-2.14"><span class="math display">\[
+V_{OUT} = V_{DD}-R_D \cdot \mu_n C_{ox}\frac{W}{L}(V_{IN}-V_{Tn}-\frac{V_{OUT}}{2})V_{OUT}
+\tag{14}\]</span></span></p>
+<p>Unfortunately, solving this expression for <span class="math inline">\(V_{OUT}\)</span> yields an unwieldy square-root expression that is best analyzed graphically. As we can see from the plot in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b), the most important feature here is that the slope of the voltage transfer characteristic diminishes for large <span class="math inline">\(V_{IN}\)</span>; i.e., the slope of the curve at point D is smaller than the slope at point C. Qualitatively, this can be explained by viewing the MOSFET as a resistor, whose value continues to decrease with <span class="math inline">\(V_{IN}\)</span>. For very large <span class="math inline">\(V_{IN}\)</span>, the output voltage must asymptotically approach 0 V. This can be shown by approximating the MOSFET by its on-resistance for small <span class="math inline">\(V_{DS}\)</span> as given by <a href="#eq-2.9" class="quarto-xref">Equation&nbsp;9</a>. The output voltage in the vicinity of point D can then be expressed by considering the resistive voltage divider formed by <span class="math inline">\(R_{D}\)</span> and <span class="math inline">\(R_{on}\)</span>.</p>
+<p><span id="eq-2.15"><span class="math display">\[
+V_{OUT}≅\frac{V_{DD} \cdot R_{on}}{R_D + R_{on}} = \frac{V_{DD}}{1+R_D\cdot\mu_n C_{ox}\frac{W}{L}(V_{IN}-V_{Tn})}
+\tag{15}\]</span></span></p>
+<p>This result confirms that for large input voltages, <span class="math inline">\(V_{OUT}\)</span> will asymptotically approach zero.</p>
+<p><strong>Example 2-2: Voltage Transfer Calculations for a Common-Source Amplifier</strong></p>
+<p>Consider the circuit of <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a) with the following parameters: <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D\)</span> = 10kΩ.</p>
+<ul>
+<li><ol type="a">
+<li>Using the standard technology parameters of Table 2-2, calculate the required aspect ratio <em>W/L</em> such that <span class="math inline">\(V_{OUT}\)</span> = 2.5 V for <span class="math inline">\(V_{IN}\)</span> = 1 V.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Assuming <em>W/L</em> =10, calculate the input voltage <span class="math inline">\(V_{IN}\)</span> that yields <span class="math inline">\(V_{OUT}\)</span> = 2.5 V.</li>
+</ol></li>
+</ul>
+<!-- TODO : MAKE THE PRAGRAPH START WITH THE LETTER (a) instead of pullet point
+-->
+<p><strong>SOLUTION</strong></p>
+<ul>
+<li><ol type="a">
+<li>As a first step, we can calculate the drain current that results in <span class="math inline">\(V_{OUT}\)</span> = 2.5 V using <a href="#eq-2.12" class="quarto-xref">Equation&nbsp;12</a>.</li>
+</ol></li>
+</ul>
+<p><span class="math display">\[
+V_{OUT} = V_{DD}-I_D R_D
+\]</span> <span class="math display">\[
+2.5V = 5V - (I_D)\cdot 10kΩ )
+\]</span> <span class="math display">\[
+I_D= 250µA
+\]</span></p>
+<p>Since <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> = 0.5 V &lt; <span class="math inline">\(V_{DS}\)</span> = 2.5 V, we know that the device must operate in the saturation region. Therefore,</p>
+<p><span class="math display">\[
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2
+\]</span> <span class="math display">\[
+250µA= \frac{1}{2}\cdot 50\frac{µA}{V^2}\cdot\frac{W}{L}\cdot(1V-0.5V)^2
+\]</span></p>
+<ul>
+<li>and solving for the aspect ratio yields <em>W/L</em> = 40. Note that this answer can also be found by direct evaluation of <a href="#eq-2.13" class="quarto-xref">Equation&nbsp;13</a>, without comput- ing <span class="math inline">\(I_D\)</span> initially.</li>
+</ul>
+<!-- TODO: end of the solution for part (a) -->
+<ul>
+<li><ol start="2" type="a">
+<li>since <span class="math inline">\(V_{IN}\)</span> is unknown in this part of the problem, we cannot immediately determine the operating region of the MOSFET. In such a situation, it is necessary to guess the operating region, and later test whether the guess was correct. Let us begin by assuming that the device operates in saturation. We can then write</li>
+</ol></li>
+</ul>
+<p><span class="math display">\[
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2
+\]</span> <span class="math display">\[
+250µA= \frac{1}{2}\cdot 50\frac{µA}{V^2}\cdot 10 \cdot(V_{GS}-0.5V)^2
+\]</span></p>
+<p>The two solutions to this equation are <span class="math inline">\(V_{GS1}\)</span> = 1.5 V, and <span class="math inline">\(V_{GS2}\)</span> = –0.5 V. Since we know that the device is off for <span class="math inline">\(V_{GS}\)</span> &lt; <span class="math inline">\(V_{Tn}\)</span>, it is clear that <span class="math inline">\(V_{GS2}\)</span> is a non-physical solution that must be discarded. For the obtained <span class="math inline">\(V_{GS1}\)</span>, we must now verify that the device operates in saturation, as initially assumed. It is straightforward to see that this is indeed the case since <span class="math inline">\(V_{GS1}\)</span> – <span class="math inline">\(V_{Tn}\)</span> = 1 V &lt; <span class="math inline">\(V_{DS}\)</span> = 2.5 V. Therefore, the final answer to this problem is <span class="math inline">\(V_{IN}\)</span> = 1.5 V.</p>
+<p>&nbsp;&nbsp;&nbsp;If we had initially guessed that the device operates in the triode region, we would write</p>
+<p><span class="math display">\[
+I_D=\mu_n C_{ox}\frac{W}{L}(V_{GS}-V_{Tn}-\frac{V_{DS}}{2})V_{DS}
+\]</span> <span class="math display">\[
+250µA = 50\frac{µA}{V^2}\cdot 10 \cdot (V_{GS} - 0.5V - \frac{2.5V}{2})\cdot 2.5V
+\]</span></p>
+<ul>
+<li>The solution to this equation is <span class="math inline">\(V_{GS}\)</span> = 1.95 V. Since <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> = 1.45 V &lt; <span class="math inline">\(V_{DS}\)</span> = 2.5, we see that the obtained result contradicts the assumed operation in triode. Therefore, the next logical step would be to evaluate the saturation equation, as already done above.</li>
+</ul>
+</section>
+<section id="load-line-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="load-line-analysis">2-2-2 Load Line Analysis</h2>
+<p>A generally useful tool for graphical analysis in electronic circuits is the so-called <strong>load line analysis</strong>. The basis for such an analysis in the context of our circuit is the fact that the current flowing through the transistor (<span class="math inline">\(I_D\)</span>) is equal to the current flowing through the resistor (which is viewed in this context as the load of the circuit). Therefore, if we draw the I-V character- istics of the MOSFET and <span class="math inline">\(R_D\)</span> in one diagram, valid output voltages lie at the intersection of the two curves (equal current). This is further illustrated in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;11</a>. The load line equation in this plot follows from solving <a href="#eq-2.12" class="quarto-xref">Equation&nbsp;12</a> for <span class="math inline">\(I_D\)</span> and is given by</p>
+<p><span id="eq-2.16"><span class="math display">\[
+I_D= \frac{V_{DD} - V_{OUT}}{R_D}
+\tag{16}\]</span></span></p>
+<div id="fig-2.8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.8.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Load line plot for the CS amplifier in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a).Parameters: <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D\)</span> = 5 kΩ, and <em>W/L</em> = 20.
+</figcaption>
+</figure>
+</div>
+<p>The points A, B, C, and D marked in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;11</a><br>
+correspond to the points shown with the same annotation in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b). Since the transistor drain characteristics are overlaid in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;11</a>, it is easy to identify the operating regions that correspond to each point. For example, we can immediately see that point B lies in saturation, since the intersect occurs in a region of constant drain current.</p>
+<p><strong>Example 2-3: Output Voltage Calculations for a Common-Source Voltage Amplifier</strong></p>
+<p>Construct a load line plot to verify the solution of <a href="#Example%202-2">Example 2-2</a>(b) using <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D\)</span> = 10 kΩ , and W/L =10. Use <span class="math inline">\(V_{IN}\)</span> = <span class="math inline">\(V_{GS}\)</span> = 1 V, 1.5 V, and 2 V for the drain characteristic plot.</p>
+<p><strong>SOLUTION</strong></p>
+<p>The solution is shown in <a href="#fig-ex-2.3" class="quarto-xref">Figure&nbsp;12</a>. The load line is most easily drawn by connecting the points (0, <span class="math inline">\(V_{DD}\)</span>/<span class="math inline">\(R_D\)</span> = 0.5 mA) and (<span class="math inline">\(V_{DD}\)</span> = 5 V, 0). The drain characteristics are drawn for the three given <span class="math inline">\(V_{GS}\)</span> using the expressions of Table 2-1, by sweeping <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{OUT}\)</span> from 0 V to 5 V. The intersect of the load line with the drain characteristic for <span class="math inline">\(V_{IN}\)</span> = 1.5 V confirms the result already obtained in <a href="#Example%202-2">Example 2-2</a>(b).</p>
+<div id="fig-ex-2.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-2.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-2.3.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-2.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: <strong>Figure Ex2-3</strong>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="biasing" class="level2">
+<h2 class="anchored" data-anchor-id="biasing">2-2-3 Biasing</h2>
+<p>After deriving the voltage transfer characteristic of our amplifier, we are now in a position to evaluate this circuit from an application standpoint. As we have discussed in <a href="#Chapter%201">Chapter 1</a>, a common objective for a voltage amplifier is to create large output voltage excursions from small changes in the applied input voltage. With this objective in mind, it becomes clear that only a limited range of the transfer characteris- tic in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b) is useful for amplification. For example, a change in the input voltage applied around point D in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b) yields almost no change in the output voltage. In order to amplify small changes in <span class="math inline">\(V_{IN}\)</span> into large changes in <span class="math inline">\(V_{OUT}\)</span>, the transistor should be operated in the saturation region, i.e., in the vicinity of point B. The general concept of operating a circuit and its constituent transistor(s) around a useful operating point is called <strong>biasing</strong>.</p>
+<p>&nbsp;&nbsp;&nbsp;Biasing generally necessitates the introduction of auxiliary voltages and/or currents that bring the circuit into the desired state. For the circuit considered in this section, proper biasing can be achieved by decomposing the input voltage into a constant component, and a component that represents the incremental voltage change to be amplified; this is illustrated in <a href="#fig-2.9" class="quarto-xref">Figure&nbsp;13</a>(a). The incremental voltage component <span class="math inline">\(v_{in}\)</span> could represent, for instance, the signal generated by a microphone or a similar transducer. The voltage <span class="math inline">\(V_{IN}\)</span> is a constant voltage that defines the point on the overall transfer characteristic around which the incremental <span class="math inline">\(v_{in}\)</span> is applied. We call <span class="math inline">\(V_{IN}\)</span> the <strong>input bias voltage</strong> of the circuit.</p>
+<div id="fig-2.9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.9.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: (a) CS amplifier with input bias.(b) Transfer characteristic showing the bias point.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;Per IEEE convention, the total quantity in such a decomposition is denoted using a lowercase symbol and uppercase subscript, i.e., <span class="math inline">\(v_{IN}\)</span> = <span class="math inline">\(V_{IN}\)</span> + <span class="math inline">\(v_{in}\)</span> in our example. Similarly, the drain current is decomposed as <span class="math inline">\(i_{d}\)</span> = <span class="math inline">\(I_{D}\)</span> + <span class="math inline">\(i_{d}\)</span>, where <span class="math inline">\(I_{D}\)</span> is the current at the operating point, and id captures the current deviations due to the applied signal.</p>
+<p>&nbsp;&nbsp;&nbsp;<a href="#fig-2.9" class="quarto-xref">Figure&nbsp;13</a>(b) elucidates this setup further using the circuit’s transfer characteristic. With <span class="math inline">\(v_{in}\)</span> = 0, the output is equal to <span class="math inline">\(V_{OUT}\)</span>, which is called the bias point or operating point of the output node. The bias point is sometimes also called the quiescent point (Q), since the corresponding voltage level corresponds to that of a “quiet” input. Note that <span class="math inline">\(V_{OUT}\)</span> can be calculated by evaluating <a href="#eq-2.13" class="quarto-xref">Equation&nbsp;13</a>, as done previously.</p>
+<p>With some nonzero <span class="math inline">\(v_{in}\)</span> applied, the output will now see an excursion away from the bias point. For example, applying a positive <span class="math inline">\(v_{in}\)</span> will result in a negative incremental change <span class="math inline">\(v_{out}\)</span> at the output. How can we compute <span class="math inline">\(v_{out}\)</span> for a given <span class="math inline">\(v_{in}\)</span>? Since <a href="#eq-2.13" class="quarto-xref">Equation&nbsp;13</a> must hold for the total quantities <span class="math inline">\(v_{IN}\)</span> = <span class="math inline">\(V_{IN}\)</span> + <span class="math inline">\(v_{in}\)</span> and <span class="math inline">\(v_{OUT}\)</span> = <span class="math inline">\(V_{OUT}\)</span> + <span class="math inline">\(v_{out}\)</span> we can write</p>
+<p><span id="eq-2.17"><span class="math display">\[
+V_{OUT}= V_{DD}-R_D\cdot \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(v_{IN}-V_{Tn})^2
+\tag{17}\]</span></span></p>
+<p>or</p>
+<p><span id="eq-2.18"><span class="math display">\[
+V_{OUT} + v_{out} = V_{DD}-R_D\cdot \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{IN} + v_{in} -V_{Tn})^2
+\tag{18}\]</span></span></p>
+<p>In order to simplify this expression, and since we are only interested in the change of <span class="math inline">\(v_{out}\)</span> as a function of <span class="math inline">\(v_{in}\)</span>, it is useful to eliminate the constant term from this expression, given by</p>
+<p><span id="eq-2.19"><span class="math display">\[
+V_{OUT}= V_{DD}-R_D\cdot \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{IN}-V_{Tn})^2
+\tag{19}\]</span></span></p>
+<p>After subtracting <a href="#eq-2.19" class="quarto-xref">Equation&nbsp;19</a> from <a href="#eq-2.18" class="quarto-xref">Equation&nbsp;18</a> and rearranging the terms, we obtain</p>
+<p><span id="eq-2.20"><span class="math display">\[
+v_{out} = -R_D \mu_n C_{ox} \frac{W}{L}(V_{IN} - V_{Tn}) \cdot v_{in} [ 1+ \frac{v_{in}}{2(V_{IN} - V_{TN})}]
+\tag{20}\]</span></span></p>
+<p>Using the drain current expression of <a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a>, and by defining</p>
+<p><span id="eq-2.21"><span class="math display">\[
+V_{OV} = (V_{GS} - V_{Tn})|_{Q} = V_{IN} - V_{Tn}
+\tag{21}\]</span></span></p>
+<p>the result can be further simplified and rewritten as</p>
+<p><span id="eq-2.22"><span class="math display">\[
+v_{out} = -\frac{2I_D}{V_{OV}}\cdot R_D \cdot v_{in}(1+\frac{v_{in}}{2V_{OV}})
+\tag{22}\]</span></span></p>
+<p>where <span class="math inline">\(I_D\)</span> is the transistor’s drain current at the bias point, and <span class="math inline">\(V_{OV}\)</span> is introduced as a symbol for the quiescent point gate overdrive voltage.</p>
+<p>&nbsp;&nbsp;&nbsp;From the end result in <a href="#eq-2.22" class="quarto-xref">Equation&nbsp;22</a>, we see that <span class="math inline">\(v_{out}\)</span> is a nonlinear function of <span class="math inline">\(v_{in}\)</span>. This is not surprising, since we are employing a transistor that exhibits a nonlinear I-V characteristic. While this derivation was relatively simple, the analysis of nonlinear circuits in general tends to be complex. Picture a circuit that contains several transistors, as for instance a cascade connection of several stages of the amplifier circuit considered here. Even with only a few nonlinear elements, most cases involving practical circuits with just moderate complexity tends to yield unwieldy expressions. A widely used solution to this problem is to approximate the circuit behavior using a linear model around its operating point, which we will discuss next.</p>
+</section>
+<section id="the-small-signal-approximation" class="level2">
+<h2 class="anchored" data-anchor-id="the-small-signal-approximation">2-2-4 The Small-Signal Approximation</h2>
+<p><a href="#eq-2.22" class="quarto-xref">Equation&nbsp;22</a> is written in a format that suggests an opportunity for simplification. Provided that <span class="math inline">\(v_{in}\)</span> &lt;&lt; <span class="math inline">\(v_{OV}\)</span>, the bracketed term is close to unity and we can write</p>
+<p><span id="eq-2.23"><span class="math display">\[
+v_{out} = -\frac{2I_D}{V_{OV}}\cdot R_D \cdot v_{in} = A_v \cdot v_{in}
+\tag{23}\]</span></span> where <span class="math inline">\(A_v\)</span> is a constant voltage gain term that relates the incremental input and output voltages.</p>
+<p>&nbsp;&nbsp;&nbsp;Interestingly, the term Av can also be found using basic calculus. Assuming that the incremental volt- ages represent infinitesimally small deviations in the total signal, we can rewrite Eq. (2.23) as</p>
+<p><span id="eq-2.24"><span class="math display">\[
+dv_{OUT} = A_v \cdot dv_{IN}
+\tag{24}\]</span></span></p>
+<p>and therefore</p>
+<p><span id="eq-2.25"><span class="math display">\[
+A_v= \left. \frac{dv_{OUT}}{dv_{IN}} \right|_Q = \left. \frac{dv_{OUT}}{dv_{IN}} \right|_{v_{IN}=v_{IN}}
+\tag{25}\]</span></span></p>
+<p>where the derivative is evaluated at the circuit’s operating point <em>Q</em> that is fully defined by choice of the input bias voltage <span class="math inline">\(V_{IN}\)</span>. By applying <a href="#eq-2.25" class="quarto-xref">Equation&nbsp;25</a> to <a href="#eq-2.17" class="quarto-xref">Equation&nbsp;17</a>, we find</p>
+<p><span class="math display">\[
+A_v = \frac{d}{dv_{IN}} \left[ V_{DD} - R_D - \frac{1}{2} \mu_n C_{ox} \frac{W}{L} (v_{IN} - V_{Tn})^2 \right] \bigg|_{v_{IN} = v_{IN}}
+\]</span></p>
+<p><span id="eq-2.26"><span class="math display">\[
+= -R_D \mu_n C_{ox} \frac{W}{L} (v_{IN} - V_{Tn}) \bigg|_{v_{IN} = v_{IN}}
+\tag{26}\]</span></span></p>
+<p><span class="math display">\[
+= -R_D \mu_n C_{ox} \frac{W}{L} (V_{IN} - V_{Tn}) = -R_D \mu_n C_{ox} \frac{W}{L} V_{OV}
+\]</span></p>
+<p>Finally, using <a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a>, we find</p>
+<p><span id="eq-2.27"><span class="math display">\[
+A_v = -\frac{2I_D}{V_{OV}}\cdot R_D
+\tag{27}\]</span></span></p>
+<p>which is the same result obtained previously. The voltage gain <span class="math inline">\(A_v\)</span> can be interpreted graphically as shown in <a href="#fig-2.10" class="quarto-xref">Figure&nbsp;14</a>. From <a href="#eq-2.25" class="quarto-xref">Equation&nbsp;25</a> and basic calculus we know that <span class="math inline">\(A_v\)</span> is the slope of the tangent to the transfer characteristic at the point (<span class="math inline">\(V_{IN}\)</span>, <span class="math inline">\(V_{OUT}\)</span>), which is the operating point of the circuit.</p>
+<div id="fig-2.10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.10.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Concept of small-signal voltage gain. In the small signal model, the input and output voltages are linearly related through <span class="math inline">\(A_v\)</span>, the slope of the tangent at the operating point of the large-signal transfer characteristic.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;In analog circuit nomenclature, <span class="math inline">\(A_v\)</span> is called the <strong>small-signal voltage gain</strong> of the circuit; this emphasizes that this quantity is only suitable for calculations with “small” signals such that nonlinear effects are negligible. In the particular circuit considered here, “small” means <span class="math inline">\(v_in\)</span> &lt;&lt; <span class="math inline">\(V_{OV}\)</span>, as seen from our analysis. The general concept of approximating circuit behavior by assuming small-signal excursions around an operating point is called <strong>small-signal approximation</strong>. In order to clearly distinguish a circuit transfer characteristic obtained through such an approximation from one that incorporates the nonlinear transistor behavior (e.g., <a href="#eq-2.17" class="quarto-xref">Equation&nbsp;17</a>), the term <strong>large-signal transfer characteristic</strong> is typically used for the latter.</p>
+<p>&nbsp;&nbsp;&nbsp;As we shall see in the remainder of this module, working with small-signal approximations greatly simplifies analog circuit analysis and design. The price paid for the approximation, however, is that the resulting equations by themselves cannot be used to reason about the circuit’s behavior for large signals, as for instance signals where <span class="math inline">\(v_{in}\)</span> is comparable to, or even greater than, <span class="math inline">\(V_{OV}\)</span>. As illustrated in <a href="#fig-2.10" class="quarto-xref">Figure&nbsp;14</a>, the small-signal approximation essentially creates a new coordinate system that linearly relates the input and output voltages. In this model, the output voltage follows the input linearly, no matter how large the applied voltage is. In reality, considering the circuit’s large signal transfer characteristic, signal clipping and strong waveform distortion can occur for large excursions and poorly chosen bias points. Examples of such cases are illustrated in <a href="#fig-2.11" class="quarto-xref">Figure&nbsp;15</a>.</p>
+<div id="fig-2.11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.11.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Examples of signal clipping and distortion. (a) Output waveform is clipped due to supply voltage limit. (b) Output waveform drives the MOSFET into the triode region.
+</figcaption>
+</figure>
+</div>
+<p><strong>Example 2-4: Signal clipping</strong></p>
+<p>Consider the circuit of <a href="#fig-2.9" class="quarto-xref">Figure&nbsp;13</a>, using the parameters from <a href="#Example%202-2(b)">Example 2-2(b)</a>: <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D\)</span> = 10 kΩ, <em>W/L</em> = 10, and <span class="math inline">\(V_{IN}\)</span> is adjusted to 1.5 V, so that <span class="math inline">\(V_{OUT}\)</span> = 2.5 V at the circuit’s operating point. Calculate the most negative excursion that the incremental input voltage <span class="math inline">\(v_{in}\)</span> can assume before the output is “clipped” to <span class="math inline">\(V_{DD}\)</span> (as in <a href="#fig-2.11" class="quarto-xref">Figure&nbsp;15</a>(a)).</p>
+<p><strong>SOILUTION</strong></p>
+<p>The circuit’s output voltage is given by</p>
+<p><span class="math display">\[
+v_{OUT} = V_{DD}-R_D\cdot \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{IN} + v_{in} -V_{Tn})^2
+\]</span></p>
+<p>Clipping <span class="math inline">\(v_{OUT}\)</span> to the supply voltage implies <span class="math inline">\(v_{OUT}\)</span> = <span class="math inline">\(V_{DD}\)</span>. This requires</p>
+<p><span class="math display">\[
+0= V_{IN} + v_{in} - V_{Tn}
+\]</span></p>
+<p><span class="math display">\[
+v_{in} = -(V_{IN}  - V_{Tn}) = - (V_{OV})
+\]</span></p>
+<p><span class="math display">\[
+v_{in} = -(1.5V-0.5V) = -1V
+\]</span></p>
+<p>In words, applying a negative signal (<span class="math inline">\(v_{in}\)</span>) at the input of magnitude larger than 1 V will cause the output to reach the supply voltage. Making <span class="math inline">\(v_i\)</span> more negative will create a “plateau” in the output waveform as shown in <a href="#fig-2.11" class="quarto-xref">Figure&nbsp;15</a>(a).</p>
+<p>&nbsp;&nbsp;&nbsp;In a majority of analog circuits, it is sufficient to use the large-signal characteristic for bias-point and signal-range calculations. For all other purposes, as for instance voltage gain calculations, it is usually appropriate and justifiable to work with small-signal approximations. Without this clever split in the analysis, most analog circuits of only moderate complexity would not be amenable to hand analysis, simply because the nonlinear nature of the transistors would create prohibitively complex systems of non- linear equations.</p>
+<p>&nbsp;&nbsp;&nbsp;Circuits that are designed to amplify small signals from a transducer are classical examples where the small-signal approximation works. Consider, for instance, the above-discussed amplifier circuit fed with an input signal from a radio antenna, which is often on the order of several hundred microvolts. As long as <span class="math inline">\(V_{OV}\)</span> is chosen larger than several hundred millivolts, the small signal approximation will hold with reasonable accuracy. Other examples (not covered in this module) include amplifiers that rely on electronic feedback, which tends to minimize the signal excursions around a circuit’s bias point (see <a href="#Reference%202">Reference 2</a>).</p>
+<p>&nbsp;&nbsp;&nbsp;As a final remark, it should be noted that even if the input to a circuit is “small,” the output will always show at least some amount of nonlinear distortion. In our basic amplifier, this distortion is caused by the bracketed term in <a href="#eq-2.22" class="quarto-xref">Equation&nbsp;22</a>. In cases where even weak distortion is an issue, the designer often employs computer simulation tools to study the relevant behavior. From a design perspective, deviations from linearity can be minimized if needed. For the discussed common-source amplifier, this is seen from <a href="#eq-2.22" class="quarto-xref">Equation&nbsp;22</a>: decreasing the ratio <span class="math inline">\(v_{in}\)</span> / <span class="math inline">\(V_{OV}\)</span>, either by reducing <span class="math inline">\(v_{in}\)</span> or by increasing <span class="math inline">\(V_{OV}\)</span> will result in improved linearity.</p>
+<p>&nbsp;&nbsp;&nbsp;The exact analysis ofThe exact analysis of nonlinear distortion is beyond the scope of this module, and is typically treated only in advanced integrated circuit texts, as for instance <a href="#Reference%203">Reference 3</a>. We will focus here primarily on studying the relevant behavior of analog circuits using a linear small-signal abstraction, aided by basic bias-point and signal-range calculations.</p>
+</section>
+<section id="transconductance" class="level2">
+<h2 class="anchored" data-anchor-id="transconductance">Transconductance</h2>
+<p>The method of differentiating a circuit’s large-signal transfer characteristic to obtain a small-signal approximation was straightforward for the simple one-transistor circuit discussed so far. Unfortunately, for a larger circuit it is usually much more difficult and often tedious to derive a complete transfer characteristic in the form of <a href="#eq-2.17" class="quarto-xref">Equation&nbsp;17</a>.</p>
+<p>&nbsp;&nbsp;&nbsp;A clever workaround that is predominantly used in analog circuit analysis is based on linearizing the circuit element-by-element around the operating point. This method is applied in three steps: (1) Compute all node voltages and branch currents at the operating point using the devices’ large-signal model. (2) Substitute linear models for all nonlinear components and compute their parameters using the operating point information. (3) Compute the desired transfer function using the linear model obtained in step 2.</p>
+<p>&nbsp;&nbsp;&nbsp;The biggest advantage of this method, called <strong>small-signal analysis</strong>, is that it avoids computing the large-signal transfer characteristic of the circuit, and instead defers the transfer function analysis until all elements have been approximated by linear models. The linearized models of nonlinear elements, such as MOSFETs, are typically called <strong>small-signal models</strong>.</p>
+<div id="fig-2.12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.12.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: (a) Large-signal transfer characteristic of an n-channel MOSFET in the saturation region. (b) Small-signal transconductance (<span class="math inline">\(g_m\)</span>) at the operating point.
+</figcaption>
+</figure>
+</div>
+<p>We will now illustrate the small-signal analysis approach by applying it to the basic common-source amplifier example covered so far in this chapter. Consider first the MOSFET device in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a). In general, once the operating point of the transistor is known, the small-signal model is obtained by dif- ferentiating the large signal I-V relationships at this point. This is further illustrated in <a href="#fig-2.12" class="quarto-xref">Figure&nbsp;16</a>, assuming that the MOSFET is biased in the saturation region. The proportionality factor that links the incremental drain current (<span class="math inline">\(i_d\)</span>) and the gate-source voltage (<span class="math inline">\(v_{gs}\)</span>) is given by the slope of the tangent to the large signal transfer characteristic at the bias point. This quantity is called <strong>transconductance</strong>, or <span class="math inline">\(g_m\)</span>. Mathematically, we can write</p>
+<p><span id="eq-2.28"><span class="math display">\[
+g_m = \frac{i_d}{v_{gs}} = \left. \frac{di_D}{dv_{GS}} \right|_{v_{GS}=V_{GS}}
+\tag{28}\]</span></span></p>
+<p>In order to find the transconductance for the saturation region of the device, we evaluate <a href="#eq-2.28" class="quarto-xref">Equation&nbsp;28</a> using <a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a>. This yields</p>
+<p><span id="eq-2.29"><span class="math display">\[
+g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS}- V_{Tn}) = \mu_n C_{ox}\frac{W}{L}V_{OV}
+\tag{29}\]</span></span></p>
+<p>Alternative forms of this expression are obtained by eliminating <span class="math inline">\(V_{OV}\)</span> or <span class="math inline">\(μ_n C_{ox}\)</span> <em>W/L</em> using <a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a>, which gives</p>
+<p><span id="eq-2.30"><span class="math display">\[
+g_m = \sqrt{2\mu_n C_{ox} \frac{W}{L}I_D}
+\tag{30}\]</span></span></p>
+<p>or</p>
+<p><span id="eq-2.31"><span class="math display">\[
+g_m = \frac{2I_D}{V_{OV}}
+\tag{31}\]</span></span></p>
+<p>All of the above equations can be used to calculate <span class="math inline">\(g_m\)</span>; the choice of which equation is used depends on the given parameters. The physical unit for transconductance is <span class="math inline">\(A/V\)</span> <em>A/V</em> = <span class="math inline">\(Ω^{-1}\)</span>, or <strong>Siemens</strong> (<span class="math inline">\(S\)</span>).</p>
+<!-- QUESTION should I use $..$ or *..* marking for eg A/V ? -->
+<p>Once the transconductance is determined, we can insert the model of <a href="#fig-2.12" class="quarto-xref">Figure&nbsp;16</a>(b) into the original circuit (<a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a)) for further analysis. The resulting small-signal circuit equivalent is shown in <a href="#fig-2.13" class="quarto-xref">Figure&nbsp;17</a>. No modeling modification is needed for the resistor <span class="math inline">\(R_D\)</span>, as it is already assumed in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a) that it follows a linear <span class="math inline">\(I/V\)</span> law (<span class="math inline">\(V= I \cdot R\)</span>). However, since the supply voltage is constant in the large-signal model, it must be replaced with 0 V or ground (<span class="math inline">\(GND\)</span>) in the small-signal model. This is because the differentiation of a constant quantity yields zero.</p>
+<div id="fig-2.13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.13.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Small-signal model of the circuit in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(a).
+</figcaption>
+</figure>
+</div>
+<p>Using the model of <a href="#fig-2.13" class="quarto-xref">Figure&nbsp;17</a>, we now apply Kirchhoff’s laws at the output and find <span id="eq-2.32"><span class="math display">\[
+v_{out} = -g_m \cdot v_{in} \cdot R_D
+\tag{32}\]</span></span></p>
+<p>Finally, by substituting <a href="#eq-2.31" class="quarto-xref">Equation&nbsp;31</a> we obtain</p>
+<p><span id="eq-2.33"><span class="math display">\[
+v_{out} = -\frac{2I_D}{V_{OV}} \cdot R_D \cdot v_{in} = A_v \cdot v_{in}
+\tag{33}\]</span></span></p>
+<p>As expected, this result is equivalent to what was obtained by applying the small-signal approximation to <a href="#eq-2.22" class="quarto-xref">Equation&nbsp;22</a>, and also by differentiating <a href="#eq-2.17" class="quarto-xref">Equation&nbsp;17</a> at the operating point. However, as indicated previously, the big advantage of working with a small-signal model for individual transistors is that this simplifies the analysis of larger circuits.</p>
+</section>
+<section id="p-channel-common-source-voltage-amplifier" class="level2">
+<h2 class="anchored" data-anchor-id="p-channel-common-source-voltage-amplifier">2-2-6 P-Channel Common-Source Voltage Amplifier</h2>
+<p>As shown in <a href="#fig-2.14" class="quarto-xref">Figure&nbsp;18</a>(a), we can also build a CS amplifier using a p-channel device. Similar to the n-channel case, we can derive a large-signal transfer characteristic using <a href="#eq-2.11" class="quarto-xref">Equation&nbsp;11</a> and by applying <span class="math inline">\(KVL\)</span> at the output node. The resulting plot is shown in <a href="#fig-2.14" class="quarto-xref">Figure&nbsp;18</a>(b). Compared to the n-channel case (<a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b)), one can show that the characteristic is flipped sideways (since <span class="math inline">\(V_{SG}\)</span> = <span class="math inline">\(V_{DD}\)</span> - <span class="math inline">\(V_{IN}\)</span>) and upside down (because <span class="math inline">\(I_D\)</span> is negative for a p-channel transistor). Therefore, for small <span class="math inline">\(V_{IN}\)</span> near 0 V, the device operates in the triode region and the output voltage is close to <span class="math inline">\(V_{DD}\)</span>. For <span class="math inline">\(V_{IN}\)</span> = <span class="math inline">\(V_{DD}\)</span>, the device is off and the output is at 0 V, since <span class="math inline">\(V_{SG}\)</span> = 0 and no current flows in the device.</p>
+<div id="fig-2.14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.14.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: (a) P-channel common-source amplifier schematic. (b) Voltage transfer characteristic for <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D\)</span> = 5 <span class="math inline">\(kΩ\)</span>, and <span class="math inline">\(W/L\)</span> = 40.
+</figcaption>
+</figure>
+</div>
+<p>In terms of its small-signal model, it follows that the p-channel CS amplifier is identical to the n-channel version. This can be seen intuitively by comparing <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b) and <a href="#fig-2.14" class="quarto-xref">Figure&nbsp;18</a>(b): in the region around point <span class="math inline">\(B\)</span>, both transfer characteristics exhibit a negative slope and therefore will behave alike for small perturbations. We will show this formally in the following discussion.</p>
+<p>&nbsp;&nbsp;&nbsp;We begin by inserting a small-signal model for the transistor as shown in <a href="#fig-2.15" class="quarto-xref">Figure&nbsp;19</a>(a). Based on the positive variable convention of <a href="#eq-2.11" class="quarto-xref">Equation&nbsp;11</a>, we define the transconductance for the p-channel transistor as</p>
+<p><span class="math display">\[
+g_m = \left. \frac{d}{dv_{SG}}((-i_D))\right |_Q
+\]</span></p>
+<p><span id="eq-2.34"><span class="math display">\[
+= \mu_p C_{ox}\frac{W}{L}(V_{SG} + V_{Tp})
+\tag{34}\]</span></span></p>
+<p><span class="math display">\[
+= \frac{2(-I_D)}{V_{SG}+V_{Tp}} = \frac{2(-I_D)}{V_{OV}}
+\]</span></p>
+<div id="fig-2.15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.15.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: Small-signal model of the p-channel common-source amplifier: (a) using the p-channel model directly, (b) a flipped version of (a), and (c) with sign changes applied to show equivalence with the n-channel model.
+</figcaption>
+</figure>
+</div>
+<p>Note that through this expression, we have defined <span class="math inline">\(V_{OV}\)</span> for the p-channel case as <span class="math inline">\(V_{SG}\)</span> + <span class="math inline">\(V_{Tp}\)</span>, which is a positive quantity for a p-channel device in the “ON” state.</p>
+<p>&nbsp;&nbsp;&nbsp;Although we could solve for the small-signal volt- age gain directly with the circuit shown in <a href="#fig-2.15" class="quarto-xref">Figure&nbsp;19</a>(a) it is easier to flip the transistor 180° (Figure 2-15(b)) so that the circuit appears similar to the n-channel version. Since <span class="math inline">\(v_{sg}\)</span>=–<span class="math inline">\(v_{gs}\)</span> we can change signs at the input and the dependent current source and find that the p-channel common-source amplifier small-signal model is identical to the n-channel version as shown in <a href="#fig-2.15" class="quarto-xref">Figure&nbsp;19</a>(c).</p>
+<p>&nbsp;&nbsp;&nbsp;This result applies more generally to all the transistor configurations and model extensions that we will study in this module. Once the operating point parameters of a p-channel device have been determined (e.g., a calculation of <span class="math inline">\(g_m\)</span> using <a href="#eq-2.23" class="quarto-xref">Equation&nbsp;23</a>), it is perfectly valid to replace it with an n-channel equivalent. This is a very powerful and convenient result, since it allows us to focus on n-channel only configurations in small-signal analyses, without having to worry about the specific sign conventions of p-channels.</p>
+</section>
+<section id="modeling-bounds-for-the-gate-overdrive-voltage" class="level2">
+<h2 class="anchored" data-anchor-id="modeling-bounds-for-the-gate-overdrive-voltage">2-2-7 Modeling Bounds for the Gate Overdrive Voltage</h2>
+<p>According to <a href="#eq-2.31" class="quarto-xref">Equation&nbsp;31</a>, <span class="math inline">\(g_m/I_D\)</span> = <span class="math inline">\(2/V_{OV}\)</span> tends to infinity as the gate overdrive voltage <span class="math inline">\(V_{OV}\)</span> approaches zero. This implies that for a transistor that is “barely on,” we can extract very large transconductance values for only small bias currents. Unfortunately, this behavior is incorrect, and stems from limitations of the device model discussed in <a href="#Section%202-1-1">Section 2-1</a>. As <span class="math inline">\(V_{OV}\)</span> approaches zero, a more complex analysis is needed to predict the drain current and its derivative with respect to gate voltage see <a href="#Reference%204">Reference 4</a>.</p>
+<p><a href="#fig-2.16" class="quarto-xref">Figure&nbsp;20</a> plots the <span class="math inline">\(g_m/I_D\)</span> characteristic of a MOSFET, and the expected behavior based on <a href="#eq-2.31" class="quarto-xref">Equation&nbsp;31</a>. As we can see, for <span class="math inline">\(V_{OV} &lt; 150 mV\)</span>, a large discrepancy exists between a physical device and the prediction based on the simple square-law model used in this treatment. In order to avoid unrealistic design outcomes due to this modeling limitation, we define a bound for the minimum allowed gate overdrive voltage for all circuits covered in this module</p>
+<p><span id="eq-2.35"><span class="math display">\[
+V_{OV}≥ V_{OVmin} = 150 mV
+\tag{35}\]</span></span></p>
+<p>Designing with a smaller <span class="math inline">\(V_{OV}\)</span> would require a more elaborate model for hand calculations, which is beyond the scope of this module. The interested reader is referred to advanced material on this topic, available for example in <a href="#Reference%204">References 4 and 5</a>.</p>
+<div id="fig-2.16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.16.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Transconductance to current ratio predicted by <a href="#eq-2.31" class="quarto-xref">Equation&nbsp;31</a> and the behavior of an actual MOSFET.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="voltage-gain-and-drain-biasing-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="voltage-gain-and-drain-biasing-considerations">2-2-8 Voltage Gain and Drain Biasing Considerations</h2>
+<p>In the basic common-source amplifier discussed so far, the drain resistor <span class="math inline">\(R_D\)</span> serves a dual purpose: (1) it translates the device’s incremental drain current (<span class="math inline">\(i_d\)</span>) into a voltage (<span class="math inline">\(V_{out}\)</span>), and (2) it supplies the quiescent point drain current (<span class="math inline">\(I_D\)</span>) for the MOSFET. As we shall show next, this creates an undesired link between the bias point constraints of the circuit and the achievable small-signal voltage gain of the amplifier. To see this, we rewrite <a href="#eq-2.33" class="quarto-xref">Equation&nbsp;36</a> as shown below</p>
+<p><span id="eq-2.33"><span class="math display">\[
+A_v = - \frac{2I_D}{V_{OV}} \cdot R_D = -2\frac{V_R}{V_{OV}}
+\tag{36}\]</span></span></p>
+<p>where <span class="math inline">\(V_R\)</span> = <span class="math inline">\(V_{DD} – V_{OUT}\)</span> is the voltage drop across RD at the operating point. This result leads to several interesting conclusions. First, note that the voltage gain of the amplifier is fully determined once <span class="math inline">\(V_{OV}\)</span> and voltage drop across <span class="math inline">\(R_D\)</span> are known. For example, if the circuit is biased such that <span class="math inline">\(V_{OV}\)</span> = 0.2 V and <span class="math inline">\(V_R\)</span> = 2 V, we have <span class="math inline">\(A_v\)</span> = –20; regardless of the particular W, L or <span class="math inline">\(\mu_n\)</span> <span class="math inline">\(C_{ox}\)</span> of the employed MOSFET. Second, since the possible values for <span class="math inline">\(V_{OV}\)</span> are lower-bounded (<a href="#eq-2.35" class="quarto-xref">Equation&nbsp;35</a>) and <span class="math inline">\(V_R\)</span> is upper-bounded (finite <span class="math inline">\(V_{DD}\)</span>), there exists a maximum possible <span class="math inline">\(A_v\)</span> that can be obtained</p>
+<p><span id="eq-2.37"><span class="math display">\[
+|A_{vmax}| = 2\frac{V_{Rmax}}{V_{OVmin}} = 2\frac{V_{DD}-V_{OVmin}}{V_{OVmin}} ≅ 2\frac{V_{DD}}{V_{OVmin}}
+\tag{37}\]</span></span></p>
+<p>In this result, it was assumed the transistor is biased at the edge of the triode region, a somewhat impractical, but appropriate limit case to consider. Evaluating the above expression for <span class="math inline">\(V_{DD}\)</span> = 5 V and <span class="math inline">\(V_{OVmin}\)</span> = 150 mV yields <span class="math inline">\(|A_{vmax}|\)</span> ≅ 67. Can we overcome this limit and change our amplifier such that it can achieve voltage gains beyond this value?</p>
+<p>In order to investigate this, consider the load line illustrations shown in <a href="#fig-2.17" class="quarto-xref">Figure&nbsp;21</a>. As explained in <a href="#Section%202-2-2">Section 2-2-2</a>, the load line for our circuit is defined by the points (0, <span class="math inline">\(V_{DD}\)</span>/<span class="math inline">\(R_D\)</span>) and (<span class="math inline">\(V_{DD}\)</span>, 0). From the location of these points, we see that the x-axis intercept of the load line is fixed, while the y-intercept moves lower with larger values of <span class="math inline">\(R_D\)</span>. This reduces the slope of the load line, resulting in a larger small-signal voltage gain of the circuit. Furthermore, note that for a fixed quiescent point drain current <span class="math inline">\(I_D\)</span>, larger <span class="math inline">\(R_D\)</span> shifts the output bias point <span class="math inline">\(V_{OUT}\)</span> to smaller values, i.e., closer to the edge of the MOSFET’s triode region. This observation captures the result of <a href="#eq-2.37" class="quarto-xref">Equation&nbsp;37</a> in a graphical way: we cannot increase the small-signal voltage gain beyond a certain limit due the link between <span class="math inline">\(V_{OUT}\)</span> and the chosen <span class="math inline">\(R_D\)</span>.</p>
+<div id="fig-2.17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.17.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: Amplifier load lines for large and small values of <span class="math inline">\(R_D\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;A more ideal situation is depicted in <a href="#fig-2.18" class="quarto-xref">Figure&nbsp;22</a>. If we could somehow create a load line that “rotates” about the desired operating point (as a function of <span class="math inline">\(R_D\)</span>), the voltage gain could be set independently of <span class="math inline">\(V_{OUT}\)</span>. A modified drain network that lets us achieve this behavior is shown in <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a). In this circuit, <span class="math inline">\(R_D\)</span> is now connected to a voltage <span class="math inline">\(V_B\)</span> (instead of the supply voltage <span class="math inline">\(V_{DD}\)</span>) and an ideal current source <span class="math inline">\(I_B\)</span> is used to provide a fixed current. In a realistic implementation circuit, <span class="math inline">\(I_B\)</span> can be built, for example, using a p-channel MOSFET that operates in saturation. For the time being, we will neglect such implementation details, and postpone the discussion of current sources to <a href="#Chapter%205">Chapter 5</a>.</p>
+<div id="fig-2.18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.18.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: Desired load line behavior.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;With this new configuration, the relationship between <span class="math inline">\(i_D\)</span> and <span class="math inline">\(v_{OUT}\)</span> becomes</p>
+<p><span id="eq-2.38"><span class="math display">\[
+i_D = I_B = \frac{V_B - v_{OUT}}{R_D}
+\tag{38}\]</span></span></p>
+<p>or <span id="eq-2.39"><span class="math display">\[
+v_{OUT} = V_B + (I_B - i_D)R_D
+\tag{39}\]</span></span></p>
+<p>As we can see from these equations (also graphically shown in <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(b)), at the point <span class="math inline">\(v_{OUT}\)</span> = <span class="math inline">\(V_B\)</span>, we have <span class="math inline">\(i_D\)</span> = <span class="math inline">\(I_B\)</span>, regardless of the value of <span class="math inline">\(R_D\)</span>$. Therefore, utilizing this point as the operating point of our amplifier precisely achieves the goal we have in mind. In particular, we wish to set <span class="math inline">\(I_B\)</span> = <span class="math inline">\(I_D\)</span>, the desired quiescent point drain current of the MOSFET, and <span class="math inline">\(V_B\)</span> = <span class="math inline">\(V_{OUT}\)</span>, the desired output operating point. With this choice, the role of the current source is to provide the MOSFET’s bias current, while the resistor RD is responsible only for converting the incremental drain current into an incremental output voltage; no DC bias current flows in this element.</p>
+<div id="fig-2.19" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.19.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: (a) CS amplifier with modified drain biasing scheme. (b) Load line characteristic.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;Since the voltage source <span class="math inline">\(V_B\)</span> and the current source <span class="math inline">\(I_B\)</span> aid in maintaining the circuit’s bias point, we generally classify these elements as biasing sources. However, it is important to distinguish their function from the input bias voltage <span class="math inline">\(V_{IN}\)</span>. <span class="math inline">\(V_{IN}\)</span> directly sets the quiescent point gate-source voltage of the transistor and therefore fully defines the operating point on the MOSFET’s I-V characteristic and the corresponding drain current. In the above-described scenario, <span class="math inline">\(I_B\)</span> is adjusted to supply this same drain current, but does not define it. We therefore categorize <span class="math inline">\(I_B\)</span> an <strong>auxiliary bias</strong> current that helps sustain, but does not set the quiescent point of the transistor. Since <span class="math inline">\(V_B\)</span> defines the quiescent point output voltage of the circuit, we refer to this element as the <strong>output bias voltage.</strong></p>
+<p>&nbsp;&nbsp;&nbsp;Lastly, it is important to note that for the modified circuit in <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a), the previously derived small-signal model shown in <a href="#fig-2.13" class="quarto-xref">Figure&nbsp;17</a> still applies. This can be understood by differentiating <a href="#eq-2.39" class="quarto-xref">Equation&nbsp;39</a> at the operating point to find the small-signal equivalent of the network placed at the drain of the amplifier</p>
+<p><span id="eq-2.40"><span class="math display">\[
+\left. \frac{dv_{out}}{di_D} \right|_Q = \frac{d}{di_D}(V_B +(I_B - i_D)R_D) = -R_D
+\tag{40}\]</span></span></p>
+<p>As this result indicates, and as we have seen previously, any constant sources, such as <span class="math inline">\(V_B\)</span>, <span class="math inline">\(I_B\)</span>, etc., drop out of the small signal model, which captures only components that affect the incremental changes in currents and voltages around the circuit’s operating point.</p>
+<p>&nbsp;&nbsp;&nbsp;For the circuit in <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a), one might now be tempted to think that we can obtain an arbitrarily large voltage gain, as long as <span class="math inline">\(R_D\)</span> is made very large. Unfortunately this is not the case for several reasons, the first of which stems from physical effects that we have not yet included in the MOSFET model. This aspect is further discussed in <a href="#Section%202-3">Section 2-3</a>. In addition, there are practical limitations to the attainable voltage gain, discussed next.</p>
+</section>
+<section id="sensitivity-of-the-bias-point-to-component-mismatch" class="level2">
+<h2 class="anchored" data-anchor-id="sensitivity-of-the-bias-point-to-component-mismatch">Sensitivity of the Bias Point to Component Mismatch*</h2>
+<p>Consider a CS amplifier biased at the gate as done previously with a bias voltage <span class="math inline">\(V_{IN}\)</span>, directly setting up the quiescent point drain current <span class="math inline">\(I_D\)</span> (depending on <span class="math inline">\(W/L\)</span> and other relevant device parameters). Our goal in using the drain bias network of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a) is then to set <span class="math inline">\(I_B\)</span> = <span class="math inline">\(I_D\)</span> and chose VB such the output is biased at a reasonable, desired <span class="math inline">\(V_{OUT}\)</span>. Unfortunately, in practice, we can never achieve <span class="math inline">\(I_B\)</span> = <span class="math inline">\(I_D\)</span> exactly; there will always be a non- zero <span class="math inline">\(ΔI\)</span> = <span class="math inline">\(I_B\)</span> – <span class="math inline">\(I_D\)</span>. This case is shown in <a href="#fig-2.20" class="quarto-xref">Figure&nbsp;24</a>. As illustrated, the finite <span class="math inline">\(ΔI\)</span> leads to a shift <span class="math inline">\(ΔV\)</span> away from the desired output operating point <span class="math inline">\(V_B\)</span>. This shift is proportional to <span class="math inline">\(R_D\)</span>, since the current difference <span class="math inline">\(ΔI\)</span> flows into <span class="math inline">\(R_D\)</span>, creating the undesired <span class="math inline">\(ΔV\)</span>.</p>
+<div id="fig-2.20" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.20.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Bias point shift due to mismatch in <span class="math inline">\(I_B\)</span> and <span class="math inline">\(I_D\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Example 2-5: Output Bias Voltage Shift due to Current Mismatch</strong></p>
+<p>Consider the CS amplifier of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a), biased at the gate such that <span class="math inline">\(V_{OV}\)</span> = 500 mV. Assume <span class="math inline">\(I_D\)</span> = 200 <span class="math inline">\(μA\)</span>, and that <span class="math inline">\(R_D\)</span> is chosen such that the amplifier achieves <span class="math inline">\(A_v\)</span> = –400. Considering <a href="#fig-2.20" class="quarto-xref">Figure&nbsp;24</a>, how much mismatch between <span class="math inline">\(I_B\)</span> and <span class="math inline">\(I_D\)</span> (in <span class="math inline">\(%\)</span>) can be tolerated such that <span class="math inline">\(V_{OUT}\)</span> deviates from the intended bias point (<span class="math inline">\(V_B\)</span>) by no more than <span class="math inline">\(ΔV\)</span> = 500 <span class="math inline">\(mV\)</span>? Repeat this calculation for <span class="math inline">\(A_v\)</span> = –40 and –4.</p>
+<p><strong>SOLUTION</strong></p>
+<p>We begin by computing the transconductance of the MOSFET</p>
+<p><span class="math display">\[
+g_m = \frac{2I_D}{V_{OV}} = \frac{2 \cdot 200\mu_A}{0.5V} = 800 µS
+\]</span></p>
+<p>In order to achieve <span class="math inline">\(A_v\)</span> = –400, we require <span class="math inline">\(R_D\)</span> = 400/800 <span class="math inline">\(μS = 500 kΩ\)</span>. Therefore,</p>
+<p><span class="math display">\[
+\frac{∆ I}{I_D} = \frac{∆V}{I_D R_D} &lt; \frac{500 mV}{200\mu A \cdot 500kΩ} = 0.5 \%
+\]</span></p>
+<p>For <span class="math inline">\(A_v\)</span> = –40 and <span class="math inline">\(A_v\)</span> = –4, the result modifies to 5%, and 50%, respectively.</p>
+<p>As expected, this result confirms that for larger <span class="math inline">\(|A_v|\)</span>, the auxiliary bias current <span class="math inline">\(I_B\)</span> must match the MOSFETs drain current more accurately. How precisely can we match these two currents? Unfortunately, answering this question in detail is beyond the scope of this module, and is the subject of advanced research papers such as <a href="#Reference%206">Reference 6</a>. Nonetheless, it can be said in general that matching currents, voltages, or any other electrical quantities in today’s integrated circuits to better than 1% requires special care and understanding. In some cases, even 10% matching can be hard to guarantee. With this guideline in mind, it becomes clear that the circuit of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a) may become impractical if we aim for too much voltage gain.</p>
+<p>&nbsp;&nbsp;&nbsp;The general issue of properly dealing with variability in integrated circuit components is a complex topic that is still being actively researched. At the introductory level of this module, the main point that the reader should retain is that any circuit whose bias point relies on precisely matched components or high absolute accuracy in any electrical parameter may not be robust in the presence of component variability. In general, experienced circuit designers avoid situations that resemble the “balancing of a marble on the tip of a cone,” i.e., circuits that will be overly sensitive to variations in component parameters. We will take up this point once more when discussing practical biasing circuits in <a href="#Chapter%205">Chapter 5</a>.</p>
+<p>&nbsp;&nbsp;&nbsp;As a final note concerning the issue of variability, it is worth mentioning that electronic feedback can help alleviate problems as the one analyzed in <span class="citation" data-cites="ex-2.5">(<a href="#ref-ex-2.5" role="doc-biblioref"><strong>ex-2.5?</strong></a>)</span>. Picture for example adding an auxiliary circuit to <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a) that somehow measures VOUT, and adjusts <span class="math inline">\(V_{IN}\)</span> (and therefore <span class="math inline">\(I_D\)</span>) until the desired output operating voltage is set. In such schemes, relatively large variations in <span class="math inline">\(I_B\)</span> can be absorbed. Feedback circuits are not covered in this module, but are the subject of advanced texts such as <a href="#Reference%202">Reference 2</a>.</p>
+<!-- TODO add example 2.5 a link to attach to- give it a tag-->
+</section>
+<section id="channel-length-modulation" class="level2">
+<h2 class="anchored" data-anchor-id="channel-length-modulation">2-3 Channel Length Modulation</h2>
+<p>The MOSFET model used so far assumes that the drain current in the saturation region is independent of the drain-source voltage. This behavior corresponds to that of an ideal current source, which is generally non-physical. A more realistic output characteristic observed in real MOSFETs is shown in <a href="#fig-2.21" class="quarto-xref">Figure&nbsp;25</a>. For a physical MOSFET, <span class="math inline">\(I_D\)</span> tends to increase with <span class="math inline">\(V_{DS}\)</span>; an effect that can be explained (to first-order) as a voltage dependent modulation of the channel length (see <a href="#the-λ-model">Section 2-3-1</a>).</p>
+<div id="fig-2.21" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.21.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: Realistic n-channel I-V plots, incorporating the dependence of saturation drain current on <span class="math inline">\(V_{DS}\)</span>. (solid lines), along with the first-order model assumed previously (dotted lines). Parameters: W = 20 μm, L = 2 μm.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;When inserted into the circuit of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a), the dependence of drain current on <span class="math inline">\(v_{DS}\)</span> (<span class="math inline">\(v_{OUT}\)</span>), will have an impact on the overall transfer characteristic of the amplifier, which we will thus consider in this section. For simplicity, let us first investigate the case of <span class="math inline">\(R_D\)</span> –&gt; ∞, i.e., no explicit drain resistance, and using only an ideal current source in the drain biasing network (see <a href="#fig-2.22" class="quarto-xref">Figure&nbsp;26</a>(a)). In this case, the load line is horizontal at <span class="math inline">\(I_B\)</span> = <span class="math inline">\(I_D\)</span>, as shown in <a href="#fig-2.22" class="quarto-xref">Figure&nbsp;26</a>(b). As before, the operating point Q is established at the point where the load line and the device’s drain characteristic for the applied quiescent point input voltage (<span class="math inline">\(V_{IN}\)</span>) meet.</p>
+<div id="fig-2.22" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.22.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26: (a) Intrinsic voltage gain stage. (b) Load line plot.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;Note that similar to the case considered in the previous section, the output operating point voltage in this circuit will shift by large amounts for relatively small changes in <span class="math inline">\(I_B\)</span> (or MOSFET parameters). This issue must be addressed when this circuit is used in practice, for example by providing a feedback mechanism that adjusts <span class="math inline">\(I_B\)</span> such that the desired <span class="math inline">\(V_{OUT}\)</span> is maintained in the presence of component variations.</p>
+<p>&nbsp;&nbsp;&nbsp;Assuming that a well-defined operating point has been established by some means, incremental changes in <span class="math inline">\(v_{IN}\)</span> applied around the bias point Q will force the intersection of the horizontal load line with the MOSFET’s drain characteristics to move sideways (since the drain current cannot change), creating a finite output voltage excursion vout. The magnitude of this voltage excursion, and thus the voltage gain of the circuit, depends on the slope of the MOSFET’s drain characteristic in saturation. The voltage gain achieved in this configuration is commonly called the <strong>intrinsic voltage gain</strong> of the MOSFET, as it represents the voltage gain of the transistor by itself, without any added resistances in the drain bias network. By the same reasoning, the circuit of <a href="#fig-2.22" class="quarto-xref">Figure&nbsp;26</a>(a) is often called the <strong>intrinsic voltage gain stage</strong>. The voltage gain and other parameters of more complex amplifier circuits are often directly related to the intrinsic voltage gain of their constituent transistors, giving this parameter a fundamental significance in circuit design.</p>
+</section>
+<section id="the-λ-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-λ-model">2-3-1 The λ-Model</h2>
+<p>Unfortunately, the intrinsic voltage gain of a MOSFET cannot be predicted using the MOSFET model established so far. We will therefore extend the first-order MOSFET model to incorporate the dependence of the saturation current on the drain-source voltage. As a first step, we will describe the effect in terms of large-signal equations. Next, we will apply a small-signal approximation that makes it possible to capture the <span class="math inline">\(I_{Dsat} – V_{DS}\)</span> dependence through a single resistor added to the MOSFET’s small-signal model.</p>
+<p>&nbsp;&nbsp;&nbsp;We begin by revisiting an approximation that was made in <a href="#first-order-mosfet-model">Section 2-1</a>. In order to arrive at the constant drain current expression in saturation (<a href="#eq-2.7" class="quarto-xref">Equation&nbsp;7</a>), it was assumed that <span class="math inline">\(ΔL\)</span>, the distance from the pinch-off point to the drain, is negligible relative to the channel length L. In reality, this approximation is fine only as long we do not care about the <span class="math inline">\(I_D-V_{DS}\)</span> dependence seen in <a href="#fig-2.21" class="quarto-xref">Figure&nbsp;25</a>. Therefore, in order to get a quantitative handle on the MOSFET’s intrinsic voltage gain, we must further investigate the impact of the physics at the drain side.</p>
+<p>The simplest possible way to proceed is to factor ΔL into the existing derivation of <a href="#first-order-mosfet-model">Section 2-1</a>. Instead of integrating <a href="#eq-2.5" class="quarto-xref">Equation&nbsp;5</a> over the length L, we use <span class="math inline">\(L– ΔL\)</span> as the upper limit of the integral. Recall that <span class="math inline">\(L– ΔL\)</span> is the actual location where the mobile charge vanishes, i.e., <span class="math inline">\(Qn(y)= 0\)</span>. With this change we obtain the following expression for the saturation region.</p>
+<p><span id="eq-2.41"><span class="math display">\[
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L-∆L} ({V_{GS}} - V_{Tn})^2
+\tag{41}\]</span></span></p>
+<p>Now, provided that <span class="math inline">\(ΔL\)</span> is still small (but not negligible) relative to <span class="math inline">\(L\)</span>, we can apply the following first-order approximation:</p>
+<p><span id="eq-2.42"><span class="math display">\[
+\frac{1}{L-∆L} ≈ \frac{1}{L}(1+\frac{∆L}{L})
+\tag{42}\]</span></span></p>
+<p>Next, note that <span class="math inline">\(ΔL\)</span> must be a function of the drain voltage, since the depletion region widens with increasing reverse bias. This effect is commonly called <strong>channel length modulation</strong>. Unfortunately, an exact calculation of <span class="math inline">\(ΔL\)</span> as a function of the terminal voltages involves solving the two-dimensional Poisson equation and leads to complex expressions. For simplicity, we assume that the fractional change in channel length is proportional to the drain voltage</p>
+<p><span id="eq-2.43"><span class="math display">\[
+\frac{∆L}{L} = \lambda_n V_{DS}
+\tag{43}\]</span></span></p>
+<p>where <span class="math inline">\(\lambda_n\)</span> is the channel length modulation parameter. Device measurements and simulations indicate that <span class="math inline">\(\lambda_n\)</span> approximately varies with the inverse of the channel length. For the MOSFETs in this module, we will use</p>
+<p><span id="eq-2.44"><span class="math display">\[
+\lambda_n = \frac{0.1\mu mV^(-1)}{L}
+\tag{44}\]</span></span></p>
+<p>where <span class="math inline">\(L\)</span> is in <span class="math inline">\(\mu_nm\)</span>. Finally, we substitute <a href="#eq-2.44" class="quarto-xref">Equation&nbsp;44</a> and <a href="#eq-2.43" class="quarto-xref">Equation&nbsp;43</a> into <a href="#eq-2.41" class="quarto-xref">Equation&nbsp;41</a> and find a very useful approximation to the drain current in saturation, often called the λ-<strong>model</strong>:</p>
+<p><span id="eq-2.45"><span class="math display">\[
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2 (1+\lambda_n V_{DS})
+\tag{45}\]</span></span></p>
+<p>where <span class="math inline">\(V_{DS}\)</span> ≥<span class="math inline">\(V_{DSsat} = V_{GS}-V_{Tn}\)</span>. This model has proven useful and sufficiently accurate for basic hand calculations, even though the physics related to the <span class="math inline">\(I_{DSsat}\)</span>-<span class="math inline">\(V_{DS}\)</span> dependence are in reality much more complex than discussed above. As long as <span class="math inline">\(\lambda_n\)</span> is determined from measurements or accurate physical analysis, the model properly approximates a typical MOSFET’s I-V characteristic to first-order. Higher-order models are typically not used in hand analysis, but find their use in advanced computer simulation models.</p>
+<p>&nbsp;&nbsp;&nbsp;We now wish to incorporate the channel length modulation effect into the small-signal model of the MOSFET. An important new feature that must be considered in this task is that the drain current of <a href="#eq-2.45" class="quarto-xref">Equation&nbsp;45</a> now depends on two voltages, namely <span class="math inline">\(V_{DS}\)</span> and <span class="math inline">\(V_{GS}\)</span>. A common and appropriate way of handling this situation for small-signal modeling is to approximate the incremental drain current around the operating point as the total differential (as frequently used in error analysis) due to both variables, i.e.</p>
+<p><span id="eq-2.46"><span class="math display">\[
+i_d = \left. \frac{∂ i_D}{∂ V_{GS}}\right |_Q \cdot v_{gs} + \left. \frac{∂ i_D}{∂ V_{GS}}\right |_Q \cdot v_{ds}
+\tag{46}\]</span></span></p>
+<p>The above expression essentially treats <span class="math inline">\(v_{DS}\)</span> as a constant when evaluating the derivative of <span class="math inline">\(i_D\)</span> with respect to <span class="math inline">\(v_{GS}\)</span>. Similarly, <span class="math inline">\(v_{GS}\)</span> is assumed constant in the differentiation with respect to <span class="math inline">\(v_{DS}\)</span>. This use of partial differentiation is justified and reasonably accurate as long as at least one of the following two conditions is met:</p>
+<ol type="1">
+<li><p>The excursion in the variable that is treated as a constant can be approximated as infinitesimally small and therefore negligible.</p></li>
+<li><p>The excursion in the variable that is approxi- mated as a constant is considerable, but none- theless does not affect the derivative with respect to the second variable.</p></li>
+</ol>
+<p>In the context of a common-source amplifier, for instance, the first condition applies to <span class="math inline">\(v_{GS}\)</span>. Just as in the derivation of the simple small-signal model without <span class="math inline">\(V_{DS}\)</span> dependence, we can argue that changes in <span class="math inline">\(v_{GS}\)</span> are suitably modeled as “small” (relative to <span class="math inline">\(V_{OV}\)</span>). The same condition cannot be applied to <span class="math inline">\(v_{DS}\)</span> in general. Often times the output voltage, and therefore <span class="math inline">\(v_{DS}\)</span>, see large excursions in amplifier circuits. In order for <a href="#eq-2.46" class="quarto-xref">Equation&nbsp;46</a> to be reasonably accurate, we must require the second condition, i.e., the derivative of <span class="math inline">\(i_D\)</span> <strong>w.r.t.</strong> <span class="math inline">\(v_{GS}\)</span> must not strongly depend on drain-source voltage. By inspection of <a href="#eq-2.45" class="quarto-xref">Equation&nbsp;45</a>, we see that this condition is met as long as <span class="math inline">\(\lambda_n\)</span> is small, which is typically the case for MOSFETs intended for use in amplifier stages.</p>
+<p>&nbsp;&nbsp;&nbsp;To continue with our analysis, we rewrite <a href="#eq-2.46" class="quarto-xref">Equation&nbsp;46</a> as <span id="eq-2.47"><span class="math display">\[
+i_d = g_m v_{gs} + g_o v_{ds}
+\tag{47}\]</span></span></p>
+<p>where <span id="eq-2.48"><span class="math display">\[
+g_m = \left. \frac{∂ i_D}{∂ V_{GS}}\right |_Q =  \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn}) (1+\lambda_n V_{DS}) = \frac{2I_D}{{V_{GS}} - V_{Tn}} = \frac{2I_D}{V_{OV}}
+\tag{48}\]</span></span></p>
+<p>and <span id="eq-2.49"><span class="math display">\[
+g_o = \left. \frac{∂ i_D}{∂ V_{GS}}\right |_Q =  \frac{1}{2}\mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2 \lambda_n = \frac{2I_D}{{V_{GS}} - V_{Tn}} = \frac{2I_D}{V_{OV}}
+\tag{49}\]</span></span></p>
+<p>where the approximate end result assumes <span class="math inline">\(\lambda_n V_{DS}\)</span> &lt;&lt; 1, a condition that is often satisfied for long channels and moderate <span class="math inline">\(V_{DS}\)</span>. For instance, assuming L = 2 <span class="math inline">\(\mu\)</span>m and <span class="math inline">\(V_{DS}\)</span> = 2V gives <span class="math inline">\(\lambda_nV_{DS}\)</span> = 0.1 which is much less than one.</p>
+<p>&nbsp;&nbsp;&nbsp;In the above expressions, <span class="math inline">\(g_m\)</span> is the transconductance of the MOSFET (as defined previously) and go is called the output conductance. The inverse of go is called the output resistance, <span class="math inline">\(r_o\)</span> = <span class="math inline">\(g_o^{-1}\)</span>. Graphically,the output conductance corresponds to the slope of the transistor’s drain characteristic at the operating point, which is the derivative of <span class="math inline">\(i_D\)</span> with respect to <span class="math inline">\(v_{DS}\)</span>, while keeping the gate-source voltage constant (see <a href="#fig-2.23" class="quarto-xref">Figure&nbsp;27</a>(a)). In the small-signal model of the MOSFET, the output conductance can be included as shown in <a href="#fig-2.23" class="quarto-xref">Figure&nbsp;27</a>(b). This representation follows directly from <a href="#eq-2.47" class="quarto-xref">Equation&nbsp;47</a>, which represents Kirchhoff’s Current Law equation for the drain node of the transistor.</p>
+<div id="fig-2.23" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.23.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27: (a) Graphical interpretation of <span class="math inline">\(g_o\)</span>. (b) MOSFET small-signal model for the saturation region with output conductance (<span class="math inline">\(g_o\)</span>).
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;Just as with the simple <span class="math inline">\(g_m\)</span>-only small-signal model of <a href="#fig-2.12" class="quarto-xref">Figure&nbsp;16</a>, the main idea for the usage of the extended model with go is to use the small-signal equivalent circuit of <a href="#fig-2.23" class="quarto-xref">Figure&nbsp;27</a>(b) in a larger circuit. We will illustrate this using two examples of interest: the intrinsic voltage gain stage of <a href="#fig-2.22" class="quarto-xref">Figure&nbsp;26</a>(a) and the common-source amplifier of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a).</p>
+</section>
+<section id="common-source-voltage-amplifier-analysis-using-the-lambda-model" class="level2">
+<h2 class="anchored" data-anchor-id="common-source-voltage-amplifier-analysis-using-the-lambda-model">2-3-2 Common-Source Voltage Amplifier Analysis Using the <span class="math inline">\(\lambda\)</span>-Model</h2>
+<p>For the intrinsic voltage gain stage, the small-signal model of <a href="#fig-2.23" class="quarto-xref">Figure&nbsp;27</a>(b) corresponds directly to the small-signal model for the entire circuit with <span class="math inline">\(v_{in} = v_{gs}\)</span> and <span class="math inline">\(v_{out} = v_{ds}\)</span>. Therefore, the voltage gain of the intrinsic gain stage is given by</p>
+<p><span id="eq-2.50"><span class="math display">\[
+A_v = -\frac{g_m}{g_o} = - g_m r_o ≅ - \frac{2I_D}{V_{OV}} \cdot\frac{1}{\lambda_n I_D} = - \frac{2}{\lambda_n V_{OV}}
+\tag{50}\]</span></span></p>
+<p>From this expression, we can see that the voltage gain can be increased by increasing <span class="math inline">\(L\)</span>, which will decrease <span class="math inline">\(\lambda\)</span>. Alternatively, the voltage gain can be increased by reducing <span class="math inline">\(V_{OV}\)</span>, which corresponds to reducing the drain current <span class="math inline">\(I_D\)</span> for a fixed aspect ration <span class="math inline">\(W/L\)</span>. In this context, note that for <span class="math inline">\(V_{OV}\)</span> → 0, <a href="#eq-2.50" class="quarto-xref">Equation&nbsp;50</a> predicts infinite voltage gain. This non-physical outcome stems from the same issue already discussed in <a href="#modeling-bounds-for-the-gate-overdrive-voltage">Section 2-2-7</a>: for $V_{OV} → 0, <span class="math inline">\(g_m\)</span> approaches infinity for a fixed current in our simplistic square-law I-V model. As argued before, the usable range for <span class="math inline">\(V_{OV}\)</span> must therefore be lower-bounded as specified in <a href="#eq-2.35" class="quarto-xref">Equation&nbsp;35</a>. Assuming <span class="math inline">\(V_{OV} = V_{OVmin}\)</span> = 150 mV and L = 1 μm, the intrinsic voltage gain of a MOSFET described by the param- eters used in this module is approximately 2/(0.1·0.15) = 133.</p>
+<p>Let us now consider the common-source amplifier of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a). Including the finite output conductance from the <span class="math inline">\(\lambda\)</span>-model, the small-signal model is modified as shown in <a href="#fig-2.24" class="quarto-xref">Figure&nbsp;28</a> and the voltage gain expression becomes</p>
+<p><span id="eq-2.51"><span class="math display">\[
+A_v = -g_m (\frac{1}{r_o}+ \frac{1}{R_D}) ^{-1} = -g_m R_{out}
+\tag{51}\]</span></span></p>
+<!-- FIXME fix large pranthasis -->
+<div id="fig-2.24" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.24.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28: Small-signal model for the circuit of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a), with finite output conductance.
+</figcaption>
+</figure>
+</div>
+<!-- TODO Schemdraw -->
+<p>For <span class="math inline">\(R_D\)</span> → <span class="math inline">\(∞\)</span> , the small signal voltage gain approaches the intrinsic voltage gain as given by <a href="#eq-2.50" class="quarto-xref">Equation&nbsp;50</a>. For <span class="math inline">\(R_D &lt;&lt; r_o\)</span>, we can approximate <span class="math inline">\(A_v ≅ –g_m R_D\)</span>. More generally, without even knowing the exact values of <span class="math inline">\(r_o\)</span> and <span class="math inline">\(R_D\)</span>, we can argue that as long as the desired gain is much less (in magnitude) than the intrinsic voltage gain, <span class="math inline">\(r_o\)</span> can be neglected in the voltage gain calculation. To see this, we can re-write <a href="#eq-2.51" class="quarto-xref">Equation&nbsp;51</a> as</p>
+<p><span class="math display">\[
+\frac{1}{|A_v|} = \frac{1}{g_m r_o} + \frac{1}{g_m R_D}
+\]</span></p>
+<p><span id="eq-2.52"><span class="math display">\[
+g_m R_D = \frac{|A_v|}{1- \frac{|A_v|}{g_m r_o}} ≅ |A_v| for  |A_v| &lt;&lt; g_m r_o
+\tag{52}\]</span></span></p>
+<!-- FIXME separate the two Av and the "for" -->
+<p><strong>Example 2-6: Analysis of a CS Amplifier Using the <span class="math inline">\(\lambda\)</span> -Model</strong> </p>
+<p>Consider the CS voltage amplifier of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a) with <span class="math inline">\(W = 80 μm, L = 2 μm\)</span> and <span class="math inline">\(R_D\)</span> = <span class="math inline">\(50 kΩ\)</span>. The gate is biased such that <span class="math inline">\(V_{OV} = 500 mV\)</span> and <span class="math inline">\(V_B\)</span> is set to 2 V, which is also the desired output operating point <span class="math inline">\(V_{OUT}\)</span>. Compute the required bias current <span class="math inline">\(I_B\)</span> and the small-signal voltage gain of the circuit using the <span class="math inline">\(\lambda\)</span>-model. Repeat the small-signal voltage gain calculation for <span class="math inline">\(R_D = 5 kΩ\)</span>.</p>
+<p><strong>SOLUTION</strong></p>
+<p>The bias current is found using $$</p>
+<p><span class="math display">\[
+I_B = I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2 (1+\lambda_n V_{DS})
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{2} \cdot 50 \frac{\mu A}{V^2} \cdot \frac{80}{2}(0.5V)^2(1+0.05 \cdot 2)
+\]</span></p>
+<p><span class="math display">\[
+= 275 \mu A
+\]</span></p>
+<p>The corresponding transconductance and output resistance at the operating point are</p>
+<p><span class="math display">\[
+g_m = \frac{2I_D}{V_{OV}} = \frac{2 \cdot 275 \mu A}{0.5 V} = 1.1 mS
+\]</span></p>
+<p><span class="math display">\[
+r_o = \frac{1+\lambda_n V_{DS}}{\lambda_n I_D} = \frac{1+ 0.05 \cdot 2}{0.5V^{-1} \cdot 275\mu A} = 80kΩ
+\]</span></p>
+<p>According to <a href="#eq-2.51" class="quarto-xref">Equation&nbsp;51</a>, the small signal voltage gain for <span class="math inline">\(R_D = 50 kΩ\)</span> is given by</p>
+<p><span class="math display">\[
+A_v = -1.1mS (\frac{1}{80kΩ} + \frac{1}{50kΩ})^{-1} = -33.9
+\]</span></p>
+<p>for <span class="math inline">\(R_D\)</span> = 5 kΩ we find</p>
+<p><span class="math display">\[
+A_v = -1.1mS (\frac{1}{80kΩ} + \frac{1}{5kΩ})^{-1} = -5.18
+\]</span></p>
+<p>Since the voltage gain for <span class="math inline">\(R_D = 5 kΩ\)</span> is much less than the intrinsic voltage gain of the transistor (<span class="math inline">\(g_m r_o\)</span> = 88), it is appropriate to neglect <span class="math inline">\(r_o\)</span> in this calculation. We can simply compute</p>
+<p><span class="math display">\[
+A_v = -1.1mS \cdot 5kΩ = -5.5
+\]</span></p>
+<p>This result differs only by about 5.9% from the accu- rate calculation.</p>
+<p>&nbsp;&nbsp;&nbsp;Another opportunity for useful engineering approximations in the application of the <span class="math inline">\(\lambda\)</span>-model lies in the operating point calculation. We will illustrate this point through the example below.</p>
+<p><strong>Example 2-7: Approximate Operating Point Calculations</strong></p>
+<p>Recalculate <span class="math inline">\(I_D\)</span>, <span class="math inline">\(g_m\)</span> and <span class="math inline">\(r_o\)</span> by approximating <span class="math inline">\(\lambda\)</span> <span class="math inline">\(V_{DS} ≅ 0\)</span> in the large-signal bias point calculations. Also recal- culate <span class="math inline">\(A_v\)</span> for <span class="math inline">\(R_D\)</span> = 50 kΩ using this approximation. Compare the results to the values obtained in <a href="#">Example 2-6</a>.</p>
+<!-- FIXME integrated example link -->
+<p><strong>SOLUTION</strong></p>
+<p>For <span class="math inline">\(\lambda\)</span> <span class="math inline">\(V_{DS}\)</span> ≅ 0, the bias current is estimated as</p>
+<p><span class="math display">\[
+I_B = I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2
+\]</span></p>
+<p><span class="math display">\[
+= \frac{1}{2} \cdot 50 \frac{\mu A}{V^2} \cdot \frac{80}{2}(0.5V)^2
+\]</span></p>
+<p><span class="math display">\[
+= 250 \mu A
+\]</span></p>
+<p>The corresponding transconductance and output resistance at the operating point are</p>
+<p><span class="math display">\[
+g_m = \frac{2I_D}{V_{OV}} = \frac{2 \cdot 250 \mu A}{0.5 V} = 1 mS
+\]</span></p>
+<p><span class="math display">\[
+r_o = \frac{1}{\lambda_n I_D} = \frac{1 }{0.5V^{-1} \cdot 250\mu A} = 80kΩ
+\]</span></p>
+<p>and the voltage gain becomes</p>
+<p><span class="math display">\[
+A_v = -1mS (\frac{1}{80kΩ} + \frac{1}{50kΩ})^{-1} = -30.8
+\]</span></p>
+<p>Relative to the accurate calculation from <a href="#">Example 3-6</a> (<span class="math inline">\(A_v\)</span> = –33.9), this result is in error by only about 9.1%.</p>
+<!-- FIXME typo example 3-6 -->
+<p>example 2-6–&gt;</p>
+<p>There are several reasons why it is commonly acceptable to neglect the <span class="math inline">\(\lambda\)</span> <span class="math inline">\(V_{DS}\)</span> term in bias point hand calculations. First, without this approximation, the calculations can become cumbersome and lead to transcendental equations that are tedious and undesirable to solve in light of only a moderate percent-improvement in the obtained accuracy. If a more accurate result is desired, it can often be obtained more easily from computer simulations, which often follow a hand calculation in practice anyway. Last, one can argue that any circuit in which the operating point parameters strongly depend on <span class="math inline">\(\lambda\)</span> may be impractical in the first place. The accuracy of the <span class="math inline">\(\lambda\)</span>-model as far as absolute I-V values are concerned can only be approximate due to its empirical nature. For high accuracy analysis, much more complex models (such as the one described in <a href="#Reference7">Reference 7</a>) must be used, carefully calibrated with physical measurements and subsequently evaluated in computer simulations. For the purpose of developing an introductory feel for circuits, however, the <span class="math inline">\(\lambda\)</span>-model is still the most appropriate, mainly due its simplicity.</p>
+<p>&nbsp;&nbsp;&nbsp;<a href="#">Table 2-3</a> summarizes the technology parameters introduced in this chapter.</p>
+<!-- FIXME fix link to table -->
+<table class="caption-top table">
+<caption><strong>Table 2-3</strong>: Standard technology parameters for the <span class="math inline">\(\lambda\)</span>-model.</caption>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 32%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Parameter</strong></th>
+<th style="text-align: center;"><strong>n-channel MOSFET</strong></th>
+<th style="text-align: center;"><strong>p-channel MOSFET</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Threshold voltage</td>
+<td style="text-align: center;"><span class="math inline">\(V_{Tn}\)</span> = 0.5V</td>
+<td style="text-align: center;"><span class="math inline">\(V_{Tp}\)</span> = -0.5V</td>
+</tr>
+<tr class="even">
+<td>Transconductance parameter</td>
+<td style="text-align: center;"><span class="math inline">\(μ_nC_{ox}= 50μA/V^2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(μ_pC_{ox}= 25μA/V^2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Chanel length modulation parameter</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_n =0.1V^{-1}/L\)</span> (L in <span class="math inline">\(\mu\)</span> m)</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_p =0.1V^{-1}/L\)</span> (L in <span class="math inline">\(\mu\)</span> m)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="two-port-model-for-the-common-source-voltage-amplifier" class="level2">
+<h2 class="anchored" data-anchor-id="two-port-model-for-the-common-source-voltage-amplifier">Two-Port Model for the Common-Source Voltage Amplifier</h2>
+<p>The circuit shown in <a href="#fig-2.24" class="quarto-xref">Figure&nbsp;28</a> corresponds to a transconductance amplifier model (with voltage output) since we modeled the MOSFET as a voltage controlled current source, which is in line with its physical behavior in the saturation region. Alternatively, and since the circuit is meant to function as a voltage amplifier, we can equivalently model it using a native voltage amplifier two-port as shown in <a href="#fig-2.25" class="quarto-xref">Figure&nbsp;29</a>. The reader can prove that for this model the open-circuit voltage gain is given by $A_v = –g_m R_{out}, where <span class="math inline">\(R_{out}\)</span> corresponds to the parallel connection of <span class="math inline">\(R_D\)</span> and <span class="math inline">\(r_o\)</span>. The native voltage amplifier model is sometimes preferred since it more directly expresses the intended function we assumed in this chapter. However, as we shall see in <a href="#Chapter3">Chapter 3</a>, the voltage amplifier two-port is no longer a convenient representation for the CS voltage amplifier when device capacitances are included.</p>
+<div id="fig-2.25" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.25.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29: Equivalent voltage amplifier-based model for the common-source amplifier circuit <a href="#fig-2.24" class="quarto-xref">Figure&nbsp;28</a>.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-2.26" class="quarto-xref">Figure&nbsp;30</a> shows the small-signal commonsource voltage amplifier model together with an input transducer and load resistance. Since the input resistance of the CS amplifier is infinite, no resistive division takes place at the input port and <span class="math inline">\(v_{in} = v_s\)</span>. Thus, the overall voltage gain is computed as</p>
+<p><span id="eq-2.53"><span class="math display">\[
+A'_v = \frac{v_{out}}{v_s} = A_v \cdot (\frac{R_L}{R_L + R_{out}})
+\tag{53}\]</span></span> <!-- FIXME big prantesis --></p>
+<div id="fig-2.26" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2.26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure2.26.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;30: Common-source amplifier model with transducer and load resistance.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp; The same expression can be found from the circuit of <a href="#fig-2.24" class="quarto-xref">Figure&nbsp;28</a> with <span class="math inline">\(R_L\)</span> included across the output port. The reader is invited to prove this.</p>
+<p>&nbsp;&nbsp;&nbsp;As a final note, we should emphasize that adding a load resistance may have implications on the bias point of the circuit. For example, if the load resistor carries a DC current, this current will affect the quiescent point output voltage of the amplifier. In this case, the load resistance must also be connected to the circuit in the operating point analysis where the small-signal parameters such as <span class="math inline">\(r_o\)</span> are computed. <a href="#">Problem 2-17</a> looks at an example.</p>
+<!-- FIXME link to ex 2-17 -->
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this chapter we reviewed the basic I-V characteristics of a MOSFET and employed this device to construct examples of common-source voltage amplifiers. In deriving a model for the MOSFET, we concentrated on first-order effects that define the transistor’s operation. The nonlinear nature of even the simplest device model dictates the use of small-signal approximations to enable analyses with manageable complexity. The presented methodology begins by finding the operating point of the transistor. Next, the small-signal equivalent is used to construct a linear small-signal model for further analysis.</p>
+<p>&nbsp;&nbsp;&nbsp;We studied the basic common-source voltage amplifier with drain resistance and found that the voltage gain in this circuit is directly proportional to the voltage drop across the resistor, which imposes practical limits on the achievable voltage gain. A modified circuit based on an auxiliary bias current source was then analyzed as an alternative and used as a motivation to incorporate the effect of channel length modulation using the <span class="math inline">\(\lambda\)</span>-model.</p>
+<p>&nbsp;&nbsp;&nbsp;The most important concepts that you should have mastered are: * Determining MOSFET drain currents in all regions of operation; determining the regions of operation based on the transistor’s terminal voltages. * Constructing transfer characteristics and load line plots for common-source stages for various drain bias configurations. * Calculating the operating point of a CS stage and the MOSFET’s small-signal parameters <span class="math inline">\(g_m\)</span> and <span class="math inline">\(r_o\)</span>. * Drawing the small-signal model of a CS stage and calculating its voltage gain.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><p>R. F. Pierret, <em>Semiconductor Device Fundamentals</em>, Prentice Hall, 1995.</p></li>
+<li><p>P. R. Gray, P. J. Hurst, S. H. Lewis, and R. G. Meyer, <em>Analysis and Design of Analog Integrated Circuits</em>, 5th Edition, Wiley, 2008.</p></li>
+<li><p>D. O. Pederson and K. Mayaram, <em>Analog Integrated Circuits for Communication: Principles, Simulation and Design</em>, 2nd Edition, Springer,</p></li>
+<li></li>
+<li><p>Y. Tsividis, <em>Operation and Modeling of the MOS Transistor</em>, 2nd Edition, McGraw-Hill, New York, 1999.</p></li>
+<li><p>P. G. A. Jespers, <em>The <span class="math inline">\(g_m/I_D\)</span> Methodology, a Sizing Tool for Low-Voltage Analog CMOS Circuits</em>, Springer, 2010.</p></li>
+<li><p>M. J. M. Pelgrom, et al., <em>“Matching properties of MOS transistors,”</em> IEEE J. of Solid-State Cir- cuits, pp.&nbsp;1433-1439, May 1989.</p></li>
+<li><p>G. Gildenblat, et al., “PSP: An Advanced Surface-Potential-Based MOSFET Model for Circuit Simulation,” <em>IEEE Trans. Electron Devices,</em> pp.&nbsp;1979-1993, Sept.&nbsp;2006.</p></li>
+</ol>
+</section>
+<section id="problems" class="level2">
+<h2 class="anchored" data-anchor-id="problems">Problems</h2>
+<p>Unless otherwise stated, use the standard model parameters specified in <a href="#">Table 2-3</a> <!-- FIXME link--> for the problems given below. Consider only first-order MOSFET behavior and include channel length modulation (as well as any other second-order effects) only where explicitly stated.</p>
+<p><strong>P2.1</strong>An n-channel transistor biased in saturation with <span class="math inline">\(W/L = 10\)</span> carries a drain current of 200 <span class="math inline">\(\mu\)</span> A when <span class="math inline">\(V_{GS}\)</span> = 1.5 V is applied. With <span class="math inline">\(V_{GS}\)</span> = 1 V, the current drops to 50 <span class="math inline">\(\mu\)</span> A. Determine <span class="math inline">\(V_{Tn}\)</span> and <span class="math inline">\(\mu C_{ox}\)</span> of this transistor.</p>
+<p><strong>P2.2</strong> Show that two MOS transistors in series with channel lengths <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> and identical channel widths can be modeled as one equivalent MOS transistor with length <span class="math inline">\(L_1 + L_2\)</span> (see <a href="#fig-ex-2.2">Figure P2-2</a>). Assume that <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> have identical parameters except for their channel lengths. Hint: there are (at least) two ways to solve this problem. One is through extensive algebra; the other is though physical insight and arguments based on the MOSFET cross-section.</p>
+<div id="fig-p2-2." class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p2-2.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p2-2.png" id="fig-p2-2." class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p2-2.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31
+</figcaption>
+</figure>
+</div>
+<p><strong>P2.3</strong> Derive an analytical expression for the input voltage that corresponds to the transition point (point C) between the saturation and triode regions in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;10</a>(b).</p>
+<p><strong>P2.4</strong> In Example 2-4, we calculated the most negative input excursion that the circuit in <a href="#fig-2.9" class="quarto-xref">Figure&nbsp;13</a> can handle before the output is clipped to the supply voltage. In this problem, calculate the most positive input excursion that can be applied before the MOSFET enters the triode region. Assume the same parameters as in Example 2.4: <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D = 10 kΩ, W/L = 10\)</span>, and <span class="math inline">\(V_{IN}\)</span> is adjusted to 1.5 V, so that <span class="math inline">\(V_{OUT}\)</span> = 2.5 V at the circuit’s operating point.</p>
+<p><strong>P2.5</strong> For the circuit shown in <strong>?@fig-p2-5</strong>, sketch <span class="math inline">\(v_{OUT}\)</span> as a function of <span class="math inline">\(v_{IN}\)</span>. Assume that <span class="math inline">\(v_{IN}\)</span> varies from 0 to 5 V. There is no need to carry out any detailed calculations; simply draw a qualitative graph and mark pertinent asymptotes and breakpoints (such as changes in the MOSFETs region of operation)</p>
+<div id="fig-p2-5." class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p2-5.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p2-5.png" id="fig-p2-5." class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p2-5.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;32
+</figcaption>
+</figure>
+</div>
+<p><strong>P2.6</strong> Derive the small-signal voltage gain given by <a href="#eq-2.27" class="quarto-xref">Equation&nbsp;27</a> through direct differentiation of <a href="#eq-2.17" class="quarto-xref">Equation&nbsp;17</a>, <a href="#eq-2.25" class="quarto-xref">i.e., apply&nbsp;25</a>.</p>
+<p><strong>P2.7</strong> A field effect transistor built using a new (fictitious) material behaves “almost” exactly like a conventional MOSFET in silicon technology. The large signal I-V characteristic (in the saturation region) is given by</p>
+<p><span class="math display">\[
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2.5
+\]</span></p>
+<p>Assuming that <span class="math inline">\(\mu C_{ox} W/L = 100 A/V^{2.5}\)</span> and <span class="math inline">\(I_D = 1 \mu\)</span> A, compute the transconductance of the device.</p>
+<p><strong>P2.8</strong> The ratio of the small-signal drain current excursion and quiescent point drain current (<span class="math inline">\(i_d/I_D\)</span>) is often called the drain modulation index. Show that for a MOSFET, <span class="math inline">\(i_d/I_D\)</span> is twice as large as the relative excursion in the gate-source voltage, <span class="math inline">\(v_{gs}/V_{OV}\)</span>.</p>
+<p><strong>P2.9</strong> Consider the CS amplifier shown <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a). Calculate the small-signal voltage gain assuming <span class="math inline">\(V_{IN} = 1.5V, W/L = 20, R_D = 5 kΩ\)</span>, and <span class="math inline">\(V_{DD}\)</span> = 5 V.</p>
+<p><strong>P2.10</strong> Consider the p-channel CS amplifier shown in <a href="#fig-2.14" class="quarto-xref">Figure&nbsp;18</a>(a). Assuming <span class="math inline">\(W/L\)</span> = 20, <span class="math inline">\(R_D\)</span> = 5 <span class="math inline">\(kΩ\)</span>, and <span class="math inline">\(V_DD\)</span> = 5 V, calculate the required quiescent point input voltage so that <span class="math inline">\(V_{OUT}\)</span> = 2.5V. What is the small-signal gain of the circuit?</p>
+<p><strong>P2.11</strong> Repeat Problem 2.9 with <span class="math inline">\(R_D\)</span> = 10 <span class="math inline">\(kΩ\)</span>. With this value, the MOSFET operates in the triode region. Compute the small-signal voltage gain by writing the large-signal relationship between the input and output for the triode region and subsequent differentiation at the operating point.</p>
+<p><strong>P2.12</strong> Consider the cascade connection of two CS amplifiers as shown in <strong>?@fig-p2-12</strong>.</p>
+<ol type="a">
+<li><p>Draw the small-signal equivalent model for this circuit.</p></li>
+<li><p>Calculate the small-signal voltage gains <span class="math inline">\(v_{o1}/v_i\)</span> and <span class="math inline">\(v_{o2}/v_i\)</span>. Assume that <span class="math inline">\(V_B = V_{DD}/2\)</span> and that the device sizes are chosen such that the bias points of nodes <span class="math inline">\(v_{OUT1}\)</span> and <span class="math inline">\(v_{OUT2}\)</span> are also exactly at <span class="math inline">\(V_{DD}/2\)</span>. You are also given <span class="math inline">\(V_{Tn} = |V_{Tp}| = 0.5 V\)</span>, and <span class="math inline">\(V_DD = 2.5 V\)</span>. Note that you do not need to know any device geometries to solve this problem.</p></li>
+</ol>
+<div id="fig-p2-12." class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p2-12.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p2-12.png" id="fig-p2-12." class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p2-12.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;33
+</figcaption>
+</figure>
+</div>
+<p><strong>P2.13</strong> Repeat <a href="#">Problem 2.9</a> and include the effect of channel length modulation in the small-signal voltage gain calculation. Neglect channel length modulation in the bias point calculation. Quantify the percent difference in the calculated small-signal voltage gain compared to <a href="#">Problem 2.9</a>. Assume that the channel length of the MOSFET is 2 <span class="math inline">\(\mu\)</span> m. <!-- FIXME link--></p>
+<p><strong>P2.14</strong> For the p-channel common-source amplifier shown in <a href="#fig-2.14" class="quarto-xref">Figure&nbsp;18</a>(a)</p>
+<ol type="a">
+<li><p>Given <span class="math inline">\(W/L= 12\mu m/2\mu m\)</span> and <span class="math inline">\(R_D = 10 kΩ\)</span>, calculate <span class="math inline">\(V_{BIAS}\)</span> such that <span class="math inline">\(V_{OUT}\)</span> is 2.5 V. Neglect channel length modulation in this calculation.</p></li>
+<li><p>What is the small-signal voltage gain, <span class="math inline">\(A_v = v_{out} /v_{in}\)</span>? Include the effect of channel-length modulation in your calculation.</p></li>
+<li><p>To increase the voltage gain, you increase <span class="math inline">\(R_D\)</span> to 100 kΩ. Calculate the new small-signal voltage gain, <span class="math inline">\(A_v\)</span>. You must re-bias the circuit so that <span class="math inline">\(V_{OUT} = 2.5 V\)</span>.</p></li>
+<li><p>We could also try to increase the voltage gain of the initial circuit by increasing <span class="math inline">\(W/L\)</span> rather than <span class="math inline">\(R_D\)</span>. Calculate the new <span class="math inline">\(A_v\)</span> if <span class="math inline">\(W/L= 120\mu m/2\mu m\)</span> and <span class="math inline">\(R_D = 10 kΩ\)</span>. Be sure to re-bias the circuit so that <span class="math inline">\(V_{OUT} = 2.5 V\)</span>.</p></li>
+</ol>
+<!-- FIXME make sure that the pragraphs are more "in than the regular text" -->
+<p><strong>P2.15</strong> Calculate the small-signal gain of the intrinsic gain stage shown in <a href="#fig-2.22" class="quarto-xref">Figure&nbsp;26</a>(a), assuming <span class="math inline">\(W= 10 \mu m\)</span> and using the parameters given below. In each case, also calculate the gate overdrive voltage (<span class="math inline">\(V_{OV}\)</span>), the transconductance (<span class="math inline">\(g_m\)</span>) and the output resistance (<span class="math inline">\(r_o\)</span>). Assume that the circuit is biased such that the MOSFET operates in the saturation region.</p>
+<ol type="a">
+<li><p>ID = 100 <span class="math inline">\(\mu\)</span>A, L = 2 <span class="math inline">\(\mu\)</span>m</p></li>
+<li><p>ID = 50 <span class="math inline">\(\mu\)</span>A, L = 2 <span class="math inline">\(\mu\)</span>m</p></li>
+<li><p>ID = 100 <span class="math inline">\(\mu\)</span>A, L = 4 <span class="math inline">\(\mu\)</span>m</p></li>
+</ol>
+<p><strong>P2.16</strong> Consider the CS amplifier of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;23</a>(a) with the following parameters: <span class="math inline">\(V_B\)</span> = 2.5 V, <span class="math inline">\(I_B\)</span> = 500 <span class="math inline">\(\mu A, W = 20 \mu m, L = 1 \mu m\)</span>, and <span class="math inline">\(R_D = 5 kΩ\)</span> .</p>
+<ol type="a">
+<li><p>Calculate the exact value of <span class="math inline">\(V_{IN}\)</span> required such that <span class="math inline">\(I_D = I_B\)</span>, and <span class="math inline">\(V_{OUT} = V_B\)</span>. Include the effect of channel length modulation in your calculation.</p></li>
+<li><p>Using the value of <span class="math inline">\(V_{IN}\)</span> found in part (a), re-compute <span class="math inline">\(V_{OUT}\)</span> for the two cases when <span class="math inline">\(\lambda\)</span> changes by +50% and -50%, respectively. Such discrepancies may be due to variations in the semiconductor process or simply due to uncertainty in the simplistic <span class="math inline">\(\lambda\)</span>-model.</p></li>
+</ol>
+<p><strong>P2.17</strong> Consider the CS amplifier shown in <strong>?@fig-p2-17</strong> with the following parameters: $V_{DD} = 5 V, V_{IN} = 1.8 V, W = 15 m, L = 1 m, R_D = 5 kΩ <span class="math inline">\(, and\)</span>R_L = 10 kΩ$.</p>
+<ol type="a">
+<li><p>Calculate the output quiescent point voltage and drain current of the circuit, taking the connected load resistance <span class="math inline">\(R_L\)</span> into account. Ignore channel-length modulation in this calculation.</p></li>
+<li><p>Calculate <span class="math inline">\(g_m\)</span> and <span class="math inline">\(r_o\)</span> using the parameters from part (a). Use the approximate approach from <a href="#">Example 2-7</a>. <!-- FIXME link --></p></li>
+<li><p>Draw a two-port voltage amplifier model for the circuit and calculate the open-circuit voltage gain (<span class="math inline">\(A_v\)</span>) and overall voltage gain (<span class="math inline">\(A'_v\)</span>) with the load resistor connected.</p></li>
+<li><p>Repeat parts (a) and (b) without considering the connected <span class="math inline">\(R_L\)</span>. Explain the main differences in your answers. Will these differences have an effect on the function of the amplifier? Distinguish between small- and large-signal characteristics of the amplifier.</p></li>
+</ol>
+<div id="fig-p2-17." class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p2-17.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p2-17.png" id="fig-p2-17." class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p2-17.-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;34
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
