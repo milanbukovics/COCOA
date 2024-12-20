@@ -23,14 +23,14 @@ as follows:
 
 * Review the MOSFET device structure and basic
 operation as described by the square-law model.
-* Introduce large- and small-signal analysis tech-
-niques using the common-source voltage ampli-
-fier as a motivating example.
+* Introduce large- and small-signal analysis 
+techniques using the common-source voltage 
+amplifier as a motivating example.
 * Derive a small-signal model for the MOSFET
-device, consisting of a transconductance and out-
-put resistance element.
-* Provide a feel for potential inaccuracies and
-range limitations of simple modeling expressions.
+device, consisting of a transconductance and 
+output resistance element.
+* Provide a feel for potential inaccuracies 
+and range limitations of simple modeling expressions.
 
 :::
 
@@ -38,19 +38,24 @@ range limitations of simple modeling expressions.
 
 The device-level derivations of this section assume
 familiarity with basic solid-state physics and electro-
-statics. For a ground-up treatment from first princi-
-ples, the reader is referred to introductory solid-state
-device material (see Reference 1).
+statics. For a ground-up treatment from first principles,
+the reader is referred to introductory 
+solid-state device material (see Reference 1).
 
 ## 2-1-1 Derivation of I-V Characteristics
 
-The basic structure of an **enhancement mode n-channel** MOSFET is shown in @fig-2.1(a). It consists of a lightly doped p-substrate (**bulk**), two
-heavily doped n-type regions (**source** and **drain**) and
-a conductive gate electrode that is isolated from the
-substrate using a thin silicon dioxide layer of thick-
-ness tox. Other important geometry parameters of
-this device include the **channel length** *L* (distance
-between the source and drain) and the **channel width** *W*.
+The basic structure of an **enhancement mode 
+n-channel** MOSFET is shown in @fig-2.1(a). 
+It consists of a lightly doped p-substrate 
+(**bulk**), two
+heavily doped n-type regions (**source** and 
+**drain**) and
+a conductive gate electrode that is isolated 
+from the
+substrate using a thin silicon dioxide layer 
+of thickness $t_{ox}$. Other important geometry parameters of
+this device include the **channel length** $L$ (distance
+between the source and drain) and the **channel width** $W$.
 
 
 
@@ -73,22 +78,26 @@ and conventions for electrical variables as shown in @fig-2.1(b) .
 <!-- QUESTION should I separate figure 2.1 a and b to two separate pictures? -->
 
 
-The variables $V_{GS}$, $V_{DS}$, and $V_{BS}$ describe the voltages between the respective terminals using the commonly used ordered subscript convention $V_{XY}$ = $V_{X}$ – $V_{Y}$. The current flowing into the
+The variables $V_{GS}$, $V_{DS}$, and $V_{BS}$ 
+describe the voltages between the respective terminals 
+using the commonly used ordered subscript convention 
+$V_{XY}$ = $V_{X}$ – $V_{Y}$. The current flowing into the
 drain node is labeled $I_{D}$.
 
-&nbsp;&nbsp;&nbsp;<!-- QUESTION are three spaces enough as indentation? --> 
-It is important to note that the MOSFET device
+&nbsp;&nbsp;&nbsp;It is important to note that the MOSFET device
 considered here is perfectly symmetric; i.e., the drain
 and source terminal labels can be interchanged. It is
 a common convention to assign the source to the
-lower potential of these two terminals, since this terminal is the source of electrons that enable the flow
+lower potential of these two terminals, since this 
+terminal is the source of electrons that enable the flow
 of current. We will see later that this convention,
 together with the arrow that marks the source (and
-the direction of current flow), provides useful intuition when reading a larger circuit schematic.
+the direction of current flow), provides useful intuition
+ when reading a larger circuit schematic.
 
 &nbsp;&nbsp;&nbsp;We now begin our analysis of the MOSFET
 device by considering the condition shown in
-Figure 2-2(a), where the bulk and source are connected to a reference potential (GND), $V_{GS}$ = 0V and $V_{DS}$ = 0 V. Under this condition, the drain and
+@fig-2.2(a), where the bulk and source are connected to a reference potential (GND), $V_{GS}$ = 0V and $V_{DS}$ = 0 V. Under this condition, the drain and
 source terminals are isolated by two reverse-biased
 pn-junctions and their **depletion regions**, which prevent any significant flow of current. Applying a positive voltage at the drain ($V_{DS}$ > 0V) increases the
 reverse-bias at the drain-bulk junction and will only
@@ -98,11 +107,16 @@ drain, while $I_{D}$ = 0 is still maintained (to first-order).
 
 
 &nbsp;&nbsp;&nbsp;Consider now $V_{GS}$ = 0 as shown in @fig-2.2(b).
-This positive voltage at the gate attracts electrons from the source. With increasing $V_{GS}$, a larger amount of electrons is supplied by the source, and
-ultimately, a so-called **inversion layer** forms underneath the gate. The voltage $V_{GS}$ at which a significant
-number of mobile electrons underneath the gate become available is called the **threshold voltage** of
+This positive voltage at the gate attracts electrons from
+the source. With increasing $V_{GS}$, a larger amount of 
+electrons is supplied by the source, and
+ultimately, a so-called **inversion layer** forms underneath 
+the gate. The voltage $V_{GS}$ at which a significant
+number of mobile electrons underneath the gate become available 
+is called the **threshold voltage** of
 the transistor, or $V_{t}$. In order to differentiate the
-threshold voltages and other device parameters of n-and p-channel devices, we will utilize the subscripts
+threshold voltages and other device parameters of n-and 
+p-channel devices, we will utilize the subscripts
 n and p throughout this module. E.g., we denote the
 threshold voltage for n-channels and p-channels as
 $V_{Tn}$ and $V_{Tp}$., respectively.
@@ -115,9 +129,11 @@ $V_{Tn}$ and $V_{Tp}$., respectively.
 
 
 
-&nbsp;&nbsp;&nbsp;With the inversion layer under the gate, the drain
+&nbsp;&nbsp;&nbsp;With the inversion layer under the gate, 
+the drain
 and source regions are now “connected” through a
-conductive path and any voltage between these terminals ($V_{GS}$ > 0) will result in a flow of drain current.
+conductive path and any voltage between these terminals 
+($V_{GS}$ > 0) will result in a flow of drain current.
 How can we calculate this current? In order to
 answer this question, the following approximations
 are useful:
@@ -126,21 +142,24 @@ are useful:
 mobile electrons in the channel times their
 velocity.
 
-&nbsp;&nbsp;&nbsp;**2.** The number of mobile electrons in the channel is set by the vertical electric field from the gate
-to the conductive channel (**gradual channel
-approximation**).
+&nbsp;&nbsp;&nbsp;**2.** The number of mobile electrons
+in the channel is set by the vertical electric field from the gate
+to the conductive channel (**gradual channel approximation**).
 
-&nbsp;&nbsp;&nbsp;**3.**  The threshold voltage is constant along the channel; this assumption neglects the so-called
+&nbsp;&nbsp;&nbsp;**3.** The threshold voltage is
+constant along the channel; this assumption neglects the so-called
 body effect.
 
-&nbsp;&nbsp;&nbsp;**4.** The velocity of the electrons traveling from the source to the drain is proportional to the lateral electric field in the channel.
+&nbsp;&nbsp;&nbsp;**4.** The velocity of the electrons 
+traveling from the source to the drain is proportional to the lateral electric field in the channel.
 
 &nbsp;&nbsp;&nbsp;@fig-2.2(b) establishes relevant variables for
-further analysis. The auxiliary variable *y* ranges from
-0 to *L* and is used to express electrical quantities as a
+further analysis. The auxiliary variable $y$ ranges from
+0 to $L$ and is used to express electrical quantities as a
 function of the distance from the source. The inversion 
 layer charge density (per unit area) and voltage at position
-*y* in the channel are denoted as $Q_{n}(y)$ and $V_{y}$,respectively. With these conventions in place,
+$y$ in the channel are denoted as $Q_{n}(y)$ and $V_{y}$,respectively.
+With these conventions in place,
 we can translate the above-listed assumptions into
 the following equations:
 
@@ -158,10 +177,10 @@ v(y) = -\mu_n \cdot E_y
 $${#eq-2.3}
 
 
-In these expressions, *v* is the velocity of the carriers,
+In these expressions, $v$ is the velocity of the carriers,
 $C_{ox}$ is the **gate capacitance** per unit area (between
 the gate electrode and the conductive channel). The
-term *μn* is called **mobility**, and it relates the drift
+term $\mu_n$ is called **mobility**, and it relates the drift
 velocity of the carriers to the local electric field.
 
 &nbsp;&nbsp;&nbsp;As indicated in @eq-2.2, the mobile charge den-
@@ -172,15 +191,16 @@ under the gate where this voltage difference is larger
 than the threshold ($V_{Tn}$). Assuming that the inver-
 sion layer extends from source to drain [as drawn in [Figure
 @fig-2.2(b) ]], we have V(L) = $V_{DS}$ and $Q_{n}$(L) =
-–$C_{ox}$ ($V_{GS}$ – $V_{Tn}$ – $V_{DS}$). This implies that $V_{DS}$ cannotexceed $V_{GS}$ – $V_{Tn}$ 
-for an inversion layer that extends across the entire channel. For the time being, we will
+–$C_{ox}$ ($V_{GS}$ – $V_{Tn}$ – $V_{DS}$). This implies
+that $V_{DS}$ cannotexceed $V_{GS}$ – $V_{Tn}$ 
+for an inversion layer that extends across the entire channel.
+For the time being, we will
 solve for the drain current for this condition and
 later extend the obtained result for the case of $V_{DS}$ =
 $V_{GS}$ – $V_{Tn}$.
 
 &nbsp;&nbsp;&nbsp;Now, by combining @eq-2.1 through @eq-2.3 and
-noting that the electric field is given by E(*y*) =
-*d*V(*y*) / *dy* , we can write
+noting that the electric field is given by $E(y)=dV(y)/dy$ , we can write
 
 
 $$
@@ -190,7 +210,7 @@ $${#eq-2.4}
 This result describes the current density profile
 along the channel. The terminal current, $I_{D}$, can be
 found by separating the variables and integrating
-along the direction of *y*
+along the direction of $y$
 
 $$
 \int_0^L I_D(y) \, dy = \mu_n C_{ox} W \int_0^{V_{DS}} (V_{GS} - V(y) - V_{Tn}) \, dV 
@@ -206,12 +226,17 @@ $${#eq-2.6}
 
 
 Note that this expression is valid for $V_{DS}$ < $V_{GS}$ – $V_{Tn}$, as assumed above.
-In order to extend the obtained result for $V_{DS}$ = $V_{GS}$ – $V_{Tn}$,
-we continue by inspecting the shape of the inversion layer for various $V_{DS}$ (see @fig-2.3). For $V_
-{DS}$ = 0 V [case (a)], no current flows and V(*y*) = 0 for all *y*. Provided that $V_{GS}$ > $V_{Tn}$, 
-a uniform inversion layer exists underneath the gate. For small $V_{DS}$ > 0, a current flows in the 
-inversion layer, which causes increasing V(*y*) and decreasing inversion layer charge along the channel. 
-As $V_{DS}$ approaches $V_{GS}$ - $V_{Tn}$, $Q_{n}$(*L*) approaches zero with a point of diminishing 
+In order to extend the obtained result for $V_{DS}$ 
+= $V_{GS}$ – $V_{Tn}$,
+we continue by inspecting the shape of the inversion layer 
+for various $V_{DS}$ (see @fig-2.3). For $V_
+{DS}$ = 0 V [case (a)], no current flows and $V(y)$ = 0 for all 
+$y$. Provided that $V_{GS}$ > $V_{Tn}$, 
+a uniform inversion layer exists underneath the gate. For small 
+$V_{DS}$ > 0, a current flows in the 
+inversion layer, which causes increasing $V(y)$ and decreasing
+inversion layer charge along the channel. 
+As $V_{DS}$ approaches $V_{GS}$ - $V_{Tn}$, $Q_{n}(L)$ approaches zero with a point of diminishing 
 charge at the drain. This effect is called **pinch-off**.
 
 
@@ -221,15 +246,15 @@ charge at the drain. This effect is called **pinch-off**.
 
 &nbsp;&nbsp;&nbsp;What happens when we increase $V_{DS}$ beyond the point of pinch-off? Further analysis based on solving
 the two-dimensional **Poisson Equation** at the drain
-predicts that the pinch-off point will move from *L* to
-*L – ΔL*, where *ΔL* is small relative to *L*. Even though
-no inversion layer exists in the region from *L – ΔL*
-to *L*, the device still conducts current. The charges
-arriving at *y = L – ΔL* are being swept to the drain by
+predicts that the pinch-off point will move from $L$ to
+$L – ΔL$, where $ΔL$ is small relative to $L$. Even though
+no inversion layer exists in the region from $L – ΔL$
+to $L$, the device still conducts current. The charges
+arriving at $y = L – ΔL$ are being swept to the drain by
 the electric field present in the depletion region of
 the surrounding pn junction.
 
-&nbsp;&nbsp;&nbsp;To first-order, and neglecting the small change in channel length *ΔL*, the current becomes independent of $V_{DS}$ and is approximately given by the current at the onset of pinch-off, i.e., at $V_{DS}$ = $V_{GS}$ – $V_{Tn}$.
+&nbsp;&nbsp;&nbsp;To first-order, and neglecting the small change in channel length $ΔL$, the current becomes independent of $V_{DS}$ and is approximately given by the current at the onset of pinch-off, i.e., at $V_{DS}$ = $V_{GS}$ – $V_{Tn}$.
 Substituting this condition into @eq-2.6, we obtain
 
 
@@ -245,7 +270,7 @@ drain-source voltage, which is qualitatively similar to
 the behavior of vacuum tube “triodes.” The region
 $V_{DS}$ ≥ $V_{GS}$ – $V_{Tn}$ is called the **saturation region** due to the saturation in current at large $V_{DS}$. In this region, the device operates essentially like a current source; the current is (to first-order) independent of the applied $V_{DS}$ and $I_{D}$ = $I_{Dsat}$ = constant. The quantity $V_{GS}$ – $V_{Tn}$ is often called **gate overdrive**.
 
-![(a) n-channel I-V characteristic for a fixed value of $V_{GS}$ – $V_{Tn}$= 2V. (b) I-V plots with varying $V_{GS}$ – $V_{Tn}$ (drain characteristic). Parameters: *μCox = 50 μA/$V^2$  * and *W/L* = 10.](images/png/figure2.4.png){#fig-2.4 width=100%}
+![(a) n-channel I-V characteristic for a fixed value of $V_{GS}$ – $V_{Tn}$= 2V. (b) I-V plots with varying $V_{GS}$ – $V_{Tn}$ (drain characteristic). Parameters: $μCox = 50 μA/V^2$ and $W/L = 10$.](images/png/figure2.4.png){#fig-2.4 width=100%}
 
 
 &nbsp;&nbsp;&nbsp;The drain-source voltage at which the drain current saturates is called  $V_{DSat}$. From the above first-order analysis, it is clear that $V_{DSat}$ = $V_{GS}$ – $V_{Tn}$.
@@ -275,9 +300,9 @@ $${#eq-2.9}
 
 
 It is interesting to interpret the dependencies in this
-expression using basic intuition. Increasing the aspect ratio *W /L* decreases $R_{on}$ since the conductive
+expression using basic intuition. Increasing the aspect ratio $W /L$ decreases $R_{on}$ since the conductive
 path becomes shorter and/or wider; this is a basic property of any conductor. The on-resistance also
-decreases with increasing $C_{ox}$ and $V_{GS}$ – $V_{Tn}$; this is because the inversion charge increases with these quantities (*Q = CV*). Larger mobility ($μ_{n}$) means that
+decreases with increasing $C_{ox}$ and $V_{GS}$ – $V_{Tn}$; this is because the inversion charge increases with these quantities ($Q = CV$). Larger mobility ($μ_{n}$) means that
 the carriers travel faster for the same applied voltages (electric field). This increases the current
 (charge per unit of time) and therefore also results in
 smaller $R_{on}$.
@@ -302,14 +327,26 @@ which shows the drain current as a function of $V_{GS}$
 for a fixed value of $V_{DS}$. If $V_{DS}$ is chosen large
 enough such that the device operates in the saturation region for all applied $V_{GS}$, $I_{D}$ follows from @eq-2.7 Eq. (2.7) and the plot is shaped like a parabola as drawn in Figure 2-5.
 
-![Plot of n-channel drain current as a function of $V_{GS}$ (transfer characteristic). Parameters: $V_{DS}$ = 5 V, $μC_{ox}$ = 50μA/$V^2$,$V_{Tn}$ = 0.5 V, and *W/L* = 10.](images/png/figure2.5.png){#fig-2.5 width=100%}
+![Plot of n-channel drain current as a function of $V_{GS}$ 
+(transfer characteristic). Parameters: $V_{DS}$ = 5 V, 
+$μC_{ox}$ = 50μA/$V^2$,$V_{Tn}$ = 0.5 V, and $W/L$ = 10.](images/png/
+figure2.5.png){#fig-2.5 width=100%}
 
 
-&nbsp;&nbsp;&nbsp;Table 2-1 summarizes the first-order MOSFET I-V relationships that were discussed in this section. This set of equations (and extended versions thereof) is often called the **square-law model** since one of its primary features is the quadratic dependence of the saturation current on $V_{GS}$ – $V_{Tn}$. When working with this device model, it is important to remember that it predicts the behavior of real MOSFETs only with limited accuracy. This is primarily so because we have made several simplifications in the model’s derivation. The most significant shortcom ings that result from these assumptions can be summarized as follows:
+&nbsp;&nbsp;&nbsp;Table 2-1 summarizes the first-order MOSFET I-V 
+relationships that were discussed in this section. This set of 
+equations (and extended versions thereof) is often called the 
+**square-law model** since one of its primary features is the quadratic 
+dependence of the saturation current on $V_{GS}$ – $V_{Tn}$. When 
+working with this device model, it is important to remember that it
+predicts the behavior of real MOSFETs only with limited accuracy. This
+is primarily so because we have made several simplifications in the 
+model’s derivation. The most significant shortcom ings that result from 
+these assumptions can be summarized as follows:
 
 1. In reality, the saturation current has a weak
 dependence on $V_{DS}$. This is primarily due to a
-shortening of the channel length (*ΔL*) with
+shortening of the channel length ($ΔL$) with
 increasing $V_{DS}$ and also due to the drain voltage
 dependence of the mobile charge in the channel.
 We will address this issue in [Section 2-2](#Section 2-2).
@@ -318,7 +355,7 @@ We will address this issue in [Section 2-2](#Section 2-2).
 several second-order effects related to small
 geometries and large electric fields become significant. This typically results in a saturation current law exponent that is less than two, and
 $V_{DSat}$ < $V_{GS}$ – $V_{Tn}$. In addition, the drain current
-does not scale strictly proportional to *1/L* and
+does not scale strictly proportional to $1/L$ and
 the threshold voltage is not constant, but a function of the drain voltage.
 
 3. For $V_{GS}$ < $V_{Tn}$ the device is not completely off,
@@ -345,7 +382,7 @@ with poor accuracy.
 | Transresistance Amplifier  | Current            | Voltage             |
 +----------------------------+--------------------+---------------------+
 
-
+<!-- FIXME fix the table -->
 
 |                       |                                                                       |                     |
 |                       |      "ON"                                                             |     "OFF"           |
@@ -475,7 +512,7 @@ designer.
 A p-channel transistor is operated with the following
 terminal voltages relative to ground: $V_{G}$ = 2.5 V, $V_{S}$ = $V_{B}$ = 5 V, $V_{D}$ = 1 V. Calculate the drain current $I_D$
 using the standard technology parameters given in
-Table 2-2 and assuming *W/L* = 5.
+Table 2-2 and assuming $W/L = 5$.
 
 **SOLUTION**
 
@@ -496,7 +533,7 @@ $$
 $$
 
 
-<!--   QUESTION aligh equations? in part I.1 there is no such thing --> 
+
 
 
 +-----------------------+:--------------------:+:-------------------:+
@@ -535,7 +572,7 @@ the MOSFET is common to the input and output
 ports of the circuit.
 
 
-![(a) Basic common-source amplifier schematic. (b) Voltage transfer characteristic for $V_{DD}$ = 5 V, $R_D$ = 5 kΩ, and *W/L* = 20.](images/png/figure2.7.png){#fig-2.7 width=100%}
+![(a) Basic common-source amplifier schematic. (b) Voltage transfer characteristic for $V_{DD}$ = 5 V, $R_D$ = 5 kΩ, and $W/L$ = 20.](images/png/figure2.7.png){#fig-2.7 width=100%}
 
 
 ## 2-2-1 Voltage Transfer Characteristic
@@ -639,13 +676,13 @@ $V_{OUT}$ will asymptotically approach zero.
 **Example 2-2: Voltage Transfer Calculations for a Common-Source Amplifier**
 
 Consider the circuit of @fig-2.7(a) with the following
-parameters: $V_{DD}$ = 5 V, $R_D$ = 10kΩ.
+parameters: $V_{DD}$ = 5 V, $R_D$ = $10kΩ$.
 
 - (a) Using the standard technology parameters of
 Table 2-2, calculate the required aspect ratio
-*W/L* such that $V_{OUT}$ = 2.5 V for $V_{IN}$ = 1 V.
+$W/L$ such that $V_{OUT}$ = 2.5 V for $V_{IN}$ = 1 V.
 
-- (b) Assuming *W/L* =10, calculate the input voltage
+- (b) Assuming $W/L$ =10, calculate the input voltage
 $V_{IN}$ that yields $V_{OUT}$ = 2.5 V.
 
 <!-- TODO : MAKE THE PRAGRAPH START WITH THE LETTER (a) instead of pullet point
@@ -677,10 +714,9 @@ $$
 250µA= \frac{1}{2}\cdot 50\frac{µA}{V^2}\cdot\frac{W}{L}\cdot(1V-0.5V)^2
 $$
 
-- and solving for the aspect ratio yields *W/L* = 40.
+- and solving for the aspect ratio yields $W/L = 40$.
 Note that this answer can also be found by
-direct evaluation of @eq-2.13, without comput-
-ing $I_D$ initially.
+direct evaluation of @eq-2.13, without computing $I_D$ initially.
 
 <!-- TODO: end of the solution for part (a) --> 
 
@@ -747,7 +783,9 @@ $$
 I_D= \frac{V_{DD} - V_{OUT}}{R_D}
 $${#eq-2.16}
 
-![Load line plot for the CS amplifier in @fig-2.7(a).Parameters: $V_{DD}$ = 5 V, $R_D$ = 5 kΩ, and *W/L* = 20.](images/png/figure2.8.png){#fig-2.8 width=50%}
+![Load line plot for the CS amplifier in @fig-2.7(a).Parameters: 
+$V_{DD}$ = 5 V, $R_D$ = 5 kΩ, and $W/L = 20$.]
+(images/png/figure2.8.png){#fig-2.8 width=50%}
 
 The points A, B, C, and D marked in @fig-2.8  
 correspond to the points shown with the same annotation
@@ -930,7 +968,7 @@ A_v= \left. \frac{dv_{OUT}}{dv_{IN}} \right|_Q = \left. \frac{dv_{OUT}}{dv_{IN}}
 $${#eq-2.25}
 
 where the derivative is evaluated at the circuit’s
-operating point *Q* that is fully defined by choice of
+operating point $Q$ that is fully defined by choice of
 the input bias voltage $V_{IN}$. By applying @eq-2.25 to
 @eq-2.17, we find
 
@@ -1165,9 +1203,8 @@ $${#eq-2.31}
 
 All of the above equations can be used to calculate
 $g_m$; the choice of which equation is used depends on
-the given parameters. The physical unit for transconductance is $A/V$ *A/V* = $Ω^{-1}$, or **Siemens** ($S$).
-
-<!-- QUESTION should I use $..$ or *..* marking for eg A/V ? -->
+the given parameters. The physical unit for transconductance is $A/V$ = 
+$Ω^{-1}$, or **Siemens** ($S$).
 
 Once the transconductance is determined, we can
 insert the model of @fig-2.12(b) into the original
