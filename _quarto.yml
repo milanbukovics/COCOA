@@ -12,6 +12,7 @@ project:
     - "contents/*/*/*/*.qmd"
     - "contents/*/*/*/*/*.qmd"
 
+jupyter: python3 
 book:
 #  google-analytics:
 #    tracking-id: ""
