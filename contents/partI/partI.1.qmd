@@ -415,7 +415,7 @@ Applying the voltage divider rule at the input and
 the current divider rule at the output yields the following result:
 
 $$
-G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{v_{in}}{v_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{i_{out}}{i_x}\Bigr) =  \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{R_{L}}{R_{L} + R_{out}}\Bigr)
+G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{v_{in}}{v_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{i_{out}}{i_x}\Bigr) =  \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot G_m \cdot \Bigl(\frac{R_{out}}{R_{L} + R_{out}}\Bigr)
 $$
 
 Thus, the overall transconductance gain is maximized 
