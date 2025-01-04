@@ -2,7 +2,7 @@
 bibliography: partI.2.bib
 ---
 <div style="text-align: justify">
-
+<!--
 ```{python}
 #| echo: false
 import schemdraw
@@ -11,17 +11,11 @@ with schemdraw.Drawing():
     elm.Resistor()
     elm.Capacitor()
     elm.Diode()
-
 ```
+-->
 
 
 
-
-
-
-<!-- TODO: make sides look nice --> 
-<!-- picture numbers, equation numbers are different from part1 -->
-<!-- TODO example references --> 
 # Introduction {#sec-introduction}
 
 With the development of the integrated circuit, the
@@ -53,8 +47,8 @@ and range limitations of simple modeling expressions.
 ## First-Order MOSFET Model
 
 The device-level derivations of this section assume
-familiarity with basic solid-state physics and electro-
-statics. For a ground-up treatment from first principles,
+familiarity with basic solid-state physics and electrostatics. 
+For a ground-up treatment from first principles,
 the reader is referred to introductory 
 solid-state device material (see Reference 1).
 
@@ -90,8 +84,6 @@ time being, we will use the n-channel device to discuss the basic principles.
 In order to study the electrical behavior of a
 MOSFET, it is useful to define a schematic symbol
 and conventions for electrical variables as shown in @fig-2.1(b) .
-
-
 The variables $V_{GS}$, $V_{DS}$, and $V_{BS}$ 
 describe the voltages between the respective terminals 
 using the commonly used ordered subscript convention 
@@ -111,9 +103,13 @@ the direction of current flow), provides useful intuition
 
 &nbsp;&nbsp;&nbsp;We now begin our analysis of the MOSFET
 device by considering the condition shown in
-@fig-2.2(a), where the bulk and source are connected to a reference potential (GND), $V_{GS}$ = 0V and $V_{DS}$ = 0 V. Under this condition, the drain and
+@fig-2.2(a), where the bulk and source are connected to a 
+reference potential (GND), $V_{GS}$ = 0 $V$ and $V_{DS}$ = 0 $V$. 
+Under this condition, the drain and
 source terminals are isolated by two reverse-biased
-pn-junctions and their **depletion regions**, which prevent any significant flow of current. Applying a positive voltage at the drain ($V_{DS}$ > 0V) increases the
+pn-junctions and their **depletion regions**, which prevent any 
+significant flow of current. Applying a positive
+ voltage at the drain ($V_{DS}$ > 0 $V$) increases the
 reverse-bias at the drain-bulk junction and will only
 increase the width of the depletion region at the
 drain, while $I_{D}$ = 0 is still maintained (to first-order).
@@ -165,7 +161,8 @@ constant along the channel; this assumption neglects the so-called
 body effect.
 
 &nbsp;&nbsp;&nbsp;**4.** The velocity of the electrons 
-traveling from the source to the drain is proportional to the lateral electric field in the channel.
+traveling from the source to the drain is proportional
+ to the lateral electric field in the channel.
 
 &nbsp;&nbsp;&nbsp;@fig-2.2(b) establishes relevant variables for
 further analysis. The auxiliary variable $y$ ranges from
@@ -179,7 +176,7 @@ the following equations:
 
 
 $$
-I_D(y) =  {W} \cdot Q_n \cdot v(y) 
+I_D = - {W} \cdot Q_n \cdot v(y) 
 $${#eq-2.1}
 
 $$
@@ -197,14 +194,14 @@ the gate electrode and the conductive channel). The
 term $\mu_n$ is called **mobility**, and it relates the drift
 velocity of the carriers to the local electric field.
 
-&nbsp;&nbsp;&nbsp;As indicated in @eq-2.2, the mobile charge den-
-sity at coordinate y depends on the local potential,
+&nbsp;&nbsp;&nbsp;As indicated in @eq-2.2, the mobile charge density
+ at coordinate $y$ depends on the local potential,
 since the voltage across the oxide is given by $V_{GS}$ –
-V(y). An inversion layer is present at any location
+$V(y)$. An inversion layer is present at any location
 under the gate where this voltage difference is larger
-than the threshold ($V_{Tn}$). Assuming that the inver-
-sion layer extends from source to drain [as drawn in [Figure
-@fig-2.2(b) ]], we have V(L) = $V_{DS}$ and $Q_{n}$(L) =
+than the threshold ($V_{Tn}$). Assuming that the inversion
+ layer extends from source to drain as drawn in
+@fig-2.2(b), we have $V(L)$ = $V_{DS}$ and $Q_{n}$$(L)$ =
 –$C_{ox}$ ($V_{GS}$ – $V_{Tn}$ – $V_{DS}$). This implies
 that $V_{DS}$ cannotexceed $V_{GS}$ – $V_{Tn}$ 
 for an inversion layer that extends across the entire channel.
@@ -214,7 +211,7 @@ later extend the obtained result for the case of $V_{DS}$ =
 $V_{GS}$ – $V_{Tn}$.
 
 &nbsp;&nbsp;&nbsp;Now, by combining @eq-2.1 through @eq-2.3 and
-noting that the electric field is given by $E(y)=dV(y)/dy$ , we can write
+noting that the electric field is given by $E(y)=-dV(y)/dy$ , we can write
 
 
 $$
@@ -268,7 +265,10 @@ arriving at $y = L – ΔL$ are being swept to the drain by
 the electric field present in the depletion region of
 the surrounding pn junction.
 
-&nbsp;&nbsp;&nbsp;To first-order, and neglecting the small change in channel length $ΔL$, the current becomes independent of $V_{DS}$ and is approximately given by the current at the onset of pinch-off, i.e., at $V_{DS}$ = $V_{GS}$ – $V_{Tn}$.
+&nbsp;&nbsp;&nbsp;To first-order, and neglecting the small
+ change in channel length $ΔL$, the current becomes 
+independent of $V_{DS}$ and is approximately given by the 
+current at the onset of pinch-off, i.e., at $V_{DS}$ = $V_{GS}$ – $V_{Tn}$.
 Substituting this condition into @eq-2.6, we obtain
 
 
@@ -276,15 +276,23 @@ $$
 \boxed{I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2}
 $${#eq-2.7}
 
-for $V_{DS}$ = $V_{GS}$ – $V_{Tn}$.
+for $V_{DS}$ ≥ $V_{GS}$ – $V_{Tn}$.
 
 @eq-2.6 and @eq-2.7 are plotted in @fig-2.4 as
-a function of $V_{DS}$ and some fixed $V_{GS}$ > $V_{Tn}$. The operating region for $V_{DS}$ < $V_{GS}$ – $V_{Tn}$ is commonly called the **triode region**. This name stems from the direct dependence of the drain current on the
+a function of $V_{DS}$ and some fixed $V_{GS}$ > $V_{Tn}$.
+The operating region for $V_{DS}$ < $V_{GS}$ – $V_{Tn}$ is commonly
+called the **triode region**. This name stems from the direct 
+dependence of the drain current on the
 drain-source voltage, which is qualitatively similar to
 the behavior of vacuum tube “triodes.” The region
-$V_{DS}$ ≥ $V_{GS}$ – $V_{Tn}$ is called the **saturation region** due to the saturation in current at large $V_{DS}$. In this region, the device operates essentially like a current source; the current is (to first-order) independent of the applied $V_{DS}$ and $I_{D}$ = $I_{Dsat}$ = constant. The quantity $V_{GS}$ – $V_{Tn}$ is often called **gate overdrive**.
+$V_{DS}$ ≥ $V_{GS}$ – $V_{Tn}$ is called the **saturation region**
+due to the saturation in current at large $V_{DS}$. In this region,
+the device operates essentially like a current source; the current 
+is (to first-order) independent of the applied $V_{DS}$ and
+$I_{D}$ = $I_{Dsat}$ = constant. The quantity 
+$V_{GS}$ – $V_{Tn}$ is often called **gate overdrive**.
 
-![(a) n-channel I-V characteristic for a fixed value of $V_{GS}$ – $V_{Tn}$= 2V. (b) I-V plots with varying $V_{GS}$ – $V_{Tn}$ (drain characteristic). Parameters: $μCox = 50 μA/V^2$ and $W/L = 10$.](images/png/figure2.4.png){#fig-2.4 width=100%}
+![(a) n-channel I-V characteristic for a fixed value of $V_{GS}$ – $V_{Tn}$= 2V. (b) I-V plots with varying $V_{GS}$ – $V_{Tn}$ (drain characteristic). Parameters: $μCox$ = 50 $μA/V^2$ and $W/L = 10$.](images/png/figure2.4.png){#fig-2.4 width=100%}
 
 
 &nbsp;&nbsp;&nbsp;The drain-source voltage at which the drain current saturates is called  $V_{DSat}$. From the above first-order analysis, it is clear that $V_{DSat}$ = $V_{GS}$ – $V_{Tn}$.
@@ -298,7 +306,7 @@ geometries and modern device structures, are considered.
 $V_{DS}$ is nonlinear (as seen from @eq-2.6), it is 
 sometimes useful to approximate the characteristic using
 a linear I-V law, shown as a dashed line in
-@fig-2.4(a). For $V_{DS}$ << $V_{GS}$ 
+@fig-2.4(a). For $V_{DS}$ $\ll$ $V_{GS}$ 
 – $V_{Tn}$ , we can approximate @eq-2.6 as
 
 $$
@@ -314,10 +322,16 @@ $${#eq-2.9}
 
 
 It is interesting to interpret the dependencies in this
-expression using basic intuition. Increasing the aspect ratio $W /L$ decreases $R_{on}$ since the conductive
-path becomes shorter and/or wider; this is a basic property of any conductor. The on-resistance also
-decreases with increasing $C_{ox}$ and $V_{GS}$ – $V_{Tn}$; this is because the inversion charge increases with these quantities ($Q = CV$). Larger mobility ($μ_{n}$) means that
-the carriers travel faster for the same applied voltages (electric field). This increases the current
+expression using basic intuition. Increasing the aspect 
+ratio $W /L$ decreases $R_{on}$ since the conductive
+path becomes shorter and/or wider; this is a basic
+ property of any conductor. The on-resistance also
+decreases with increasing $C_{ox}$ and $V_{GS}$ – $V_{Tn}$; 
+this is because the inversion charge increases with 
+these quantities ($Q = CV$). Larger mobility ($μ_{n}$) means that
+the carriers travel faster for the same applied voltages
+ (electric field). This increases the 
+current
 (charge per unit of time) and therefore also results in
 smaller $R_{on}$.
 
@@ -339,7 +353,8 @@ drain-source voltage (as
 opposed to the gate-source voltage, which is 
 included as a parameter on the curves), is swept
 along the x-axis. Alternatively, the term 
-**output characteristic** is sometimes used, primarily because $V_{DS}$ can often be viewed as the output port voltage of the
+**output characteristic** is sometimes used, 
+primarily because $V_{DS}$ can often be viewed as the output port voltage of the
 device; we will see this in the example discussed in [Section 2-2](#building-a-common-source-voltage-amplifier).
 
 Another commonly used characterization plot for
@@ -348,7 +363,8 @@ which shows the drain current as a function of $V_{GS}$
 for a fixed value of $V_{DS}$. 
 If $V_{DS}$ is chosen large
 enough such that the device operates in the
-saturation region for all applied $V_{GS}$, $I_{D}$ follows from @eq-2.7 Eq. (2.7) and the plot is shaped like a parabola as drawn in Figure 2-5.
+saturation region for all applied $V_{GS}$, $I_{D}$ follows from @eq-2.7  and the plot is shaped 
+like a parabola as drawn in @fig-2.5.
 
 ![Plot of n-channel drain current as a function of $V_{GS}$ (transfer characteristic). Parameters: $V_{DS}$ = 5 V, $μC_{ox}$ = 50μA/$V^2$,$V_{Tn}$ = 0.5 V, and $W/L$ = 10.](images/png/figure2.5.png){#fig-2.5 width=100%}
 
@@ -389,36 +405,52 @@ gate is only moderately inverted, and the square
 law model tends to predict the drain current
 with poor accuracy.
 
-:::: {.table .striped .hover}
-Table:  First-order MOSFET model summary {#tbl-first-order-mosfet}
 
-+-----------------------+:---------------------------------------------------------------------:+---------------------+                                                               
-|                       |      "ON"                                                             |     "OFF"           |
-|                       |$V_{GS}$ ≥ $V_{Tn}$                                                    |$V_{GS}$ ≥ $V_{Tn}$  | 
-+:=====================:+:=====================================================================:+:===================:+
-| $V_{DS}$ < $V_{DSat}$ |$I_D$=$\mu_n C_{ox}\frac{W}L (V_{GS}$-$V_{Tn}-\frac{V_{DS}}{2}) V_{DS}$|      $I_D=0$        |
-+-----------------------+-----------------------------------------------------------------------+---------------------+                                                                                
-| $V_{DS}$ ≥ $V_{DSat}$ |$I_D$=$\frac{1}{2}\mu_n C_{ox}\frac{W}L (V_{GS}$-$V_{Tn}$)$^2$         |    $I_{D} = 0$      |
-+-----------------------+-----------------------------------------------------------------------+---------------------+                                              
+
+
+
+:::: {.table .striped .hover}
+Table: First-order MOSFET model summary {#tbl-first-order-mosfet}
+
++:---------------------:+:----------------------------------------------------------------------------:+:------------------:+
+|                       |"ON"                                                                          |"OFF"               |
+|                       |                                                                              |                    |
+|                       |$V_{GS} ≥  V_{Tn}$                                                            | $V_{GS} < V_{Tn}$  |
++:=====================:+:============================================================================:+:==================:+
+| $V_{DS} < V_{DSat}$   | $I_D = \mu_n C_{ox} \frac{W}{L} (V_{GS} - V_{Tn} - \frac{V_{DS}}{2}) V_{DS}$ | $I_D = 0$          |
++-----------------------+------------------------------------------------------------------------------+--------------------+
+| $V_{DS} \geq V_{DSat}$| $I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} (V_{GS} - V_{Tn})^2$             | $I_D = 0$          |
++-----------------------+------------------------------------------------------------------------------+--------------------+
 
 :::: 
 <!--: Table 2-1 : First-order MOSFET model summary {#Table1} {.striped .hover} -->
 
 
-&nbsp;&nbsp;&nbsp;Despite these shortcomings, the first-order MOSFET model possesses many of the critical features 
-needed to study the fundamentals of analog circuit design. Many of the second-order effects not featured in the basic model can 
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;Despite these shortcomings,
+the first-order MOSFET model possesses many of the critical features 
+needed to study the fundamentals of analog 
+circuit design. Many of the second-order effects not featured in the basic model can 
 be treated using advanced device physics and often result in a
 high-complexity model that is unsuitable for
 hand-calculations and intuition building.
 
-&nbsp;&nbsp;&nbsp;Within the range of circuits treated in this mod ule, we typically begin by applying the first-order
+&nbsp;&nbsp;&nbsp;Within the range of circuits 
+treated in this mod ule, we typically begin by applying the first-order
 model. Then, only when the circuit appears to be
 sensitive to second-order dependencies not covered
 by this model, we will look for extensions. A treatment in this fashion has the advantage that the
-reader can develop a feel for where and when modeling extensions and parameter accuracy are critical.
+reader can develop a feel for where and
+ when modeling extensions and parameter accuracy are critical.
 
-&nbsp;&nbsp;&nbsp;In general, the tradeoff between modeling accuracy and complexity is a recurring theme at all levels
-of analog circuit design; the issue is not limited to the introductory material covered in this module. More
+&nbsp;&nbsp;&nbsp;In general, the tradeoff between modeling accuracy
+and complexity is a recurring theme at all levels
+of analog circuit design; the issue is not limited
+ to the introductory material covered in this module. More
 accurate models can always be generated at the
 expense of complexity and time. An experienced
 analog designer will often use the simplest possible
@@ -434,14 +466,15 @@ current through an electron inversion layer in a
 p-type bulk. Similarly, we can construct a **p-channel**
 device that operates based on forming an inversion
 layer of holes in an n-type bulk. The structure of
-such a MOSFET, which consists of p+ source and
+such a MOSFET, which consists of $p+$ source and
 drain regions in an n-type bulk, is shown in
 @fig-2.6. In many process technologies, the n-type
 bulk region is formed by creating an n-type well
 (**n-well**) in the p-type substrate that is used to form
-n-channels. Such a technology is called an **n-well technology**. In general, a technology that offers both
-n- and p-channel devices is called **CMOS** technol-
-ogy, where CMOS stands for Complementary
+n-channels. Such a technology is called an **n-well technology**.
+In general, a technology that offers both
+n- and p-channel devices is called **CMOS** technology,
+where CMOS stands for Complementary
 Metal-Oxide-Semiconductor.
 
 
@@ -449,7 +482,8 @@ Metal-Oxide-Semiconductor.
 
 &nbsp;&nbsp;&nbsp;The drain current equations for a p-channel
 MOSFET can be derived using exactly the same
-approach as used for the n-channel device since the basic physics are the same. For a p-channel device,
+approach as used for the n-channel device since 
+the basic physics are the same. For a p-channel device,
 the gate must be made negative with respect to the
 p-type source in order to form an inversion layer of
 holes; the threshold voltage $V_{Tp}$ is therefore typically
@@ -459,8 +493,8 @@ the drain voltage must be negative with respect to
 the source, and the drain current (defined as flowing
 into the drain terminal) is negative. Therefore, in the
 on-state of the transistor, $V_{GS}$ and $V_{DS}$  are negative
-quantities, and the source lies at the highest poten-
-tial among the four terminals. The drain current for
+quantities, and the source lies at the highest potential
+among the four terminals. The drain current for
 a p-channel in saturation, i.e., $V_{GS}$ < $V_{DS}$ and $V_{DS}$ ≤ $V_{GS}$ – $V_{Tp}$, is given by
 
 $$
@@ -486,9 +520,9 @@ defined in @fig-2.6(b), is a negative quantity.
 
 For use throughout this module, it is convenient to
 define standard MOSFET parameter values as given
-in Table 2-2. The chosen values are representative of
+in @tbl-standard-technology-paramaters. The chosen values are representative of
 a CMOS technology with a minimum channel
-length, or **feature size** of 1 μm. As we learn more
+length, or **feature size** of 1 $\mu$m. As we learn more
 about the behavior of MOSFETs in later sections,
 this list of parameters will grow and we will augment
 it as needed.
@@ -520,18 +554,20 @@ parameters that are under the control of the circuit
 designer.
 
 
-**Example 2-1: P-Channel Drain Current Caculation**
+**[Example 2-1]{#example-2-1}: P-Channel Drain Current Caculation**
 
 A p-channel transistor is operated with the following
-terminal voltages relative to ground: $V_{G}$ = 2.5 V, $V_{S}$ = $V_{B}$ = 5 V, $V_{D}$ = 1 V. Calculate the drain current $I_D$
+terminal voltages relative to ground: $V_{G}$ = 2.5 $V$, $V_{S}$ = $V_{B}$ = 5 $V$, $V_{D}$ = 1
+$V$. Calculate the drain current $I_D$
 using the standard technology parameters given in
-Table 2-2 and assuming $W/L = 5$.
+@tbl-standard-technology-paramaters and assuming $W/L = 5$.
 
 **SOLUTION**
 
-From the given terminal voltages, we find $V_{SG}$ = 5 V
-– 2.5 V = 2.5 V and $V_{SD}$ = 5 V – 1 V = 4 V. Since $V_{SG}$ > $V_{Tp}$, the transistor is on, and since $V_{SD}$ > $V_{SG}$ + $V_{Tp}$
-= 2.5 V – 0.5 V = 2 V, it operates in saturation. Therefore, using @eq-2.11 we find
+From the given terminal voltages, we find $V_{SG}$ = 5 $V$– 2.5 $V$ = 2.5 $V$ and $V_{SD}$ = 5 $V$
+ – 1 $V$ = 4 $V$. Since $V_{SG}$ > $V_{Tp}$, the transistor is on, and 
+ since $V_{SD}$ > $V_{SG}$ + $V_{Tp}$
+= 2.5 $V$ – 0.5 $V$ = 2 $V$, it operates in saturation. Therefore, using @eq-2.11 we find
 
 <!-- FIXME typo for mu_n , changed it to mu_p -->
 $$
@@ -547,6 +583,9 @@ $$
 
 
 
+:::: {.table .striped .hover}
+Table: Standard technology parameters for the first-order
+MOSFET model {#tbl-standard-technology-paramaters}
 
 
 +-----------------------+:--------------------:+:-------------------:+
@@ -558,9 +597,9 @@ $$
 |    parameter          |                      |                     |
 +-----------------------+----------------------+---------------------+
 
-
-: **Table 2-2**: Standard technology parameters for the first-order
-MOSFET model.
+::::
+<!--: **Table 2-2**: Standard technology parameters for the first-order
+MOSFET model. -->
 
 ## Building a Common-Source Voltage Amplifier 
 
@@ -585,7 +624,7 @@ the MOSFET is common to the input and output
 ports of the circuit.
 
 
-![(a) Basic common-source amplifier schematic. (b) Voltage transfer characteristic for $V_{DD}$ = 5 V, $R_D$ = 5 kΩ, and $W/L$ = 20.](images/png/figure2.7.png){#fig-2.7 width=100%}
+![(a) Basic common-source amplifier schematic. (b) Voltage transfer characteristic for $V_{DD}$ = 5 $V$, $R_D$ = 5 $kΩ$, and $W/L$ = 20.](images/png/figure2.7.png){#fig-2.7 width=100%}
 
 
 ### Voltage Transfer Characteristic
@@ -601,12 +640,12 @@ $${#eq-2.12}
 
 The drain current ID in this expression depends on
 $V_{GS}$ and $V_{DS}$ of the transistor, as described in
-Table 2-1. Given the structure of the circuit in
+@tbl-first-order-mosfet. Given the structure of the circuit in
 @fig-2.7(a), we note that $V_{GS}$ = $V_{IN}$ and $V_{DS}$ =
 $V_{OUT}$. Using this information, we can construct a
 piecewise function that relates the input and output
 voltages of the circuit. For this derivation, imagine
-that we sweep $V_{IN}$ from 0 V to the supply voltage,
+that we sweep $V_{IN}$ from 0 $V$ to the supply voltage,
 $V_{DD}$.
 
 &nbsp;&nbsp;&nbsp;First, we note that for $V_{IN}$ = $V_{GS}$ < $V_{Tn}$, no current
@@ -617,8 +656,8 @@ between points A and the vertical line at $V_{Tn}$. As $V_{IN}$
 increases to values greater than or equal to $V_{Tn}$, the
 transistor conducts current, and $V_{OUT}$ must be less
 than $V_{DD}$. In order to calculate how $V_{OUT}$ changes as
-a function of $V_{IN}$, we must first determine the tran-
-sistor’s region of operation. As we increase $V_{IN}$
+a function of $V_{IN}$, we must first determine the transistor’s
+ region of operation. As we increase $V_{IN}$
 above $V_{Tn}$, does the MOSFET operate in saturation
 or in the triode region?
 
@@ -627,7 +666,8 @@ or in the triode region?
 $V_{DS}$ is smaller or larger than $V_{GS}$ - $V_{Tn}$. For $V_{IN}$ just
 above $V_{Tn}$,  $V_{GS}$ – $V_{Tn}$ is smaller than  $V_{DS}$, which is
 still close to  $V_{DD}$ at the onset of current conduction.
-Therefore, the device must initially operate in saturation as we transition from the “OFF” state of the
+Therefore, the device must initially operate in
+saturation as we transition from the “OFF” state of the
 transistor into the region where $I_D$ > 0. Under this
 condition, the output voltage is given by 
 
@@ -645,10 +685,10 @@ large $V_{IN}$, $V_{DS}$ can approach $V_{GS}$ - $V_{Tn}$ and
 the condition for current saturation may no longer
 hold; the device then transitions into the triode
 region. The input voltage at which this transition
-occurs (point C in @fig-2.7(b)) can be computed by
+occurs (point $C$ in @fig-2.7(b)) can be computed by
 setting the right-hand side of @eq-2.13 equal to $V_{IN}$
 – $V_{Tn}$, and solving for $V_{IN}$. It is interesting to note
-that graphically, point C can be found through the
+that graphically, point $C$ can be found through the
 intersection of the voltage transfer characteristic
 with the line $V_{IN}$ – $V_{Tn}$. The intersect corresponds to
 the point where $V_{OUT}$ = $V_{DS}$ = $V_{IN}$ – $V_{Tn}$ = $V_{GS}$ - $V_{Tn}$,
@@ -667,14 +707,14 @@ best analyzed graphically. As we can see from the
 plot in @fig-2.7(b), the most important feature
 here is that the slope of the voltage transfer 
 characteristic diminishes for large $V_{IN}$; i.e., the slope of the
-curve at point D is smaller than the slope at point C.
+curve at point $D$ is smaller than the slope at point $C$.
 Qualitatively, this can be explained by viewing the
 MOSFET as a resistor, whose value continues to
 decrease with $V_{IN}$. For very large $V_{IN}$, the output
 voltage must asymptotically approach 0 V. This can
 be shown by approximating the MOSFET by its
 on-resistance for small $V_{DS}$ as given by @eq-2.9. The
-output voltage in the vicinity of point D can then be
+output voltage in the vicinity of point $D$ can then be
 expressed by considering the resistive voltage
 divider formed by $R_{D}$ and $R_{on}$.
 
@@ -686,55 +726,55 @@ This result confirms that for large input voltages,
 $V_{OUT}$ will asymptotically approach zero.
 
 
-**Example 2-2: Voltage Transfer Calculations for a Common-Source Amplifier**
+**[Example 2-2]{#example-2-2}: Voltage Transfer Calculations for a Common-Source Amplifier**
 
 Consider the circuit of @fig-2.7(a) with the following
-parameters: $V_{DD}$ = 5 V, $R_D$ = $10kΩ$.
+parameters: $V_{DD}$ = 5 $V$, $R_D$ = 10 $kΩ$.
 
-- (a) Using the standard technology parameters of
-Table 2-2, calculate the required aspect ratio
-$W/L$ such that $V_{OUT}$ = 2.5 V for $V_{IN}$ = 1 V.
+a.  Using the standard technology parameters of
+@tbl-standard-technology-paramaters, calculate the required aspect ratio
+$W/L$ such that $V_{OUT}$ = 2.5 $V$ for $V_{IN}$ = 1 $V$.
 
-- (b) Assuming $W/L$ =10, calculate the input voltage
-$V_{IN}$ that yields $V_{OUT}$ = 2.5 V.
+b. Assuming $W/L$ =10, calculate the input voltage
+$V_{IN}$ that yields $V_{OUT}$ = 2.5 $V$.
 
-<!-- TODO : MAKE THE PRAGRAPH START WITH THE LETTER (a) instead of pullet point
---> 
+
 
 **SOLUTION**
 
-- (a) As a first step, we can calculate the drain current
-that results in $V_{OUT}$ = 2.5 V using @eq-2.12.
+a. As a first step, we can calculate the drain current
+that results in $V_{OUT}$ = 2.5 $V$ using @eq-2.12.
 
 $$
 V_{OUT} = V_{DD}-I_D R_D
 $$
 $$
-2.5V = 5V - (I_D)\cdot 10kΩ )
+2.5V = 5V - (I_D\cdot 10kΩ )
 $$
 $$
 I_D= 250µA
 $$
 
-Since $V_{GS}$ – $V_{Tn}$ = 0.5 V < $V_{DS}$ = 2.5 V, we know
-that the device must operate in the saturation
+Since $V_{GS}$ – $V_{Tn}$ = 0.5 V < $V_{DS}$ = 2.5 V, we
+know that the device must operate in the saturation
 region. Therefore,
 
 $$
-I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_
+{Tn})^2
 $$
 $$
-250µA= \frac{1}{2}\cdot 50\frac{µA}{V^2}\cdot\frac{W}{L}\cdot(1V-0.5V)^2
+250µA= \frac{1}{2}\cdot 50\frac{µA}{V^2}\cdot\frac{W}{L}
+\cdot(1V-0.5V)^2
 $$
 
-- and solving for the aspect ratio yields $W/L = 40$.
+and solving for the aspect ratio yields $W/L = 40$.
 Note that this answer can also be found by
 direct evaluation of @eq-2.13, without computing $I_D$ initially.
 
-<!-- TODO: end of the solution for part (a) --> 
 
 
-- (b) since $V_{IN}$ is unknown in this part of the problem, 
+b. since $V_{IN}$ is unknown in this part of the problem, 
 we cannot immediately determine the
 operating region of the MOSFET. In such a situation, 
 it is necessary to guess the operating
@@ -750,14 +790,14 @@ $$
 $$
 
 The two solutions to this equation are $V_{GS1}$ =
-1.5 V, and $V_{GS2}$ = –0.5 V. Since we know that
+1.5 $V$, and $V_{GS2}$ = –0.5 $V$. Since we know that
 the device is off for $V_{GS}$ < $V_{Tn}$, it is clear that
 $V_{GS2}$ is a non-physical solution that must be 
 discarded. For the obtained $V_{GS1}$, we must now
 verify that the device operates in saturation, as
 initially assumed. It is straightforward to see
 that this is indeed the case since $V_{GS1}$ – $V_{Tn}$ = 1
-V < $V_{DS}$ = 2.5 V. Therefore, the final answer to
+$V$< $V_{DS}$ = 2.5 $V$. Therefore, the final answer to
 this problem is $V_{IN}$ = 1.5 V.
 
 &nbsp;&nbsp;&nbsp;If we had initially guessed that the device
@@ -770,8 +810,8 @@ $$
 250µA = 50\frac{µA}{V^2}\cdot 10 \cdot (V_{GS} - 0.5V - \frac{2.5V}{2})\cdot 2.5V
 $$
 
-- The solution to this equation is $V_{GS}$ = 1.95 V.
-Since $V_{GS}$ – $V_{Tn}$ = 1.45 V < $V_{DS}$ = 2.5, we see that
+- The two solution to this equation is $V_{GS}$ = 1.95 $V$.
+Since $V_{GS}$ – $V_{Tn}$ = 1.45 $V$ < $V_{DS}$ = 2.5, we see that
 the obtained result contradicts the assumed
 operation in triode. Therefore, the next logical
 step would be to evaluate the saturation equation,
@@ -785,8 +825,8 @@ basis for such an analysis in the context of our circuit
 is the fact that the current flowing through the
 transistor ($I_D$) is equal to the current flowing through the
 resistor (which is viewed in this context as the load of
-the circuit). Therefore, if we draw the I-V character-
-istics of the MOSFET and $R_D$ in one diagram, valid
+the circuit). Therefore, if we draw the I-V characteristics
+of the MOSFET and $R_D$ in one diagram, valid
 output voltages lie at the intersection of the two
 curves (equal current). This is further illustrated in
 @fig-2.8. The load line equation in this plot follows
@@ -796,10 +836,10 @@ $$
 I_D= \frac{V_{DD} - V_{OUT}}{R_D}
 $${#eq-2.16}
 
-![Load line plot for the CS amplifier in @fig-2.7(a).Parameters: $V_{DD}$ = 5 V, $R_D$ = 5 kΩ, and $W/L = 20$.](images/png/figure2.8.png){#fig-2.8 width=50%}
+![Load line plot for the CS amplifier in @fig-2.7(a). Parameters: $V_{DD}$ = 5 V, $R_D$ = 5 kΩ, and $W/L = 20$.](images/png/figure2.8.png){#fig-2.8 width=100%}
 
-The points A, B, C, and D marked in @fig-2.8  
-correspond to the points shown with the same annotation
+The points A, B, C, and D marked in @fig-2.8 correspond
+ to the points shown with the same annotation
 in @fig-2.7(b). Since the transistor drain
 characteristics are overlaid in @fig-2.8, it is easy to
 identify the operating regions that correspond to
@@ -810,8 +850,10 @@ occurs in a region of constant drain current.
 **Example 2-3: Output Voltage Calculations for a Common-Source Voltage Amplifier**
 
 Construct a load line plot to verify the solution of
-[Example 2-2](#Example 2-2)(b) using $V_{DD}$ = 5 V, $R_D$ = 10 kΩ , and
-W/L =10. Use $V_{IN}$ = $V_{GS}$ = 1 V, 1.5 V, and 2 V for the
+[Example 2-2](#example-2-2)(b) using $V_{DD}$ = 5 $V$, 
+$R_D$ = 10 kΩ , and
+W/L =10. Use $V_{IN}$ = $V_{GS}$ = 1 $V$, 1.5 $V$, and 2 $V$ 
+for the
 drain characteristic plot.
 
 **SOLUTION**
@@ -819,14 +861,14 @@ drain characteristic plot.
 
 The solution is shown in @fig-ex-2.3. The load line
 is most easily drawn by connecting the points (0,
-$V_{DD}$/$R_D$ = 0.5 mA) and ($V_{DD}$ = 5 V, 0). The drain
+$V_{DD}$/$R_D$ = 0.5 $mA$) and ($V_{DD}$ = 5 $V$, 0). The drain
 characteristics are drawn for the three given $V_{GS}$
-using the expressions of Table 2-1, by sweeping $V_{DS}$
-= $V_{OUT}$ from 0 V to 5 V. The intersect of the load line 
-with the drain characteristic for $V_{IN}$ = 1.5 V confirms
-the result already obtained in [Example 2-2](#Example 2-2)(b).
+using the expressions of @tbl-first-order-mosfet, by 
+sweeping $V_{DS}$ = $V_{OUT}$ from 0 $V$ to 5 $V$. The 
+intersect of the load  line  with the drain characteristic for $V_{IN}$ = 1.5 $V$ 
+confirms the result already obtained in [Example 2-2](#example-2-2)(b).
 
-![**Figure Ex2-3**](images/png/figure-ex-2.3.png){#fig-ex-2.3 width=50%}
+![](images/png/figure-ex-2.3.png){#fig-ex-2.3 width=1000%}
 
 ### Biasing
 
@@ -837,8 +879,8 @@ have discussed in [Chapter 1](#Chapter 1), a common objective for
 a voltage amplifier is to create large output voltage
 excursions from small changes in the applied input
 voltage. With this objective in mind, it becomes clear
-that only a limited range of the transfer characteris-
-tic in @fig-2.7(b) is useful for amplification. For
+that only a limited range of the transfer characteristic
+in @fig-2.7(b) is useful for amplification. For
 example, a change in the input voltage applied
 around point D in @fig-2.7(b) yields almost no
 change in the output voltage. In order to amplify
@@ -953,9 +995,9 @@ will discuss next.
 
 ### The Small-Signal Approximation
 @eq-2.22 is written in a format that suggests
-an opportunity for simplification. Provided that $v_{in}$
-<< $v_{OV}$, the bracketed term is close to unity and we
-can write
+an opportunity for simplification. Provided that 
+$v_{in}$ $\ll$ $v_{OV}$, the bracketed term is 
+close to unity and we can write
 
 $$
 v_{out} = -\frac{2I_D}{V_{OV}}\cdot R_D \cdot v_{in} = A_v \cdot v_{in}
@@ -964,9 +1006,9 @@ where $A_v$ is a constant voltage gain term that relates
 the incremental input and output voltages.
 
 &nbsp;&nbsp;&nbsp;Interestingly, the term Av can also be found using
-basic calculus. Assuming that the incremental volt-
-ages represent infinitesimally small deviations in the
-total signal, we can rewrite Eq. (2.23) as
+basic calculus. Assuming that the incremental voltages
+represent infinitesimally small deviations in the
+total signal, we can rewrite @eq-2.23 as
 
 $$
 dv_{OUT} = A_v \cdot dv_{IN}
@@ -1017,7 +1059,7 @@ which is the operating point of the circuit.
 that this quantity is only suitable for calculations
 with “small” signals such that nonlinear effects
 are negligible. In the particular circuit considered
-here, “small” means $v_in$ << $V_{OV}$, as seen from our
+here, “small” means $v_in$ $\ll$ $V_{OV}$, as seen from our
 analysis. The general concept of approximating circuit
 behavior by assuming small-signal excursions
 around an operating point is called **small-signal
@@ -1049,13 +1091,13 @@ in @fig-2.11.
 
 ![Examples of signal clipping and distortion. (a) Output waveform is clipped due to supply voltage limit. (b) Output waveform drives the MOSFET into the triode region. ](images/png/figure2.11.png){#fig-2.11 width=100%}
 
-**Example 2-4: Signal clipping**
+**[Example 2-4]{#example-2-4} : Signal clipping**
 
 
 Consider the circuit of @fig-2.9, using the parameters
-from [Example 2-2(b)](#Example 2-2(b)): $V_{DD}$ = 5 V, $R_D$ = 10 kΩ,
+from [Example 2-2](#example-2-2)(b): $V_{DD}$ = 5 $V$, $R_D$ = 10 $kΩ$,
 *W/L* = 10, and $V_{IN}$ is adjusted to 1.5 V, so that $V_{OUT}$
-= 2.5 V at the circuit’s operating point. Calculate the
+= 2.5 $V$ at the circuit’s operating point. Calculate the
 most negative excursion that the incremental input
 voltage $v_{in}$ can assume before the output is “clipped”
 to $V_{DD}$ (as in @fig-2.11(a)).
@@ -1175,8 +1217,8 @@ approach by applying it to the basic common-source
 amplifier example covered so far in this chapter.
 Consider first the MOSFET device in @fig-2.7(a).
 In general, once the operating point of the transistor
-is known, the small-signal model is obtained by dif-
-ferentiating the large signal I-V relationships at this
+is known, the small-signal model is obtained by differentiating
+ the large signal I-V relationships at this
 point. This is further illustrated in @fig-2.12,
 assuming that the MOSFET is biased in the saturation region.
 The proportionality factor that links the
@@ -1230,7 +1272,7 @@ the resistor $R_D$, as it is already assumed in
 This is because the differentiation of a constant
 quantity yields zero.
 
-![Small-signal model of the circuit in @fig-2.7(a).](images/png/figure2.13.png){#fig-2.13 width=50%}
+![Small-signal model of the circuit in @fig-2.7(a).](images/png/figure2.13.png){#fig-2.13 width=100%}
 
 
 Using the model of @fig-2.13, we now apply
@@ -1264,10 +1306,10 @@ at the output node. The resulting plot is shown in
 (@fig-2.7(b)), one can show that the characteristic
 is flipped sideways (since $V_{SG}$ = $V_{DD}$ - $V_{IN}$) and
 upside down (because $I_D$ is negative for a p-channel
-transistor). Therefore, for small $V_{IN}$ near 0 V, the
+transistor). Therefore, for small $V_{IN}$ near 0 $V$, the
 device operates in the triode region and the output
 voltage is close to $V_{DD}$. For $V_{IN}$ = $V_{DD}$, the device is
-off and the output is at 0 V, since $V_{SG}$ = 0 and no current
+off and the output is at 0 $V$, since $V_{SG}$ = 0 and no current
 flows in the device.
 
 ![(a) P-channel common-source amplifier schematic. (b) Voltage transfer characteristic for $V_{DD}$ = 5 V, $R_D$ = 5 $kΩ$, and $W/L$ = 40.](images/png/figure2.14.png){#fig-2.14 width=100%}
@@ -1307,8 +1349,8 @@ positive quantity for a p-channel device in the “ON”
 state.
 
 
-&nbsp;&nbsp;&nbsp;Although we could solve for the small-signal volt-
-age gain directly with the circuit shown in
+&nbsp;&nbsp;&nbsp;Although we could solve for the small-signal voltage
+ gain directly with the circuit shown in
 @fig-2.15(a) it is easier to flip the transistor 180°
 (Figure 2-15(b)) so that the circuit appears similar to
 the n-channel version. Since $v_{sg}$=–$v_{gs}$ we can change
@@ -1321,7 +1363,7 @@ version as shown in @fig-2.15(c).
 configurations and model extensions that we
 will study in this module. Once the operating point
 parameters of a p-channel device have been determined
-(e.g., a calculation of $g_m$ using @eq-2.23), it is
+(e.g., a calculation of $g_m$ using @eq-2.34), it is
 perfectly valid to replace it with an n-channel equivalent.
 This is a very powerful and convenient result,
 since it allows us to focus on n-channel only configurations
@@ -1387,8 +1429,8 @@ at the operating point. This result leads to several
 interesting conclusions. First, note that the voltage
 gain of the amplifier is fully determined once $V_{OV}$
 and voltage drop across $R_D$ are known. For example,
-if the circuit is biased such that $V_{OV}$ = 0.2 V and $V_R$ =
-2 V, we have $A_v$ = –20; regardless of the particular W,
+if the circuit is biased such that $V_{OV}$ = 0.2 $V$ and $V_R$ =
+2 $V$, we have $A_v$ = –20; regardless of the particular W,
 L or $\mu_n$ $C_{ox}$ of the employed MOSFET. Second, since
 the possible values for $V_{OV}$ are lower-bounded
 (@eq-2.35) and $V_R$ is upper-bounded (finite $V_{DD}$),
@@ -1403,7 +1445,7 @@ In this result, it was assumed the transistor is biased
 at the edge of the triode region, a somewhat impractical,
 but appropriate limit case to consider. Evaluating
 the above expression for $V_{DD}$ = 5 V and $V_{OVmin}$ =
-150 mV yields $|A_{vmax}|$ ≅ 67. Can we overcome this
+150 $mV$ yields $|A_{vmax}|$ ≅ 67. Can we overcome this
 limit and change our amplifier such that it can
 achieve voltage gains beyond this value?
 
@@ -1516,15 +1558,15 @@ aspect is further discussed in [Section 2-3](#channel-length-modulation). In add
 there are practical limitations to the attainable
 voltage gain, discussed next.
 
-### Sensitivity of the Bias Point to Component Mismatch*
+### Sensitivity of the Bias Point to Component Mismatch$^*$
 
-<!--TODO check star after "mismatch" two lines above --> 
+<!--QUESTION check star after "mismatch" two lines above, no actual star bulletpoint--> 
 Consider a CS amplifier biased at the gate as done
 previously with a bias voltage $V_{IN}$, directly setting up
 the quiescent point drain current $I_D$ (depending on
 $W/L$ and other relevant device parameters). Our
 goal in using the drain bias network of
-@fig-2.19(a) is then to set $I_B$ = $I_D$ and chose VB
+@fig-2.19(a) is then to set $I_B$ = $I_D$ and chose $VB$
 such the output is biased at a reasonable, desired
 $V_{OUT}$. Unfortunately, in practice, we can never
 achieve $I_B$ = $I_D$ exactly; there will always be a non-
@@ -1537,13 +1579,15 @@ flows into $R_D$, creating the undesired $ΔV$.
 ![ Bias point shift due to mismatch in $I_B$ and $I_D$.](images/png/figure2.20.png){#fig-2.20 width=100%}
 
 
-**Example 2-5: Output Bias Voltage Shift due to Current Mismatch**
+**[Example 2-5]{#example-2-5}: Output Bias Voltage Shift due to Current Mismatch**
 
 Consider the CS amplifier of @fig-2.19(a), biased
-at the gate such that $V_{OV}$ = 500 mV. Assume $I_D$ = 200
-$μA$, and that $R_D$ is chosen such that the amplifier
+at the gate such that $V_{OV}$ = 500 mV. Assume $I_D$ = 
+200 $μA$, and that $R_D$ is chosen such that the 
+amplifier
 achieves $A_v$ = –400. Considering @fig-2.20, how
-much mismatch between $I_B$ and $I_D$ (in $%$) can be tolerated
+much mismatch between $I_B$ and $I_D$ (in $%$) can be 
+tolerated
  such that $V_{OUT}$ deviates from the intended
 bias point ($V_B$) by no more than $ΔV$ = 500 $mV$?
 Repeat this calculation for $A_v$ = –40 and –4.
@@ -1601,7 +1645,7 @@ practical biasing circuits in [Chapter 5](#Chapter 5).
 &nbsp;&nbsp;&nbsp;As a final note concerning the issue of variability,
 it is worth mentioning that electronic feedback can
 help alleviate problems as the one analyzed in
-@ex-2.5. Picture for example adding an auxiliary
+[Example 2-5](#example-2-5). Picture for example adding an auxiliary
 circuit to @fig-2.19(a) that somehow measures
 VOUT, and adjusts $V_{IN}$ (and therefore $I_D$) until the
 desired output operating voltage is set. In such
@@ -1610,7 +1654,7 @@ absorbed. Feedback circuits are not covered in this
 module, but are the subject of advanced texts such as
 [Reference 2](#Reference 2).
 
-<!-- TODO add example 2.5 a link to attach to- give it a tag--> 
+
 ## Channel Length Modulation
 
 The MOSFET model used so far assumes that the
@@ -1624,7 +1668,7 @@ increase with $V_{DS}$; an effect that can be explained (to
 first-order) as a voltage dependent modulation of
 the channel length (see [Section 2-3-1](#the-λ-model)).
 
-![Realistic n-channel I-V plots, incorporating the dependence of saturation drain current on $V_{DS}$. (solid lines), along with the first-order model assumed previously (dotted lines). Parameters: W = 20 μm, L = 2 μm.](images/png/figure2.21.png){#fig-2.21 width=100%}
+![Realistic n-channel I-V plots, incorporating the dependence of saturation drain current on $V_{DS}$. (solid lines), along with the first-order model assumed previously (dotted lines). Parameters: W = 20 $μm$, L = 2 $μm$.](images/png/figure2.21.png){#fig-2.21 width=100%}
 
 &nbsp;&nbsp;&nbsp;When inserted into the circuit of @fig-2.19(a),
 the dependence of drain current on $v_{DS}$ ($v_{OUT}$), will
@@ -1635,7 +1679,7 @@ of $R_D$ --> ∞, i.e., no explicit drain resistance, and
 using only an ideal current source in the drain biasing
 network (see @fig-2.22(a)). In this case, the
 load line is horizontal at $I_B$ = $I_D$, as shown in
-@fig-2.22(b). As before, the operating point Q is
+@fig-2.22(b). As before, the operating point $Q$ is
 established at the point where the load line and the
 device’s drain characteristic for the applied quiescent
 point input voltage ($V_{IN}$) meet.
@@ -1654,7 +1698,7 @@ is maintained in the presence of component variations.
 
 &nbsp;&nbsp;&nbsp;Assuming that a well-defined operating point has
 been established by some means, incremental
-changes in $v_{IN}$ applied around the bias point Q will
+changes in $v_{IN}$ applied around the bias point $Q$ will
 force the intersection of the horizontal load line with
 the MOSFET’s drain characteristics to move sideways
 (since the drain current cannot change), creating
@@ -1749,7 +1793,7 @@ $${#eq-2.44}
 where $L$ is in $\mu_nm$. Finally, we substitute @eq-2.44
 and @eq-2.43 into @eq-2.41 and find a very useful
 approximation to the drain current in saturation,
-often called the λ-**model**:
+often called the $\lambda$-**model**:
 
 $$
 I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2 (1+\lambda_n V_{DS})
@@ -1796,9 +1840,9 @@ conditions is met:
 constant can be approximated as infinitesimally
 small and therefore negligible.
 
-2. The excursion in the variable that is approxi-
-mated as a constant is considerable, but none-
-theless does not affect the derivative with
+2. The excursion in the variable that is approximated
+ as a constant is considerable, but nonetheless
+ does not affect the derivative with
 respect to the second variable.
 
 In the context of a common-source amplifier, for
@@ -1834,10 +1878,10 @@ g_o = \left. \frac{∂ i_D}{∂ V_{GS}}\right |_Q =  \frac{1}{2}\mu_n C_{ox} \fr
 $${#eq-2.49}
 
 
-where the approximate end result assumes $\lambda_n V_{DS}$ <<
-1, a condition that is often satisfied for long channels
+where the approximate end result assumes $\lambda_n V_{DS}$ $\ll$ 1,
+ a condition that is often satisfied for long channels
 and moderate $V_{DS}$. For instance, assuming L = 2 $\mu$m
-and  $V_{DS}$ = 2V gives  $\lambda_nV_{DS}$ = 0.1 which is much less
+and  $V_{DS}$ = 2 $V$ gives  $\lambda_nV_{DS}$ = 0.1 which is much less
 than one.
 
 &nbsp;&nbsp;&nbsp;In the above expressions, $g_m$ is the transconductance
@@ -1892,9 +1936,9 @@ approaches infinity for a fixed current in our simplistic
 square-law I-V model. As argued before, the
 usable range for $V_{OV}$ must therefore be
 lower-bounded as specified in @eq-2.35. Assuming
-$V_{OV} = V_{OVmin}$ = 150 mV and L = 1 μm, the intrinsic
-voltage gain of a MOSFET described by the param-
-eters used in this module is approximately
+$V_{OV} = V_{OVmin}$ = 150 $mV$ and L = 1 $μm$, the intrinsic
+voltage gain of a MOSFET described by the parameters
+ used in this module is approximately
 2/(0.1·0.15) = 133.
 
 Let us now consider the common-source amplifier
@@ -1904,48 +1948,51 @@ model is modified as shown in @fig-2.24 and the
 voltage gain expression becomes
 
 $$
-A_v = -g_m (\frac{1}{r_o}+ \frac{1}{R_D}) ^{-1} = -g_m R_{out}
+A_v = -g_m \left( \frac{1}{r_o} + \frac{1}{R_D} \right)^{-1} 
+= -g_m R_{out}
 $${#eq-2.51}
 
-<!-- FIXME fix large pranthasis --> 
+
 
 ![Small-signal model for the circuit of @fig-2.19(a), with finite output conductance.](images/png/figure2.24.png){#fig-2.24 width=100%}
 
 <!-- TODO Schemdraw --> 
 For $R_D$ → $∞$ , the small signal voltage gain
 approaches the intrinsic voltage gain as given by
-@eq-2.50. For $R_D << r_o$, we can approximate $A_v ≅ –g_m R_D$. 
+@eq-2.50. For $R_D \ll r_o$, we can approximate $A_v ≅ –g_m R_D$. 
 More generally, without even knowing the
 exact values of $r_o$ and $R_D$, we can argue that as long
 as the desired gain is much less (in magnitude) than
 the intrinsic voltage gain, $r_o$ can be neglected in the
-voltage gain calculation. To see this, we can re-write
+voltage gain calculation. To see this, we can rewrite
 @eq-2.51 as
 
 $$
-\frac{1}{|A_v|} = \frac{1}{g_m r_o} + \frac{1}{g_m R_D}
+\frac{1}{|A_v|} = \frac{1}{g_m r_o} + \frac{1}{g_m 
+R_D}
 $$
 
+
 $$
-g_m R_D = \frac{|A_v|}{1- \frac{|A_v|}{g_m r_o}} ≅ |A_v| for  |A_v| << g_m r_o
+g_m R_D = \frac{|A_v|}{1 - \frac{|A_v|}{g_m r_o}} ≅ |A_v| \quad \text{for} \quad |A_v| \ll g_m r_o
 $${#eq-2.52}
 
-<!-- FIXME separate the two Av and the "for" -->
 
-**Example 2-6: Analysis of a CS Amplifier Using the $\lambda$ -Model** \tag{example-2.6}
+
+**[Example 2-6]{#example-2-6}: Analysis of a CS Amplifier Using the $\lambda$ -Model** 
 
 Consider the CS voltage amplifier of @fig-2.19(a)
-with $W = 80 μm, L = 2 μm$ and $R_D$ = $50 kΩ$. The gate
-is biased such that $V_{OV} = 500 mV$ and $V_B$ is set to 2 V,
+with $W$ = 80 $μm$, $L$ = 2 $μm$ and $R_D$ = 50 $kΩ$. The gate
+is biased such that $V_{OV} = 500 mV$ and $V_B$ is set to 2 $V$,
 which is also the desired output operating point
 $V_{OUT}$. Compute the required bias current $I_B$ and the
 small-signal voltage gain of the circuit using the
 $\lambda$-model. Repeat the small-signal voltage gain calculation
-for $R_D = 5 kΩ$.
+for $R_D$ = 5 $kΩ$.
 
 **SOLUTION** 
 
-The bias current is found using $$
+The bias current is found using 
 
 $$
 I_B = I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2 (1+\lambda_n V_{DS})
@@ -1969,47 +2016,46 @@ g_m = \frac{2I_D}{V_{OV}} = \frac{2 \cdot 275 \mu A}{0.5 V} = 1.1 mS
 $$
 
 $$
-r_o = \frac{1+\lambda_n V_{DS}}{\lambda_n I_D} = \frac{1+ 0.05 \cdot 2}{0.5V^{-1} \cdot 275\mu A} = 80kΩ
+r_o = \frac{1+\lambda_n V_{DS}}{\lambda_n I_D} = \frac{1+ 0.05 \cdot 2}{0.5V^{-1} \cdot 275\mu A}
+ = 80 kΩ
 $$
 
 According to @eq-2.51, the small signal voltage gain
-for $R_D = 50 kΩ$ is given by
+for $R_D$ = 50 $kΩ$ is given by
 
 $$
 A_v = -1.1mS (\frac{1}{80kΩ} + \frac{1}{50kΩ})^{-1} = -33.9
 $$
 
-for $R_D$ = 5 kΩ we find 
+for $R_D$ = 5 $kΩ$ we find 
 
 $$
 A_v = -1.1mS (\frac{1}{80kΩ} + \frac{1}{5kΩ})^{-1} = -5.18
 $$
 
-Since the voltage gain for $R_D = 5 kΩ$ is much less than
+Since the voltage gain for $R_D$ = 5 $kΩ$ is much less than
 the intrinsic voltage gain of the transistor ($g_m r_o$ = 88),
 it is appropriate to neglect $r_o$ in this calculation. We
 can simply compute
 
 $$
-A_v = -1.1mS \cdot 5kΩ = -5.5 
+A_v = -1.1 mS \cdot 5 kΩ = -5.5 
 $$
 
-This result differs only by about 5.9% from the accu-
-rate calculation.
+This result differs only by about 5.9% from the accurate calculation.
 
 &nbsp;&nbsp;&nbsp;Another opportunity for useful engineering
 approximations in the application of the $\lambda$-model lies
 in the operating point calculation. We will illustrate
 this point through the example below.
 
-**Example 2-7: Approximate Operating Point Calculations**
+**[Example 2-7]{#example-2-7}: Approximate Operating Point Calculations**
 
-Recalculate $I_D$, $g_m$ and $r_o$ by approximating $\lambda$ $V_{DS} ≅ 0$
-in the large-signal bias point calculations. Also recal-
-culate $A_v$ for $R_D$ = 50 kΩ using this approximation.
-Compare the results to the values obtained in [Example 2-6](#).
+Recalculate $I_D$, $g_m$ and $r_o$ by approximating $\lambda$$V_{DS} ≅ 0$
+in the large-signal bias point calculations. Also recalculate
+$A_v$ for $R_D$ = 50 $kΩ$ using this approximation.
+Compare the results to the values obtained in  [Example 2-6](#example-2-6).
 
-<!-- FIXME integrated example link --> 
 
 **SOLUTION**
 
@@ -2045,13 +2091,13 @@ A_v = -1mS (\frac{1}{80kΩ} + \frac{1}{50kΩ})^{-1} = -30.8
 $$
 
 Relative to the accurate calculation from
-[Example 3-6](#) ($A_v$ = –33.9), this result is in error by
+[Example 2-6](#example-2-6) ($A_v$ = –33.9), this result is in error by
 only about 9.1%.
 
-<!-- FIXME typo example 3-6 --> example 2-6--> 
+<!-- FIXME typo example 3-6  example 2-6--> 
 
 There are several reasons why it is commonly
-acceptable to neglect the $\lambda$ $V_{DS}$ term in bias point
+acceptable to neglect the $\lambda$$V_{DS}$ term in bias point
 hand calculations. First, without this approximation,
 the calculations can become cumbersome and lead
 to transcendental equations that are tedious and
@@ -2078,7 +2124,8 @@ simplicity.
 &nbsp;&nbsp;&nbsp;[Table 2-3](#) summarizes the technology parameters
 introduced in this chapter.
 
-<!-- FIXME fix link to table --> 
+:::: {.table .striped .hover}
+Table: Standard technology parameters for the $\lambda$-model. {#tbl-lambda-model}
 
 +------------------------+:----------------------:+:----------------------:+
 | **Parameter**          | **n-channel MOSFET**   | **p-channel MOSFET**   |
@@ -2091,8 +2138,9 @@ introduced in this chapter.
 |Chanel length modulation|$\lambda_n =0.1V^{-1}/L$|$\lambda_p =0.1V^{-1}/L$|
 | parameter              |(L in $\mu$ m)          |(L in $\mu$ m)          |
 +------------------------+------------------------+------------------------+
+::::
 
-: **Table 2-3**: Standard technology parameters for the $\lambda$-model.
+<!--: **Table 2-3**: Standard technology parameters for the $\lambda$-model.-->
 
 
 
@@ -2107,8 +2155,8 @@ and since the circuit is meant to function as a
 voltage amplifier, we can equivalently model it using
 a native voltage amplifier two-port as shown in
 @fig-2.25. The reader can prove that for this model
-the open-circuit voltage gain is given by $A_v =
-–g_m R_{out}, where $R_{out}$ corresponds to the parallel 
+the open-circuit voltage gain is given by $A_v$ =
+$–g_m R_{out}$, where $R_{out}$ corresponds to the parallel 
 connection of $R_D$ and $r_o$. The native voltage amplifier
 model is sometimes preferred since it more directly
 expresses the intended function we assumed in this
@@ -2128,9 +2176,9 @@ division takes place at the input port and $v_{in} = v_s$.
 Thus, the overall voltage gain is computed as
 
 $$
-A'_v = \frac{v_{out}}{v_s} = A_v \cdot (\frac{R_L}{R_L + R_{out}})
+A'_v = \frac{v_{out}}{v_s} = A_v \cdot \left(\frac{R_L}{R_L + R_{out}}\right)
 $${#eq-2.53}
-<!-- FIXME big prantesis -->
+
 
 ![Common-source amplifier model with transducer and load resistance.](images/png/figure2.26.png){#fig-2.26 width=100%}
 
@@ -2147,9 +2195,8 @@ quiescent point output voltage of the amplifier. In this
 case, the load resistance must also be connected to
 the circuit in the operating point analysis where the
 small-signal parameters such as $r_o$ are computed.
-[Problem 2-17](#) looks at an example.
+[Problem 2-17](#prob-2-17) looks at an example.
 
-<!-- FIXME link to ex 2-17 --> 
 
 ## Summary 
 
@@ -2179,15 +2226,19 @@ length modulation using the $\lambda$-model.
 
 &nbsp;&nbsp;&nbsp;The most important concepts that you should
 have mastered are:
-*  Determining MOSFET drain currents in all
+
+ *  Determining MOSFET drain currents in all
 regions of operation; determining the regions of
 operation based on the transistor’s terminal voltages.
-* Constructing transfer characteristics and load line
+
+ * Constructing transfer characteristics and load line
 plots for common-source stages for various drain
 bias configurations.
-* Calculating the operating point of a CS stage and
+
+ * Calculating the operating point of a CS stage and
 the MOSFET’s small-signal parameters $g_m$ and $r_o$.
-* Drawing the small-signal model of a CS stage and
+
+ * Drawing the small-signal model of a CS stage and
 calculating its voltage gain.
 
 ## References
@@ -2206,8 +2257,8 @@ Simulation and Design*, 2nd Edition, Springer,
 5. P. G. A. Jespers, *The $g_m/I_D$ Methodology, a Sizing Tool for Low-Voltage Analog CMOS Circuits*, Springer, 2010.
 
 6. M. J. M. Pelgrom, et al., *“Matching properties of
-MOS transistors,”* IEEE J. of Solid-State Cir-
-cuits, pp. 1433-1439, May 1989.
+MOS transistors,”* IEEE J. of Solid-State Circuits,
+ pp. 1433-1439, May 1989.
 
 7. G. Gildenblat, et al., “PSP: An Advanced 
 Surface-Potential-Based MOSFET Model for 
@@ -2218,63 +2269,61 @@ pp. 1979-1993, Sept. 2006.
 
 
 Unless otherwise stated, use the standard model
-parameters specified in [Table 2-3](#)
-<!-- FIXME link--> 
+parameters specified in @tbl-lambda-model
 for the problems
 given below. Consider only first-order MOSFET
 behavior and include channel length modulation (as
 well as any other second-order effects) only where
 explicitly stated.
 
-<!--TODO double check all the problem belows, specially the equation 
-part of the problems--> 
 
-**P2.1**An n-channel transistor biased in saturation
-with $W/L = 10$ carries a drain current of 200 $\mu$ A when
-$V_{GS}$ = 1.5 V is applied. With $V_{GS}$ = 1 V, the current
-drops to 50 $\mu$ A. Determine $V_{Tn}$ and $\mu C_{ox}$ of this 
+**P2.1** An n-channel transistor biased in saturation
+with $W/L = 10$ carries a drain current of 200 $\mu$A when
+$V_{GS}$ = 1.5 $V$ is applied. With $V_{GS}$ = 1 $V$, the current
+drops to 50 $\mu$A. Determine $V_{Tn}$ and $\mu C_{ox}$ of this 
 transistor.
 
 **P2.2** Show that two MOS transistors in series with
 channel lengths $L_1$ and $L_2$ and identical channel
 widths can be modeled as one equivalent MOS 
-transistor with length $L_1 + L_2$ (see [Figure P2-2](#fig-ex-2.2)).
+transistor with length $L_1 + L_2$ (see @fig-p2-2).
 Assume that $M_1$ and $M_2$ have identical parameters except for
 their channel lengths. Hint: there are (at least) two
 ways to solve this problem. One is through extensive
 algebra; the other is though physical insight and
 arguments based on the MOSFET cross-section.
 
-![](images/png/figure-p2-2.png){#fig-p2-2. width=100%}
+![](images/png/figure-p2-2.png){#fig-p2-2 width=100%}
 
 **P2.3** Derive an analytical expression for the input
 voltage that corresponds to the transition point
-(point C) between the saturation and triode regions
+(point $C$) between the saturation and triode regions
 in @fig-2.7(b).
 
-**P2.4** In Example 2-4, we calculated the most 
-negative input excursion that the circuit in @fig-2.9 can
+**P2.4** In [Example 2-4](#example-2-4), we calculated 
+the most negative input excursion that the circuit in 
+@fig-2.9 can
 handle before the output is clipped to the supply
 voltage. In this problem, calculate the most positive
 input excursion that can be applied before the 
 MOSFET enters the triode region. Assume the same
-parameters as in Example 2.4: $V_{DD}$ = 5 V,
-$R_D = 10 kΩ, W/L = 10$, and $V_{IN}$ is adjusted to 1.5 V,
-so that $V_{OUT}$ = 2.5 V at the circuit’s operating point.
+parameters as in [Example 2-4](#example-2-4): $V_{DD}$ = 5 $V$,
+$R_D$ = 10 $kΩ$, W/L = $10$, and $V_{IN}$ is adjusted to 1.5 $V$,
+so that $V_{OUT}$ = 2.5 $V$ at the circuit’s operating point.
 
 
 **P2.5** For the circuit shown in @fig-p2-5, sketch
 $v_{OUT}$ as a function of $v_{IN}$. Assume that $v_{IN}$ varies
-from 0 to 5 V. There is no need to carry out any
+from 0 to 5 $V$. There is no need to carry out any
 detailed calculations; simply draw a qualitative
 graph and mark pertinent asymptotes and breakpoints
 (such as changes in the MOSFETs region of
-operation)
+operation).
 
 
-![Figure P2-5](images/png/figure-p2-5.png){#fig-p2-5 width=50%}
+![](images/png/figure-p2-5.png){#fig-p2-5 width=50%}
 
-![Figure P1-5](images/png/figure-p1-5.png){#fig-p1-5 width=100%}
+
 
 **P2.6** Derive the small-signal voltage gain given by
 @eq-2.27 through direct differentiation of
@@ -2287,29 +2336,31 @@ signal I-V characteristic (in the saturation region) is
 given by
 
 $$
-I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^2.5 
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn})^{2.5} 
 $$
 
-Assuming that $\mu C_{ox} W/L = 100 A/V^{2.5}$ and $I_D = 1 \mu$ A,
+Assuming that $\mu C_{ox} W/L$ =  100 $\mu A$/$V^{2.5}$ and $I_D$ = 1 $\mu$A,
+
 compute the transconductance of the device.
 
 **P2.8** The ratio of the small-signal drain current
 excursion and quiescent point drain current ($i_d/I_D$) is
-often called the drain modulation index. Show that
+sometimes called the drain modulation index. Show that
 for a MOSFET, $i_d/I_D$ is twice as large as the relative
 excursion in the gate-source voltage, $v_{gs}/V_{OV}$.
 
-**P2.9** Consider the CS amplifier shown @fig-2.19(a).
+**[P2.9]{#problem-2-9}** Consider the CS amplifier shown @fig-2.9(a).
 Calculate the small-signal voltage gain assuming
-$V_{IN} = 1.5V, W/L = 20, R_D = 5 kΩ$, and $V_{DD}$ = 5 V.
+$V_{IN}$ = 1.5 $V$, W/L = 20, $R_D$ = 5 $kΩ$, and $V_{DD}$ = 5 $V$.
+Be sure to check the device's region of operation.
 
 **P2.10** Consider the p-channel CS amplifier shown in
 @fig-2.14(a). Assuming $W/L$ = 20, $R_D$ = 5 $kΩ$, and
-$V_DD$ = 5 V, calculate the required quiescent point
-input voltage so that $V_{OUT}$ = 2.5V. What is the
+$V_{DD}$ = 5 $V$, calculate the required quiescent point
+input voltage so that $V_{OUT}$ = 2.5 $V$. What is the
 small-signal gain of the circuit?
 
-**P2.11** Repeat Problem 2.9 with $R_D$ = 10 $kΩ$. With
+**P2.11** Repeat [Problem 2.9](#problem-2-9) with $R_D$ = 10 $kΩ$. With
 this value, the MOSFET operates in the triode
 region. Compute the small-signal voltage gain by
 writing the large-signal relationship between the
@@ -2322,68 +2373,68 @@ amplifiers as shown in @fig-p2-12.
 (a) Draw the small-signal equivalent model for this
 circuit.
 
-(b) Calculate the small-signal voltage gains $v_{o1}/v_i$
-and $v_{o2}/v_i$. Assume that $V_B = V_{DD}/2$ and that the
-device sizes are chosen such that the bias points
-of nodes $v_{OUT1}$ and $v_{OUT2}$ are also exactly at
-$V_{DD}/2$. You are also given $V_{Tn} = |V_{Tp}| = 0.5 V$,
-and $V_DD = 2.5 V$. Note that you do not need to
-know any device geometries to solve this problem.
+(b) Calculate the small-signal voltage gains $v_{out1}/v_{in}$  and
+  $v_{out2}/v_{in}$. Assume that
+$V_{IN} = V_{DD} / 2$  and that the device sizes
+are chosen such that the bias points of nodes
+ $v_{out1}$  and  $v_{out2}$  are also exactly at
+  $V_{DD} / 2$ .
 
 
 ![](images/png/figure-p2-12.png){#fig-p2-12 width=50%}
 
-**P2.13** Repeat [Problem 2.9](#)
+**P2.13** Repeat [Problem 2.9](#problem-2-9)
  and include the effect of channel length modulation 
 in the small-signal voltage
 gain calculation. Neglect channel length modulation
 in the bias point calculation. Quantify the
 percent difference in the calculated small-signal
-voltage gain compared to [Problem 2.9](#). Assume that
-the channel length of the MOSFET is 2 $\mu$ m.
-<!-- FIXME link--> 
+voltage gain compared to [Problem 2.9](#problem-2-9). Assume that
+the channel length of the MOSFET is 2 $\mu$m.
+
 
 **P2.14** For the p-channel common-source amplifier
 shown in @fig-2.14(a)
 
-(a) Given $W/L= 12\mu m/2\mu m$ and $R_D = 10 kΩ$, 
-calculate $V_{BIAS}$ such that $V_{OUT}$ is 2.5 V. Neglect 
-channel length modulation in this calculation.
+(a) Given $W/L= 12$ $\mu m$/2 $\mu m$ and $R_D$ = 10 $kΩ$, 
+calculate $V_{IN}$ such that $V_{OUT}$ is 2.5 $V$. $V_{DD}$ = $5V$.
+Neglect channel length modulation in this calculation.
 
 (b) What is the small-signal voltage gain,
-$A_v = v_{out} /v_{in}$? Include the effect of 
+$A_v = v_{out} /v_{in}$ ? Include the effect of 
 channel-length modulation in your calculation.
 
 (c) To increase the voltage gain, you increase $R_D$ to
-100 kΩ. Calculate the new small-signal voltage
+100 $kΩ$. Calculate the new small-signal voltage
 gain, $A_v$. You must re-bias the circuit so that
-$V_{OUT} = 2.5 V$.
+$V_{OUT}$ = 2.5 $V$.
 
 (d) We could also try to increase the voltage gain of
 the initial circuit by increasing $W/L$ rather than
-$R_D$. Calculate the new $A_v$ if $W/L= 120\mu m/2\mu m$
-and $R_D = 10 kΩ$. Be sure to re-bias the circuit so
-that $V_{OUT} = 2.5 V$.
+$R_D$. Calculate the new $A_v$ if $W/L$= 120 $\mu m$ /2 $\mu m$
+and $R_D$ = 10 $kΩ$. Be sure to re-bias the circuit so
+that $V_{OUT}$ = 2.5 $V$.
 
-<!-- FIXME make sure that the pragraphs are more "in than the regular text" -->
 
 **P2.15** Calculate the small-signal gain of the intrinsic
 gain stage shown in @fig-2.22(a), assuming
-$W= 10 \mu m$ and using the parameters given below. In
-each case, also calculate the gate overdrive voltage
+$W$= 10 $\mu m$ and using the parameters given below. In
+each case, explicitly calculate the gate overdrive voltage
 ($V_{OV}$), the transconductance ($g_m$) and the output
 resistance ($r_o$). Assume that the circuit is biased such
-that the MOSFET operates in the saturation region.
+that the MOSFET operates in the saturation region. 
+Neglect $V_{DS}$ dependence in the calculation of  $r_o$ .
 
-(a) ID = 100 $\mu$A, L = 2 $\mu$m
+(a) $I_D$ = 100 $\mu$A, $L$ = 2 $\mu$m
 
-(b) ID = 50 $\mu$A, L = 2 $\mu$m
+(b) $I_D$ = 50 $\mu$A, $L$ = 2 $\mu$m
 
-(c) ID = 100 $\mu$A, L = 4 $\mu$m
+(c) $I_D$ = 100 $\mu$A, $L$ = 4 $\mu$m
 
 **P2.16** Consider the CS amplifier of @fig-2.19(a)
-with the following parameters: $V_B$ = 2.5 V,
-$I_B$ = 500 $\mu A, W = 20 \mu m, L = 1 \mu m$, and $R_D = 5 kΩ$ .
+with the following parameters: $V_B$ = 2.5 $V$,
+$I_B = 500\,\mu\text{A}, \; W = 20\,\mu\text{m}, \; L = 1\,\mu\text{m},$
+and $R_D$ = 5 $kΩ$ .
 
 (a) Calculate the exact value of $V_{IN}$ required such
 that $I_D = I_B$, and $V_{OUT} = V_B$. Include the effect
@@ -2396,10 +2447,10 @@ discrepancies may be due to variations in the
 semiconductor process or simply due to uncertainty
 in the simplistic $\lambda$-model.
 
-**P2.17** Consider the CS amplifier shown in @fig-p2-17
-with the following parameters: $V_{DD} = 5 V,
-V_{IN} = 1.8 V, W = 15 \mu m, L = 1 \mu m, R_D = 5 kΩ $, and
-$R_L = 10 kΩ$.
+**[P2.17]{#prob-2-17}** Consider the CS amplifier shown in @fig-p2-17
+with the following parameters: $V_{DD}$ = 5 $V$,
+$V_{IN}$ = 1.8 $V$, W = 15 $\mu m$, L = 1 $\mu m$, $R_D$ = 5 $kΩ$, and
+$R_L$ = 10 $kΩ$.
 
 
 (a) Calculate the output quiescent point voltage
@@ -2408,9 +2459,7 @@ connected load resistance $R_L$ into account. Ignore
 channel-length modulation in this calculation.
 
 (b) Calculate $g_m$ and $r_o$ using the parameters from
-part (a). Use the approximate approach from
-[Example 2-7](#).
-<!-- FIXME link -->
+part (a). Take  $V_{DS}$ dependence into account.
 
 
 (c) Draw a two-port voltage amplifier model for
@@ -2418,13 +2467,9 @@ the circuit and calculate the
 open-circuit voltage gain ($A_v$) and overall voltage gain 
 ($A'_v$) with the load resistor connected.
 
-(d) Repeat parts (a) and (b) without considering
-the connected $R_L$. Explain the main differences
-in your answers. Will these differences have an
-effect on the function of the amplifier? Distinguish
-between small- and large-signal 
-characteristics of the amplifier.
-
+(d) Repeat parts (a) and (b) without considering the
+ connected $RL$ and recompute the two-port parameters of 
+ part (c). Summarize the observed differences.
 
 
 
