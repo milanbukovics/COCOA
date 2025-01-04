@@ -12,6 +12,7 @@ project:
     - "contents/*/*/*/*.qmd"
     - "contents/*/*/*/*/*.qmd"
 
+jupyter: python3 
 book:
 #  google-analytics:
 #    tracking-id: ""
@@ -63,6 +64,7 @@ book:
     - part: Learn to Crawl — Square-Law Transistors, Biasing and Small-Signal Analysis
       chapters:
       - contents/partI/partI.1.qmd
+      - contents/partI/partI.2.qmd
     - text: "---"
     - part: Learn to Walk — Real Transistors, Noise, Mismatch, and Distortion
       chapters:
@@ -87,6 +89,7 @@ editor:
 
 bibliography: 
   - contents/partI/partI.1.bib
+  - contents/partI/partI.2.bib
 
 #comments:
 #  giscus:
