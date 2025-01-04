@@ -2,19 +2,6 @@
 bibliography: partI.2.bib
 ---
 <div style="text-align: justify">
-<!--
-```{python}
-#| echo: false
-import schemdraw
-import schemdraw.elements as elm
-with schemdraw.Drawing():
-    elm.Resistor()
-    elm.Capacitor()
-    elm.Diode()
-```
--->
-
-
 
 # Introduction {#sec-introduction}
 
