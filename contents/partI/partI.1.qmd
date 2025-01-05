@@ -683,14 +683,14 @@ calculations.
 
 For the current amplifier in @fig-1.12(a), calculate
 the following unilateral two-port model parameters:
-the current gain $A_i$, the input resistance $R_in$, and the
-output resistance $R_out$. Also, compute the overall
+the current gain $A_i$, the input resistance $R_{in}$, and the
+output resistance $R_{out}$. Also, compute the overall
 transfer function $i_{out} / v_s$ using the obtained unilateral
 two-port model. Compare the result to a direct
 KCL-based analysis of the transfer function.
 Assume that the circuit is driven by a current source
 with resistance $R_S$ and loaded by a resistance $R_L$. For
-algebraic simplicity, assume $R_1 = 1 / g_m $ (this case 
+algebraic simplicity, assume $R_1 = 1 / g_m$ (this case 
 corresponds to the common-gate amplifier circuit covered in Chapter 4).
 
 **SOLUTION**
@@ -787,8 +787,8 @@ Solving this system of equations for $v_{out}$
 and substituting $i_{out} = - v_{out} / R_L$ yields
 
 $$
-A_{i, Exact}' = -\frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} = 
-\frac{R_S (1 + g_m R_2)}{R_L + R_2 + R_S + g_m R_2 R_S}
+A_{i, Exact}' = \frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} = 
+-\frac{R_S (1 + g_m R_2)}{R_L + R_2 + R_S + g_m R_2 R_S}
 $$
 
 The discrepancy factor between the two results is given by
@@ -968,7 +968,7 @@ source resistance, $R_S$.
 (a) Use the unilateral voltage amplifier two-port
 model found in P1.1 to find the overall voltage
 gain when the amplifier is driving a load resistor
-RL .
+$R_L$.
 (b) Specify whether the resistances $r_1$, $r_i$, $r_o$, $r_2$ in the
 small signal model should be increased, be
 decreased, or remain the same to improve the
@@ -985,9 +985,9 @@ decreased, or remain the same to improve the
 overall current gain.
 
 **P1.5** Given the circuit model in @fig-p1-5 for an amplifier circuit
-For simplicity, assume $r_i$ and $r_o$ can be removed and $r_1$=$r_2$=0
+(with $r_i$ and $r_o$ removed and $r_1$=$r_2$=0)
 (a) Find the input and output resistance.
-Note that since this circuit is bilateral, $R_S$ must be considered when computing $R_{out}$, and $R_L$ must be considered when computing $R_{in}.
+Note that since this circuit is bilateral, $R_S$ must be considered when computing $R_{out}$, and $R_L$ must be considered when computing $R_{in}$.
 (b) Construct a two-port model for a unilateral
 voltage amplifier.
 (c) Construct a two-port model for a unilateral current amplifier.
