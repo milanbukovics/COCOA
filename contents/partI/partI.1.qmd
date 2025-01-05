@@ -435,7 +435,7 @@ a Thevénin to Norton transformation for the controlled source.
 A corollary to this equivalence is that we can for
 example use a transconductance amplifier model to
 describe a voltage amplifier circuit. This is illustrated
-through the circuit of @fig-1.10, which is electrically
+through the circuit of @fig-1.11, which is electrically
 equivalent to that of @fig-1.10 (see Problem P1-2). 
 Note that the output is taken as the
 voltage across the output port instead of the output
@@ -765,7 +765,7 @@ Substituting $A_i$, $R_{in}$, and $R_{out}$ from the
 above calculation into this expression yields
 
 $$
-A_{i, Two-Port}' = \frac{i_{out}}{i_s} = \frac{R_S(1 + g_m R_2)(R_2 + R_S + g_m R_2 R_S)}{(R_L + R_2 + R_S + g_m R_2 R_S)^2}
+A_{i, Two-Port}' = \frac{i_{out}}{i_s} = -\frac{R_S(1 + g_m R_2)(R_2 + R_S + g_m R_2 R_S)}{(R_L + R_2 + R_S + g_m R_2 R_S)^2}
 $$
 
 We now wish to compare this result to the accurate
@@ -787,7 +787,7 @@ Solving this system of equations for $v_{out}$
 and substituting $i_{out} = - v_{out} / R_L$ yields
 
 $$
-A_{i, Exact}' = \frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} = 
+A_{i, Exact}' = -\frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} = 
 \frac{R_S (1 + g_m R_2)}{R_L + R_2 + R_S + g_m R_2 R_S}
 $$
 
@@ -1016,7 +1016,7 @@ transresistance amplifier as shown in @fig-1.9(d).
 Draw the resulting model, including $R_{in}$ and $R_{out}$.
 
 **P1.8** Consider the amplifier circuit of @fig-1.12(a)
-with $R_1 = 1/g_m$ = 1 kΩ and R2 = 100 kΩ. Compute all
+with $R_1 = 1/g_m$ = 1 kΩ and R2 = 100 kΩ and RS = RL =10 kΩ Compute all
 component values for the bilateral two-port current
 amplifier model of @fig-1.12(b). Note that $A_{if}$, $R_{in}$,
 and $R_out$ can be described as explained in Section 1-3.
