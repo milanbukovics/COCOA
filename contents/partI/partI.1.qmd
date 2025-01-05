@@ -985,7 +985,9 @@ decreased, or remain the same to improve the
 overall current gain.
 
 **P1.5** Given the circuit model in @fig-p1-5 for an amplifier circuit
+For simplicity, assume $r_i$ and $r_o$ can be removed and $r_1$=$r_2$=0
 (a) Find the input and output resistance.
+Note that since this circuit is bilateral, $R_S$ must be considered when computing $R_{out}$, and $R_L$ must be considered when computing $R_{in}.
 (b) Construct a two-port model for a unilateral
 voltage amplifier.
 (c) Construct a two-port model for a unilateral current amplifier.
