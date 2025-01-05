@@ -1018,8 +1018,8 @@ transresistance amplifier as shown in @fig-1.9(d).
 Draw the resulting model, including $R_{in}$ and $R_{out}$.
 
 **P1.8** Consider the amplifier circuit of @fig-1.12(a)
-with $R_1 = 1/g_m$ = 1 kΩ and R2 = 100 kΩ and RS = RL =10 kΩ Compute all
-component values for the bilateral two-port current
+with $R_1 = 1/g_m$ = 1 kΩ and $R_2$ = 100 kΩ and $R_S$ = $R_L$ = 10 kΩ. 
+Compute all component values for the bilateral two-port current
 amplifier model of @fig-1.12(b). Note that $A_{if}$, $R_{in}$,
 and $R_out$ can be described as explained in Section 1-3.
 Similar to $A_{if}$, $A_{ir}$ is found by short-circuiting the
