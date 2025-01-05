@@ -1011,17 +1011,18 @@ model.
 
 **P1.7** Derive an expression for the transresistance
 $v_{out} / i_{in}$ for the circuit of @fig-1.7 using the following
-parameters: $A_{i1}$ = 1, $G_{m2}$ = 10 mS, $A_{v3}$ = 0.8, $R_in1$ = 50
+parameters: $A_{i1}$ = 1, $G_{m2}$ = 10 mS, $A_{v3}$ = 0.8, $R_{in1}$ = 50
 Ω, $R_{out1}$ = 500 Ω, $R_{out2}$ = 1 kΩ, and $R_{out3}$ = 100 Ω. 
 Using this result, lump the entire circuit into a single 
 transresistance amplifier as shown in @fig-1.9(d). 
 Draw the resulting model, including $R_{in}$ and $R_{out}$.
 
-**P1.8** Consider the amplifier circuit of @fig-1.12(a)
-with $R_1 = 1/g_m$ = 1 kΩ and $R_2$ = 100 kΩ and $R_S$ = $R_L$ = 10 kΩ. 
+**P1.8** Consider the amplifier circuit of @fig-1.12
+
+(a) with $R_1 = 1/g_m$ = 1 kΩ and $R_2$ = 100 kΩ and $R_S$ = $R_L$ = 10 kΩ. 
 Compute all component values for the bilateral two-port current
-amplifier model of @fig-1.12(b). Note that $A_{if}$, $R_{in}$,
-and $R_out$ can be described as explained in Section 1-3.
+amplifier model of @fig-1.12
+(b) Note that $A_{if}$, $R_{in}$,and $R_{out}$ can be described as explained in Section 1-3.
 Similar to $A_{if}$, $A_{ir}$ is found by short-circuiting the
 input port and by injecting a test current into the
 output port. Compare the relative magnitude of $A_{if}$
