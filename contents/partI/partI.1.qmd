@@ -787,7 +787,7 @@ Solving this system of equations for $v_{out}$
 and substituting $i_{out} = - v_{out} / R_L$ yields
 
 $$
-A_{i, Exact}' = \frac{i_{out}}{i_s} = \frac{i_{out}}{i_s} = 
+A_{i, Exact}' = \frac{i_{out}}{i_s} = 
 -\frac{R_S (1 + g_m R_2)}{R_L + R_2 + R_S + g_m R_2 R_S}
 $$
 
