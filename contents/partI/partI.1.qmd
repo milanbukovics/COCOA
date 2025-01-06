@@ -353,7 +353,7 @@ source current ($i_s$) and the control current ($i_{in}$). In
 this context, “large” and “small” refer to the value of
 $R_{in}$ relative to the source resistance ($R_s$).
 
-![Two-port amplifier models with input source and load: (a) voltage amplifier, (b) current amplifier, (c) transconductance amplifier, and (d) transresistance amplifier.](images/png/figure1.9.png){#fig-1.9 width=100%}
+{{< include ./images/figure1.9.qmd >}}
 
 On the output side, if the variable of interest is a
 voltage, the output resistance ($R_{out}$) should be small
@@ -794,7 +794,7 @@ $$
 The discrepancy factor between the two results is given by
 
 $$
-\frac{A_{i, Two-Port}'}{A_{i, Exact}'} = \frac{R_2 + R_S + g_m R_2 R_S}{R_L + R_2 + R_S + g_m R_2 R_S} = \frac{1 + R_S \Bigl(\frac{1}{R_2} + g_m}{1 + \frac{R_L}{R_2} + R_S \Bigl(\frac{1}{R_2} + g_m \Bigr)}
+\frac{A_{i, Two-Port}'}{A_{i, Exact}'} = \frac{R_2 + R_S + g_m R_2 R_S}{R_L + R_2 + R_S + g_m R_2 R_S} = \frac{1 + R_S \Bigl(\frac{1}{R_2} + g_m \Bigr)}{1 + \frac{R_L}{R_2} + R_S \Bigl(\frac{1}{R_2} + g_m \Bigr)}
 $$
 
 From this result, we see that the discrepancy factor
