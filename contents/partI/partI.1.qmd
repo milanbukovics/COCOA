@@ -2,6 +2,8 @@
 bibliography: partI.1.bib
 ---
 
+<div style="text-align: justify">
+
 # Introduction {#sec-introduction}
 
 With the development of the integrated circuit, the
