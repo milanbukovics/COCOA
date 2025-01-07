@@ -1030,3 +1030,5 @@ Similar to $A_{if}$, $A_{ir}$ is found by short-circuiting the
 input port and by injecting a test current into the
 output port. Compare the relative magnitude of $A_{if}$
 and $A_{ir}$.
+
+</div>
