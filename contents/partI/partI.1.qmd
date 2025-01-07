@@ -905,7 +905,7 @@ port resistances and frequency dependent impedances
 The derivations of device models in this module
 assume familiarity with basic solid-state physics and
 electrostatics as treated in introductory texts on
-solid-state device physics (see [@robert2003pierret]).
+solid-state device physics (see [@pierret1996semiconductor]).
 A few sections of this module are marked with an
 asterisk (*) to indicate advanced material that may
 in some cases go beyond the learning goals of an
