@@ -1012,7 +1012,7 @@ amplifier model.
 (c) Draw the two-port model for a current amplifier by conversion from the voltage amplifier
 model.
 
-**P1.7** Derive an expression for the transresistance
+**P1.7** Compute the transresistance
 $v_{out} / i_{in}$ for the circuit of @fig-1.7 using the following
 parameters: $A_{i1}$ = 1, $G_{m2}$ = 10 mS, $A_{v3}$ = 0.8, $R_{in1}$ = 50
 Ω, $R_{out1}$ = 500 Ω, $R_{out2}$ = 1 kΩ, and $R_{out3}$ = 100 Ω. 
