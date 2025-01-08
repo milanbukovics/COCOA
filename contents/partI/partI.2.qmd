@@ -193,7 +193,7 @@ noting that the electric field is given by $E(y)=-dV(y)/dy$ , we can write
 
 
 $$
-I_D(y) =  \mu_n C_{ox} W \cdot (V_{GS} - V_y - V_{Tn}) \frac{dV_y}{dy}
+I_D =  \mu_n C_{ox} W \cdot (V_{GS} - V_y - V_{Tn}) \frac{dV_y}{dy}
 $${#eq-2.4}
 
 This result describes the current density profile
