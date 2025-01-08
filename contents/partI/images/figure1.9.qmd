@@ -5,8 +5,9 @@
 #| fig-cap: "Two-port amplifier models with input source and load: (a) voltage amplifier, (b) current amplifier, (c) transconductance amplifier, and (d) transresistance amplifier"
 import schemdraw as sd
 import schemdraw.elements as elm
-sd.svgconfig.svg2 = False
-with sd.Drawing(canvas='svg') as d:
+#sd.svgconfig.svg2 = False
+#with sd.Drawing(canvas='svg') as d:
+with sd.Drawing() as d:
         d.config(unit=2)
         d.config(fontsize=14)
 
