@@ -202,7 +202,7 @@ found by separating the variables and integrating
 along the direction of $y$
 
 $$
-\int_0^L I_D(y) \, dy = \mu_n C_{ox} W \int_0^{V_{DS}} (V_{GS} - V(y) - V_{Tn}) \, dV 
+\int_0^L I_D \, dy = \mu_n C_{ox} W \int_0^{V_{DS}} (V_{GS} - V(y) - V_{Tn}) \, dV 
 $${#eq-2.5}
 
 
