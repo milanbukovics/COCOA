@@ -931,7 +931,7 @@ uppercase subscript
 * Small-signal quantity has a lowercase variable
 name and lowercase subscript
 
-# Summary
+## Summary
 
 This chapter offered a brief motivation for the topics
 covered in this module, which focuses on the analysis
