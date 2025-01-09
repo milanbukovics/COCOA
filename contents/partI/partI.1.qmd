@@ -949,7 +949,7 @@ module, are an example of such abstractions.
 
 ![Figure P1-1](images/png/figure-p1-1.png){#fig-p1-1 width=100%}
 
-# Problems
+## Problems
 
 **P1.1** Given the amplifier circuit in @fig-p1-1
 (a) Find the input and output resistance.
