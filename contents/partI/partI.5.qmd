@@ -122,9 +122,9 @@ The process variations discussed in the previous section account for variability
 
 Device mismatch typically follows Gaussian distributions and depends on device size and spacing [see @Pelgrom1989]. For our purpose in this module, we will not expand upon the detailed theory behind this and instead consider only approximate numerical ranges that are typical for a technology as the one assumed in this module (see @tbl-5.4).
 
-At first glance, we see from @tbl-5.4 that device mismatches are typically much smaller than global process variations.[^longnote] For instance, the nominal threshold voltage for n-channel transistors can vary by ±200mV from fabrication run to fabrication run. However, within a specific fabrication outcome, the random threshold mismatch between two n-channels on the same chip is on the order of 10 mV.
+At first glance, we see from @tbl-5.4 that device mismatches are typically much smaller than global process variations.[^note5.1] For instance, the nominal threshold voltage for n-channel transistors can vary by ±200mV from fabrication run to fabrication run. However, within a specific fabrication outcome, the random threshold mismatch between two n-channels on the same chip is on the order of 10 mV.
 
-[^longnote]:This tends to hold true for technologies with feature sizes above 100 nm. For nano-scale devices, device mismatch can be comparable to process spread.
+[^note5.1]:This tends to hold true for technologies with feature sizes above 100 nm. For nano-scale devices, device mismatch can be comparable to process spread.
 
 This observation has a profound impact on the way integrated circuits are architected. That is, designers will usually try to exploit the fact that the components on the same chip show good matching. This contrasts with printed circuit board (PCB) design, where the designer often cannot rely on good matching between the available discrete components. Instead, PCB design can offer certain components with very high absolute accuracy across fabrication lots, such as 1%-precise resistors. As we
 know from @tbl-5.2, such levels of absolute accuracy are usually not available in an integrated circuit.
@@ -688,12 +688,12 @@ $$ {#eq-5.34}
 As we see from this result, $g_{m2}$ depends only on the resistance $R$ and the scaling factor $m$, i.e., the transconductance will not be affected by MOSFET process and temperature variations. In a way, the circuit “recomputes” $I_{REF}$ such that the transconductance is held constant to the value given by @eq-5.34.
 This is the reason why this circuit is typically called a constant-gm reference generator, as mentioned earlier. It should be noted, of course, that not only the transconductance of $M_2$ is held constant when this circuit is used. Any other MOSFET that utilizes $I_{REF}$ or a copy of this current will behave similarly.
 
-&nbsp;&nbsp;&nbsp; In practice, the device type used to implement resistor $R$ should be chosen with care. When implemented on-chip, the designer will often opt for a highly doped polysilicon resistor that has relatively small process variations and a small temperature coefficient (see @tbl-5.2 and @tbl-5.3). Alternatively, the resistance is sometimes placed off-chip, where it can be realized, for example, with a 1%-accurate and low temperature coefficient metal film resistor.[^finalnote]
+&nbsp;&nbsp;&nbsp; In practice, the device type used to implement resistor $R$ should be chosen with care. When implemented on-chip, the designer will often opt for a highly doped polysilicon resistor that has relatively small process variations and a small temperature coefficient (see @tbl-5.2 and @tbl-5.3). Alternatively, the resistance is sometimes placed off-chip, where it can be realized, for example, with a 1%-accurate and low temperature coefficient metal film resistor.[^note5.2]
 
 
 As a final note, we should emphasize that the foregoing analysis neglected many second-order effects, such as channel-length modulation and back-gate effect. In practice, these effects can have some bearing on the circuit’s accuracy and therefore leave room for improvements (such as including cascode transistors). The interested reader will find many articles on this topic in analog circuit literature and advanced texts, such as [@gray2009analysis].
 
-[^finalnote]: When the resistor is placed off-chip, the designer must take great care to avoid stability issues. Using feedback circuit analysis techniques, it can be shown that even relatively small amounts of parasitic capacitance at the source node of $M_1$ can make the circuit oscillate.
+[^note5.2]: When the resistor is placed off-chip, the designer must take great care to avoid stability issues. Using feedback circuit analysis techniques, it can be shown that even relatively small amounts of parasitic capacitance at the source node of $M_1$ can make the circuit oscillate.
 
 
 ## Voltage Biasing Considerations {#sec-5-5}
