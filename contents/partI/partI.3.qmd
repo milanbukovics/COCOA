@@ -1,0 +1,3 @@
+# Frequency Response of Common-Source Voltage Amplifier {#sec-ch3}
+
+TBD.
