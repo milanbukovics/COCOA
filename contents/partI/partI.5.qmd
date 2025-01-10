@@ -1,17 +1,4 @@
 ---
-title: "Chapter 5"
-#format:
-#  pdf:
-#    toc: true
-#    number-sections: true
-#    color links: true
-format:
-  html:
-    toc: true
-    fig-align: center
-    lang: en-US
-    number-sections: true
-    toc-expand: 2
 bibliography: partI.5.bib
 ---
 
