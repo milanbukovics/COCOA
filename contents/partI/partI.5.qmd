@@ -380,7 +380,7 @@ In this drawing, we apply an output perturbation and consider the voltage swing 
 ::: {.callout-note title="Shielding effect of the cascode"}
 
 {{< include ./images/shield.qmd >}}
-Applying KCL we can write:
+Applying KCL we can write
 $$
 \frac{\Delta V_{out} - \Delta V_{d1}}{r_{o2}} - g'_{m2} \cdot \Delta V_{d1} = \frac{\Delta V_{d1}}{r_{o1}}
 $$
