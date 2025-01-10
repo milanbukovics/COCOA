@@ -1,0 +1,63 @@
+
+```{python}
+#| label: a
+#| echo: false
+#| fig-cap: "(a) cascode with voltage perturbation applied at its output (b) equivalent small signal model"
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+	d.config(unit=2)
+	d.config(fontsize=14)
+
+	d.push()
+	# AC circuit
+	R1 = elm.Resistor().down().length(d.unit/1.15).label(r'$r_{o1}$',loc='bottom').linestyle('--').color('gray')
+	L1_bottom = elm.Line().left().length(1).linestyle('--').color('gray')
+	Q1 = elm.transistors.AnalogNFet(offset_gate=False).anchor('source').theta(0).reverse().label(r'$M_1$',loc='rgt')
+	L1_top = elm.Line().left().length(1).linestyle('--').color('gray').at(R1.start)
+	elm.Dot().at(L1_top.end)
+	elm.Dot().at(L1_bottom.end)
+	elm.Line().down().length(0.75).at(Q1.source)
+	elm.Ground().right()
+	d.move(dy=-1)
+	elm.Label(r'$(a)$')
+	elm.Line().left().length(0.5).at(Q1.gate)
+	elm.Ground().down()
+	d.push()
+	elm.Line().up().length(0.75).at(Q1.drain)
+	elm.Dot(open='True').label(r'$\Delta V_{d1}$',loc='rgt')
+	elm.Line().up().length(0.5)
+	Q2 = elm.transistors.AnalogNFet(offset_gate=False).anchor('source').theta(0).reverse().label(r'$M_2$',loc='rgt')
+	elm.Dot()
+	L2_bottom = elm.Line().right().length(1).linestyle('--').color('gray').at(Q2.source)
+	R2 = elm.Resistor().up().length(d.unit/1.15).label(r'$r_{o2}$',loc='bottom').linestyle('--').color('gray')
+	L2_top = elm.Line().left().length(1).linestyle('--').color('gray').at(R2.end)
+	elm.Dot()
+	elm.Line().up().length(0.5)
+	elm.Dot(open='True').label(r'$\Delta V_{out}$',loc='rgt')
+	elm.Line().left().length(0.5).at(Q2.gate)
+	elm.Ground().down()
+        
+	d.pop()
+	d.move(dx=8, dy=0.35)
+	elm.Dot()
+
+	d.push()
+	Ro1 = elm.Resistor().down().label(r'$r_\mathrm{o1}$')
+	elm.Ground()
+
+	d.move(dy=-1)
+	elm.Label(r'$(b)$')
+
+	d.pop()
+	elm.Dot()
+	d.move(dy=2)
+	d.push()
+	Id2 = elm.SourceControlledI().down().label(r'$g ^\prime _\mathrm{m2} \Delta V_\mathrm{d1}$').reverse()
+	elm.Line().right().length(3).label(r'$\Delta V_\mathrm{d1}$',loc='lft')
+
+	Ro2 = elm.Resistor().up().label(r'$r_\mathrm{o2}$')
+	elm.Line().left().length(3).dot()
+	elm.Line().up().length(0.5).at(Id2.start)
+	elm.Dot(open='True').label(r'$\Delta V_\mathrm{out}$')
+```
