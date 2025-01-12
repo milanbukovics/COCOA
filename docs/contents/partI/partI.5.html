@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Biasing Circuits – COCOA: Collaborative Compendium on Analog Integrated Circuits</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../contents/partI/partI.4.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f8dc6eab18fde03278982b0b35885446.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-68f2a1e86eb87956d0dce9a9876931f0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e33efa0a5593d9d8adcbebffb5cac9ec.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "~",
+    "/"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">COCOA: Collaborative Compendium on Analog Integrated Circuits</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="https://github.com/bmurmann/COCOA" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../../COCOA--Collaborative-Compendium-on-Analog-Integrated-Circuits.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/partI/partI.1.html">Learn to Crawl — Square-Law Transistors, Biasing and Small-Signal Analysis</a></li><li class="breadcrumb-item"><a href="../../contents/partI/partI.5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/contributors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributors</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Learn to Crawl — Square-Law Transistors, Biasing and Small-Signal Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transfer Characteristic of the Common-Source Voltage Amplifier</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Frequency Response of Common-Source Voltage Amplifier</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Common-Gate and Common-Drain Stages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Learn to Walk — Real Transistors, Noise, Mismatch, and Distortion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partII/partII.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Dare to Run — Knowledge Base for State-of-the-Art Circuits</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">References</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/partI/partI.1.html">Learn to Crawl — Square-Law Transistors, Biasing and Small-Signal Analysis</a></li><li class="breadcrumb-item"><a href="../../contents/partI/partI.5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-biasingcircuits" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div style="text-align: justify" class="page-columns page-full">
+<p>The elementary transistor stages analyzed in the previous chapters rely on proper voltage and current biasing to function. So far, we have emulated these bias generators using ideal voltage and current sources. In this chapter, we will look at practical realizations of these elements using MOSFETs and passive components available within an integrated circuit.</p>
+<p>&nbsp;&nbsp;&nbsp;While there exist numerous possibilities for setting up bias voltages and currents, we consider here a subset of options that have proven to be robust in practical circuits produced in volume. Many of the ideas and considerations that go into the design of bias circuitry are intimately related to the parameter variations seen in an integrated circuit process technology. For instance, threshold voltages cannot be accurately reproduced from fabrication run to fabrication run, and this mandates certain measures for desensitization to this parameter. In order to understand the rationale behind the proposed biasing circuits, we therefore include an overview of the basic variability issues that analog CMOS circuit designers must be aware of.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Chapter Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Review basic variability issues relevant for analog integrated circuits in CMOS technology.</p></li>
+<li><p>Discuss and analyze practical circuits that can establish the bias voltages and currents required to operate the elementary common-source, common-gate and common-drain stages.</p></li>
+</ul>
+</div>
+</div>
+<section id="overview" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">5.1</span> Overview</h2>
+<p><a href="#fig-5.1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> provides and overview of the circuitry and topics that will be discussed in this chapter. The function of the shown circuits will be explained as we progress through this chapter. Following this introduction, we will investigate basic issues of process variation and device mismatch seen in a typical CMOS fabrication process. This review will help motivate some of the design choices made in later sections. Next, in <a href="#sec-5-3" class="quarto-xref"><span>Section 5.3</span></a>, we investigate current mirror circuits, which are essential to distributing and generating bias currents in an integrated circuit.</p>
+<div id="fig-5.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Overview of biasing circuits and topics covered in this chapter.
+</figcaption>
+</figure>
+</div>
+<p>The current that flows into a current mirror circuit is defined by an absolute current reference, for which there exist many different realizations. In <a href="#sec-5-4" class="quarto-xref"><span>Section 5.4</span></a>, we will study one relevant example of a suitable circuit. In <a href="#sec-5-5" class="quarto-xref"><span>Section 5.5</span></a>, we will then shift to the problem of bias voltage generation, as relevant for example in setting up the proper gate bias of a common-source or common-gate stage.</p>
+</section>
+<section id="sec-5-2" class="level2 page-columns page-full" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-5-2"><span class="header-section-number">5.2</span> Introduction to Process Variation and Device Mismatch</h2>
+<section id="process-and-temperature-variations" class="level3 page-columns page-full" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="process-and-temperature-variations"><span class="header-section-number">5.2.1</span> Process and Temperature Variations</h3>
+<p>In our analysis of elementary circuit configurations, we have so far implicitly assumed that the underlying component parameters (e.g., the threshold voltage of a MOSFET) are constant and accurately known. Unfortunately, this is not the case in reality. Especially in mass-produced integrated circuits, there are various forms of variability that result in parameter uncertainty due to imperfect fabrication, lifetime drift and influence of environmental conditions such as temperature and humidity. In a typical large semiconductor company, entire departments tend to focus on this issue, and there exists a wealth of related information that could easily fill multiple textbooks. As a result, the focus in this introductory module is to take a cursory look at only the basic issues, to the extent that this can help shape our thinking on how to arrive at practical and relatively insensitive circuit realizations.</p>
+<p>&nbsp;&nbsp;&nbsp;The first issue that we will review in this section is related to variations arising from imperfect fabrication and temperature changes. In the context of fabrication imperfections, we will clearly distinguish between <strong>global process variations</strong> and <strong>device mismatch</strong>. The former term relates to variations that affect all devices on a chip uniformly, while the latter term refers to differences between nominally identical devices that are fabricated on the same chip (see <a href="#sec-5-2-2" class="quarto-xref"><span>Section 5.2.2</span></a>).</p>
+<p>&nbsp;&nbsp;&nbsp;Analog circuit designers often use the term <strong>PVT variations</strong> to refer to global variations in process, supply voltage, and temperature (see <a href="#tbl-5.1" class="quarto-xref">Table&nbsp;<span>5.1</span></a>). The most basic way to capture global fabrication process variations is to define parameter sets that group the worst case outcomes as “slow,” “nominal,” and “fast” conditions. This nomenclature was adopted in the context of digital circuits (relating to the speed of a logic gate), but is also used among analog designers. The various parameter sets are often called process corners.</p>
+<div id="tbl-5.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: Examples of typical process, voltage and temperature (PVT) variations.
+</figcaption>
+<div aria-describedby="tbl-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\textbf{Process}\)</span></td>
+<td style="text-align: left;">The chip foundry defines three parameter sets for “slow,” “nominal,” and “fast” conditions.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\textbf{Voltage}\)</span></td>
+<td style="text-align: left;">The chip’s supply voltage is expected to vary by ±10%. For a nominal supply of 5 V, this means that all circuits must work for <span class="math inline">\(V_{DD}\)</span> = 4.5…5.5 V.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\textbf{Temperature}\)</span></td>
+<td style="text-align: left;">Consumer products are typically expected to work in ambient temperatures ranging from 0…70° C. Circuits used in automotive applications must work reliably from –40…125° C.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;<a href="#tbl-5.2" class="quarto-xref">Table&nbsp;<span>5.2</span></a> shows how some important integrated circuit parameters may vary across the three process parameter sets. Here, the nominal column contains the MOSFET parameters that we have assumed so far in this module (see Table 4-1). In the slow parameter set, the threshold voltage is increased and the transconductance parameters (μ<span class="math inline">\(C_{ox}\)</span>) are reduced; this is the parameter combination that yields the slowest speed in a logic gate. The opposite is true for the fast parameter set.</p>
+<div id="tbl-5.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.2: Example of a slow, nominal and fast parameter set in a CMOS fabrication process. These parameters assume that the temperature is held constant at 25 ° C (room temperature).
+</figcaption>
+<div aria-describedby="tbl-5.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 22%">
+<col style="width: 29%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Slow</th>
+<th style="text-align: left;">Nominal</th>
+<th style="text-align: left;">Fast</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(V_{T0n}\)</span> , <span class="math inline">\(|{V_{T0p}|}\)</span></td>
+<td style="text-align: left;">0.7 V</td>
+<td style="text-align: left;">0.5 V</td>
+<td style="text-align: left;">0.3 V</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mu_n C_{ox}\)</span></td>
+<td style="text-align: left;">40 <span class="math inline">\(\mu A/V^2\)</span></td>
+<td style="text-align: left;">50 <span class="math inline">\(\mu A/V^2\)</span></td>
+<td style="text-align: left;">60 <span class="math inline">\(\mu A/V^2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mu_p C_{ox}\)</span></td>
+<td style="text-align: left;">20 <span class="math inline">\(\mu A/V^2\)</span></td>
+<td style="text-align: left;">25 <span class="math inline">\(\mu A/V^2\)</span></td>
+<td style="text-align: left;">30 <span class="math inline">\(\mu A/V^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(R_{poly}\)</span></td>
+<td style="text-align: left;">60 <span class="math inline">\(\Omega /square\)</span></td>
+<td style="text-align: left;">50 <span class="math inline">\(\Omega /square\)</span></td>
+<td style="text-align: left;">40 <span class="math inline">\(\Omega /square\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(R_{well}\)</span></td>
+<td style="text-align: left;">1.4 <span class="math inline">\(k\Omega /square\)</span></td>
+<td style="text-align: left;">1 <span class="math inline">\(k\Omega /square\)</span></td>
+<td style="text-align: left;">0.6 <span class="math inline">\(k\Omega /square\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(C_{poly}\)</span></td>
+<td style="text-align: left;">1.15 <span class="math inline">\(fF/\mu m^2\)</span></td>
+<td style="text-align: left;">1 <span class="math inline">\(fF/\mu m^2\)</span></td>
+<td style="text-align: left;">0.85 <span class="math inline">\(fF/\mu m^2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;<a href="#tbl-5.2" class="quarto-xref">Table&nbsp;<span>5.2</span></a> also contains examples for parameter variations in passive IC components. <span class="math inline">\(R_{poly}\)</span> and <span class="math inline">\(R_{well}\)</span> are the sheet resistances of a resistor formed by a layer of polysilicon or n-well, respectively. <span class="math inline">\(C_{poly}\)</span> is the capacitance parameter of a parallel plate capacitor formed by two layers of polysilicon. Advanced texts on integrated circuit design such as <span class="citation" data-cites="gray2009analysis">(<a href="../../references.html#ref-gray2009analysis" role="doc-biblioref">Gray et al. 2009</a>)</span> provide further information about the make-up of these and similar components.</p>
+<div class="no-row-height column-margin column-container"></div><p>&nbsp;&nbsp;&nbsp;The tabulated parameter variations do not take temperature variations into account; these must be added on top of the spread from fabrication. <a href="#tbl-5.3" class="quarto-xref">Table&nbsp;<span>5.3</span></a> lists a few typical temperature coefficients for each parameter. For example, if the operating temperature of a chip changes from 0°C to 70°C, the threshold voltage a MOSFET will shift by an additional –84 mV.</p>
+<div id="tbl-5.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.3: Typical temperature coefficients for integrated circuit device parameters.
+</figcaption>
+<div aria-describedby="tbl-5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Temperature Coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(V_{T0n}\)</span> , <span class="math inline">\(|{V_{T0p}|}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-\)</span> 1.2 mV/°C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mu_n C_{ox}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-\)</span> 0.33 %/°C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mu_p C_{ox}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-\)</span> 0.33 %/°C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(R_{poly}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(+\)</span> 0.2 %/°C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(R_{well}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(+\)</span> 1 %/°C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(C_{poly}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-\)</span> 30 ppm/°C</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;The main take-home from the shown data is that in practice, the analog IC designer cannot view component parameters as constant numbers. His or her circuit must be immune to the level of variability described and function reliably across a large array of outcomes in process, voltage, and temperature. To show how significant these effects can be when neglected, the following example considers the impact of process variations on the bias point of a common-source amplifier.</p>
+<p><strong><span id="example-5-1">Example 5-1</span>: Impact of Process variations in a Common Source Amplifier</strong></p>
+<p>The circuit in <a href="#fig-ex5.1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> was previously analyzed in Example 2-2(b) using nominal parameters (at room temperature). Given <span class="math inline">\(V_{DD}\)</span> = 5 V, <span class="math inline">\(R_D\)</span> = 10 kΩ, W/L = 10 and a desired output bias point of <span class="math inline">\(V_{OUT}\)</span> = 2.5 V, we found that the input bias voltage should be set to <span class="math inline">\(V_{IN}\)</span> = 1.5 V. Assuming <span class="math inline">\(V_{IN}\)</span> = 1.5 V, recompute the circuit’s operating assuming that the MOSFET parameters have shifted to the fast corner case given in <a href="#tbl-5.2" class="quarto-xref">Table&nbsp;<span>5.2</span></a>. For simplicity, ignore variations in <span class="math inline">\(R_D\)</span> and operating temperature.</p>
+<div id="fig-ex5.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/png/figure-ex5.1.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Ex5-1
+</figcaption>
+</figure>
+</div>
+<p><strong>SOLUTION</strong></p>
+<p>Using the given parameters, we can directly compute:</p>
+<p><span class="math display">\[
+\begin{split}
+V_{out} &amp;= V_{DD} - \frac{1}{2}\mu _n C_{ox}\frac{W}{L}\Bigl(V_{IN} - V_{Tn}\Bigr)^2 R_D \\
+&amp;= 5V-\frac{1}{2}\cdot 60 \frac{\mu A}{V^2} \cdot 10 \cdot (1.5 - 0.3)^2 \cdot 10k\Omega = 0.68 V
+\end{split}
+\]</span></p>
+<p>From this result, we see that the MOSFET no longer operates in saturation (since <span class="math inline">\(V_{DS}\)</span> = 0.68 V &lt; <span class="math inline">\(V_{GS}\)</span> – <span class="math inline">\(V_{Tn}\)</span> = 1.2 V). Using the MOSFET’s equation for the triode region, we can compute <span class="math inline">\(I_D\)</span> = 408 μA and <span class="math inline">\(V_{OUT}\)</span> = 918 mV. This outcome differs substantially from the nominal operating point, and the circuit will essentially not function as intended for the fast corner conditions.</p>
+<p>&nbsp;&nbsp;&nbsp; The main finding from the above example is that it will usually be impractical to bias the input of a common-source stage using a fixed bias voltage source. In practice, the integrated circuit designer generates bias voltages using circuits that will automatically adjust to corner-induced parameter spread and thereby make the circuit immune to process variations (see <a href="#sec-5-5" class="quarto-xref"><span>Section 5.5</span></a>).</p>
+<p>&nbsp;&nbsp;&nbsp; Generally speaking, a substantial amount of design time is usually spent on identifying biasing approaches that ensure a circuit’s proper bias point across all possible operating conditions. In addition, once, the circuit is properly biased, the designer must verify that it maintains its key specifications across corners. A typical scenario is to guarantee a certain worst-case gain or bandwidth across all PVT scenarios.</p>
+<p>&nbsp;&nbsp;&nbsp;As already mentioned, it is impossible to cover all aspects of robust design across PVT variations at the introductory level of this module. Nonetheless, having some of the basic knowledge established above will help us argue qualitatively about the practicality of the circuits discussed in this chapter, and ensure that they will at least have a chance to work in practice.</p>
+</section>
+<section id="sec-5-2-2" class="level3 page-columns page-full" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="sec-5-2-2"><span class="header-section-number">5.2.2</span> Mismatch</h3>
+<p>The process variations discussed in the previous section account for variability that affects all devices on a given chip equally. For example, all n-channel MOSFETs on a given chip may have slow parameters. Different from process variation, we use the term mismatch to capture variations between nominally identical devices, e.g., two MOSFETs of identical size on the same chip. Such variations are typically caused by line edge roughness, random doping fluctuations and similar effects.</p>
+<div id="tbl-5.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.4: Typical ranges of parameter mismatch for nominally identical, closely spaced components.
+</figcaption>
+<div aria-describedby="tbl-5.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Mismatch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(V_{T0n}\)</span> , <span class="math inline">\(|{V_{T0p}|}\)</span></td>
+<td style="text-align: left;">5…30 mV</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mu_n C_{ox}\)</span> , <span class="math inline">\(\mu_p C_{ox}\)</span></td>
+<td style="text-align: left;">0.5…2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(R_{poly}\)</span></td>
+<td style="text-align: left;">0.3…2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(C_{poly}\)</span></td>
+<td style="text-align: left;">0.1…1%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Device mismatch typically follows Gaussian distributions and depends on device size and spacing <span class="citation" data-cites="Pelgrom1989">(see <a href="../../references.html#ref-Pelgrom1989" role="doc-biblioref">Pelgrom, Duinmaijer, and Welbers 1989</a>)</span>. For our purpose in this module, we will not expand upon the detailed theory behind this and instead consider only approximate numerical ranges that are typical for a technology as the one assumed in this module (see <a href="#tbl-5.4" class="quarto-xref">Table&nbsp;<span>5.4</span></a>).</p>
+<div class="no-row-height column-margin column-container"><div id="ref-Pelgrom1989" class="csl-entry" role="listitem">
+Pelgrom, M. J. M., A. C. J. Duinmaijer, and A. P. G. Welbers. 1989. <span>“Matching Properties of MOS Transistors.”</span> <em>IEEE Journal of Solid-State Circuits</em> 24 (5): 1433–39.
+</div><div id="fn1"><p><sup>1</sup>&nbsp;This tends to hold true for technologies with feature sizes above 100 nm. For nano-scale devices, device mismatch can be comparable to process spread.</p></div></div><p>At first glance, we see from <a href="#tbl-5.4" class="quarto-xref">Table&nbsp;<span>5.4</span></a> that device mismatches are typically much smaller than global process variations.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> For instance, the nominal threshold voltage for n-channel transistors can vary by ±200mV from fabrication run to fabrication run. However, within a specific fabrication outcome, the random threshold mismatch between two n-channels on the same chip is on the order of 10 mV.</p>
+<p>This observation has a profound impact on the way integrated circuits are architected. That is, designers will usually try to exploit the fact that the components on the same chip show good matching. This contrasts with printed circuit board (PCB) design, where the designer often cannot rely on good matching between the available discrete components. Instead, PCB design can offer certain components with very high absolute accuracy across fabrication lots, such as 1%-precise resistors. As we know from <a href="#tbl-5.2" class="quarto-xref">Table&nbsp;<span>5.2</span></a>, such levels of absolute accuracy are usually not available in an integrated circuit.</p>
+<p>A classical example that exploits transistor matching is the so-called current mirror. This circuit is ubiquitous in integrated circuits, but infrequently used in PCB circuits. We will now analyze the <strong>current mirror</strong> as a first example of a biasing circuit that is insensitive to process variations</p>
+</section>
+</section>
+<section id="sec-5-3" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-5-3"><span class="header-section-number">5.3</span> Current Mirrors</h2>
+<p>As we have seen in previous chapters, we would like to use current sources to setup the bias points for CS, CG, and CD stages. While we could in principle design individual, stand-alone current-source circuits each time we need a bias current, it is instead customary to work with only one (or a few) reference current generators on a given chip and “mirror” its current to the various locations where a bias current is needed. This is sketched out in <a href="#fig-5.1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>: a single reference current generator is used to feed a distribution network of current mirrors (to be discussed in this section), which then supplies bias currents to various circuit stages in a given chip or large sub-block.</p>
+<p>In this section, we will discuss and analyze current mirror circuits at various levels of detail. We will begin by considering the most basic structure and perform a first-order analysis for this circuit. Next, we consider second-order error sources and look at an improved realization that invokes the cascode structure introduced in Section 4-5-1.</p>
+<section id="first-pass-analysis-of-the-basic-current-mirror" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="first-pass-analysis-of-the-basic-current-mirror"><span class="header-section-number">5.3.1</span> First-Pass Analysis of the Basic Current Mirror</h3>
+<p><a href="#fig-5.2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> shows the most basic realization of a current mirror using two identically sized n-channel MOSFETs. The circuit takes an input current <span class="math inline">\(I_{IN}\)</span> and produces an output current <span class="math inline">\(I_{OUT}\)</span>. Neglecting channel-length modulation for the time being, we can compute the gate-source voltage of <span class="math inline">\(M_1\)</span> using:</p>
+<p><span id="eq-5.1"><span class="math display">\[
+V_{GS1} = V_{IN} = V_{Tn} + \sqrt{\dfrac{2 I_{IN}}{\mu_n C_{ox} \dfrac{W}{L}}}
+\tag{5.1}\]</span></span></p>
+<div id="fig-5.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.2.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Basic current mirror.
+</figcaption>
+</figure>
+</div>
+<p>Since the gates and sources of the two MOSFETs are connected, we see that <span class="math inline">\(V_{GS2}\)</span> = <span class="math inline">\(V_{GS1}\)</span>, and therefore:</p>
+<p><span id="eq-5.2"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} = \frac{I_{D2}}{I_{D1}} = \\
+\frac{\frac{1}{2}\mu _n C_{ox}\frac{W}{L}\Bigl(V_{GS2} - V_{Tn}\Bigr)^2}{\frac{1}{2}\mu _n C_{ox}\frac{W}{L}\Bigl(V_{GS1} - V_{Tn}\Bigr)^2} = 1
+\tag{5.2}\]</span></span></p>
+<p>Thus, the output current equals the input current (to first-order). In essence, the function of <span class="math inline">\(M_1\)</span> is to “compute” the gate-source voltage required for <span class="math inline">\(M_2\)</span> to supply the same current that is injected into <span class="math inline">\(M_1\)</span>.</p>
+<p>One important feature of this circuit is that it is immune to global process variations. From <a href="#eq-5.2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>, we see that absolute changes in <span class="math inline">\(V_{Tn}\)</span> and <span class="math inline">\(\mu _n C_{ox}\)</span> that are common to <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> do not affect the current ratio. The circuit is affected only by mismatches in these parameters. However, as we have seen in <a href="#sec-5-2-2" class="quarto-xref"><span>Section 5.2.2</span></a>, parameter mismatch tends to be small in integrated circuits.</p>
+<div id="fig-5.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.3.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Application of the basic current mirror in a common-source amplifier.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-5.3" class="quarto-xref">Figure&nbsp;<span>5.4</span></a> shows an application example of the basic current mirror in a p-channel common-source amplifier. This example is useful for identifying some general design objectives:</p>
+<ul>
+<li>We want to minimize the error in <span class="math inline">\(I_{OUT}\)</span> so that the bias current of the common-source device is accurately set (see also Section 2-2-8).</li>
+<li>We want to minimize the voltage that is needed to keep <span class="math inline">\(M_2\)</span> in saturation (to allow for a large signal swing). We call this minimum voltage level the compliance voltage, <span class="math inline">\(V_{OUTmin}\)</span>.</li>
+<li>We want to minimize the capacitance <span class="math inline">\(C_{out}\)</span> that the current mirror contributes to the output node of the amplifier. This will help maximize the circuit’s bandwidth.</li>
+<li>We want to maximize <span class="math inline">\(R_{out}\)</span>, the resistance looking into <span class="math inline">\(M_2\)</span>. A small <span class="math inline">\(R_{out}\)</span> can substantially reduce the voltage gain of the circuit in some use cases.</li>
+<li>Lastly, it is desirable to scale the mirror’s branch currents, that is, we want <span class="math inline">\(I_{OUT} = K \cdot I_{IN}\)</span>, where typically <span class="math inline">\(K &gt; 1\)</span>. This helps reduce the overall current consumption of the circuit and provides flexibility in adjusting the current values within a larger distribution network.</li>
+</ul>
+<p>These objectives tend to hold in general for all types of current mirror implementations and we will keep them in mind as we progress through the remaining subsections. For the time being, let us look into the scaling of branch currents. Essentially, we would like to accomplish</p>
+<p><span id="eq-5.3"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} = \frac{I_{D2}}{I_{D1}} = \\
+\frac{\frac{1}{2}\mu _n C_{ox}\frac{W_2}{L_2}\Bigl(V_{GS2} - V_{Tn}\Bigr)^2}{\frac{1}{2}\mu _n C_{ox}\frac{W_1}{L_1}\Bigl(V_{GS1} - V_{Tn}\Bigr)^2} = K
+\tag{5.3}\]</span></span></p>
+<p>where <span class="math inline">\(K\)</span> is the current scaling factor. From the above expression, assuming that <span class="math inline">\(V_{Tn}\)</span> and <span class="math inline">\(\mu _n C_{ox}\)</span> are exactly equal for both transistors, it follows that <span class="math inline">\(K = (W_2/L_2)/(W_1/L_1)\)</span>. Thus, current scaling can be conveniently realized by scaling the MOSFETs’ aspect ratios.</p>
+<p>In practice, several guidelines exist on how exactly this scaling should be implemented. The first and most important guideline is that we should always maintain <span class="math inline">\(L_1\)</span> = <span class="math inline">\(L_2\)</span>; the current scaling should be realized by scaling the widths rather than the lengths of the channels. This is preferable since the current in a modern MOSFET does not accurately scale with <span class="math inline">\(1/L\)</span>. As already mentioned in Chapter 2, the <span class="math inline">\(1/L\)</span> proportionality in our equations is essentially due to the simplified physical model that we used in the derivation of the square-law expressions. For the 1-μm technology assumed in this module, the deviation from the square law model is not as severe as for today’s sub-100-nm transistors but still significant enough to avoid length scaling in current mirrors. Now, with <span class="math inline">\(L_1 = L_2\)</span>, the current scaling factor is simply <span class="math inline">\(K = W_2/W_1\)</span>, to first-order. In the next section, we will look at various second-order effects that cause <span class="math inline">\(K\)</span> to deviate from the width ratio of the MOSFETs.</p>
+</section>
+<section id="second-pass-analysis-of-the-basic-current-mirror" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="second-pass-analysis-of-the-basic-current-mirror"><span class="header-section-number">5.3.2</span> Second-Pass Analysis of the Basic Current Mirror</h3>
+<p>There exist several error sources in a current mirror that will affect its scaling factor. In general, we classify these error sources into two categories: systematic and random errors. Examples of systematic errors are</p>
+<ul>
+<li>Errors in transistor width ratios, for example due to mask misalignment or systematic etching imperfections.</li>
+<li>Differences in the drain-source voltages between <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>, leading to current deviations caused by channel length modulation.</li>
+<li>Differences in the source potentials of <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> due to finite resistance in the interconnect (so-called “IR drop”).</li>
+</ul>
+<p>Examples of random errors are</p>
+<ul>
+<li>Random mismatches in device geometries, for example due to line edge roughness.</li>
+<li>Random mismatch in the transistors’ threshold voltage or transconductance parameter.</li>
+</ul>
+<p>In order to attain the best possible accuracy in a current mirror, the IC designer will typically try to minimize the impact of all of these errors. We will therefore analyze some of the most important effects and countermeasures in the following paragraphs. For simplicity, our analysis will consider each effect separately. Ultimately, however, the sum of all errors must be considered in practice.</p>
+<p>&nbsp;&nbsp;&nbsp; To analyze the impact of systematic masking or etching errors, consider the specific example of a current mirror with a desired current ratio of two and a layout as shown in <a href="#fig-5.4" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>. Here <span class="math inline">\(M_2\)</span> is drawn twice as wide as <span class="math inline">\(M_1\)</span> In an ideal situation, this would yield <span class="math inline">\(K = 2\)</span> based on the first order result of the previous subsection. In a typical IC process, however, masking or etching errors can lead to a systematic error in the width of a MOSFET, indicated as ∆W in the shown layout. With this error, and neglecting any other imperfections for simplicity, we have</p>
+<p><span id="eq-5.4"><span class="math display">\[
+K = \frac{I_{OUT}}{I_{IN}} = \frac{2 W_1 + \Delta W}{W_1 + \Delta W} = \dfrac{2 + \dfrac{\Delta W}{W_1}}{1 + \dfrac{\Delta W}{W_1}} \approx 2 - \dfrac{\Delta W}{W_1}
+\tag{5.4}\]</span></span></p>
+<p>where the final approximation follows from a first-order Taylor expansion and holds for <span class="math inline">\(\Delta W / W_1 &lt;&lt; 1\)</span>.</p>
+<div id="fig-5.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.4.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Layout of a current mirror with a desired current ratio of two.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp; Especially for small transistors, the error term in <a href="#eq-5.4" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> can be significant. Therefore, it has become customary to adopt layout styles that eliminate issues due to ∆W altogether. In the improved layout of <a href="#fig-5.5" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>, <span class="math inline">\(M_2\)</span> is formed using two unit devices whose layout is identical to that of <span class="math inline">\(M_1\)</span>. In this case,</p>
+<p><span id="eq-5.5"><span class="math display">\[
+K = \frac{I_{OUT}}{I_{IN}} = \frac{2 W_1 + \Delta W}{W_1 + \Delta W} = 2
+\tag{5.5}\]</span></span></p>
+<p>and thus the circuit is insensitive to systematic width errors. Note that the idea of working with unit devices can be extended such that <span class="math inline">\(P\)</span> unit devices are used for <span class="math inline">\(M_2\)</span> and <span class="math inline">\(Q\)</span> unit devices are used to form <span class="math inline">\(M_1\)</span> This means that the mirror ratio <span class="math inline">\(K = P/Q\)</span> is restricted to rational numbers.</p>
+<div id="fig-5.5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.5.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Improved layout of a current mirror with a desired current ratio of two.
+</figcaption>
+</figure>
+</div>
+<div id="fig-5.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.6.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.7: Layout of a current mirror with shared drain regions.
+</figcaption>
+</figure>
+</div>
+<p>A variant of the improved unit-device layout is shown in <a href="#fig-5.6" class="quarto-xref">Figure&nbsp;<span>5.7</span></a>. Here, the two unit transistors share a single drain region at the output node and therefore have a smaller output capacitance (<span class="math inline">\(C_{out}\)</span> in <a href="#fig-5.3" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>). This general idea is often applied when small <span class="math inline">\(C_{out}\)</span> is desired in the particular use case of the current mirror. One disadvantage of the layout in <a href="#fig-5.6" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> is that the source/drain orientation of the rightmost channel are flipped. This can lead to residual systematic errors in process technologies that suffer from source/drain asymmetries. However, it can be shown that this error vanishes when an even number of unit devices are used for both <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> These and many other considerations are part of the knowledge base of experienced analog designers. The reader is referred to advanced literature on this topic for further information.</p>
+<div id="fig-5.7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.7.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.8: Mirror error due to differences in drain-source voltage.
+</figcaption>
+</figure>
+</div>
+<p>Another significant source of error in the current mirror ratio can result from differences in the voltages at the input and output nodes of the mirror. To see this, consider the current mirror example in <a href="#fig-5.7" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>, which is assumed to have perfectly matched transistors of the same size. Even though the two transistors have identical output curves, their drain currents will differ whenever the input and output voltages do not match. Mathematically, we can analyze this effect by including channel-length modulation in the analysis. Specifically, since</p>
+<p><span id="eq-5.6"><span class="math display">\[
+I_{IN} = \frac{1}{2}\mu _n C_{ox}\frac{W}{L}\Bigl(V_{GS1} - V_{Tn}\Bigr)^2 (1 + \lambda _n V_{IN})
+\tag{5.6}\]</span></span></p>
+<p>and</p>
+<p><span id="eq-5.7"><span class="math display">\[
+I_{OUT} = \frac{1}{2}\mu _n C_{ox}\frac{W}{L}\Bigl(V_{GS1} - V_{Tn}\Bigr)^2 (1 + \lambda _n V_{OUT})
+\tag{5.7}\]</span></span></p>
+<p>we have</p>
+<p><span id="eq-5.8"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} = \frac{1 + \lambda _n V_{OUT}}{1 + \lambda _n V_{IN}}
+\tag{5.8}\]</span></span></p>
+<p>From this result, we see that there are two ways to reduce errors in the current ratio. We can try to minimize the difference between <span class="math inline">\(V_{OUT}\)</span> and <span class="math inline">\(V_{IN}\)</span> as much as possible and/or reduce <span class="math inline">\(\lambda_n\)</span> by using long-channel MOSFETs. Note also that reducing λn is equivalent to reducing the small-signal output conductance <span class="math inline">\(g_o\)</span>, which is simply the slope of the I-V curves in <a href="#fig-5.7" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> The smaller this slope, the smaller the difference between <span class="math inline">\(I_{OUT}\)</span> and <span class="math inline">\(I_{IN}\)</span>.</p>
+<p><strong><span id="example-5-2">Example 5-2</span>: Current Mirror Error Due to Drain-Source Voltage Difference</strong></p>
+<p>Consider the current mirror in <a href="#fig-5.7" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> . Assume <span class="math inline">\(V_{OUT}\)</span> = 2.5 V and that the MOSFET width is chosen such that <span class="math inline">\(V_{IN}\)</span> = 1.5 V. Calculate the percent error in the current ratio for L = 1 μm and L = 3 μm.</p>
+<p><strong>SOLUTION</strong></p>
+<p>For L = 1 μm, we have $_n $ = 0.1 <span class="math inline">\(V^{-1}\)</span> [seeEq.(2.44)]. Using <a href="#eq-5.8" class="quarto-xref">Equation&nbsp;<span>5.8</span></a>, we find in this case</p>
+<p><span id="eq-5.9"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} = \frac{1+ 0.1 V^{-1} \cdot 2.5 V}{1+ 0.1 V^{-1} \cdot 1.5 V} = 1.087
+\tag{5.9}\]</span></span></p>
+<p>The error in the current ration is 8.7%. Repeating the above calculation for <span class="math inline">\(L = 3\mu m ( \lambda _n = 0.033 V^{-1} )\)</span>, the error reduces to 3.2%.</p>
+<p>&nbsp;&nbsp;&nbsp; Another example of a systematic error source that we will consider here is the voltage drop in the source connection of the mirror devices (see <a href="#fig-5.8" class="quarto-xref">Figure&nbsp;<span>5.9</span></a>). In the shown circuits, we assume for simplicity that the two MOSFETs are identical and that <span class="math inline">\(V_{OUT} = V_{IN}\)</span>, i.e., there is no error due to <span class="math inline">\(V_{DS}\)</span> differences.</p>
+<p>&nbsp;&nbsp;&nbsp; First consider the circuit of <a href="#fig-5.8" class="quarto-xref">Figure&nbsp;<span>5.9</span></a>(a), which takes the finite wiring resistance (<span class="math inline">\(R_{WIRE}\)</span>) between the source terminals of <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> into account. The wire will carry some current, which is at the minimum equal to the drain current of <span class="math inline">\(M_1\)</span> flowing toward the ground node of the circuit. In a poorly constructed layout, the wire may also carry the current from another block (<span class="math inline">\(I_X\)</span>) as shown. The total current in the wire is therefore <span class="math inline">\(I_{WIRE} = I_{IN} + I_X\)</span> and <span class="math inline">\(V_{WIRE} = I_{WIRE}⋅ R_{WIRE}\)</span>. By applying KVL in <a href="#fig-5.8" class="quarto-xref">Figure&nbsp;<span>5.9</span></a>(a) we see that <span class="math inline">\(V_{GS2} = V_{GS1} + V_{WIRE}\)</span>. Therefore, we can use the equivalent model of <a href="#fig-5.8" class="quarto-xref">Figure&nbsp;<span>5.9</span></a>(b) for further analysis.</p>
+<p>&nbsp;&nbsp;&nbsp; Now, assuming that <span class="math inline">\(V_{WIRE}\)</span> is relatively small, we can think about this voltage as a small-signal perturbation around the operating point of <span class="math inline">\(M_2\)</span> (<span class="math inline">\(I_{D2} = I_{OUT} = I_{IN}\)</span>). Therefore, we can write</p>
+<p><span id="eq-5.10"><span class="math display">\[
+I_{OUT} = I_{IN} + g_m V_{WIRE}
+\tag{5.10}\]</span></span></p>
+<p>and</p>
+<p><span id="eq-5.11"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} = 1 + \frac{g_m}{I_{IN}}  V_{WIRE} =
+1 + 2 \frac{V_{WIRE}}{V_{OV}}
+\tag{5.11}\]</span></span></p>
+<p>where <span class="math inline">\(g_m\)</span> and <span class="math inline">\(V_{OV}\)</span> are the transconductance and quiescent point gate overdrive (<span class="math inline">\(V_{GS} – V_{Tn}\)</span>) of the MOSFETs, respectively. To see that this error source can be quite significant, consider the case of <span class="math inline">\(V_{OV} = 200 mV\)</span> and <span class="math inline">\(V_{WIRE} = 10 mV\)</span>. The resulting error in the mirror ratio is 10%. In practice, the designer will mitigate voltage drop issues by (1) minimizing the distance between <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> (to minimize <span class="math inline">\(R_{WIRE}\)</span>), (2) avoid any excess current (<span class="math inline">\(I_X\)</span>) in the source connection between <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> , and (3) work with reasonably large gate overdrive voltages (<span class="math inline">\(V_{OV}\)</span>) in current mirrors.</p>
+<div id="fig-5.8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.8.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.9: Mirror error due to voltage drop in the source connection.
+</figcaption>
+</figure>
+</div>
+<p>As a final step in this subsection, let us now consider a few examples of random mismatch effects in current mirrors, and specifically mismatch in the transistors’ threshold voltages and transconductance parameters. The case of threshold voltage mismatch can be modeled exactly as shown in <a href="#fig-5.8" class="quarto-xref">Figure&nbsp;<span>5.9</span></a>(b), but <span class="math inline">\(V_{WIRE}\)</span> is now replaced with <span class="math inline">\(\Delta V_{Tn}\)</span>, the threshold voltage mismatch between <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>. Therefore, we can write in this case</p>
+<p><span id="eq-5.12"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} = 1 + 2 \frac{\Delta V_{Tn}}{V_{OV}}
+\tag{5.12}\]</span></span></p>
+<p>The conclusion from this expression is similar to what we have already stated above. To minimize errors due to threshold voltage mismatch, the designer must work with reasonably large values of <span class="math inline">\(V_{OV}\)</span>. Since <span class="math inline">\(\Delta V_{Tn} \approx 10 mV\)</span> is not unusual in CMOS technology (see <a href="#sec-5-2-2" class="quarto-xref"><span>Section 5.2.2</span></a>), it follows that it is rather difficult to guarantee highly accurate mirror ratios. Even if we make <span class="math inline">\(V_{OV} = 1 V\)</span>, the corresponding error is still 2%. For the case of transconductance parameter mismatch, we can write</p>
+<p><span id="eq-5.13"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} =
+\frac{\frac{1}{2}(\mu _n C_{ox})_2\frac{W}{L}\Bigl(V_{GS2} - V_{Tn}\Bigr)^2}{\frac{1}{2}(\mu _n C_{ox})_1\frac{W}{L}\Bigl(V_{GS1} - V_{Tn}\Bigr)^2} =
+\frac{(\mu _n C_{ox})_2} {(\mu _n C_{ox})_1}{}
+\tag{5.13}\]</span></span></p>
+<p>where <span class="math inline">\((\mu _n C_{ox})_{1,2}\)</span> are the transconductance parameters of the two MOSFETs, and all other parameters are assumed to be equal. Thus, for typical mismatch in the transconductance parameter on the order of 1% (see <a href="#sec-5-2-2" class="quarto-xref"><span>Section 5.2.2</span></a>), it is often the case that this particular error is overshadowed by mismatches in the MOSFETs’ threshold voltages.</p>
+</section>
+<section id="sec-5-3-3" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="sec-5-3-3"><span class="header-section-number">5.3.3</span> Multiple Current Sources and Sinks</h3>
+<p>The basic current mirror concept discussed so far can be utilized to provide multiple current outputs that either source a current from <span class="math inline">\(V_{DD}\)</span> or sink a current into ground. A circuit that uses p-channel devices to create multiple currents sourced from <span class="math inline">\(V_{DD}\)</span> is shown in <a href="#fig-5.9" class="quarto-xref">Figure&nbsp;<span>5.10</span></a>.</p>
+<div id="fig-5.9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.9.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.10: PMOS current mirror with multiple outputs.
+</figcaption>
+</figure>
+</div>
+<p>If we also require current sinks, the circuit approach shown in <a href="#fig-5.10" class="quarto-xref">Figure&nbsp;<span>5.11</span></a> can be used. Here, the output current from device <span class="math inline">\(M_1\)</span> is used as a reference current for the n-channel mirror composed of <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2.\)</span> Note that a direct application for this circuit would be the CS-CD amplifier of Figure 4-28; it requires one current source from <span class="math inline">\(V_{DD}\)</span> and one current sink.</p>
+<div id="fig-5.10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.10.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.11: Circuit to produce a current source <span class="math inline">\(M_2\)</span> and current sink <span class="math inline">\(M_4\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Neglecting all error terms, and assuming equal channel lengths, the value of the DC current <span class="math inline">\(I_{OUT1}\)</span> is equal to</p>
+<p><span id="eq-5.14"><span class="math display">\[
+I_{OUT1} = \frac{W_1}{W_R} I_{REF}
+\tag{5.14}\]</span></span></p>
+<p>From this current we have derived a current source and current sink with devices <span class="math inline">\(M_2\)</span> and <span class="math inline">\(M_4\)</span>. Ideally, these currents are</p>
+<p><span id="eq-5.15"><span class="math display">\[
+I_{OUT2} = \frac{W_2}{W_R} I_{REF}
+\tag{5.15}\]</span></span></p>
+<p><span id="eq-5.16"><span class="math display">\[
+I_{OUT4} = \frac{W_4}{W_R} I_{OUT1} = \Bigl( \frac{W_4}{W_3} \cdot \frac{W_1}{W_R} \Bigr) I_{REF}
+\tag{5.16}\]</span></span></p>
+<p><strong><span id="example-5-3">Example 5-3</span>: Current Sources/Sinks</strong></p>
+<p>Design current sources with DC current values of 10 μA and 20 μA and current sinks with DC current values of 10 μA and 40 μA. The small-signal source resistance of all current sources and sinks should be at least 1 MΩ. The compliance voltage of both current sources and sinks must be less than 0.5 V. You are given one reference current source of 10 μA with which you can derive the others.</p>
+<p><strong>SOLUTION</strong></p>
+<p>A suitable topology for this design is shown in <a href="#fig-ex5.3" class="quarto-xref">Figure&nbsp;<span>5.12</span></a>. We begin this design by realizing that in order to meet the compliance voltage requirement, we need <span class="math inline">\(V_{GS} = V_{SG} \leq 1 V.\)</span> This defines the value of <span class="math inline">\((W/L)_R\)</span>.</p>
+<div id="fig-ex5.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex5.3.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.12: Ex5-3
+</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+V_{GS} = V_{Tn} + \sqrt{\frac{I_{REF}}{\frac{1}{2} \mu_ n C_{ox} \frac{W}{L}}} \Rightarrow \Bigl(\frac{W}{L} \Bigr)_R = 1.6
+\]</span></p>
+<p>If we set <span class="math inline">\((W/L)_1 = (W/L)_2 = 1.6,\)</span> then <span class="math inline">\(I_{D1} = I_{D2} = 10 \mu A.\)</span> To make <span class="math inline">\(I_{D3} = 40 \mu A,\)</span> let <span class="math inline">\((W/L)_3 = 4(W/L)_2 = 6.4.\)</span> The p-channel devices are sized the same way.</p>
+<p><span class="math display">\[
+V_{SG} = 1 V = -V_{Tp} + \sqrt{\frac{I_{REF}}{\frac{1}{2} \mu_ p C_{ox} \frac{W}{L}}} \Rightarrow \Bigl(\frac{W}{L} \Bigr)_4 = 3.2
+\]</span></p>
+<p>To make <span class="math inline">\(I_{D5} = 10 \mu A\)</span> and <span class="math inline">\(I_{D6} = 20 \mu A\)</span> , we use <span class="math inline">\((W/L)_5 = 3.2\)</span> and <span class="math inline">\((W/L)_6 = 6.4.\)</span></p>
+<p>Now we can check the small-signal source resistances. For <span class="math inline">\(I_D = 10 \mu A\)</span> and <span class="math inline">\(λ_n = λ_p = 0.1 μmV^{-1}/L\)</span>, minimum length <span class="math inline">\(L = 1 μm\)</span> will already satisfy the requirement of <span class="math inline">\(r_o = 1 MΩ\)</span>. For <span class="math inline">\(I_D = 20 μA\)</span>, we need <span class="math inline">\(L=2μm\)</span> and for <span class="math inline">\(I_D=40μA\)</span>, we need <span class="math inline">\(L=4μm\)</span>. Since we want all of the n-channels to have the same length, and all of the p-channels to have the same length, we arrive at the following design choice (all values in μm): <span class="math inline">\((W/L)_R = (W/L)_1 = (W/L)_2 = 6.4/4\)</span> and <span class="math inline">\((W/L)_3 = (4 \times 6.4)/4\)</span>. For the p-channels: <span class="math inline">\((W/L)_4 = (W/L)_5 = 6.4/2\)</span>, and <span class="math inline">\((W/L)_6 = (2 \times 6.4)/2\)</span>. As indicated through the multipliers, the layout of <span class="math inline">\(M_3\)</span> and <span class="math inline">\(M_6\)</span> should consist of multiple unit devices.</p>
+</section>
+<section id="sec-5-3-4" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="sec-5-3-4"><span class="header-section-number">5.3.4</span> Cascode Current Mirror</h3>
+<p>As we have seen in the previous subsection, the accuracy of the current ratio in the basic current mirror is affected by a number of undesired effects. The cascode current mirror discussed in this section improves on a subset of these issues. Specifically, as we shall see, it is less sensitive to differences between <span class="math inline">\(V_{IN}\)</span> and <span class="math inline">\(V_{OUT}\)</span> and correspondingly also provides a much larger output resistance (<span class="math inline">\(R_{out}\)</span>). &nbsp;&nbsp;&nbsp; The most basic realization of a cascode current mirror is shown in <a href="#fig-5.11" class="quarto-xref">Figure&nbsp;<span>5.13</span></a>(a). The output branch of this circuit stacks two MOSFETs in a cascode configuration (see Section 4-5-1). To compute the output resistance of this circuit, we consider the small-signal model of the circuit in <a href="#fig-5.11" class="quarto-xref">Figure&nbsp;<span>5.13</span></a>(b).</p>
+<div id="fig-5.11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.11.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.13: Basic cascode current mirror. (a) Complete circuit. (b) Small-signal circuit model for the output branch.
+</figcaption>
+</figure>
+</div>
+<p>Note that this circuit resembles the common-gate model of Figure 4-9, with <span class="math inline">\(r_s\)</span> replaced by <span class="math inline">\(r_{o1},\)</span> which is the output resistance of the bottom transistor <span class="math inline">\(M_1\)</span>. Consequently, <span class="math inline">\(R_{out}\)</span> is given by Eq. (4.21), which is repeated here with the proper variable substitutions (<span class="math inline">\(r_s → r_{o1}, r_o→r_{o2}\)</span> and <span class="math inline">\(g'_m → g'_{m2}\)</span>, where <span class="math inline">\(g'_{m2}= g_{m2} + g_{mb2}\)</span>)</p>
+<p><span id="eq-5.17"><span class="math display">\[
+R_{out} \approx r_{o2}[1 + g'_{m2} r_{o1}] \approx r_{o2}g'_{m2}r_{o1}
+\tag{5.17}\]</span></span></p>
+<p>Thus, the output resistance of this structure is very large, which implies that any changes in the output voltage will not affect the output current significantly. Mathematically, we can view any disturbance in <span class="math inline">\(V_{OUT}\)</span> as a small signal quantity, <span class="math inline">\(v_{out}\)</span>. The resulting disturbance in the output current, <span class="math inline">\(i_{out}\)</span> is simply <span class="math inline">\(v_{out}/R_{out}\)</span>, which is small for large <span class="math inline">\(R_{out}\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp; Even though we know that <span class="math inline">\(R_{out}\)</span> is large from the above quantitative result, it is useful to develop a qualitative feel for why this must be the case. To investigate, <a href="#fig-5.12" class="quarto-xref">Figure&nbsp;<span>5.14</span></a> shows the output branch of the cascode current mirror for further inspection.</p>
+<div id="fig-5.12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.12.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.14: Qualitative inspection of the output branch in a cascode current mirror.
+</figcaption>
+</figure>
+</div>
+<p>In this drawing, we apply an output perturbation and consider the voltage swing at the drain of <span class="math inline">\(M_1\)</span>. Since the resistance at the drain node of <span class="math inline">\(M_1\)</span> is low (<span class="math inline">\(\approx 1/g'_{m2}\)</span>), the output voltage perturbation appears highly attenuated at this node (the attenuation is approximately given by the ratio of <span class="math inline">\(1/g'_{m2}\)</span> and <span class="math inline">\(r_{o2}\)</span>). Consequently, the drain current of <span class="math inline">\(M_1\)</span>, which is equal to the output current, sees only a very small voltage perturbation. In essence, <span class="math inline">\(M_2\)</span> shields the current mirror transistor <span class="math inline">\(M_1\)</span> from the output disturbance; the drain voltage of <span class="math inline">\(M_1\)</span> is “pinned” by the low-resistance node created by <span class="math inline">\(M_2\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Shielding effect of the cascode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Shielding effect of the cascode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="cell-a" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div id="a" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="partI.5_files/figure-html/a-output-1.svg" class="img-fluid figure-img"></p>
+<figcaption>(a) cascode with voltage perturbation applied at its output (b) &amp; (c) equivalent small signal model</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Applying KCL we can write <span class="math display">\[
+\frac{\Delta V_{out} - \Delta V_{d1}}{r_{o2}} - g'_{m2} \cdot \Delta V_{d1} = \frac{\Delta V_{d1}}{r_{o1}}
+\]</span> <span class="math display">\[
+\frac{\Delta V_{out} - \Delta V_{d1}}{r_{o2}} = \Delta V_{d1} \cdot \Bigl( g'_{m2} + \frac{1}{r_{o1}}\Bigr)
+\]</span> for <span class="math inline">\(g'_{m2} r_{o1} \gg 1\)</span>: <span class="math display">\[
+\frac{\Delta V_{out} - \Delta V_{d1}}{r_{o2}} \approx \Delta V_{d1} \cdot g'_{m2}
+\]</span> The equation above describes a voltage divider between <span class="math inline">\(r_{o2}\)</span> and <span class="math inline">\(1/g'_{m2}\)</span></p>
+<div id="cell-b" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="b" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="partI.5_files/figure-html/b-output-1.svg" class="img-fluid figure-img"></p>
+<figcaption>(c) voltage divider between <span class="math inline">\(r_{o2}\)</span> and <span class="math inline">\(1/g'_{m2}\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp; While the circuit in <a href="#fig-5.11" class="quarto-xref">Figure&nbsp;<span>5.13</span></a> is insensitive to changes in <span class="math inline">\(V_{OUT}\)</span>, it is important to realize that any difference in the drain voltages of <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_3\)</span> will still lead to a (potentially large) systematic error. Similar to <a href="#eq-5.8" class="quarto-xref">Equation&nbsp;<span>5.8</span></a>, we can write</p>
+<p><span id="eq-5.18"><span class="math display">\[
+\frac{I_{OUT}}{I_{IN}} = \frac{I_{D1}}{I_{D3}} = \frac{1+\lambda _n V_{DS1}}{1+\lambda _n V_{DS3}}
+\tag{5.18}\]</span></span></p>
+<p>For this reason, the circuit is purposely constructed such that nominally <span class="math inline">\(V_{DS1} = V_{DS3}.\)</span> Assuming that <span class="math inline">\(I_{OUT} = I_{IN}\)</span> and that <span class="math inline">\(M_2\)</span> and <span class="math inline">\(M_4\)</span> are identical, applying KVL to the circuit of <a href="#fig-5.11" class="quarto-xref">Figure&nbsp;<span>5.13</span></a> reveals</p>
+<p><span id="eq-5.19"><span class="math display">\[
+V_{D1} = V_{D3} + V_{GS4} - V_{GS2} = V_{D3}
+\tag{5.19}\]</span></span></p>
+<p>Thus, the circuit of <a href="#fig-5.11" class="quarto-xref">Figure&nbsp;<span>5.13</span></a> effectively eliminates this important shortcoming of the basic current mirror.</p>
+<div id="fig-5.13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.13.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.15: Analysis of the compliance voltage in the basic cascode current mirror.
+</figcaption>
+</figure>
+</div>
+<p>Unfortunately, the benefits of the cascode current mirror do not come for free. Specifically, notice that the circuit’s output compliance voltage (<span class="math inline">\(V_{OUTmin}\)</span> is significantly larger than that of a basic current mirror. In a basic current mirror (<a href="#fig-5.2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>), we have <span class="math inline">\(V_{OUTmin} = V_{DSsat2} = V_{OV2}\)</span>, which is the gate overdrive voltage of the MOSFET in the output branch. For the cascode current mirror, we can investigate the situation by considering <a href="#fig-5.13" class="quarto-xref">Figure&nbsp;<span>5.15</span></a>, which graphically illustrates all voltage levels and voltage drops. Here, we assume for simplicity that all threshold (<span class="math inline">\(V_{Tn}\)</span>) and gate overdrive voltages (<span class="math inline">\(V_{OV}\)</span>) are identical. With this assumption, the voltage at the drain of <span class="math inline">\(M_1\)</span> is <span class="math inline">\(V_{Tn} + V_{OV}\)</span>. This implies that <span class="math inline">\(M_1\)</span> will always be in saturation, since the drain-source voltage exceeds <span class="math inline">\(V_{OV}\)</span> by some margin (equal to <span class="math inline">\(V_{Tn}\)</span>). In order for <span class="math inline">\(M_2\)</span> to operate in saturation, we require</p>
+<p><span id="eq-5.20"><span class="math display">\[
+V_{DS2} = V_{OUT} - (V_{Tn} + V_{OV}) &gt; V_{DSsat2} = V_{OV}
+\tag{5.20}\]</span></span></p>
+<p>and thus</p>
+<p><span id="eq-5.21"><span class="math display">\[
+V_{OUT} &gt; V_{Tn} + 2 V_{OV}
+\tag{5.21}\]</span></span></p>
+<p>which means <span class="math inline">\(V_{OUTmin} = V_{Tn} + 2V_{OV}\)</span>. Note that for typical values of <span class="math inline">\(V_{OV}\)</span> and <span class="math inline">\(V_{Tn}\)</span>, the compliance voltage of the cascode current mirror can become quite large, e.g., 0.5 V + 1 V = 1.5 V, taking away a significant amount of signal swing from the available voltage supply range (consider for example <a href="#fig-5.3" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>).</p>
+</section>
+<section id="sec-5-3-5" class="level3" data-number="5.3.5">
+<h3 data-number="5.3.5" class="anchored" data-anchor-id="sec-5-3-5"><span class="header-section-number">5.3.5</span> The High-Swing Cascode Current Mirror</h3>
+<p>In applications where the large compliance voltage of the circuit in <a href="#fig-5.11" class="quarto-xref">Figure&nbsp;<span>5.13</span></a> is problematic, an alternative scheme, called <strong>high swing cascode current mirror</strong> can be used. We will develop this circuit from the previous solution using a few intermediate steps.</p>
+<p>&nbsp;&nbsp;&nbsp; First, consider the output branch of a cascode current mirror as shown in <a href="#fig-5.14" class="quarto-xref">Figure&nbsp;<span>5.16</span></a>. In the annotation of this circuit, it is assumed that <span class="math inline">\(V_{G2}\)</span> is set up such that <span class="math inline">\(M_1\)</span> operates at the edge of saturation, i.e., <span class="math inline">\(V_{DS} = V_{DSsat} = V_{OV}\)</span>. In this case, we require</p>
+<p><span id="eq-5.22"><span class="math display">\[
+V_{OUT} - V_{OV} &gt; V_{DSsat2} = V_{OV}
+\tag{5.22}\]</span></span></p>
+<p>and thus</p>
+<p><span id="eq-5.23"><span class="math display">\[
+V_{OUT} &gt; 2 V_{OV}
+\tag{5.23}\]</span></span></p>
+<p>which means <span class="math inline">\(V_{OUTmin} = 2V_{OV}\)</span>, corresponding to a substantial improvement over <a href="#eq-5.21" class="quarto-xref">Equation&nbsp;<span>5.21</span></a>.</p>
+<div id="fig-5.14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.14.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.16: Desired output branch biasing to achieve the minimum possible compliance voltage.
+</figcaption>
+</figure>
+</div>
+<p>The question that remains is how exactly <span class="math inline">\(V_{G2}\)</span> should be generated to achieve this improvement. To investigate, we first compute the required value of <span class="math inline">\(V_{G2}\)</span> by applying KVL in <a href="#fig-5.14" class="quarto-xref">Figure&nbsp;<span>5.16</span></a></p>
+<p><span id="eq-5.24"><span class="math display">\[
+V_{G2} - V_{DS1} + V_{GS2} = V_{Tn} + 2V_{OV}
+\tag{5.24}\]</span></span></p>
+<p>It turns out that many options exist for setting <span class="math inline">\(V_{G2}\)</span> to the above-calculated value. The most basic option is shown in <a href="#fig-5.15" class="quarto-xref">Figure&nbsp;<span>5.17</span></a>. Here, an extra current branch is introduced to bias the added transistor <span class="math inline">\(M_6\)</span>. In a practical implementation, this current typically originates from an extra branch added to a PMOS current mirror in the overall biasing network. The key idea in this setup is that <span class="math inline">\(M_6\)</span> is sized to one-quarter the width used for <span class="math inline">\(M_2.\)</span></p>
+<div id="fig-5.15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.15.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.17: Basic circuit for cascode voltage generation.
+</figcaption>
+</figure>
+</div>
+<p>With this sizing, we have</p>
+<p><span id="eq-5.25"><span class="math display">\[
+\begin{split}
+V_{G2} &amp;= V_{GS6} = V_{Tn} + \sqrt{\frac{2 I_{D6}}{\mu _n C_{ox} \frac{W/4}{L}}} \\
+&amp;= V_{Tn} + 2 \sqrt{\frac{2 I_{OUT}}{\mu _n C_{ox} \frac{W}{L}}} = V_{Tn} + 2 V_{OV}
+\end{split}
+\tag{5.25}\]</span></span></p>
+<p>which achieves the desired objective.</p>
+<p>&nbsp;&nbsp;&nbsp; In practice, the designer will usually not want to bias <span class="math inline">\(M_1\)</span> exactly at the edge of saturation, but rather leave some margin. This can be achieved by sizing the width ratio smaller than 1/4. <a href="#tbl-5.5" class="quarto-xref">Table&nbsp;<span>5.5</span></a> shows the resulting margins for a few integer ratios. Choosing a sizing ratio of 1/6 often yields a reasonable compromise between compliance voltage and circuit robustness in a practical circuit.</p>
+<div id="tbl-5.5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.5: <span class="math inline">\(V_{DS1}\)</span> as a function of the ratio <span class="math inline">\(k = W_6/W_2\)</span> in the circuit of <a href="#fig-5.16" class="quarto-xref">Figure&nbsp;<span>5.18</span></a>.
+</figcaption>
+<div aria-describedby="tbl-5.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 29%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\(\mathbf{k = W_6/W_2}\)</span><br>
+&nbsp;</th>
+<th style="text-align: left;"><span class="math inline">\(\mathbf{V_{DS1}}\)</span><br>
+&nbsp;</th>
+<th style="text-align: left;"><span class="math inline">\(\mathbf{ V_{DS1} - V_{OV}}\)</span><br>
+(Margin)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1/4</td>
+<td style="text-align: left;"><span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1/5</td>
+<td style="text-align: left;">1.24 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.24 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1/6</td>
+<td style="text-align: left;">1.45 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.45 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1/7</td>
+<td style="text-align: left;">1.64 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.64 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1/8</td>
+<td style="text-align: left;">1.83 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.83 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1/9</td>
+<td style="text-align: left;">2 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In order to complete the high-swing cascode current mirror circuit, we still need to design the circuit’s input branch. The most obvious (but non-preferred) solution for the input branch is shown in <a href="#fig-5.16" class="quarto-xref">Figure&nbsp;<span>5.18</span></a>(a).</p>
+<div id="fig-5.16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.16.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.18: High-swing cascode current mirror with input branch included. (a) Non-preferred solution that suffers from a systematic mirror ratio error. (b) Solution that avoids the systematic mirror ratio error.
+</figcaption>
+</figure>
+</div>
+<p>This circuit suffers from the problem that <span class="math inline">\(V_{DS1} ≠ V_{DS3}\)</span>, and therefore a systematic error is introduced in the mirror ratio (see <a href="#eq-5.18" class="quarto-xref">Equation&nbsp;<span>5.18</span></a>). An elegant solution to this problem is shown in <a href="#fig-5.16" class="quarto-xref">Figure&nbsp;<span>5.18</span></a>(b), where <span class="math inline">\(M_4\)</span> has been added to replicate the gate-source voltage drop of <span class="math inline">\(M_2\)</span>, such that <span class="math inline">\(V_{DS1} = V_{DS3}\)</span>. Just as in the circuit of <a href="#fig-5.16" class="quarto-xref">Figure&nbsp;<span>5.18</span></a>(a), the gate voltage of <span class="math inline">\(M_3\)</span> self-adjusts to the point where <span class="math inline">\(M_3\)</span> carries the injected current (<span class="math inline">\(I_{IN}\)</span>). <span class="math inline">\(M_4\)</span> merely acts as a current buffer, passing all of the input current to <span class="math inline">\(M_3\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp; The final circuit of <a href="#fig-5.16" class="quarto-xref">Figure&nbsp;<span>5.18</span></a>(b) has been widely used in practice and is insensitive to process variations, such as global shifts in threshold voltage, Nonetheless, there are two remaining issues with this circuit that are worth mentioning. First, it is sometimes inconvenient to provide the extra current source used to bias <span class="math inline">\(M_6\)</span>. Problems P5.5 and P5.6 look into alternative solutions that do not require an extra input current source, but still achieve low compliance voltage in the output branch. &nbsp;&nbsp;&nbsp; The second issue stems from the backgate effect. In our analysis above, we have neglected the fact that the threshold voltage of <span class="math inline">\(M_2\)</span> will be larger than that of <span class="math inline">\(M_6\)</span>. This is because the source of <span class="math inline">\(M_6\)</span> is connected to ground (and thus <span class="math inline">\(V_{SB6} = 0\)</span>), while the source potential of <span class="math inline">\(M_2\)</span> is positive (and thus <span class="math inline">\(V_{SB2} &gt; 0\)</span>). As a result, assuming a sizing ratio of 1/4, <span class="math inline">\(V_{DS1}\)</span> is more accurately given by</p>
+<p><span id="eq-5.26"><span class="math display">\[
+\begin{split}
+V_{DS1} &amp;= V_{GS6} - V_{GS2} \\
+&amp;= V_{Tn0} + 2 V_{OV} - \Bigl[ V_{Tn}(V_{SB2}) + V_{OV}\Bigr] \\
+&amp;= V_{OV} - \Bigl[V_{Tn}(V_{SB2}) - V_{OV}\Bigr] = V_{OV} - \Delta V_{Tn}
+\end{split}
+\tag{5.26}\]</span></span></p>
+<p>where <span class="math inline">\(\Delta V_{Tn}\)</span> is a positive quantity that causes <span class="math inline">\(M_1\)</span> to enter the triode region, unless sufficient margin is provided. In practice, the designer can use computer simulations to ensure that sufficient saturation margin is guaranteed. Another option is to change the circuit to mitigate this problem at its root. The thought process that leads to the alternate solution is illustrated in <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>.</p>
+<div id="fig-5.17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.17.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.19: Conceptual steps for replacing the W/4 cascode biasing device with a two-transistor compound circuit
+</figcaption>
+</figure>
+</div>
+<p>The biasing transistor <span class="math inline">\(M_6\)</span>, as discussed previously, is redrawn in isolation in <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>(a). <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>(b) shows an equivalent circuit that breaks <span class="math inline">\(M_6\)</span> into four transistors, each with an aspect ratio of W/L. Assuming that the ideal square law model holds, the series connection of these transistors behaves like a MOSFET with aspect ratio of W/(4L), or (W/4)/L (see Problem P2.2).</p>
+<p>Consequently, <span class="math inline">\(V_{G2}\)</span> must be equal to <span class="math inline">\(V_{Tn} + 2V_{OV}\)</span>, as in the original circuit of <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>(a). Furthermore, notice that the transistor <span class="math inline">\(M_{6a}\)</span> in <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>(b) must operate in the saturation region (since it is diode-connected). This means that this MOSFET’s gate-source voltage is equal to <span class="math inline">\(V_{Tn} + V_{OV}\)</span>, and the potential at its source node is equal to <span class="math inline">\(V_OV\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp; Next, in <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>(c), the three bottom transistors are lumped into a single device, again based on the argument that a device with an aspect ratio of W/(3L) can be replaced with one that has (W/3)/L. Note that the combined transistor (<span class="math inline">\(M_{6b}\)</span> in <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>(c)) operates in the triode region, since its drain-source voltage (<span class="math inline">\(V_{OV}\)</span>) is smaller than <span class="math inline">\(V_{GS6b} – V_{Tn} = 2V_{OV}\)</span>. Of course, all of the above conceptual arguments can be validated quantitatively, by carrying out a first-principle analysis using MOSFET I-V equations.</p>
+<p>&nbsp;&nbsp;&nbsp; The main advantage of the circuit in <a href="#fig-5.17" class="quarto-xref">Figure&nbsp;<span>5.19</span></a>(c) becomes apparent when it is inserted back into the cascode current mirror, as shown in fig-5.18. Since <span class="math inline">\(M_{6a}\)</span> has the same W/L and carries the same current as <span class="math inline">\(M_2\)</span>, the source potential of these transistors is identical (neglecting channel length modulation). Hence, the error term due to backgate effect that we saw in <a href="#eq-5.26" class="quarto-xref">Equation&nbsp;<span>5.26</span></a> is suppressed, since <span class="math inline">\(V_{SB2} = V_{SB6a}\)</span>.</p>
+<p><span id="eq-5.27"><span class="math display">\[
+\begin{split}
+V_{DS1} &amp;= V_{DS6b} + V_{DS6a} - V_{GS2} \\
+&amp;= V_{OV} + V_{Tn}(V_{SB6a}) + V_{OV} -\Bigl[ V_{Tn}(V_{SB2}) + V_{OV}\Bigr] \\
+&amp;= V_{OV}
+\end{split}
+\tag{5.27}\]</span></span></p>
+<p>Finally, note that even though the circuit of <a href="#fig-5.18" class="quarto-xref">Figure&nbsp;<span>5.20</span></a> provides a somewhat less error-prone setup for the generation of <span class="math inline">\(V_{G2}\)</span>, the designer will still want to leave margin and back off from the ideal W/3 sizing for <span class="math inline">\(M_{6b}\)</span>. <a href="#tbl-5.5" class="quarto-xref">Table&nbsp;<span>5.5</span></a> lists the margin for various integer choices larger than 3 (see also problem P5.4).</p>
+<div id="fig-5.18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.18.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.20: Complete high-swing cascode current mirror using a triode device (<span class="math inline">\(M_{6b}\)</span>) for cascode biasing.
+</figcaption>
+</figure>
+</div>
+<p><strong><span id="example-5-4">Example 5-4</span>: Design of a Cascode Current Mirror</strong></p>
+<p>The cascode current mirror in <a href="#fig-5.18" class="quarto-xref">Figure&nbsp;<span>5.20</span></a> is configured such that <span class="math inline">\(I_{OUT} = I_{IN}\)</span>. In this example, we wish to design a similar current mirror that sets <span class="math inline">\(I_{OUT} = 4 I_{IN} = 400 μA\)</span>. <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> are to be sized such that <span class="math inline">\(V_{OV} = 200 mV\)</span> and using a channel length of 2 μm. <span class="math inline">\(M_{6b}\)</span> should be sized such that m = 5. Given these specifications, determine all transistor widths and node voltages. Also compute the circuit’s output compliance voltage and output resistance (<span class="math inline">\(R_{out}\)</span>). Neglect channel-length modulation in bias point calculations.</p>
+<div id="tbl-5.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.6: <span class="math inline">\(V_{DS1}\)</span> as a function of width scaling factor m for <span class="math inline">\(W_{6b}\)</span> in <a href="#fig-5.18" class="quarto-xref">Figure&nbsp;<span>5.20</span></a>.
+</figcaption>
+<div aria-describedby="tbl-5.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 29%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\(\mathbf m\)</span> &nbsp;</th>
+<th style="text-align: left;"><span class="math inline">\(\mathbf{V_{DS1}}\)</span><br>
+&nbsp;</th>
+<th style="text-align: left;"><span class="math inline">\(\mathbf{ V_{DS1} - V_{OV}}\)</span><br>
+(Margin)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1.24 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.24 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1.45 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.45 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">1.64 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.64 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">1.83 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;">0.83 <span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">2 <span class="math inline">\(V_{OV}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(V_{OV}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>SOLUTION</strong></p>
+<p>The width of <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> is found by solving</p>
+<p><span class="math display">\[
+I_{OUT} = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} V_{OV}^2
+\]</span></p>
+<p>for W, and inserting the given numbers and technology parameters. This yields <span class="math inline">\(W_1 = W_2 = 800 μm\)</span>. To implement the current ratio <span class="math inline">\(I_{OUT}/I_{IN} = 4\)</span>, we require <span class="math inline">\(W_3 = W_4 = W_{6a} = W_1/4 = 200μm\)</span> and <span class="math inline">\(W_{6b} = W_{6a}/5 = 40 μm\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp; The voltage <span class="math inline">\(V_{G1}\)</span> is simply <span class="math inline">\(V_{Tn} + V_{OV} = 0.7 V\)</span>. With m=5, we know from <a href="#tbl-5.6" class="quarto-xref">Table&nbsp;<span>5.6</span></a> that <span class="math inline">\(V_{D1} = V_{D3} = V_{D6b} = 1.45 V_{OV} = 290 mV\)</span>. To compute <span class="math inline">\(V_{G2}\)</span> accurately, we must first estimate the threshold voltage of <span class="math inline">\(M_{6a}\)</span> using</p>
+<p><span class="math display">\[
+V_{Tn}(V_{SB}) = V_{T0n} + \gamma _n \cdot \Bigl( \sqrt{2 \phi _f + V_{SB}} - \sqrt{2 \phi _f} \Bigr)
+\]</span></p>
+<p>Evaluating the above equation with <span class="math inline">\(V_{SB6a} = V_{D6b} = 290 mV\)</span> gives <span class="math inline">\(V_{T6a} = 590 mV\)</span>. Therefore, <span class="math inline">\(V_{G2} = 1.45 V_{OV} + V_{T6a} + V_{OV} = 1.08 V\)</span>. The circuit’s output compliance voltage is <span class="math inline">\(V_{OUTmin} = V_{D1} + V_{OV} = 0.49 V\)</span>. The circuit’s output resistance is given by <span class="math inline">\(R_{out} ≅ ro1⋅ g'_{m2}r_{o2}\)</span> (see Section 4-5-1). Therefore, we compute</p>
+<p><span class="math display">\[
+g_{m2} = \frac{2 I_{D2}}{V_{OV}} = \frac{2 \cdot 400 \mu A}{200 mV} = 4 mS
+\]</span></p>
+<p><span class="math display">\[
+\begin{split}
+g'_{m2} &amp;= g_{m2} \Bigl( 1 + \frac{\gamma _n}{2 \sqrt{2 \phi _f + V_{SB}}} \Bigr) \\
+&amp;= 4mS \Bigl( 1 + \frac{0.6 V^{-1}}{2 \sqrt{0.8 V + 0.29 V}} \Bigr) = 5.15 mS
+\end{split}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+r_{o1} \approx r_{o2} \approx \frac{1}{ \lambda _n I_{D1}} = \frac{1}{ 0.05 V^{-1} \cdot 400 \mu A} = 500 k\Omega
+\]</span></p>
+<p>These numbers lead to <span class="math inline">\(R_{out} ≅ 12.88 MΩ\)</span>. The schematic in <a href="#fig-ex5.4" class="quarto-xref">Figure&nbsp;<span>5.21</span></a> summarizes the results obtained in this example.</p>
+<div id="fig-ex5.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex5.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/png/figure-ex5.4.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex5.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.21: Ex5-4
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-5-4" class="level2 page-columns page-full" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-5-4"><span class="header-section-number">5.4</span> Current References</h2>
+<p>The current mirror circuits discussed in the previous section are useful for replicating and distributing bias currents within a sub-circuit or an entire chip. Ultimately, however, the currents that are being distributed must originate from some form of a reference current generator (see <a href="#fig-5.1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>). &nbsp;&nbsp;&nbsp; Over the years, a wide variety of current references have been developed, each having specific pros and cons for the intended application. Within the scope of this introductory module, we will consider only two examples, primarily as a starting point for further reading and to complete the picture on how a complete biasing network within a larger chip might be constructed. For a more comprehensive discussion, the reader is referred to advanced texts such as <span class="citation" data-cites="gray2009analysis">(<a href="../../references.html#ref-gray2009analysis" role="doc-biblioref">Gray et al. 2009</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"></div><p>We begin by considering the most basic of all possible reference generator circuits, shown in <a href="#fig-5.19" class="quarto-xref">Figure&nbsp;<span>5.22</span></a>. This circuit is essentially a current mirror, with its input branch tied to the supply via a resistor.</p>
+<div id="fig-5.19" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.19.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.22: Simple supply-referenced current generator.
+</figcaption>
+</figure>
+</div>
+<p>In this circuit, we have</p>
+<p><span id="eq-5.28"><span class="math display">\[
+I_{OUT} \approx I_{IN} = \frac{V_{DD} - V_{Tn} - V_{OV}}{R}
+\tag{5.28}\]</span></span></p>
+<p>From this result, noting that typically <span class="math inline">\(V_{DD} \gg V_{Tn}\)</span>, and <span class="math inline">\(V_{DD} \gg V_{OV}\)</span>, we see that the current is roughly proportional to the supply voltage. Given the variations in supply voltage that a robust circuit must withstand (see <a href="#tbl-5.1" class="quarto-xref">Table&nbsp;<span>5.1</span></a>), this solution is often not suitable for all but relatively primitive and low-performance circuits. What we desire is a current generator that is (to first-order) insensitive to supply variations. The so-called self-biased constant-gm current generator discussed next is an example of an improved circuit that is frequently used in practice. To understand the self-biased constant-gm current generator, consider first the circuit shown in <a href="#fig-5.20" class="quarto-xref">Figure&nbsp;<span>5.23</span></a>(a).</p>
+<div id="fig-5.20" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.20.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.23: (a) Core building block of a constant-gm current generator. (b) Current transfer characteristics for various scenarios.
+</figcaption>
+</figure>
+</div>
+<p>This is a current mirror-like circuit with a resistor <span class="math inline">\(R\)</span> added in the source of <span class="math inline">\(M_2\)</span>. Assuming that <span class="math inline">\(M_2\)</span> is scaled <span class="math inline">\(m\)</span> times wider than <span class="math inline">\(M_1\)</span>, and letting <span class="math inline">\(R = 0\)</span> for the time being, we know that <span class="math inline">\(I_{OUT}\)</span> is approximately equal to <span class="math inline">\(m ⋅ I_{IN}\)</span>. This is illustrated using the dashed line (i) in the graph of <a href="#fig-5.20" class="quarto-xref">Figure&nbsp;<span>5.23</span></a>(b). Line (ii) is included for reference, corresponding to <span class="math inline">\(m = 1\)</span>, i.e., <span class="math inline">\(I_{OUT} = I_{IN}\)</span>. Now, assuming <span class="math inline">\(m &gt; 1\)</span> and <span class="math inline">\(R&gt;0\)</span>, we know that <span class="math inline">\(I_{OUT}\)</span> must be smaller compared to case (i) with <span class="math inline">\(R = 0\)</span>. This is because the voltage drop across <span class="math inline">\(R\)</span> reduces the gate-source voltage of <span class="math inline">\(M_2\)</span> and consequently results in smaller <span class="math inline">\(I_{OUT}\)</span>. As <span class="math inline">\(I_{IN}\)</span> increases, <span class="math inline">\(I_{OUT}\)</span> [curve (iii)] bends away further and further from line (i) and ultimately intersects with line (ii). While it is possible to derive a closed-form equation of this curve (see problem P5.7), we focus our attention on point P. A particularly interesting property of point P is that it defines an absolute current level that (to first-order) depends only on the MOSFET sizes and <span class="math inline">\(R\)</span>, i.e., it is independent of the supply voltage. In order to build a current reference that utilizes this point, a few extra transistors must be employed, as shown in <a href="#fig-5.21" class="quarto-xref">Figure&nbsp;<span>5.24</span></a>. First focus on <span class="math inline">\(M_3\)</span> and <span class="math inline">\(M_4\)</span>. These transistors form a current mirror that forces <span class="math inline">\(I_{OUT} = I_{IN}\)</span>, which is necessary for operation at point P (see <a href="#fig-5.20" class="quarto-xref">Figure&nbsp;<span>5.23</span></a>(b)).</p>
+<div id="fig-5.21" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.21.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.24: Complete self-biased constant-gm current reference circuit.
+</figcaption>
+</figure>
+</div>
+<p>Unfortunately, simply forcing <span class="math inline">\(I_{OUT} = I_{IN}\)</span> does not guarantee that the circuit operates at P. There exists another (undesired) point where <span class="math inline">\(I_{OUT} = I_{IN} = 0\)</span>, labeled U in <a href="#fig-5.20" class="quarto-xref">Figure&nbsp;<span>5.23</span></a>(b). If only <span class="math inline">\(M_1 – M_4\)</span> were present in this circuit, it would not be clear which operating point the circuit will chose when the supply voltage is turned on. The outcome may depend on second-order effects, such as parasitic capacitive coupling, and on how quickly the supply ramps up.</p>
+<p>&nbsp;&nbsp;&nbsp; In order to guarantee that the circuit will eventually operate at point P, the designer will always include a so-called start-up circuit. This circuit is formed by <span class="math inline">\(M_6 – M_8\)</span> in <a href="#fig-5.21" class="quarto-xref">Figure&nbsp;<span>5.24</span></a>.</p>
+<p>&nbsp;&nbsp;&nbsp; To understand the operation of the start-up circuit, consider first the case where the circuit starts up in point U, i.e., <span class="math inline">\(I_{OUT} = I_{IN} = 0\)</span>. This condition necessitates that <span class="math inline">\(V_{GS2} &lt; V_{Tn}\)</span>, since no drain current is flowing in <span class="math inline">\(M_2\)</span>. With <span class="math inline">\(V_{GS2} &lt; V_{Tn}\)</span>, <span class="math inline">\(M_7\)</span> will be off and <span class="math inline">\(M_6\)</span> will be on, pulling the voltage at node <span class="math inline">\(V_{START}\)</span> toward <span class="math inline">\(V_{DD}\)</span>. Thus, <span class="math inline">\(M_8\)</span> will turn on and force a drain current into <span class="math inline">\(M_3\)</span>, which will subsequently be mirrored into <span class="math inline">\(M_4\)</span> and <span class="math inline">\(M_2\)</span>. Therefore, the circuit has no choice but to leave point U and ultimately arrive at P, which is the only other possible DC operating point.</p>
+<p>&nbsp;&nbsp;&nbsp; Once point P is reached we have <span class="math inline">\(V_{GS2} &gt; V_{Tn}\)</span> by some overdrive voltage, typically a few hundred millivolts. For the given <span class="math inline">\(V_{GS2}\)</span> in this point, <span class="math inline">\(M_7\)</span> must be sized large enough so that <span class="math inline">\(V_{START}\)</span> lies near ground, and no current flows in <span class="math inline">\(M_8\)</span> (<span class="math inline">\(I_{START} = 0\)</span>). In a typical design <span class="math inline">\(M_7\)</span> is much larger than <span class="math inline">\(M_6\)</span>, resulting in a so-called low-threshold inverter.</p>
+<p>Our final task is to compute the current <span class="math inline">\(I_{REF} = I_{IN} = I_{OUT}\)</span> in <a href="#fig-5.21" class="quarto-xref">Figure&nbsp;<span>5.24</span></a>. We begin by applying KVL around the gate-source voltages of <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>.</p>
+<p><span id="eq-5.29"><span class="math display">\[
+I_{REF} R = V_{GS2} - V_{GS1}
+\tag{5.29}\]</span></span></p>
+<p>Neglecting backgate effect, i.e., assuming equal threshold voltages for <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> (for simplicity), <a href="#eq-5.29" class="quarto-xref">Equation&nbsp;<span>5.29</span></a> becomes</p>
+<p><span id="eq-5.30"><span class="math display">\[
+I_{REF} R = V_{OV2} - V_{OV1}
+\tag{5.30}\]</span></span></p>
+<p>Now, since for a MOSFET</p>
+<p><span id="eq-5.31"><span class="math display">\[
+V_{OV} = \sqrt{\frac{2I_D}{\mu _n C_{ox} \frac{W}{L}}}
+\tag{5.31}\]</span></span></p>
+<p>and <span class="math inline">\(M_1\)</span> is <span class="math inline">\(m\)</span> times wider than <span class="math inline">\(M_2\)</span>, <a href="#eq-5.30" class="quarto-xref">Equation&nbsp;<span>5.30</span></a> can be rewritten as</p>
+<p><span id="eq-5.32"><span class="math display">\[
+I_{REF} = \dfrac{V_{OV2} \Bigl(1 - \dfrac{1}{\sqrt{m}} \Bigr)}{R}
+\tag{5.32}\]</span></span></p>
+<p>Finally, eliminating <span class="math inline">\(V_{OV2}\)</span> using <a href="#eq-5.31" class="quarto-xref">Equation&nbsp;<span>5.31</span></a> and solving for <span class="math inline">\(I_{REF}\)</span> gives</p>
+<p><span id="eq-5.33"><span class="math display">\[
+I_{REF} = \dfrac{2(\sqrt{m}-1)^2}{m} \cdot  \dfrac{1}{\mu _n C_{ox} \dfrac{W_n}{L_n} R^2}
+\tag{5.33}\]</span></span></p>
+<p>This equation is primarily useful for setting the absolute current level in the circuit, and at first glance does not seem to have any special structure. A much more important result from the above analysis follows from considering the transconductance of <span class="math inline">\(M_2\)</span>, given by</p>
+<p><span id="eq-5.34"><span class="math display">\[
+g_{m2} = \dfrac{2I_{D2}}{V_{OV2}} = \dfrac{2I_{REF}}{V_{OV2}} =  \dfrac{2 \Bigl(1 - \dfrac{1}{\sqrt{m}} \Bigr)}{R}
+\tag{5.34}\]</span></span></p>
+<p>As we see from this result, <span class="math inline">\(g_{m2}\)</span> depends only on the resistance <span class="math inline">\(R\)</span> and the scaling factor <span class="math inline">\(m\)</span>, i.e., the transconductance will not be affected by MOSFET process and temperature variations. In a way, the circuit “recomputes” <span class="math inline">\(I_{REF}\)</span> such that the transconductance is held constant to the value given by <a href="#eq-5.34" class="quarto-xref">Equation&nbsp;<span>5.34</span></a>. This is the reason why this circuit is typically called a constant-gm reference generator, as mentioned earlier. It should be noted, of course, that not only the transconductance of <span class="math inline">\(M_2\)</span> is held constant when this circuit is used. Any other MOSFET that utilizes <span class="math inline">\(I_{REF}\)</span> or a copy of this current will behave similarly.</p>
+<p>&nbsp;&nbsp;&nbsp; In practice, the device type used to implement resistor <span class="math inline">\(R\)</span> should be chosen with care. When implemented on-chip, the designer will often opt for a highly doped polysilicon resistor that has relatively small process variations and a small temperature coefficient (see <a href="#tbl-5.2" class="quarto-xref">Table&nbsp;<span>5.2</span></a> and <a href="#tbl-5.3" class="quarto-xref">Table&nbsp;<span>5.3</span></a>). Alternatively, the resistance is sometimes placed off-chip, where it can be realized, for example, with a 1%-accurate and low temperature coefficient metal film resistor.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;When the resistor is placed off-chip, the designer must take great care to avoid stability issues. Using feedback circuit analysis techniques, it can be shown that even relatively small amounts of parasitic capacitance at the source node of <span class="math inline">\(M_1\)</span> can make the circuit oscillate.</p></div></div><p>As a final note, we should emphasize that the foregoing analysis neglected many second-order effects, such as channel-length modulation and back-gate effect. In practice, these effects can have some bearing on the circuit’s accuracy and therefore leave room for improvements (such as including cascode transistors). The interested reader will find many articles on this topic in analog circuit literature and advanced texts, such as <span class="citation" data-cites="gray2009analysis">(<a href="../../references.html#ref-gray2009analysis" role="doc-biblioref">Gray et al. 2009</a>)</span>.</p>
+</section>
+<section id="sec-5-5" class="level2 page-columns page-full" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-5-5"><span class="header-section-number">5.5</span> Voltage Biasing Considerations</h2>
+<p>In addition to bias currents, building a complete ana- log circuit will require the generation of various bias voltages needed to operate common-source, common-gate and common-drain stages (see for example <span class="math inline">\(V_{B1}\)</span> and <span class="math inline">\(V_{B2}\)</span> in <a href="#fig-5.1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>). In this section we will discuss an exemplary subset of solutions that have found their use in practice.</p>
+<p>As we have already seen in Example 5-1, the com- mon-source stage is very sensitive to variations in its input bias voltage. As a result, a majority of practical CS circuits are embedded in feedback networks that regulate the input bias voltage to the proper value, thereby absorbing process variations and mismatch effects. Since feedback is beyond the scope of this module, the input biasing techniques suggested for the common-source stage are meant to be applied only to a subset of applications where the circuit’s voltage gain is low (typically &lt; 10), and the amplifier is utilized “open-loop,” without a feedback network. This complication typically does not exist for CG and and CD stages, and the proposed circuits are therefore more or less universally applicable.</p>
+<section id="sec-5-5-1" class="level3 page-columns page-full" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="sec-5-5-1"><span class="header-section-number">5.5.1</span> Voltage Biasing for a Common-Source Stage</h3>
+<p>Due to the voltage gain of a CS amplifier, its input bias voltage usually cannot be set to a fixed voltage without causing prohibitive sensitivities to component variations and mismatch. Thus, it is important to design the bias circuitry with variability in mind and construct solutions that can track or absorb any significant deviations from nominal parameter conditions. Especially for common-source stages, soltions applied in practice often involve the use of feedback or differential circuit topologies <span class="citation" data-cites="gray2009analysis">(see <a href="../../references.html#ref-gray2009analysis" role="doc-biblioref">Gray et al. 2009</a>)</span>. Since these topics are beyond the scope of this module, we will concentrate here only on a few basic ideas that can be understood with the prerequisites established so far.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-gray2009analysis" class="csl-entry" role="listitem">
+Gray, Paul R, Paul J Hurst, Stephen H Lewis, and Robert G Meyer. 2009. <em>Analysis and Design of Analog Integrated Circuits</em>. John Wiley &amp; Sons.
+</div></div><p>&nbsp;&nbsp;&nbsp; Specifically, we will focus in this subsection on a few possible solutions to the problem encountered in Example 5-1. The main problem in this example was that the input bias voltage was held constant, while the threshold voltage and other parameters in the circuit changed due to process variations. Ideally, we would like to “automatically compute” the input bias voltage of the stage such that it tracks the required value across process corners.</p>
+<div id="fig-5.22" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.22.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.25: Replica biasing approach for setting up the quiescent point gate-source voltage of a common-source stage.
+</figcaption>
+</figure>
+</div>
+<p>A first option that accomplishes this is shown in <a href="#fig-5.22" class="quarto-xref">Figure&nbsp;<span>5.25</span></a>. Here, <span class="math inline">\(M_1\)</span> is the MOSFET that implements the common-source amplifier and <span class="math inline">\(v_s\)</span> and <span class="math inline">\(R_s\)</span> model a transducer that generates the voltage we wish to amplify. The transistor <span class="math inline">\(M_2\)</span> is a <strong>replica device</strong> that computes the proper gate-source voltage required to carry the current <span class="math inline">\(I_B\)</span>. Note that this overall arrangement resembles a current mirror, which we have already determined to be insensitive to process variations. If <span class="math inline">\(V_{Tn}\)</span> or <span class="math inline">\(μ_n C_{ox}\)</span> change, the gate-source voltage of <span class="math inline">\(M_1\)</span> <span class="math inline">\((V_B)\)</span> adjusts so that this transistor’s drain current remains equal to <span class="math inline">\(I_B\)</span>. This means (to first-order) that no current flows into the resistive divider formed by <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span>. These resistors can be sized to establish the desired output quiescent point and voltage gain. For example, for <span class="math inline">\(R_1 = R_2\)</span> and <span class="math inline">\(V_{DD} = 5V\)</span>, we have <span class="math inline">\(V_{OUT} = 2.5V\)</span>, approximately independent of process and temperature.</p>
+<p>&nbsp;&nbsp;&nbsp; While the above-discussed circuit will work robustly, it has one big limitation in that both transducer terminals must be accessible and compatible with the bias voltage desired for <span class="math inline">\(M_1\)</span>. One possibility for overcoming this constraint is to employ AC coupling (see <a href="#fig-5.23" class="quarto-xref">Figure&nbsp;<span>5.26</span></a>). AC coupling means that the transducer signal is coupled into the circuit via a capacitor. In the circuit of <a href="#fig-5.23" class="quarto-xref">Figure&nbsp;<span>5.26</span></a> <span class="math inline">\(R_{large}\)</span> and <span class="math inline">\(C_{large}\)</span> form a first-order high pass filter with corner frequency <span class="math inline">\(ω_c = 1/R_{large}C_{large}\)</span> (neglecting the resistance <span class="math inline">\(1/g_{m2}\)</span>, which is in series with <span class="math inline">\(R_{large}\)</span>).</p>
+<div id="fig-5.23" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.23.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.26: Replica biasing approach using AC coupling.
+</figcaption>
+</figure>
+</div>
+<p>To avoid filtering the signal, <span class="math inline">\(ω_c\)</span> must be chosen smaller than the smallest frequency of interest. For instance, if we are interested in amplifying a 20 Hz signal (the lower end of the audio frequency spectrum), we need <span class="math inline">\(R_{large}C_{large} &gt; 1/(2π \cdot 20 Hz) ≅ 4 ms\)</span>. Assuming we can comfortably integrate resistances up to <span class="math inline">\(100 kΩ\)</span> on our chip, this means that <span class="math inline">\(C_{large} &gt; 4 nF\)</span>. Such a large capacitance is typically impractical for integration on chip and would have to be realized as an external component.</p>
+<p>A shortcoming of the circuit in <a href="#fig-5.23" class="quarto-xref">Figure&nbsp;<span>5.26</span></a> is that the resistors <span class="math inline">\(R_{large}\)</span> and <span class="math inline">\(R_s\)</span> form a voltage divider, which can be detrimental when <span class="math inline">\(R_s\)</span> is very large. <a href="#fig-5.24" class="quarto-xref">Figure&nbsp;<span>5.27</span></a> shows an alternate approach in which the transducer can be directly connected to the MOSFET gate. In this circuit, the bias current <span class="math inline">\(I_B\)</span> is injected into the drain of the common-source transistor (<span class="math inline">\(M_1\)</span>) and extracted again using the current mirror formed by <span class="math inline">\(M_2\)</span> and <span class="math inline">\(M_3\)</span>. The bias point voltage at node X is given by <span class="math inline">\(V_B – V_{GS1}\)</span>, which places constraints on the minimum required value for <span class="math inline">\(V_B\)</span>. Note however, that <span class="math inline">\(V_B\)</span> does not have to be accurately set or track process variations; as long as <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> are in saturation, node X tracks (DC) changes in <span class="math inline">\(V_B\)</span> and the circuit remains properly biased. As far as the signal is concerned, the capacitor <span class="math inline">\(C_{large}\)</span> establishes an AC ground at the source of <span class="math inline">\(M_1\)</span> beyond the high-pass corner frequency of the circuit. Just as in the previous circuit, it can be shown that the AC coupling capacitor must take on large values to enable the passing of low frequencies through the circuit.</p>
+<div id="fig-5.24" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.24.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.27: Biasing-approach using AC coupling at the source of a common-source stage.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp; As we have seen from the previous examples, achieving proper biasing together with the processing of low-frequency signals in a basic common-source stage comes with some undesired constraints and restrictions. Many of these issues can be mitigated when the signal is present in the form of a current, originating for example from a common-gate stage that is driving the common-source amplifier. We will see an example of such a circuit in Chapter 6.</p>
+</section>
+<section id="sec-5-5-2" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="sec-5-5-2"><span class="header-section-number">5.5.2</span> Voltage Biasing for a Common-Gate Stage</h3>
+<p>Compared to a common-source stage, setting up the bias voltage for the gate of a common-gate stage is usually less intricate. To see this, we consider two classical usage examples shown in <a href="#fig-5.25" class="quarto-xref">Figure&nbsp;<span>5.28</span></a>. &nbsp;&nbsp;&nbsp; In <a href="#fig-5.25" class="quarto-xref">Figure&nbsp;<span>5.28</span></a>(a) the common-gate device <span class="math inline">\(M_2\)</span> is utilized in a cascode stage. Since a cascode stage is often designed for large voltage gain, a typical objective is to maximize the available output voltage swing. Consequently, the gate bias voltage of <span class="math inline">\(M_2\)</span> is set up in the same way as in the high-swing cascode current mirror discussed in <a href="#sec-5-3-4" class="quarto-xref"><span>Section 5.3.4</span></a>, which means the drain-source voltage of <span class="math inline">\(M_1\)</span> is set to <span class="math inline">\(V_{DSsat1}\)</span> plus some margin for robustness and tolerance to mismatches. A reasonable margin is achieved by using <span class="math inline">\(m = 5\)</span> (see <a href="#tbl-5.6" class="quarto-xref">Table&nbsp;<span>5.6</span></a>) in the sizing of <span class="math inline">\(M_{3b}\)</span>.</p>
+<div id="fig-5.25" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.25.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.28: Voltage biasing in two usage cases of a common-gate stage.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-5.25" class="quarto-xref">Figure&nbsp;<span>5.28</span></a>(b) shows an example where a common-gate stage is used to interface to a photo diode. The signal current generated in the photodiode passes through <span class="math inline">\(M_2\)</span> and causes a proportional voltage swing at the output. In this circuit, the output swing is usually not very large, and thus the gate bias voltage for <span class="math inline">\(M_2\)</span> is not tightly constrained by voltage swing requirements. Typically, the gate voltage is set such that the photo diode is biased at a suitable reverse bias. This is accomplished by sizing <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> appropriately.</p>
+<p>&nbsp;&nbsp;&nbsp; In both of the circuits in <a href="#fig-5.25" class="quarto-xref">Figure&nbsp;<span>5.28</span></a>, variations in the transistor parameters (such as <span class="math inline">\(V_{Tn}\)</span>) will cause the overall operating point of the circuits to shift. How- ever, unlike the common-source stage of Example 5-1, these circuits are not very sensitive to such shifts. For instance, if the threshold voltage of <span class="math inline">\(M_2\)</span> in <a href="#fig-5.25" class="quarto-xref">Figure&nbsp;<span>5.28</span></a>(b) changes by 100 mV, all this means is that the reverse bias voltage of the diode will change by approximately the same amount. If properly designed (with margins), this won’t cause the circuit to fail or behave improperly. This strongly contrasts the situation with the circuit of Example 5-1, where such changes in the threshold voltage can have detrimental effects on the stage’s operation.</p>
+</section>
+<section id="sec-5-5-3" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="sec-5-5-3"><span class="header-section-number">5.5.3</span> Voltage Biasing for a Common-Drain Stage</h3>
+<p>In a common-drain stage, the input and output voltages at the quiescent point are directly coupled. As shown in <a href="#fig-5.26" class="quarto-xref">Figure&nbsp;<span>5.29</span></a>, <span class="math inline">\(V_{OUT} = V_{IN} – (V_{Tn} + V_{OV})\)</span>. Proper voltage biasing in a common-drain stage boils down to making sure that the input and output quiescent point voltages are compatible with the circuits that are connecting to the stage input and output. As in a common-gate stage, variability in transistor parameters often does not have detrimental effects as long as a proper margin is included in the design.</p>
+<div id="fig-5.26" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.26.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.29: Relationship between the input and output quiescent points in a common-drain stage.
+</figcaption>
+</figure>
+</div>
+<p>In some applications, the shift between the input and output quiescent point is undesired. In this case, a p-channel common-drain stage can be used to provide a shift in the opposite direction (see <a href="#fig-5.27" class="quarto-xref">Figure&nbsp;<span>5.30</span></a>). In this circuit, <span class="math inline">\(M_1\)</span> can be sized such that the quiescent points <span class="math inline">\(V_{IN}\)</span> and <span class="math inline">\(V_{OUT}\)</span> are approximately equal.</p>
+<p>&nbsp;&nbsp;&nbsp; When a common-drain stage is employed primarily to shift quiescent points, the designer calls this circuit a level shifter. Level shifters are generally useful to interface two stages that are otherwise incompatible in terms of their ideal quiescent point out- put/input voltages.</p>
+<div id="fig-5.27" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure5.27.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.30: Back-to-back common-drain stages to realize equal input and output quiescent point voltages.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="summary" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.6</span> Summary</h2>
+<p>In this chapter, we have surveyed general considerations and basic circuits related to the voltage and current biasing of elementary transistor stages. We have seen that the variability inherent to CMOS process technology influences the design and architecture of these support circuits and ultimately determines whether a certain biasing scheme can be deemed practical. We analyzed the basic current mirror and its cascoded variant with respect to their nonidealities and articulated some of the most important design guidelines. As an example of a reference current generator, we looked at the so-called constant-gm biasing circuit and analyzed its first-order behavior. Finally, this chapter looked into the problem of voltage biasing for the three elementary stage configurations. We determined that in lieu of feedback, biasing a common-source stage properly is most challenging and must be considered with care and knowledge of relevant process variation and mismatch effects. While most of the presented ideas and circuits were presented in the context of simple application examples, they generally also apply to more complex circuit designs studied in advanced literature.</p>
+</section>
+<section id="problems" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="problems"><span class="header-section-number">5.7</span> Problems</h2>
+<p>Unless otherwise stated, use the standard model parameters specified in Table 4-1 for the problems given below. Consider only first-order MOSFET behavior and include channel-length modulation (as well as any other second-order effects) only where explicitly stated.</p>
+<p><strong>P5.1</strong> Consider the bias current generator circuit of <a href="#fig-5.19" class="quarto-xref">Figure&nbsp;<span>5.22</span></a>. Parameters: <span class="math inline">\(R = 4 kΩ, W/L = 20\)</span></p>
+<ol type="a">
+<li>Compute the current <span class="math inline">\(I_{IN}\)</span> assuming nominal MOSFET parameters and supply voltage (<span class="math inline">\(V_{DD} = 5 V\)</span>).</li>
+<li>Recompute <span class="math inline">\(I_{IN}\)</span> for slow MOSFET parameters (see <a href="#tbl-5.2" class="quarto-xref">Table&nbsp;<span>5.2</span></a>) and <span class="math inline">\(V_{DD} = 4.5 V\)</span>. Repeat for fast parameters and <span class="math inline">\(V_{DD} = 5.5 V\)</span>.</li>
+<li>What are the percent errors of the currents found in part (b), relative to the nominal current computed in (a)?</li>
+</ol>
+<p><strong>P5.2</strong> In Example 5-1, we showed analytically that changing the MOSFET parameters from nominal to fast pushes the transistor into the triode region. Construct a load line plot that shows this graphically. That is, draw the output curves of the MOSFET (<span class="math inline">\(I_D\)</span> versus <span class="math inline">\(V_{DS}\)</span>) for the two corner cases and show how the intersect with the load line shifts when fast parameters are assumed. Be sure to neglect channel length modulation.</p>
+<p><strong>P5.3</strong> Set up a suitable analysis that allows you derive the values given in <a href="#tbl-5.5" class="quarto-xref">Table&nbsp;<span>5.5</span></a>. Set up an equation that computes <span class="math inline">\(V_{DS1}\)</span> as a function of <span class="math inline">\(k\)</span> and <span class="math inline">\(V_{OV}\)</span>.</p>
+<p><strong>P5.4</strong> Set up a suitable analysis that allows you derive the values given in <a href="#tbl-5.6" class="quarto-xref">Table&nbsp;<span>5.6</span></a>. Set up an equation that computes <span class="math inline">\(V_{DS1}\)</span> as a function of <span class="math inline">\(m\)</span> and <span class="math inline">\(V_{OV}\)</span>.</p>
+<p><strong>P5.5</strong> The circuit in <a href="#fig-p5.5" class="quarto-xref">Figure&nbsp;<span>5.31</span></a> can be used to achieve high-swing cascode biasing without an extra input current branch. Given the annotated bias point voltages, what is the proper <span class="math inline">\(W/L\)</span> ratio for <span class="math inline">\(M_4\)</span> that achieves the minimum output compliance voltage? Express the desired <span class="math inline">\((W/L)_4\)</span> as a multiple <span class="math inline">\(k\)</span> of <span class="math inline">\(W/L\)</span>.</p>
+<div id="fig-p5.5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p5.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p5.5.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p5.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.31: P5-5
+</figcaption>
+</figure>
+</div>
+<p><strong>P5.6</strong> The circuit in <a href="#fig-p5.6" class="quarto-xref">Figure&nbsp;<span>5.32</span></a> is called a “Sooch” cascode current mirror. It uses one single branch for setting up all bias voltages for a high-swing cascode current mirror. Given the annotated bias point voltages, what is the proper <span class="math inline">\(W/L\)</span> ratio for <span class="math inline">\(M_5\)</span> that achieves the minimum output compliance voltage? What is the minimum required voltage across the input branch (<span class="math inline">\(V_{IN}\)</span>)?</p>
+<div id="fig-p5.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p5.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p5.6.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p5.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.32: P5-6
+</figcaption>
+</figure>
+</div>
+<p><strong>P5.7</strong> Derive a closed-form expression for curve (iii) in <a href="#fig-5.20" class="quarto-xref">Figure&nbsp;<span>5.23</span></a>(b) Verify graphically that the intersect with line (ii) corresponds to the current level given in <a href="#eq-5.33" class="quarto-xref">Equation&nbsp;<span>5.33</span></a>. Assume the following parameters: <span class="math inline">\(m=4\)</span>, <span class="math inline">\(W/L=25\)</span>, <span class="math inline">\(R=2k \Omega\)</span>. Be sure to neglect channel-length modulation and back-gate effect.</p>
+<p><strong>P5.8</strong> For the circuit of Example 5-1, compute the proper <span class="math inline">\(V_{IN}\)</span> that would need to be applied in the fast parameter case such that the output bias voltage remains the same as in the nominal case. Assume nominal conditions for supply temperature and <span class="math inline">\(R_D\)</span>. In this biasing condition, what is the voltage gain, and by which percentage has it changed relative to the nominal case?</p>
+<p><strong>P5.9</strong> <a href="#fig-p5.9" class="quarto-xref">Figure&nbsp;<span>5.33</span></a> shows a cascode current source consisting of <span class="math inline">\(M_{1A}\)</span> and <span class="math inline">\(M_{1B}\)</span>, and a single transistor current source consisting of <span class="math inline">\(M_2\)</span>. Assume that the cascode current source is optimally biased, i.e., <span class="math inline">\(V_{B1B}\)</span> is chosen such that <span class="math inline">\(V_{DS1a} = V_{DS1a,sat} = V_{OV1a}\)</span>. /backAssume also that both current sources supply the same current <span class="math inline">\(I_O\)</span>. Neglect backgate effect.</p>
+<ol type="a">
+<li>Find relationships between <span class="math inline">\(W_1, L_1\)</span> and <span class="math inline">\(W_2, L_2\)</span> such that both current sources have the same parasitic output capacitance, and the same output compliance voltage <span class="math inline">\(V_{Omin}\)</span> that keeps all the devices saturated. For simplicity, assume <span class="math inline">\(λ = 0\)</span> in this part of the analysis. Note: The parasitic capacitance at the drain of <span class="math inline">\(M_2\)</span> is given by <span class="math inline">\(C_{db} + C_{gd}\)</span>. Similarly, assume that the output capacitance of the cascode current source is approximately equal to <span class="math inline">\(C_{db} + C_{gd}\)</span> of <span class="math inline">\(M_{1b}\)</span>. (In the cascode current source, the effect of other capacitances referred to the output node is negligible.)</li>
+<li>Using the result from part (a), show that the expression given below must hold. <span class="math inline">\(R_{O1}\)</span> and <span class="math inline">\(R_{O2}\)</span> are the output resistances of each current source, as indicated in <a href="#fig-p5.9" class="quarto-xref">Figure&nbsp;<span>5.33</span></a>.</li>
+</ol>
+<p><span class="math display">\[
+\frac{R_{O1}}{R_{O2}} = \frac{g_{m1} r_{o1}}{4}
+\]</span></p>
+<ol start="3" type="a">
+<li>Calculate <span class="math inline">\(V_{Omin}, R_{O1}\)</span> and <span class="math inline">\(R_{O2}\)</span> for <span class="math inline">\(I_O = 100 μA\)</span> and <span class="math inline">\((W/L)_1 = 10 μm/2 μm\)</span>. [Use the relationships between device sizes from part (a).]</li>
+</ol>
+<div id="fig-p5.9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p5.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p5.9.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p5.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.33: P5-9
+</figcaption>
+</figure>
+</div>
+<p><strong>5.10</strong> The circuit shown in <a href="#fig-p5.10" class="quarto-xref">Figure&nbsp;<span>5.34</span></a> is a so-called self-biased, <span class="math inline">\(V_{Tn}\)</span>-referenced current generator. Assuming <span class="math inline">\((W/L)_1 = 50\)</span> and <span class="math inline">\((W/L)_3 = (W/L)_4 = (W/L)_5\)</span>, find the value for <span class="math inline">\(R\)</span> so that <span class="math inline">\(I_{OUT} = 100 μA\)</span>. Assume <span class="math inline">\(λ = 0\)</span> and neglect backgate effect.</p>
+<div id="fig-p5.10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p5.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p5.10.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p5.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.34: P5-10
+</figcaption>
+</figure>
+</div>
+<p><strong>P5.11</strong> For the circuit shown in <a href="#fig-p5.11" class="quarto-xref">Figure&nbsp;<span>5.35</span></a>, ignore the backgate effect and finite output resistance unless otherwise stated. All devices have identical widths and lengths and operate in saturation (W/L = 50) and <span class="math inline">\(I_{ref} = 200 \mu A\)</span>.</p>
+<ol type="a">
+<li>Calculate <span class="math inline">\(R\)</span> such that the drain-source voltage of <span class="math inline">\(M_1\)</span> is 1.5 times its gate overdrive, i.e., <span class="math inline">\(V_{DS1} = 1.5 V_{OV1}\)</span>.</li>
+<li>Suppose that due to random mismatch, the threshold voltage of <span class="math inline">\(M_1\)</span> is 10 mV larger than that of all the other transistors. What is the percent error in <span class="math inline">\(I_{OUT}\)</span> caused by this mismatch? Use appropriate small-signal approximations in your calculation.</li>
+<li>Suppose now that the threshold voltage of <span class="math inline">\(M_2\)</span> is increased by 10 mV while all other thresholds are at their nominal value. What is the percent error in <span class="math inline">\(I_{OUT}\)</span> caused by this mismatch? In this calculation, include the effect of the finite output resistance for <span class="math inline">\(M_1\)</span>, assuming <span class="math inline">\(g_m r_o = 50\)</span>.</li>
+</ol>
+<div id="fig-p5.11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p5.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p5.11.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p5.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.35: P5-11
+</figcaption>
+</figure>
+</div>
+<p><strong>P5.12</strong> In the circuit of <a href="#fig-p5.12" class="quarto-xref">Figure&nbsp;<span>5.36</span></a>, <span class="math inline">\(V_{G1}\)</span> is adjusted such that <span class="math inline">\(I_{D1} = 50 μA\)</span>. The <span class="math inline">\(W/L\)</span> ratio of <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> is equal to 4, while <span class="math inline">\(M_3\)</span> is sized such that <span class="math inline">\(W/L = 1/2\)</span>, and <span class="math inline">\(V_{DD}=5V\)</span>.</p>
+<ol type="a">
+<li>Ignoring backgate effect, compute the minimum and maximum values of <span class="math inline">\(V_{G2}\)</span> for which all transistors remain in saturation.</li>
+<li>Repeat part (a) with backgate effect included.</li>
+</ol>
+<div id="fig-p5.12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p5.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p5.12.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p5.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.36: P5-12
+</figcaption>
+</figure>
+</div>
+<p><strong>P5.13</strong> For the circuit of <a href="#fig-p5.13" class="quarto-xref">Figure&nbsp;<span>5.37</span></a>, compute the width ratios <span class="math inline">\(W_8/W_6\)</span> and <span class="math inline">\(W_7/W_6\)</span> such that <span class="math inline">\(V_{DS8} = V_{DS7} = V_{OV6}\)</span>. Assume that all channel lengths are identical. Ignore the backgate effect and channel-length modulation.</p>
+<div id="fig-p5.13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p5.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p5.13.png" class="img-fluid figure-img" style="width:20.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p5.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.37: P5-13
+</figcaption>
+</figure>
+</div>
+<p><strong>P5.14</strong> For the circuit of <a href="#fig-5.21" class="quarto-xref">Figure&nbsp;<span>5.24</span></a>, size the transistors <span class="math inline">\(M_1 - M_4\)</span> and <span class="math inline">\(R\)</span> such that <span class="math inline">\(I_{OUT} = 100μA\)</span>, <span class="math inline">\(V_{OV} = 300 mV\)</span>. Assume that all channel lengths are equal to 3 μm. Neglect backgate effect and channel length modulation.</p>
+<p><strong>P5.15</strong> Design a cascode current mirror circuit using n-channel devices assuming the following specifications. The circuit should take an input current of 10 μA and generate three outputs at 20 μA, 50 μA, and 100 μA, respectively. The output compliance voltage should be no larger than 800 mV and the gate overdrive of the transistors should be designed as large as possible (for immunity to mismatch), while maintaining a reasonable saturation margin. Draw the complete circuit diagram, including all device sizes. This problem does not have a unique solution.</p>
+<p><strong>P5.16</strong> Draw a layout (using any tool you prefer) for the circuit designed in Example 5-3.</p>
+</section>
+</div>
+
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../contents/partI/partI.4.html" class="pagination-link" aria-label="The Common-Gate and Common-Drain Stages">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Common-Gate and Common-Drain Stages</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Curated by Boris Murmann</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/bmurmann/COCOA/edit/main/contents/partI/partI.5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bmurmann/COCOA/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bmurmann/COCOA/blob/main/contents/partI/partI.5.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
