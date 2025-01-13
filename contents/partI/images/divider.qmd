@@ -1,5 +1,5 @@
 ```{python}
-#| label: b
+#| label: c
 #| echo: false
 #| fig-cap: "(e) voltage divider between $r_{o2}$ and $1/g'_{m2}$"
 import schemdraw as sd
