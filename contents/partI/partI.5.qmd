@@ -387,11 +387,13 @@ $$
 $$
 \frac{\Delta V_{out} - \Delta V_{d1}}{r_{o2}} = \Delta V_{d1} \cdot \Bigl( g'_{m2} + \frac{1}{r_{o1}}\Bigr)
 $$
-for $g'_{m2} r_{o1} \gg 1$:
+{{< include ./images/exactdivider.qmd >}}
+
+For $g'_{m2} r_{o1} \gg 1$
 $$
 \frac{\Delta V_{out} - \Delta V_{d1}}{r_{o2}} \approx \Delta V_{d1} \cdot g'_{m2}
 $$
-The equation above describes a voltage divider between $r_{o2}$ and $1/g'_{m2}$
+The equation above reperesents a voltage divider between $r_{o2}$ and $1/g'_{m2}$
 {{< include ./images/divider.qmd >}}
 :::
 
