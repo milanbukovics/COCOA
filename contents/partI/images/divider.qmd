@@ -1,7 +1,7 @@
 ```{python}
 #| label: b
 #| echo: false
-#| fig-cap: "(c) voltage divider between $r_{o2}$ and $1/g'_{m2}$"
+#| fig-cap: "(e) voltage divider between $r_{o2}$ and $1/g'_{m2}$"
 import schemdraw as sd
 import schemdraw.elements as elm
 with sd.Drawing() as d:
@@ -9,16 +9,16 @@ with sd.Drawing() as d:
     d.config(fontsize=16)
 
     d.push()
-    Ro1 = elm.Resistor().down().label(r'$1/g ^\prime _\mathrm{m2}$')
+    Ro1 = elm.Resistor().down().label(r'$ \approx 1/g ^\prime _\mathrm{m2}$')
     elm.Ground()
 
     d.move(dy=-1)
-    elm.Label(r'$(c)$')
+    elm.Label(r'$(e)$')
 
     d.pop()
     elm.Dot().label(r'$ \Delta V_{d1}$',loc='rgt')
     d.push()
     Ro2 = elm.Resistor().up().label(r'$r_\mathrm{o2}$')
-    elm.Line().left().length(3)
+    elm.Line().left().length(1)
     elm.Dot(open='True').label(r'$\Delta V_\mathrm{out}$')
 ```
