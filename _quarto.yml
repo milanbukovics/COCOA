@@ -93,6 +93,8 @@ editor:
 bibliography: 
   - contents/partI/partI.1.bib
   - contents/partI/partI.2.bib
+  - contents/partI/partI.3.bib
+
   - contents/partI/partI.5.bib
 
 #comments:
