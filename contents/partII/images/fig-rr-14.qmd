@@ -1,0 +1,46 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-14
+#| echo: false
+#| fig-cap: "Small signal equivalent model for the constant-$g_m$ bias circuit"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    C1 = elm.Capacitor().down().color('gray')
+    L1 = elm.Line().length(1).right().dot()
+    elm.Ground().right()
+    elm.SourceControlledI().reverse()
+    L2 = elm.Line().to(C1.start).dot().label(r'$M_4$')
+    elm.Line().at(L2.start).right().length(3)
+    C3 = elm.Capacitor().down().color('gray').label(r'$M_3$',loc='rgt',ofst=[-0.1,0.5],color='black')
+    L3 = elm.Line().right().length(1).dot()
+    G3 = elm.Ground().right()
+    M3 = elm.SourceControlledI().reverse()
+    L4 = elm.Line().right().length(3)
+    elm.Capacitor().down().color('gray')
+    L5 = elm.Line().right().length(1).dot()
+    S1 = elm.SourceControlledI().theta(270).up().reverse()
+    elm.Line().left().length(1).label(r'$M_1$').dot()
+    elm.Ground().right().at(L5.end)
+    elm.Line().right().length(3).at(S1.end)
+    C2 = elm.Capacitor().down().color('gray').label(r'$M_2$',loc='rgt',ofst=[-0.1,0.5],color='black')
+    elm.Line().right().length(0.5).dot()
+    R2 = elm.Resistor().down().label(r'$R_2$')
+    G2 = elm.Ground().right()
+    elm.Line().right().length(0.5).at(R2.start)
+    M2 = elm.SourceControlledI().theta(270).up().reverse()
+    elm.Line().right().length(1)
+    elm.Line().up().length(1)
+    elm.Line().left().length(15)
+    elm.Line().down().length(1)
+    elm.Line().right().length(1)
+    cs1 = elm.EncircleBox([C3, M3, G3], padx=.8).linestyle('--').linewidth(1).color('black').label('inverting gain stage',loc='bottom')
+    cs2 = elm.EncircleBox([C2, M2, R2, G2], padx=.8).linestyle('--').linewidth(1).color('black').label('inverting gain stage',loc='bottom')
+```

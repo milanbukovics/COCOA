@@ -1,0 +1,55 @@
+```{python}
+#| label: fig-bf-9
+#| echo: false
+#| fig-cap: "Finding T(with output port shorted), $-v_d=v_{out}=0$"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    Lp = elm.Line().right()
+    elm.Gap().down().label(['$-$','$v_d$', '$+$'])
+    Ln = elm.Line().left()
+    elm.Ground().label(r'$v_{in}=0$')
+    elm.Line().at(Lp.start).up().length(1)
+    L = elm.Line().right().length(10).label('$-v_d$')
+    elm.Dot().color('blue').label(r'$v_{out}=0$',color='black',loc='rgt')
+    elm.Line().up()
+    elm.Ground().left()
+    S1 = elm.SourceControlledI().down().at(L.end).label(r'$g_m \cdot v_{gs}$',loc='bottom').reverse()
+    elm.Gap().at(S1.end).left()
+    Lt = elm.Line().left().length(1)
+    St = elm.SourceV().down().label(r'$v_t$',loc='bottom',color='red').reverse()
+    elm.Ground()
+    elm.Gap().left()
+    elm.Ground()
+    Sr = elm.SourceControlledV().up().label(r'$a_v v_d$',loc='top')
+    elm.Line().length(1).label(r'$v_r$',color='red').right()
+    elm.Gap().label(['$+$','$v_{gs}$', '$-$']).at(Lt.start).up()
+    elm.Line().down().at(S1.end)
+    elm.Ground()
+    #elm.Gap().up().label(['$-$','$v_d$', '$+$'])
+    #Lp1 = elm.Line().right().length(0.5).at(Lp.end).label('$+$',loc='top',ofst=(0.2,0.1))
+    #Ri = elm.Resistor().down().at(Lp1.end).label(r'$r_i$',loc='bottom')
+    # Ln1 = elm.Line().left().length(0.5).label(r'$-$',loc='bottom',ofst=(-0.2,0.1))
+    # Ln = elm.Line().left().length(0.5).dot(open=True).label(r'$v_n$',ofst=(+0.2,-0.1),color='red')
+    # elm.Line().down().length(2).at(Ln.end).dot()
+    # R1 = elm.Resistor().down().label('$R_1$')
+    # elm.Ground()
+    # elm.Line().right().at(R1.start).length(4)
+    # R2 = elm.Resistor().right().label('$R_2$')
+    # elm.Line().right().length(4)
+    # L = elm.Line().up().length(4).dot()
+    # Ro = elm.Resistor().left().label(r'$r_o$',loc='top')
+    # St = elm.SourceV().down().reverse().label(r'$v_{t}$',loc='bottom')
+    # elm.Ground()
+    # elm.Gap().left().length(4)
+    # elm.Ground()
+    # S1 = elm.SourceControlledV().up().label(r'$a_v \cdot (v_p-v_n)$',loc='bottom')
+    # elm.Line().length(0.5).right().dot(open=True).label(r'$v_r$')
+    
+    # elm.Line().right().length(1).at(L.end).label(r'$v_{out}$',ofst=(0.2,0.2)).dot(open=True)
+    
+```

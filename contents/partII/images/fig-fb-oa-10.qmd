@@ -1,0 +1,47 @@
+```{python}
+#| label: fig-fb-oa-10
+#| echo: false
+#| fig-cap: "comparison between inverting and non-inverting topology"
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+
+
+    op1 = elm.Opamp(leads=True).label('$a_D$',loc='center',ofst=(-0.25,0),mathfont='dejavuserif')
+    elm.Line().down(d.unit/4).at(op1.in2)
+    elm.Ground(lead=False)
+    d.push()
+    R1 = elm.Resistor().at(op1.in1).left().idot().label('$R_{1}$', loc='bot').label('$v_{in}$', loc='left')
+    elm.Line().up(d.unit/2).at(op1.in1)
+    elm.Resistor().tox(op1.out).label('$R_2$')
+    elm.Line().toy(op1.out).dot()
+    elm.Line().right(d.unit/4).at(op1.out).label('$v_{out}$', loc='right')
+    d.pop()
+    d.move_from(op1.in2, dy = -1.5)
+    d.push()
+    elm.Label(r'$L = \dfrac{R_1}{R_1 + R_2} \cdot a_D$',haligh='left',mathfont='dejavuserif')
+    d.pop()
+    d.move(dy = -1.5)
+    elm.Label(r'$A_{ideal} = -\dfrac{R_2}{R_1}$',haligh='left')
+
+    d.move_from(op1.out, dx=10, dy=0)
+    op2 = elm.Opamp(leads=True).label('$a_D$',loc='center',ofst=(-0.25,0),mathfont='dejavuserif').right()
+    elm.Line().left(d.unit/4).at(op2.in2).label('$v_{in}$',loc='lft')
+    R3 = elm.Resistor().at(op2.in1).left().idot().label('$R_{1}$', loc='bot')
+    d.push()
+    elm.Ground(lead=False).down()
+    d.pop()
+    elm.Line().up(d.unit/2).at(op2.in1)
+    elm.Resistor().tox(op2.out).label('$R_2$')
+    elm.Line().toy(op2.out).dot()
+    elm.Line().right(d.unit/4).at(op2.out).label('$v_{out}$', loc='right')
+    d.move_from(op2.in2, dy = -1.5)
+    d.push()
+    elm.Label(r'$L = \dfrac{R_1}{R_1 + R_2} \cdot a_D$',haligh='left',mathfont='dejavuserif')
+    d.pop()
+    d.move(dy = -1.5)
+    elm.Label(r'$A_{ideal} = \dfrac{R_1+R_2}{R_1}$',haligh='left')
+
+```

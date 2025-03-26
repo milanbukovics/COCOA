@@ -1,0 +1,37 @@
+```{python}
+#| label: fig-bf-3
+#| echo: false
+#| fig-cap: "T(with input port shorted) for non inverting configuration"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    elm.Ground().down()
+    elm.Line().right().dot(open=True).length(0.5).label('$v_p$',loc='top',ofst=(0.2,-0.7))
+    Lp = elm.Line().right().length(0.5)
+    Lp1 = elm.Line().right().length(0.5).at(Lp.end).label('$+$',loc='top',ofst=(0.2,0.1))
+    Ri = elm.Resistor().down().at(Lp1.end).label(r'$r_i$',loc='bottom')
+    Ln1 = elm.Line().left().length(0.5).label(r'$-$',loc='bottom',ofst=(-0.2,0.1))
+    Ln = elm.Line().left().length(0.5).dot(open=True).label(r'$v_n$',ofst=(+0.2,-0.1))
+    elm.Line().down().length(2).at(Ln.end).dot()
+    R1 = elm.Resistor().down().label('$R_1$')
+    elm.Ground()
+    elm.Line().right().at(R1.start).length(4)
+    R2 = elm.Resistor().right().label('$R_2$')
+    elm.Line().right().length(4)
+    L = elm.Line().up().length(4).dot()
+    Ro = elm.Resistor().left().label(r'$r_o$',loc='top')
+    St = elm.SourceV().down().reverse().label(r'$v_{t}$',loc='bottom')
+    elm.Ground()
+    elm.Gap().left().length(4)
+    elm.Ground()
+    S1 = elm.SourceControlledV().up().label(r'$a_v \cdot (v_p-v_n)$',loc='bottom')
+    elm.Line().length(0.5).right().dot(open=True).label(r'$v_r$')
+    
+    elm.Line().right().length(1).at(L.end)
+    RL = elm.Resistor().down().label(r'$R_L$',loc='bottom')
+    elm.Ground()
+```

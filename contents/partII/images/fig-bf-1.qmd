@@ -1,0 +1,47 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-bf-1
+#| echo: false
+#| fig-cap: "Feedback circuit to derive Blackman's formula with respect to port x"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    S1 = elm.SourceI().down().reverse().label('$i_{x}$',loc='top')
+    La = elm.Line().right().length(1).dot(open=True)
+    Lb = elm.Line().right().length(1).dot(open=True).at(S1.start)
+    elm.Gap().label((r'+',r'$v_{x}$',r'$-$')).down()
+    L1 = elm.Line().right().label('Port X',loc='bottom',color='blue')              
+    L2 = elm.Line().right().at(Lb.end)
+    elm.CurrentLabelInline(direction='in').at(L2.end).label(r'$i_x$')  
+    L3 = elm.Line().up().length(0.5)    
+    elm.Line().right()
+    L4 = elm.Line().down().length(0.5)
+    elm.Line().right()
+    elm.Gap().label((r' ','$s_{c}$',' ')).down()
+    L5 = elm.Line().down().at(L4.end)
+    elm.Line().right()
+    elm.Line().down().length(d.unit*2).at(L2.end)
+    L6 = elm.Line().right().length(d.unit*6).label('rest of feedback circuit')
+    elm.Line().down().length(0.5).at(L5.end)
+    elm.Line().right().length(d.unit*4)
+    L7 = elm.Line().up().length(0.5)
+
+    elm.Line().left()
+    S2 = elm.SourceControlled().up().reverse().label(r'$k \cdot s_{c}$')
+    elm.Line().right()
+    elm.Gap().label((r'+',r'$s_{y}$',r'$-$'),ofst=([0,0.5])).down()
+    elm.Line().up().at(L7.start).length(3)
+    elm.Line().right()
+    L8 = elm.Line().down().length(0.5)
+    # #elm.Line().right()
+    # elm.Gap().label((r'+','$s_{y}$',r'$-$')).down()
+    # #elm.Line().left()
+    elm.Line().down().at(L8.end).length(4)
+```

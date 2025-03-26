@@ -1,0 +1,34 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-fb-oa-7
+#| echo: false
+#| fig-cap: "Breaking the loop ($v_{in}=0$)"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Ground().down()
+    elm.Line().right().label('$_+$',loc='rgt',ofst=[-0.5,-0.1]).length(1)
+    sm = dsp.SumSigma()
+    dsp.Arrow().right().label(r'$v_\epsilon \equiv v_D$')
+    dsp.Box(w=1,h=1).label(r'$a$',mathfont='dejavuserif')
+    elm.Line().right().length(1)
+    elm.Dot(open=True).label(r'$v_{out}$')
+    d.push()  # Save this drawing position/direction for later
+    d.move(dx = 2)
+    elm.Gap().label(('',r'$\Longrightarrow \dfrac{v_{out}}{v_{test}} = -ab$',''),mathfont='dejavuserif').down()
+    d.pop()   # Return to the pushed position/direction
+    d.move(dy = -2)
+    VS = elm.SourceV().down().reverse().label(r'$v_{test}$',loc='bottom')
+    elm.Ground()
+    elm.Line().left().length(1).at(VS.start)
+    dsp.Box(w=1,h=1).label('$b$')
+    elm.Line().left().length(2.5).label('$v_f$')
+    dsp.Arrow().toy(sm.S).label('$_-$', loc='bottom', ofst=[0.7,0])
+```

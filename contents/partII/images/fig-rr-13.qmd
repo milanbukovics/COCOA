@@ -1,0 +1,52 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-13
+#| echo: false
+#| fig-cap: "Computing the return ratio for the constant-$g_m$ bias circuit"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    C1 = elm.Capacitor().down().color('gray')
+    L1 = elm.Line().length(1).right().dot()
+    elm.Ground().right()
+    elm.SourceControlledI().reverse().label(r'$g_{m4} v_4$',loc='bottom')
+    L2 = elm.Line().to(C1.start).dot().label(r'$v_4$')
+    elm.Line().at(L2.start).right().length(3)
+    elm.Capacitor().down().color('gray')
+    L3 = elm.Line().right().length(1).dot()
+    elm.Ground().right()
+    elm.SourceControlledI().reverse().color('blue')
+    #label(r'$i_r = g_{m3} v_4$',loc='bottom').color('blue')
+    L4 = elm.Line().right().length(1).color('blue')
+    elm.CurrentLabelInline(direction='out', ofst=-0.15).at(L4).label(r'$i_r = g_{m3} v_4$',loc='rgt',ofst=[-1,0.5])
+    Lt = elm.Line().down().color('blue')
+    elm.Ground().right().color('blue')
+    elm.Gap().right().at(Lt.end).length(0.5)
+    St = elm.SourceI().reverse().label(r'$i_t$',loc='bottom').color('blue')
+    elm.Ground().right().color('blue').at(St.start)
+    elm.Line().at(St.end).right().color('blue').length(1.5)
+    elm.Capacitor().down().color('gray')
+    L5 = elm.Line().right().length(1).dot()
+    S1 = elm.SourceControlledI().label(r'$g_{m1} v_1$',loc='bottom').theta(270).up().reverse()
+    elm.Line().left().length(1).label(r'$v_1$').dot()
+    elm.Ground().right().at(L5.end)
+    elm.Line().right().length(3).at(S1.end)
+    C2 = elm.Capacitor().down().color('gray').label(('+',r'$v_2$',r'$-$'))
+    elm.Line().right().length(0.5).dot()
+    R2 = elm.Resistor().down().label(r'$R_2$')
+    elm.Ground().right()
+    elm.Line().right().length(0.5).at(R2.start)
+    elm.SourceControlledI().label(r'$g_{m2} v_2$',loc='bottom').theta(270).up().reverse()
+    elm.Line().right().length(1)
+    elm.Line().up().length(1)
+    elm.Line().left().length(15.5)
+    elm.Line().down().length(1)
+    elm.Line().right().length(1)
+```

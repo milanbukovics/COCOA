@@ -1,0 +1,30 @@
+```{python}
+#| label: fig-bf-26
+#| echo: false
+#| fig-cap: "Small signal model to find the output resistance$"
+#| 
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    Sc = elm.SourceControlledI().down().label(r'$g_m v_{gs}$',loc='top',color='black')
+    Lvu = elm.Line().up().at(Sc.start).length(1)
+    Lht = elm.Line().at(Lvu.end).right().length(1.5)
+    elm.Line().down().length(1)
+    Sx = elm.Resistor().down().label(r'$r_o$',loc='bot',color='black')
+    Lvd = elm.Line().at(Sc.end).length(1).dot().label(r'$S$')
+    Lhb = elm.Line().right().length(1.5)
+    elm.Line().up().to(Sx.end)
+    RS = elm.Resistor().down().label(r'$R_S$').at(Lvd.end)
+    elm.Ground().at(RS.end)
+    Gh = elm.Gap().at(Lvd.end).left().length(3)
+    Gv = elm.Gap().at(Gh.end).length(2).up()
+    L = elm.Line().left()
+    elm.Dot(open=True).label('G').at(L.start)
+    elm.Ground().down().label(r'$v_{in}=0$',loc='rgt').at(L.end)
+    Lz = elm.Line().at(Lht.end).right()
+    elm.ZLabel().at(Lz).label(r'$R_{out}$',ofst=(0,-0.6)).left()
+    elm.Dot().at(Lht.end)
+```

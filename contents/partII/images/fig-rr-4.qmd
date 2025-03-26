@@ -1,0 +1,40 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-4
+#| echo: false
+#| fig-cap: "Common source with current-source biasing"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Vdd().label('$V_{DD}$')
+    elm.Line().down().length(0.5)
+    MR = elm.AnalogPFet(offset_gate=False).theta(0).label(r'$M_{REF}$')
+    L1 = elm.Line().right().at(MR.gate).length(3)
+    L2 = elm.Line().down().at(MR.gate).length(1)
+    L3 = elm.Dot().at(L2.start)
+    elm.Line().left().at(L2.end).to(MR.drain).dot()
+    elm.Line().down().at(MR.drain).length(0.5)
+    IB = elm.SourceI().label((r'$I_{REF}$')).down()
+    elm.Ground().right()
+    MB = elm.AnalogPFet(offset_gate=False).theta(0).label(r'$M_{B}$',loc='rgt').at(L1.end).anchor('gate').reverse()
+    elm.Line().up().length(0.5).at(MB.source)
+    elm.Vdd().label('$V_{DD}$')
+    L4 = elm.Line().down().at(MB.drain).length(3.5)
+    M = elm.AnalogNFet(offset_gate=False).theta(0).label(r'$M$',loc='rgt').at(L4.end).anchor('drain').reverse()
+    elm.Ground().right()
+    L5 = elm.Line().left().length(1).at(M.gate)
+    elm.Line().left().length(0.5)
+    elm.Resistor().label('$R_1$').left()
+    elm.Line().left().length(1).dot(open=True).label(r'$v_{IN}$',loc='lft')
+    L6 = elm.Line().up().length(1).at(M.drain).dot()
+    R2 = elm.Resistor().label('$R_2$').left()
+    elm.Line().down().to(L5.end).dot()
+    elm.Line().right().at(R2.start).dot(open=True).label(r'$v_{OUT}$',loc='rgt')
+```

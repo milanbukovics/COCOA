@@ -1,0 +1,30 @@
+```{python}
+#| label: fig-bf-18
+#| echo: false
+#| fig-cap: "Active cascode gain stage"
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    op = elm.Opamp().label('$a_v$',loc='center',ofst=(-0.25,0),mathfont='dejavuserif').flip()
+    L = elm.Line().right().at(op.out)
+    M2 = elm.AnalogNFet(offset_gate=False).anchor('gate').reverse().label(r'$M_2$',loc='rgt')
+    elm.Line().at(M2.source).down().length(1)
+    M1 = elm.AnalogNFet(offset_gate=False).theta(0).anchor('drain').reverse().label(r'$M_1$',loc='rgt')
+    elm.Ground()
+    elm.Line().at(M1.gate).left().dot(open=True).label(r'$v_{IN}$',mathfont='dejavuserif',loc='lft')
+    L1 = elm.Line().up().at(M2.drain).length(0.5)
+    elm.ZLabel().at(L1.start).label('$R_{out}$',loc='top',ofst=(0,0)).color('blue').theta(270)
+    L2 = elm.Line().up().length(1)
+    IB = elm.SourceI().reverse().label(r'$I_{BIAS}$')
+    elm.Vdd().label(r'$V_{DD}$')
+    L2 = elm.Line().at(IB.start).right().dot(open=True).label(r'$v_{OUT}$',mathfont='dejavuserif',loc='rgt')
+    elm.Dot().at(IB.start)
+    L3 = elm.Line().left().at(op.in2).length(1)
+    elm.Vdd().label(r'$V_{BIAS}$')
+    elm.Dot().at(M1.drain)
+    A = elm.Line().left().at(op.in1).length(1)
+    elm.Wire('|-').at(A.end).to(M1.drain)
+```

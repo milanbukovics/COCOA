@@ -1,0 +1,22 @@
+```{python}
+#| label: fig-fb-4
+#| echo: false
+#| fig-cap: "op amp based voltage buffer"
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    op = elm.Opamp().flip()
+    elm.Line().left().length(2).at(op.in2).dot(open=True).label(r'$v_\mathrm{in}$', 'left')
+
+    elm.Line().at(op.out).right().length(1).dot()
+    d.push()
+    elm.Line().right().length(2).label(r'$v_\mathrm{out}$',loc='rgt').dot(open=True)
+    
+    d.pop()
+    elm.Line().down()
+    elm.Line().left().length(4)
+    elm.Line().up().toy(op.in1)
+    elm.Line().right().to(op.in1)
+```

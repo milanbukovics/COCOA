@@ -1,0 +1,27 @@
+```{python}
+#| label: fig-fb-6
+#| echo: false
+#| fig-cap: "op amp based non inverting voltage amplifier"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    op = elm.Opamp().flip()
+    elm.Line().left().length(2).at(op.in2).dot(open=True).label(r'$v_\mathrm{in}$', 'left')
+
+    elm.Line().at(op.out).right().length(1).dot()
+    d.push()
+    elm.Line().right().length(2).label(r'$v_\mathrm{out}$',loc='rgt').dot(open=True)
+    
+    d.pop()
+    R2 = elm.Resistor().down().label('$R_2$').dot()
+    d.push()
+    R1 = elm.Resistor().down().label('$R_1$')
+    elm.Ground()
+    d.pop()
+    elm.Line().left().length(4).label('$v_f$')
+    elm.Line().up().toy(op.in1)
+    elm.Line().right().to(op.in1)
+```

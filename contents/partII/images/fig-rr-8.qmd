@@ -1,0 +1,39 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-8
+#| echo: false
+#| fig-cap: "Direct feedthrough Calculation"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Dot(open=True).label('$v_{in}$',loc='lft')
+    elm.Line().right().length(1)
+    elm.Resistor().label('$R_1$').right()
+    elm.Dot()
+    L1 = elm.Line().right().length(1)
+    G1 = elm.Gap().down().label(('+','$v_{gs}$','–')).color('white')
+    L2 = elm.Line().left().length(4)
+    elm.Dot(open=True)
+    elm.Line().right().at(L2.start)
+    elm.Dot()
+    elm.Ground().right()
+    I1 = elm.SourceControlledI().reverse().label((r'$g_m \rightarrow 0$'),loc='bottom',color='black',ofst=-1).color('white')
+    L3 = elm.Line().right().length(1)
+    elm.Dot()
+    elm.Line().up().length(1)
+    elm.Line().left().length(1)
+    elm.Resistor().label('$R_2$').left()
+    elm.Line().left().length(1)
+    elm.Line().down().length(1)
+    elm.Line().right().at(L3.end).label(r'$v_{out}$',loc='rgt',ofst=0.25)
+    elm.Dot(open=True)
+    elm.Line().right().at(I1.start).length(3)
+    elm.Dot(open=True)
+```

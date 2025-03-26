@@ -1,0 +1,33 @@
+```{python}
+#| label: fig-bf-10
+#| echo: false
+#| fig-cap: "Finding T(with output port open), $v_{out}=-v_d=-v_{gs} + v_t$"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    Lp = elm.Line().right()
+    elm.Gap().down().label(['$-$','$v_d$', '$+$'])
+    Ln = elm.Line().left()
+    elm.Ground().label(r'$v_{in}=0$')
+    elm.Line().at(Lp.start).up().length(1)
+    L = elm.Line().right().length(10).label('$-v_d$')
+    elm.Dot().color('blue').label(r'$v_{out}$',color='black',loc='rgt')
+    elm.Line().up().label(r'$floating$')
+    # elm.Ground().left()
+    S1 = elm.SourceControlledI().down().at(L.end).label(r'$g_m \cdot v_{gs}$',loc='bottom').reverse()
+    elm.Gap().at(S1.end).left()
+    Lt = elm.Line().left().length(1)
+    St = elm.SourceV().down().label(r'$v_t$',loc='bottom',color='red').reverse()
+    elm.Ground()
+    elm.Gap().left()
+    elm.Ground()
+    Sr = elm.SourceControlledV().up().label(r'$a_v v_d$',loc='top')
+    elm.Line().length(1).label(r'$v_r$',color='red').right()
+    elm.Gap().label(['$+$','$v_{gs}$', '$-$']).at(Lt.start).up()
+    elm.Line().down().at(S1.end)
+    elm.Ground()
+```
