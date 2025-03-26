@@ -1,0 +1,2800 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Introduction to Feedback – COCOA: Collaborative Compendium on Analog Integrated Circuits</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../contents/partII/partII.1.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f8dc6eab18fde03278982b0b35885446.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-68f2a1e86eb87956d0dce9a9876931f0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e33efa0a5593d9d8adcbebffb5cac9ec.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "~",
+    "/"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">COCOA: Collaborative Compendium on Analog Integrated Circuits</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="https://github.com/bmurmann/COCOA" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../../COCOA--Collaborative-Compendium-on-Analog-Integrated-Circuits.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/partII/partII.1.html">Learn to Walk — Real Transistors, Noise, Mismatch, and Distortion</a></li><li class="breadcrumb-item"><a href="../../contents/partII/partII.2.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/contributors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributors</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Learn to Crawl — Square-Law Transistors, Biasing and Small-Signal Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transfer Characteristic of the Common-Source Voltage Amplifier</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><span id="frequency-response-of-the-common-souyrce-amplifier">Frequency Response of the Common-Source Voltage Amplifier</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Common-Gate and Common-Drain Stages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Learn to Walk — Real Transistors, Noise, Mismatch, and Distortion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partII/partII.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partII/partII.2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Dare to Run — Knowledge Base for State-of-the-Art Circuits</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">References</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries"><span class="header-section-number">7.1</span> Preliminaries</a></li>
+  <li><a href="#systematic-feedback-analysis-frameworks" id="toc-systematic-feedback-analysis-frameworks" class="nav-link" data-scroll-target="#systematic-feedback-analysis-frameworks"><span class="header-section-number">7.2</span> Systematic Feedback Analysis Frameworks</a></li>
+  <li><a href="#negative-feedback" id="toc-negative-feedback" class="nav-link" data-scroll-target="#negative-feedback"><span class="header-section-number">7.3</span> Negative Feedback</a></li>
+  <li><a href="#general-negative-feedback-structure" id="toc-general-negative-feedback-structure" class="nav-link" data-scroll-target="#general-negative-feedback-structure"><span class="header-section-number">7.4</span> General negative feedback structure</a></li>
+  <li><a href="#the-error-signal-s_epsilon-and-the-feedback-signal-s_f" id="toc-the-error-signal-s_epsilon-and-the-feedback-signal-s_f" class="nav-link" data-scroll-target="#the-error-signal-s_epsilon-and-the-feedback-signal-s_f"><span class="header-section-number">7.5</span> The error signal <span class="math inline">\(s_\epsilon\)</span> and the feedback signal <span class="math inline">\(s_{f}\)</span></a></li>
+  <li><a href="#benefits-of-negative-feedback" id="toc-benefits-of-negative-feedback" class="nav-link" data-scroll-target="#benefits-of-negative-feedback"><span class="header-section-number">7.6</span> Benefits of negative feedback</a>
+  <ul>
+  <li><a href="#gain-desensitivity" id="toc-gain-desensitivity" class="nav-link" data-scroll-target="#gain-desensitivity"><span class="header-section-number">7.6.1</span> Gain Desensitivity</a></li>
+  <li><a href="#effect-of-feedback-on-non-linearity" id="toc-effect-of-feedback-on-non-linearity" class="nav-link" data-scroll-target="#effect-of-feedback-on-non-linearity"><span class="header-section-number">7.6.2</span> Effect of feedback on non-linearity</a></li>
+  <li><a href="#effect-of-feedback-on-bandwidth" id="toc-effect-of-feedback-on-bandwidth" class="nav-link" data-scroll-target="#effect-of-feedback-on-bandwidth"><span class="header-section-number">7.6.3</span> Effect of feedback on bandwidth</a></li>
+  <li><a href="#effect-of-feedback-on-inputoutput-resistances" id="toc-effect-of-feedback-on-inputoutput-resistances" class="nav-link" data-scroll-target="#effect-of-feedback-on-inputoutput-resistances"><span class="header-section-number">7.6.4</span> Effect of feedback on input/output resistances</a>
+  <ul class="collapse">
+  <li><a href="#series-shunt-voltage-voltage-feedback-configuration---voltage-amplifier" id="toc-series-shunt-voltage-voltage-feedback-configuration---voltage-amplifier" class="nav-link" data-scroll-target="#series-shunt-voltage-voltage-feedback-configuration---voltage-amplifier">Series-shunt (voltage-voltage) feedback configuration - Voltage Amplifier</a></li>
+  <li><a href="#shunt-shunt-current-voltage-feedback-configuration---transimpedance-amplifier" id="toc-shunt-shunt-current-voltage-feedback-configuration---transimpedance-amplifier" class="nav-link" data-scroll-target="#shunt-shunt-current-voltage-feedback-configuration---transimpedance-amplifier">Shunt-shunt (current-voltage) feedback configuration - Transimpedance Amplifier</a></li>
+  <li><a href="#series-series-voltage-current-feedback-configuration---transconductance-amplifier" id="toc-series-series-voltage-current-feedback-configuration---transconductance-amplifier" class="nav-link" data-scroll-target="#series-series-voltage-current-feedback-configuration---transconductance-amplifier">Series-series (voltage-current) feedback configuration - Transconductance Amplifier</a></li>
+  <li><a href="#shunt-series-current-current-feedback-configuration---current-amplifier" id="toc-shunt-series-current-current-feedback-configuration---current-amplifier" class="nav-link" data-scroll-target="#shunt-series-current-current-feedback-configuration---current-amplifier">Shunt-series (current-current) feedback configuration - Current Amplifier</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#feedback-analysis-of-op-amp-circuits" id="toc-feedback-analysis-of-op-amp-circuits" class="nav-link" data-scroll-target="#feedback-analysis-of-op-amp-circuits"><span class="header-section-number">7.7</span> Feedback analysis of op amp circuits</a>
+  <ul>
+  <li><a href="#non-inverting-configuration" id="toc-non-inverting-configuration" class="nav-link" data-scroll-target="#non-inverting-configuration"><span class="header-section-number">7.7.1</span> Non Inverting configuration</a></li>
+  <li><a href="#inverting-configuration" id="toc-inverting-configuration" class="nav-link" data-scroll-target="#inverting-configuration"><span class="header-section-number">7.7.2</span> Inverting configuration</a></li>
+  <li><a href="#comparison-between-non-inverting-and-inverting-topology" id="toc-comparison-between-non-inverting-and-inverting-topology" class="nav-link" data-scroll-target="#comparison-between-non-inverting-and-inverting-topology"><span class="header-section-number">7.7.3</span> Comparison between non-inverting and inverting topology</a></li>
+  <li><a href="#the-four-feedback-configurations-using-op-amps" id="toc-the-four-feedback-configurations-using-op-amps" class="nav-link" data-scroll-target="#the-four-feedback-configurations-using-op-amps"><span class="header-section-number">7.7.4</span> The four feedback configurations using op amps</a>
+  <ul class="collapse">
+  <li><a href="#series-shunt-voltage-voltage-configuration-voltage-amplifier" id="toc-series-shunt-voltage-voltage-configuration-voltage-amplifier" class="nav-link" data-scroll-target="#series-shunt-voltage-voltage-configuration-voltage-amplifier">Series-Shunt (voltage-voltage) configuration (Voltage Amplifier)</a></li>
+  <li><a href="#shunt-shunt-current-voltage-configuration-transimpedance-amplifier" id="toc-shunt-shunt-current-voltage-configuration-transimpedance-amplifier" class="nav-link" data-scroll-target="#shunt-shunt-current-voltage-configuration-transimpedance-amplifier">Shunt-Shunt (current-voltage) configuration (Transimpedance Amplifier)</a></li>
+  <li><a href="#series-series-voltage-current-configuration-transconductance-amplifier" id="toc-series-series-voltage-current-configuration-transconductance-amplifier" class="nav-link" data-scroll-target="#series-series-voltage-current-configuration-transconductance-amplifier">Series-Series (voltage-current) configuration (Transconductance Amplifier)</a></li>
+  <li><a href="#shunt-series-current-current-configuration-current-amplifier" id="toc-shunt-series-current-current-configuration-current-amplifier" class="nav-link" data-scroll-target="#shunt-series-current-current-configuration-current-amplifier">Shunt-Series (current-current) configuration (Current Amplifier)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#return-ratio-analysis" id="toc-return-ratio-analysis" class="nav-link" data-scroll-target="#return-ratio-analysis"><span class="header-section-number">7.8</span> Return Ratio Analysis</a>
+  <ul>
+  <li><a href="#closed-loop-gain-using-return-ratio" id="toc-closed-loop-gain-using-return-ratio" class="nav-link" data-scroll-target="#closed-loop-gain-using-return-ratio"><span class="header-section-number">7.8.1</span> Closed-loop gain using return ratio</a></li>
+  <li><a href="#closed-loop-impedances-using-return-ratio" id="toc-closed-loop-impedances-using-return-ratio" class="nav-link" data-scroll-target="#closed-loop-impedances-using-return-ratio"><span class="header-section-number">7.8.2</span> Closed-loop impedances using return ratio</a></li>
+  <li><a href="#summary---return-ratio-analysis" id="toc-summary---return-ratio-analysis" class="nav-link" data-scroll-target="#summary---return-ratio-analysis"><span class="header-section-number">7.8.3</span> Summary - Return Ratio Analysis</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/bmurmann/COCOA/edit/main/contents/partII/partII.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bmurmann/COCOA/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bmurmann/COCOA/blob/main/contents/partII/partII.2.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/partII/partII.1.html">Learn to Walk — Real Transistors, Noise, Mismatch, and Distortion</a></li><li class="breadcrumb-item"><a href="../../contents/partII/partII.2.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="preliminaries" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">7.1</span> Preliminaries</h2>
+<p>In electronics the term <strong>feedback</strong> refers to the situation where a signal <strong>sensed</strong> (or derived or sampled or measured) from the output port of an amplifier is <strong>returned</strong> to the input port, where it is <strong>combined</strong> with the externally applied input signal to create a new signal to be processed by the amplifier itself.</p>
+<ul>
+<li>when the returned signal is added to the external signal, we have positive feedback (a.k.a. regenerative feddback)</li>
+<li>when the returned signal is subtracted we have negative feedback (a.k.a. degenerative feedback)</li>
+</ul>
+<p>Negative feedback was conceived in 1928 by Harold Black.</p>
+<div id="cell-fig-fb-1" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-1-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: Block diagram of a feedback system.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="systematic-feedback-analysis-frameworks" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="systematic-feedback-analysis-frameworks"><span class="header-section-number">7.2</span> Systematic Feedback Analysis Frameworks</h2>
+<ul>
+<li>Two-port Analysis
+<ul>
+<li>Proposed by Harold Black</li>
+<li>Helpful for gaining basic intuition about feedback</li>
+<li>Map the feedback network onto one of four topologies
+<ul>
+<li>voltage-voltage (serie-shunt), current-voltage (shunt-shunt), voltage-current (series-series), current-current (shunt-series), depending on the desired input/output quantities</li>
+</ul></li>
+<li>In practice, the feedback network “<span class="math inline">\(b\)</span>” (and possibly the forward amplifier “<span class="math inline">\(a\)</span>”) are not unilateral, so mapping arbitrary circuits into a generic “<span class="math inline">\(ab\)</span>” block diagram that uses two-ports is not obvious</li>
+<li>The feedback network causes loading at the input and output of the basic amplifier
+<ul>
+<li>model the feedback network as an ideal two-port and absorb the loading effects into the forward amplifier. This procedure is often quite tedious.<br>
+</li>
+</ul></li>
+<li>Some feedback circuits cannot be modeled using two-ports
+<ul>
+<li>e.g.&nbsp;bias circuits with feedback loops tend to have only one port</li>
+</ul></li>
+</ul></li>
+<li>Return Ratio Analysis
+<ul>
+<li>Proposed by Hendrik Bode</li>
+<li>“Asymptotic” method” does no attempt to break the circuit into pieces</li>
+<li>The closed-loop properties of the feedback circuit are described in terms of the <em>return ratio</em> of a dependent source in an active device.</li>
+<li>The block diagram used to analyze the closed loop properties of the feedback circuit is extended to handle the feedforward through the feedback network</li>
+<li>Often easier than two-port analysis</li>
+</ul></li>
+</ul>
+</section>
+<section id="negative-feedback" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="negative-feedback"><span class="header-section-number">7.3</span> Negative Feedback</h2>
+<ul>
+<li><p>Basic Idea</p>
+<ul>
+<li>trade off gain for other desirable properties</li>
+</ul></li>
+<li><p>Desirable properties <br></p>
+<ul>
+<li>desentisize gain</li>
+<li>extend the bandwidth</li>
+<li>control input and output impedance</li>
+<li>reduce NL distorsion</li>
+</ul></li>
+<li><p>Drawbacks (undesired properties)</p>
+<ul>
+<li>reduced gain</li>
+<li>under certain circumstances the negative feedback in an amplifier can become positive and of such a magnitude as to cause oscillations (instability)</li>
+</ul></li>
+</ul>
+<p><strong>NOTE: it should not be implied that positive feedback always lead to instability</strong></p>
+</section>
+<section id="general-negative-feedback-structure" class="level2 page-columns page-full" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="general-negative-feedback-structure"><span class="header-section-number">7.4</span> General negative feedback structure</h2>
+<div id="cell-fig-fb-2" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-2-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.2: Block diagram of a negative feedback system.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Basic Terminology:</strong></p>
+<p><span class="math inline">\(s_{in}\)</span> = input signal applied to the feedback system</p>
+<p><span class="math inline">\(s_{out}\)</span> = output signal from the feedback system</p>
+<p><span class="math inline">\(a = \dfrac{s_{out}}{s_i}\)</span> = open-loop gain = gain of “basic” amplifier = gain of feedforward amplifier</p>
+<p><span class="math inline">\(b\)</span> = feedback factor</p>
+<p><span class="math inline">\(a \cdot b = L\)</span> = loop gain (it is always unit-less)</p>
+<p><span class="math inline">\(1 + ab = 1 + L\)</span> = amount of feedback</p>
+<p><span class="math inline">\(s_i \equiv s_ \epsilon \equiv s_d = s_{in} - s_f\)</span> = input to “basic” amplifier = error = difference</p>
+<p><span class="math inline">\(A = \dfrac{s_{out}}{s_{in}}\)</span> = closed-loop gain = gain of feedback system</p>
+<p><strong>Ideal feedback assumptions</strong></p>
+<ul>
+<li>the feedback network does not load the basic amplifier output</li>
+<li>the feedback network does not load the basic amplifier input</li>
+<li>the feedback network is unilateral</li>
+<li>the basic amplifier is unilateral</li>
+</ul>
+<p><strong>Closed-loop gain expression</strong></p>
+<p>The feedback network measures (or samples or senses) the output signal <span class="math inline">\(s_{out}\)</span> and provides (returns) a feedback signal <span class="math inline">\(s_f\)</span> (that is related to <span class="math inline">\(s_{out}\)</span> by the <strong>feedback factor</strong> b) <span class="math display">\[
+\begin{split}
+s_{out} &amp;= a \cdot s_i \\
+s_{f} &amp;= b \cdot s_{out} \\
+s_ \epsilon &amp;\equiv s_d \equiv s_i = s_{in} - s_f
+\end{split}
+\]</span></p>
+<p><span class="math display">\[
+\begin{split}
+A &amp;= \frac{s_{out}}{s_{in}} = \frac{s_{out}}{s_i + s_f} = \frac{1}{\dfrac{s_i}{s_{out}} + \dfrac{s_f}{s_{out}}} = \frac{1}{\dfrac{1}{a} + b} = \frac{a}{1+ab} = \\
+  &amp;= \frac{1}{b} \cdot \frac{1}{1 + 1/(ab)} = \frac{1}{b} \cdot \frac{1}{1 + \dfrac{1}{L}} = \frac{1}{b} \cdot \frac{L}{1+L} \approx \frac{1}{b}
+\end{split}
+\]</span></p>
+<p>The most important benefit coming from the use of negative feedback is under the condition <span class="math inline">\(L \gg 1\)</span>:</p>
+<ul>
+<li>for <span class="math inline">\(L \gg 1\)</span> the actual gain <span class="math inline">\(A (\approx 1/b)\)</span> is virtually independent of the open-loop gain <span class="math inline">\(a\)</span>. The open-loop gain <span class="math inline">\(a\)</span> is typically an extremely inaccurate parameter, and varies significantly subject to drift with temperature, supply voltage, fabrication process, and DC biasing conditions.</li>
+</ul>
+<p>Although physically unattainable the limit <span class="math inline">\(L \rightarrow \infty\)</span> represent the ideal condition:</p>
+<p><span class="math display">\[
+A_{ideal} = \lim\limits_{L \to \infty} A = \frac{1}{b}
+\]</span></p>
+<p>Key result: when the loop gain <span class="math inline">\(L\)</span> is large, the closed loop gain <span class="math inline">\(A\)</span> approaches the ideal closed loop gain <span class="math inline">\(A_{ideal}\)</span>, which is equal to <span class="math inline">\(1/b\)</span></p>
+<p>To achieve gain we need <span class="math inline">\(b \leq 1\)</span>.</p>
+<p><span class="math inline">\(b \leq 1\)</span> is easy to implement. We can for example use a wire (<span class="math inline">\(b=1\)</span>), or a resistive divider (ratiometric) or a capacitive divider (ratiometric).</p>
+<p><strong>Example 1 - voltage buffer</strong></p>
+<p><span class="math inline">\(v_f = v_{out} \Rightarrow b = v_f/v_{out} = 1\)</span></p>
+<p><span class="math inline">\(v_{out} = a \cdot (v_{in} - v_{out})\)</span></p>
+<p><span class="math inline">\(v_{out} (1+a) = a \cdot v_{in}\)</span></p>
+<p><span class="math inline">\(\dfrac{v_{out}}{v_{in}} = \dfrac{a}{1+a} \approx 1\)</span></p>
+<div id="cell-fig-fb-3" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-3-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: Block diagram of a voltage buffer.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-fb-4" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-4-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.4: op amp based voltage buffer
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Example 2 - non-inverting voltage amplifier</strong></p>
+<p><span class="math inline">\(b = \dfrac{v_f}{v_{out}} = \dfrac{R_1}{R_1+R_2}\)</span></p>
+<p><span class="math inline">\(\dfrac {v_{out}}{v_{in}} \approx \dfrac{1}{b} = 1 + \dfrac{R_2}{R_1}\)</span></p>
+<div id="cell-fig-fb-5" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-5-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.5: Block diagram of a non inverting voltage amplifier (series-shunt feedback)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-fb-6" class="cell" width="10%" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-6-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.6: op amp based non inverting voltage amplifier
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If we regard <span class="math inline">\(1/L\)</span> as an error term, then <span class="math inline">\(L\)</span> gives a measure of how close the actual gain <span class="math inline">\(A\)</span> is to the ideal gain <span class="math inline">\(A_{ideal} = 1/b\)</span>.</p>
+<p><span class="math display">\[
+A = \frac{1}{b} \cdot  \frac{1}{1 + \dfrac{1}{L}} \approx  \frac{1}{b} \cdot \Bigl(  1 - \dfrac{1}{L} \Bigr)
+\]</span></p>
+<p>The % gain error between actual gain <span class="math inline">\(A\)</span> and ideal gain <span class="math inline">\(A_{ideal}\)</span> is usually defined as follows:</p>
+<p><span class="math display">\[
+\begin{split}
+gain \space error \space \% &amp;= 100 \times \frac{A - A_{ideal}}{A_{ideal}} = 100 \times \frac{A_{ideal} \cdot \Bigl ( \dfrac{1}{1 + 1/L} \Bigr ) - A_{ideal}}{A_{ideal}} = \\
+&amp;= 100 \times \frac{-1}{1+L} \approx 100 \times \frac{-1}{L}
+\end{split}
+\]</span></p>
+<p><strong>Example 3 - op amp based non inverting voltage amplifier</strong></p>
+<p>KLC at node <span class="math inline">\(v_{out}\)</span>:</p>
+<p><span class="math display">\[
+\frac{v_N - v_{out}}{R_2} = \frac{v_{out} - a_D \cdot (v_{in} - v_N)}{r_o}
+\]</span></p>
+<p>KCL at node <span class="math inline">\(v_{N}\)</span>: <span class="math display">\[
+\frac{v_N - v_{in}}{r_i} + \frac{v_N}{R_1} + \frac{v_N - v_{out}}{R_2} = 0
+\]</span></p>
+<div id="fig-noninverting-oa" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-noninverting-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-fb-7.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-noninverting-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.7: Non inverting voltage amplifier with non ideal op amp <span class="citation" data-cites="franco">(<a href="../../references.html#ref-franco" role="doc-biblioref">Franco 2015</a>)</span>
+</figcaption>
+<div class="no-row-height column-margin column-container"></div></figure>
+</div>
+<p>For <span class="math inline">\(a_D = 10^6\)</span>, <span class="math inline">\(r_i = 10 M \Omega\)</span>, <span class="math inline">\(r_o = 10 \Omega\)</span>, <span class="math inline">\(R_1 = 20 k \Omega\)</span> and <span class="math inline">\(R_2 = 80 k \Omega\)</span>:</p>
+<p><span class="math display">\[
+\begin{split}
+A_{ideal} &amp;= \frac{R_1+R_2}{R_1} \\
+A &amp;= \frac{v_{out}}{v_{in}} = \frac{a_D \cdot r_i (R_1 + R_2) + R_1 r_o}{a_D \cdot R_1 r_i + r_o (R_1 + r_i) + R_1R_2 + r_i(R_1+R_2)} = 4.999975 \\
+\\
+gain \space error &amp;= \frac{4.999975 -5}{5} = -5 \cdot 10^{-6} = -5 ppm
+\end{split}
+\]</span></p>
+<p>The exact analysis is very tedious. A better way to obtain the same insight is to use the simpler approach shown in example 4.</p>
+</section>
+<section id="the-error-signal-s_epsilon-and-the-feedback-signal-s_f" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="the-error-signal-s_epsilon-and-the-feedback-signal-s_f"><span class="header-section-number">7.5</span> The error signal <span class="math inline">\(s_\epsilon\)</span> and the feedback signal <span class="math inline">\(s_{f}\)</span></h2>
+<p>From <a href="#fig-fb-2" class="quarto-xref">Figure&nbsp;<span>7.2</span></a></p>
+<p><span class="math display">\[
+\begin{split}
+s_ \epsilon &amp;= \dfrac{s_{out}}{a} = \dfrac{A \cdot s_{in}}{a} = \frac{\cancel a}{1+L} \cdot \frac{s_{in}}{\cancel a} \\
+&amp;= \dfrac{s_{in}}{1+L}
+\end{split}
+\]</span></p>
+<p>also</p>
+<p><span class="math display">\[
+\begin{split}
+s_f &amp;= b \cdot s_{out} = b \cdot A \cdot s_{in} = \cancel {b} \cdot \frac{1}{\cancel{b}} \frac{1}{1+1/L} \cdot s_{in} \\
+&amp;= \dfrac{s_{in}}{1+1/L}
+\end{split}
+\]</span></p>
+<p>These results show that for a large loop gain (ideally for <span class="math inline">\(L \rightarrow \infty\)</span>), the error signal becomes very small (ideally <span class="math inline">\(s_ \epsilon \rightarrow 0\)</span>), causing the feedback signal <span class="math inline">\(s_f\)</span> to closely follow the input signal <span class="math inline">\(s_{in}\)</span> (<span class="math inline">\(s_f \rightarrow s_{in}\)</span>).</p>
+<p>If the feedback signal closely tracks the input signal, then the output signal is also a close “replica” of the input signal, and therefore feedback is also effective in reducing distorsion due to small signals. Low frequency distorsion is caused by changes in the slope of the basic-amplifier transfer characteristic (i.e.&nbsp;changes in the small signal gain of the basic-amplifier).</p>
+</section>
+<section id="benefits-of-negative-feedback" class="level2 page-columns page-full" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="benefits-of-negative-feedback"><span class="header-section-number">7.6</span> Benefits of negative feedback</h2>
+<section id="gain-desensitivity" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="gain-desensitivity"><span class="header-section-number">7.6.1</span> Gain Desensitivity</h3>
+<p>To investigate the effect that a variation on the open-loop gain <span class="math inline">\(a\)</span> causes on the closed-loop gain <span class="math inline">\(A\)</span> we differentiate <span class="math inline">\(A\)</span> w.r.t. <span class="math inline">\(a\)</span> <span class="math display">\[
+A = \dfrac{a}{1+ab}
+\]</span> <span class="math display">\[
+\dfrac{dA}{da} = \dfrac{ 1 + ab - ab}{(1+ab)^2} = \dfrac{1}{(1+ab)^2}
+\]</span> <span class="math display">\[
+\Delta A = \dfrac{\Delta a}{(1+ab)^2}
+\]</span> <span class="math display">\[
+\dfrac{\Delta A}{A} = \dfrac{\Delta a}{A} \cdot \dfrac{1}{(1 + ab)^2} =
+\dfrac{\Delta a}{\dfrac{a}{1+ab}} \cdot \dfrac{1}{(1 + ab)^2} = \dfrac{\Delta a / a}{(1+ab)}
+\]</span> Thanks to feedback, a fractional change in the gain of the basic amplifier is reduced by a factor <span class="math inline">\(1+L = 1 + ab\)</span> in the closed-loop. Conceptually, the loop gain <span class="math inline">\(L\)</span> can be be made arbitrarily large. The loop gain is a key parameter and as we will see later it plays an important role also in bandwidth and impedance calculations.</p>
+</section>
+<section id="effect-of-feedback-on-non-linearity" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="effect-of-feedback-on-non-linearity"><span class="header-section-number">7.6.2</span> Effect of feedback on non-linearity</h3>
+<p>Amplifiers are made up of transistors. Since, transistors are non-linear devices, the transfer charateristic of any practical amplifier is non-linear. Assume a basic amplifier that besides the desired linear relationship, also exhibits a quadratic and cubic relationship between its input and output.</p>
+<div id="cell-fig-fb-8" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-8-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.8: Effect of negative feedback on non-linearity
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span id="eq-1"><span class="math display">\[
+\begin{split}
+v_{out} &amp;= a_1 (v_{in} - b v_{out}) + a_2 (v_{in} -b v_{out})^2 + a_3 (v_{in} - b v_{out})^3
+\end{split}
+\tag{7.1}\]</span></span> <span id="eq-2"><span class="math display">\[
+\begin{split}
+&amp;v_{out} = A_1 v_{in} + A_2 v_{in}^2 + A_3 v_{in}^3 + \space ...
+\end{split}
+\tag{7.2}\]</span></span></p>
+<p>Substituting <a href="#eq-2" class="quarto-xref">Equation&nbsp;<span>7.2</span></a> into <a href="#eq-1" class="quarto-xref">Equation&nbsp;<span>7.1</span></a> we get: <span class="math display">\[
+\begin{split}
+v_{out} = \space &amp;a_1 (v_{in} - b A_1 v_{in} -b A_2 v_{in}^2 - b A_3 v_{in}^3 - ... ) \space + \\
+&amp; a_2 (v_{in} - b A_1 v_{in} -b A_2 v_{in}^2 - b A_3 v_{in}^3 - ... )^2 \space + \\
+&amp;a_3 (v_{in} - b A_1 v_{in} - b A_2 v_{in}^2 - b A_3 v_{in}^3 - ...)^3 \space
+\end{split}
+\]</span></p>
+<p>and equating back into <a href="#eq-2" class="quarto-xref">Equation&nbsp;<span>7.2</span></a>:</p>
+<ins>
+for the linear term
+</ins>
+<p><span id="eq-3"><span class="math display">\[
+\begin{split}
+&amp;A_1 {v_{in}} = a_1 {v_{in}} - a_1 b A_1 {v_{in}} \Leftrightarrow A_1 (1 + a_1 b) = a_1 \\
+&amp;A_1 = \dfrac{a_1}{1+a_1 b}
+\end{split}
+\tag{7.3}\]</span></span></p>
+<p>or: <span id="eq-4"><span class="math display">\[
+\begin{split}
+&amp;A_1 = a_1 - a_1 b A_1  \Leftrightarrow A_1 = a_1 (1 - b A_1) \Leftrightarrow \\
+&amp;1 - bA_1 = \frac{A_1}{a_1} = \frac{1}{1+a_1b}\\
+\end{split}
+\tag{7.4}\]</span></span></p>
+<ins>
+for the quadratic term
+</ins>
+<p><span id="eq-5"><span class="math display">\[
+\begin{split}
+&amp;A_2 {v_{in}^2} = - a_1 b A_2 {v_{in}^2} + a_2 \left( v_{in}^2 + b^2 A_1^2 v_{in}^2 - 2 bA_1v_{in}^2 \right) \Leftrightarrow \\
+&amp;A_2 (1 + a_1b) = a_2 (1 - b A_1)^2 \Leftrightarrow A_2 = a_2 \dfrac{(1-bA_1)^2}{1+a_1b} \Leftrightarrow \\
+&amp;A_2 = \dfrac{a_2}{(1+a_1b)^3}
+\end{split}  
+\tag{7.5}\]</span></span></p>
+<ins>
+for the cubic term
+</ins>
+<p><span id="eq-6"><span class="math display">\[
+\begin{split}
+&amp;A_3 \cdot {v_{in}^3} =  - a_1 b A_3 {v_{in}^3} + a_3 (1 - b A_1)^3 {v_{in}^3} - 2 a_2 b A_2 (1-bA_1) v_{in}^3 \Leftrightarrow \\
+&amp;A_3 (1+a_1 b) = a_3  (1 -b A_1 )^3 - 2 a_2b A_2 (1- bA_1) \Leftrightarrow \\
+&amp;A_3 = \dfrac{a_3 (1 - bA_1)^3 - 2 a_2 b A_2 (1 - bA_1)}{(1+a_1 b)} \Leftrightarrow \\
+&amp;A_3 = \dfrac{a_3}{(1+a_1 b)^4} - \dfrac{2 a_2^2b}{(1+a_1b)^5}
+\end{split}
+\tag{7.6}\]</span></span></p>
+<p>The linear term <span class="math inline">\(a_1\)</span> (as expected) is reduced by <span class="math inline">\(1 + L\)</span>, with <span class="math inline">\(L\equiv a_1b\)</span></p>
+<p>The quadratic term <span class="math inline">\(a_2\)</span> is reduced by <span class="math inline">\((1 + L)^3\)</span></p>
+<p>The cubic term <span class="math inline">\(a_3\)</span> is reduced by <span class="math inline">\((1+L)^4\)</span>, but ther is also an extra term due to the interaction with the second-order term <span class="math inline">\(a_2\)</span></p>
+<p>If at different signal levels, the basic amplifier’s small-signal gain varies, since feedback reduces the overall gain (<span class="math inline">\(A = dv_{out}/dv_{in}\)</span>) variations w.r.t. the relative variations of the basic amplifier gain, then feedback also reduces distorsion.</p>
+<p>Note:</p>
+<ul>
+<li><p>feedback reduces distorsion without reducing the output voltage range. The overall gain is reduced, but additional gain can be provided with a preamplifier that operates with smaller signal swings, and therefore less distorsion.</p></li>
+<li><p>feedback does not help with an amplifier saturation. In the case an amplifier’s output shows hard saturation (i.e., the output become independent of the input), the incremental gain of the basic amplifier <span class="math inline">\(\rightarrow 0\)</span>, so the amount of feedback also <span class="math inline">\(\rightarrow 0\)</span>, and as a result negative feedback cannot improve the situation.</p></li>
+</ul>
+</section>
+<section id="effect-of-feedback-on-bandwidth" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="effect-of-feedback-on-bandwidth"><span class="header-section-number">7.6.3</span> Effect of feedback on bandwidth</h3>
+<p>As an example, assume the transfer function of the basic amplifier is the following: <span class="math display">\[
+a(j\omega) = \dfrac{a_0}{1+\dfrac{j\omega}{\omega_p}}
+\]</span> Then, the closed-loop transfer function is <span class="math display">\[
+A(j\omega) = \dfrac{a(j\omega)}{1+ a(j\omega) \cdot b} = \dfrac{a_0}{1+ a_0 b} \cdot \dfrac{1}{1+\dfrac{j\omega}{\omega_p} \cdot \dfrac{1}{(1+ a_0 b)}}
+\]</span> The gain is reduced by <span class="math inline">\(1 + L_0\)</span>, but the bandwidth is increased by <span class="math inline">\(1+L_0\)</span>, where <span class="math inline">\(L_0=a_0b\)</span>.</p>
+<p>The product of gain and bandwidth remains constant.</p>
+<div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fig-fb-9.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.9: Gain magnitude vs.&nbsp;frequency for the basic amplifier and the feedback amplifier
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="effect-of-feedback-on-inputoutput-resistances" class="level3 page-columns page-full" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="effect-of-feedback-on-inputoutput-resistances"><span class="header-section-number">7.6.4</span> Effect of feedback on input/output resistances</h3>
+<p>In actual applications the input and output resistances (a.k.a. terminal resistances) of the amplifier play a key role. When an amplifier is driven by a non ideal source and drives an output load, the input resistance forms a divider with the source’s resistance, and the output resistance forms a divider with the load, therefore reducing the overall gain from source to load. This reduction is usually referred as loading effect. Negative feedback modifies the terminal resistances in ways that tend to reduce the impact of loading.</p>
+<section id="series-shunt-voltage-voltage-feedback-configuration---voltage-amplifier" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="series-shunt-voltage-voltage-feedback-configuration---voltage-amplifier">Series-shunt (voltage-voltage) feedback configuration - Voltage Amplifier</h4>
+<p>Let’s consider the application of negative feedback around a voltage amplifier. In this case feedback is performed sampling the output voltage and then feeding back a voltage that is a scaled version of the output voltage “into” the external input voltage source driving the amplifier. Note that the operation of voltage sensing at the output is performed in parallel, or shunt (when we measure a voltage we place the voltmeter in parallel, never in series), while to combine the external input voltage source and the voltage returned by the feedback network we connect them in series (to connect two voltage sources we place them in series, never in parallel).</p>
+<p>To focus on the effect of negative feedback on <span class="math inline">\(r_i\)</span> and <span class="math inline">\(r_o\)</span> of the basic amplifier, we assume there is no loading effect on both ports of the basic amplifier. To neglect loading at the input’s of the basic amplifier, we assume that the sources <span class="math inline">\(v_{in}\)</span> and <span class="math inline">\(b v_{out}\)</span> have <em>zero</em> series resistances. To neglect loading at the output port of the basic amplifier, we assume the output port of the basic amplifier is left open and the input port of the feedback network has <em>infinite</em> resistance.</p>
+<p>Note: for the series-shunt feeback configuration, b is unitless.</p>
+<div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fig-fb-10.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.10: The ideal series-shunt configuration or voltage amplifier <span class="citation" data-cites="franco">(<a href="../../references.html#ref-franco" role="doc-biblioref">Franco 2015</a>)</span>
+</figcaption>
+<div class="no-row-height column-margin column-container"></div></figure>
+</div>
+<p>It can be shown:</p>
+<p><span class="math display">\[
+R_{in} = \dfrac{v_{x}}{i_{x}} = r_i (1+L)
+\]</span></p>
+<p><span class="math display">\[
+R_{out} = \dfrac{v_t}{i_t} = \dfrac{r_o}{1+L}
+\]</span></p>
+<div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fig-fb-11.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.11: (a) test circuit for the calculation of the input impedance and (b) test circuit for the calculation of the output impedance
+</figcaption>
+</figure>
+</div>
+<p>For <span class="math inline">\(L \rightarrow \infty\)</span> the series-shunt configuration gives <span class="math inline">\(R_{in} \rightarrow \infty\)</span> and <span class="math inline">\(R_{out} \rightarrow 0\)</span></p>
+</section>
+<section id="shunt-shunt-current-voltage-feedback-configuration---transimpedance-amplifier" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="shunt-shunt-current-voltage-feedback-configuration---transimpedance-amplifier">Shunt-shunt (current-voltage) feedback configuration - Transimpedance Amplifier</h4>
+<p>Let’s consider the application of negative feedback around a transimpedance amplifier. In this case feedback is performed sampling the output voltage and then feeding back a current that is a scaled version of the output voltage “into” the external input current source driving the amplifier. Note that to combine the external input current source and the current returned by the feedback network we connect them in parallel or shunt (to connect two current sources we place them in parallel, never in series).</p>
+<p>To neglect loading at the input of the basic amplifier, we assume that the sources <span class="math inline">\(i_{in}\)</span> and <span class="math inline">\(b v_{out}\)</span> have <em>infinite</em> parallel resistances. To neglect loading at the output port of the basic amplifier, we assume the output port of the basic amplifier is left open and the input port of the feedback network has <em>infinite</em> resistance.</p>
+<p>Note: for the shunt-shunt feeback configuration, b has dimensions of <span class="math inline">\(1/ \Omega\)</span>.</p>
+<div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fig-fb-12.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.12: The ideal shunt-shunt configuration or transimpedance amplifier <span class="citation" data-cites="franco">(<a href="../../references.html#ref-franco" role="doc-biblioref">Franco 2015</a>)</span>
+</figcaption>
+<div class="no-row-height column-margin column-container"></div></figure>
+</div>
+<p>It can be shown:</p>
+<p><span class="math display">\[
+R_{in} = \dfrac{r_i}{1+L}
+\]</span></p>
+<p><span class="math display">\[
+R_{out} = \dfrac{r_o}{1+L}
+\]</span></p>
+<p>For <span class="math inline">\(L \rightarrow \infty\)</span> the shunt-shunt configuration gives <span class="math inline">\(R_{in} \rightarrow 0\)</span> and <span class="math inline">\(R_{out} \rightarrow 0\)</span></p>
+</section>
+<section id="series-series-voltage-current-feedback-configuration---transconductance-amplifier" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="series-series-voltage-current-feedback-configuration---transconductance-amplifier">Series-series (voltage-current) feedback configuration - Transconductance Amplifier</h4>
+<p>Let’s consider the application of negative feedback around a transconductance amplifier. In this case feedback is performed sampling the output current and then feeding back a voltage that is a scaled version of the output current “into” the external input voltage source driving the amplifier. Note that the operation of current sensing at the output is performed in series, or shunt (when we measure a current we place the ampmeter in series, never in parallel).</p>
+<p>To neglect loading at the input of the basic amplifier, we assume that the sources <span class="math inline">\(v_{in}\)</span> and <span class="math inline">\(b i_{out}\)</span> have <em>zero</em> series resistances. To neglect loading at the output port of the basic amplifier, we assume the output port of the basic amplifier is shorted and the input port of the feedback network has <em>zero</em> resistance.</p>
+<p>Note: for the series-series feedback configuration, b has dimensions of <span class="math inline">\(\Omega\)</span>.</p>
+<div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fig-fb-13.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.13: The ideal series-series configuration or transconductance amplifier <span class="citation" data-cites="franco">(<a href="../../references.html#ref-franco" role="doc-biblioref">Franco 2015</a>)</span>
+</figcaption>
+<div class="no-row-height column-margin column-container"></div></figure>
+</div>
+<p>It can be shown:</p>
+<p><span class="math display">\[
+R_{in} = r_i (1+L)
+\]</span></p>
+<p><span class="math display">\[
+R_{out} = r_o (1+L)
+\]</span></p>
+<p>For <span class="math inline">\(L \rightarrow \infty\)</span> the series-series configuration gives <span class="math inline">\(R_{in} \rightarrow \infty\)</span> and <span class="math inline">\(R_{out} \rightarrow \infty\)</span></p>
+</section>
+<section id="shunt-series-current-current-feedback-configuration---current-amplifier" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="shunt-series-current-current-feedback-configuration---current-amplifier">Shunt-series (current-current) feedback configuration - Current Amplifier</h4>
+<p>Let’s consider the application of negative feedback around a current amplifier. In this case feedback is performed sampling the output current and then feeding back a current that is a scaled version of the output current “into” the external input current source driving the amplifier.</p>
+<p>To neglect loading at the input of the basic amplifier, we assume that the sources <span class="math inline">\(i_{in}\)</span> and <span class="math inline">\(b i_{out}\)</span> have <em>infinite</em> parallel resistances. To neglect loading at the output port of the basic amplifier, we assume the output port of the basic amplifier is shorted and the input port of the feedback network has <em>zero</em> resistance.</p>
+<p>Note: for the shunt-series feedback configuration, b is unitless.</p>
+<div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fig-fb-14.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.14: The shunt-series configuration or current amplifier <span class="citation" data-cites="franco">(<a href="../../references.html#ref-franco" role="doc-biblioref">Franco 2015</a>)</span>
+</figcaption>
+<div class="no-row-height column-margin column-container"></div></figure>
+</div>
+<p>It can be shown:</p>
+<p><span class="math display">\[
+R_{in} = \dfrac{r_i}{1+L}
+\]</span></p>
+<p><span class="math display">\[
+R_{out} = r_o (1+L)
+\]</span></p>
+<p>For <span class="math inline">\(L \rightarrow \infty\)</span> the shunt-series configuration gives <span class="math inline">\(R_{in} \rightarrow 0\)</span> and <span class="math inline">\(R_{out} \rightarrow \infty\)</span></p>
+</section>
+</section>
+</section>
+<section id="feedback-analysis-of-op-amp-circuits" class="level2 page-columns page-full" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="feedback-analysis-of-op-amp-circuits"><span class="header-section-number">7.7</span> Feedback analysis of op amp circuits</h2>
+<p>In typical op amp circuits <span class="math inline">\(r_i\)</span> and <span class="math inline">\(r_o\)</span> are negligible compared to the resistances used in the feedback network.</p>
+<section id="non-inverting-configuration" class="level3 page-columns page-full" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="non-inverting-configuration"><span class="header-section-number">7.7.1</span> Non Inverting configuration</h3>
+<div id="cell-fig-fb-oa-1" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-1-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.15: Block diagram of negative feedback system.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="fig-noninverting-oa" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-noninverting-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-fb-oa-2.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-noninverting-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.16: Non inverting op amp amplifier <span class="citation" data-cites="franco">(<a href="../../references.html#ref-franco" role="doc-biblioref">Franco 2015</a>)</span>.
+</figcaption>
+<div class="no-row-height column-margin column-container"></div></figure>
+</div>
+<p>For identifying <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> directly from the circuit, we can set <span class="math inline">\(v_{in} = 0\)</span> and note that with <span class="math inline">\(v_{in}=0\)</span></p>
+<p><span class="math inline">\(i_{out} = \dfrac{v_{out}}{R_2 + R_1 || r_i} = \dfrac{a_D v_D}{r_o + R_2 + R_1 || r_i}\)</span></p>
+<p><span class="math inline">\(v_f = -v_D = i_{out} \cdot ({R_1 || r_i})\)</span></p>
+<p><span class="math inline">\(v_{out} = i_{out} \cdot \bigl( {R_2 + R_1 || r_i} \Bigr)\)</span></p>
+<p>So,</p>
+<p><span class="math inline">\(b = \dfrac{v_f}{v_{out}} = \dfrac{R_1 || \cancel{r_i}}{R_1 || \cancel{r_i} + R_2} \approx \dfrac{R_1}{R_1 + R_2}\)</span></p>
+<p><span class="math inline">\(a = \dfrac{v_{out}}{v_D} = a_D \cdot \dfrac{R_2 + R_1 || \cancel{r_i}}{R_2 + R_1 || \cancel{r_i} + \cancel{r_o}} \approx a_D\)</span></p>
+<p>In practice, for identifying <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, it is better to think directly in terms of loop gain <span class="math inline">\(L\)</span> <span class="math display">\[
+L = ab = - \frac{v_r}{v_t}
+\]</span> The minus sign is due to the <span class="math inline">\(-\)</span> at the summing node</p>
+<div id="cell-fig-fb-oa-3" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-3-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.17: Breaking the Loop.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: To find the loop gain, it is best to break the loop at the opamp’s voltage controlled voltage source. This approach preserves all of the node impedances in the circuit.</p>
+<div id="fig-noninverting-oa-breakloop" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-noninverting-oa-breakloop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-fb-oa-4.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-noninverting-oa-breakloop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.18: Non inverting op amp amplifier with <span class="math inline">\(v_{in}\)</span> nulled and the loop broken at the opamp’s vcvs.
+</figcaption>
+</figure>
+</div>
+<p><span class="math inline">\(L = -\dfrac{v_r}{v_t} = a_D \cdot \dfrac{R_1 || \cancel{r_i}}{R_1 || \cancel{r_i} +R_2 + \cancel{r_o}}\)</span></p>
+<p><span class="math inline">\(A = A_{ideal} \dfrac{L}{1+L} \approx A_{ideal} \Bigl( 1 - \dfrac{1}{L} \Bigr)\)</span></p>
+<p><span class="math inline">\(gain \space error \approx \dfrac{A_{ideal} \Bigl( 1 - \dfrac{1}{L} \Bigr) - A_{ideal}}{A_{ideal}} = -\dfrac{1}{L}\)</span></p>
+<p>The value of <span class="math inline">\(A_{ideal}\)</span> is already known from the ideal op amp analysis</p>
+<p>Infinite opamp gain (<span class="math inline">\(a_D \rightarrow \infty\)</span>) implies infinite open-loop gain (<span class="math inline">\(a \approx a_D\)</span>) and therefore infinite loop gain <span class="math inline">\(L=ab\)</span></p>
+<p><span class="math display">\[
+A_{ideal} = \frac{1}{b} \approx 1 + \frac{R_2}{R_1}
+\]</span></p>
+<p><strong>Example 4 - non inverting op amp based voltage amplifier</strong></p>
+<p>For <span class="math inline">\(a_D = 10^6\)</span>, <span class="math inline">\(r_i = 10 M \Omega\)</span>, <span class="math inline">\(r_o = 10 \Omega\)</span>, <span class="math inline">\(R_1 = 20 k \Omega\)</span> and <span class="math inline">\(R_2 = 80 k \Omega\)</span>:</p>
+<p><span class="math inline">\(L = -\dfrac{v_r}{v_t} = a_D \cdot \dfrac{R_1 || \cancel{r_i}}{R_1 || \cancel{r_i} +R_2 + \cancel{r_o}} \approx 10^6 \dfrac{20 k\Omega}{20 k\Omega + 80 k\Omega}\)</span></p>
+<p>The exact value of <span class="math inline">\(L\)</span> is 199600, so the above approximation has 0.2% error.</p>
+<p><span class="math inline">\(A = 5 \cdot \dfrac{200000}{1+200000} = 4.999975\)</span></p>
+<p><span class="math inline">\(gain \space error \approx -\dfrac{1}{200000} = -5 ppm\)</span></p>
+<p>This is the same result as before, except we did not have to go through a tedious nodal analysis and plug in numbers in a “high entropy” espression.</p>
+<p>What if the op amp gain changes ?</p>
+<p>If the gain is cut in half : <span class="math display">\[
+A = 5 \cdot \dfrac{100000}{1+100000} = 4.999950
+\]</span> If the gain doubles: <span class="math display">\[
+A = 5 \cdot \dfrac{400000}{1+400000} = 4.999988
+\]</span></p>
+<ul>
+<li>The closed loop gain (<span class="math inline">\(A\)</span>) is immune to large variations in the op amp gain</li>
+<li>The voltage gain of the overall circuit (= closed loop gain) is primarily defined by the divider ratio of the resistive feedback
+<ul>
+<li>A quantity that we can control very precisely</li>
+</ul></li>
+</ul>
+</section>
+<section id="inverting-configuration" class="level3 page-columns page-full" data-number="7.7.2">
+<h3 data-number="7.7.2" class="anchored" data-anchor-id="inverting-configuration"><span class="header-section-number">7.7.2</span> Inverting configuration</h3>
+<p>In this configuration the resistors affect both the input and the feedback path.</p>
+<div id="fig-inverting-oa" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-inverting-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-fb-oa-5.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inverting-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.19: Inverting op amp amplifier. <span class="citation" data-cites="franco">(<a href="../../references.html#ref-franco" role="doc-biblioref">Franco 2015</a>})</span>
+</figcaption>
+<div class="no-row-height column-margin column-container"><div id="ref-franco" class="csl-entry" role="listitem">
+Franco, Sergio. 2015. <em>Analog Circuit Design: Discrete &amp; Integrated</em>. New York: McGraw-Hill Education.
+</div></div></figure>
+</div>
+<p>It is not clear how to map the circuit into the block diagram representation. The flow of the signal through the circuit elements is not unidirectional.</p>
+<div id="cell-fig-fb-15" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-15-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.20: Block diagram of negative feedback system.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can still try to make things work using superposition.</p>
+<div id="cell-fig-fb-oa-6" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-6-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.21: Breaking the loop (<span class="math inline">\(v_f=0\)</span>)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-fb-oa-7" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-7-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.22: Breaking the loop (<span class="math inline">\(v_{in}=0\)</span>)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-fb-oa-8" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-8-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.23: op amp based inverting amplifier with break in the loop (<span class="math inline">\(v_f = 0\)</span>)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+a = \frac{v_{out}}{v_{in}} = - \dfrac{R_2}{R_1 + R_2} \cdot a_D
+\]</span></p>
+<div id="cell-fig-fb-oa-9" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-9-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.24: op amp based inverting amplifier with break in the loop (<span class="math inline">\(v_{in} = 0\)</span>)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+-ab = \frac{v_{out}}{v_{test}} = - \dfrac{R_1}{R_1 + R_2} \cdot a_D
+\]</span></p>
+<p>Note: the loop gain is the same as the one of the non-inverting configuration.</p>
+<p><span class="math display">\[
+A_{ideal} = \dfrac{1}{b} = \dfrac{a}{ab} = - \dfrac{R_2}{R_1}
+\]</span></p>
+<p>Beyond <span class="math inline">\(A_{ideal}\)</span> the only other value we need to know is the loop gain <span class="math inline">\(L=ab\)</span> so we can compute the deviation from ideality</p>
+</section>
+<section id="comparison-between-non-inverting-and-inverting-topology" class="level3" data-number="7.7.3">
+<h3 data-number="7.7.3" class="anchored" data-anchor-id="comparison-between-non-inverting-and-inverting-topology"><span class="header-section-number">7.7.3</span> Comparison between non-inverting and inverting topology</h3>
+<div id="cell-fig-fb-oa-10" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-10-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.25: comparison between inverting and non-inverting topology
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The following model is valid for both topologies:</p>
+<div id="cell-fig-fb-oa-11" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div id="fig-fb-oa-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fb-oa-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-fb-oa-11-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fb-oa-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.26: Block diagram model valid for both topologies.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In summary op amp circuits can be analyzed as follows:</p>
+<ul>
+<li>Find <span class="math inline">\(A_{ideal}\)</span> using nodal analysis, assuming infinite op amp gain</li>
+<li>Find the loop gain to compute the deviation from the ideal case
+<ul>
+<li>This is usually straight forward, especially when there are ideal breakpoints that do not alter the impedance loading around the loop</li>
+<li>The best breakpoint for a voltage amplifier is right at the controlled voltage source</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+A = \dfrac{v_{out}}{v_{in}} = A_{ideal} \cdot \dfrac{L}{L+1} = A_{ideal} \cdot \dfrac{1}{1+\dfrac{1}{L}}
+\]</span></p>
+</section>
+<section id="the-four-feedback-configurations-using-op-amps" class="level3" data-number="7.7.4">
+<h3 data-number="7.7.4" class="anchored" data-anchor-id="the-four-feedback-configurations-using-op-amps"><span class="header-section-number">7.7.4</span> The four feedback configurations using op amps</h3>
+<p>Sometimes the operations of output sensing and input returning are not obvious. Even though strictly speaking the op amp is a voltage amplifier, it can be used in any of the four feedback configurations.</p>
+<section id="series-shunt-voltage-voltage-configuration-voltage-amplifier" class="level4">
+<h4 class="anchored" data-anchor-id="series-shunt-voltage-voltage-configuration-voltage-amplifier">Series-Shunt (voltage-voltage) configuration (Voltage Amplifier)</h4>
+<div id="fig-se-sh-oa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-se-sh-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-se-sh-oa.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-se-sh-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.27: Series-shunt configuration: <span class="math inline">\(b = \dfrac{v_f}{v_{out}} = \dfrac{R_1}{R_1 + R_2}\)</span>
+</figcaption>
+</figure>
+</div>
+<p>For <span class="math inline">\(a_v \rightarrow \infty\)</span> this circuit gives:</p>
+<p><span class="math inline">\(A_v = \dfrac{v_{out}}{v_{in}} = \dfrac{1}{b} = 1 + \dfrac{R_2}{R_1}\)</span></p>
+<p><span class="math inline">\(R_{in} \rightarrow \infty\)</span></p>
+<p><span class="math inline">\(R_{out} \rightarrow 0\)</span></p>
+<p>This circuit is the popular non inverting op amp based voltage amplifier.</p>
+</section>
+<section id="shunt-shunt-current-voltage-configuration-transimpedance-amplifier" class="level4">
+<h4 class="anchored" data-anchor-id="shunt-shunt-current-voltage-configuration-transimpedance-amplifier">Shunt-Shunt (current-voltage) configuration (Transimpedance Amplifier)</h4>
+<div id="fig-sh-sh-oa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sh-sh-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-sh-sh-oa.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sh-sh-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.28: Shunt-shunt configuration: <span class="math inline">\(b = \dfrac{i_f}{v_{out}} = -\dfrac{1}{R}\)</span>
+</figcaption>
+</figure>
+</div>
+<p>For <span class="math inline">\(a_v \rightarrow \infty\)</span> this circuit (= TIA) gives:</p>
+<p><span class="math inline">\(R_m = \dfrac{v_{out}}{i_{in}} = \dfrac{1}{b} = -R\)</span></p>
+<p><span class="math inline">\(R_{in} \rightarrow 0\)</span></p>
+<p><span class="math inline">\(R_{out} \rightarrow 0\)</span></p>
+<p>Even though the shunt-shunt configuration is a TIA, it forms the basis of the popular inverting op amp based voltage amplifier.</p>
+<div id="fig-inv-oa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inv-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-inv-oa.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inv-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.29: inverting op amp based voltage amplifier
+</figcaption>
+</figure>
+</div>
+<div id="fig-inv-oa-trans" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inv-oa-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-inv-oa-trans.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inv-oa-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.30: inverting op amp based voltage amplifier with the input voltage source transformed into a current source
+</figcaption>
+</figure>
+</div>
+<p>This becomes more evident if we perform a source transformation to convert the voltage source <span class="math inline">\(v_{in}\)</span> in <a href="#fig-inv-oa" class="quarto-xref">Figure&nbsp;<span>7.29</span></a> into a current source <span class="math inline">\(i_{in} = \dfrac{v_{in}}{R_1}\)</span> as shown in <a href="#fig-inv-oa-trans" class="quarto-xref">Figure&nbsp;<span>7.30</span></a>.</p>
+<p>For the inverting voltage amplifier as <span class="math inline">\(a_v \rightarrow \infty\)</span></p>
+<p><span class="math inline">\(A_v = \dfrac{v_{out}}{v_{in}} = \dfrac{v_{out}}{i_{in}} \times \dfrac{i_{in}}{v_{in}} = -\dfrac{R_2}{R_1}\)</span></p>
+<p><span class="math inline">\(R_{in} = R_1\)</span></p>
+<p><span class="math inline">\(R_{out} \rightarrow 0\)</span></p>
+</section>
+<section id="series-series-voltage-current-configuration-transconductance-amplifier" class="level4">
+<h4 class="anchored" data-anchor-id="series-series-voltage-current-configuration-transconductance-amplifier">Series-Series (voltage-current) configuration (Transconductance Amplifier)</h4>
+<div id="fig-se-se-oa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-se-se-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-se-se-oa.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-se-se-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.31: series-series configuration: <span class="math inline">\(b = \dfrac{v_f}{i_{out}} = {R}\)</span>
+</figcaption>
+</figure>
+</div>
+<p>For <span class="math inline">\(a_v \rightarrow \infty\)</span></p>
+<p><span class="math inline">\(G_m = \dfrac{i_{out}}{v_{in}} = \dfrac{1}{b} = \dfrac{1}{R}\)</span></p>
+<p><span class="math inline">\(R_{in} \rightarrow \infty\)</span></p>
+<p><span class="math inline">\(R_{out} \rightarrow \infty\)</span></p>
+</section>
+<section id="shunt-series-current-current-configuration-current-amplifier" class="level4">
+<h4 class="anchored" data-anchor-id="shunt-series-current-current-configuration-current-amplifier">Shunt-Series (current-current) configuration (Current Amplifier)</h4>
+<div id="fig-sh-se-oa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sh-se-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-sh-se-oa.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sh-se-oa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.32: shunt-series configuration: <span class="math inline">\(b = \dfrac{i_f}{i_{out}} = -\dfrac{R_1}{R_1+R_2} =-\dfrac{1}{1+ R_2/R_1}\)</span>
+</figcaption>
+</figure>
+</div>
+<p>For <span class="math inline">\(a_v \rightarrow \infty\)</span></p>
+<p><span class="math inline">\(A_i = \dfrac{i_{out}}{i_{in}} = \dfrac{1}{b} = -(1 + \dfrac{R_2}{R_1})\)</span></p>
+<p><span class="math inline">\(R_{in} \rightarrow 0\)</span></p>
+<p><span class="math inline">\(R_{out} \rightarrow \infty\)</span></p>
+</section>
+</section>
+</section>
+<section id="return-ratio-analysis" class="level2 page-columns page-full" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="return-ratio-analysis"><span class="header-section-number">7.8</span> Return Ratio Analysis</h2>
+<section id="closed-loop-gain-using-return-ratio" class="level3 page-columns page-full" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="closed-loop-gain-using-return-ratio"><span class="header-section-number">7.8.1</span> Closed-loop gain using return ratio</h3>
+<p>Given a feedback amplifier, with a controlled source of value k (see <a href="#fig-rr-1" class="quarto-xref">Figure&nbsp;<span>7.33</span></a>), the closed loop gain can be derived as shown in <span class="citation" data-cites="gray">(<a href="../../references.html#ref-gray" role="doc-biblioref">Gray et al. 2009</a>)</span>: <span class="math display">\[
+A = \dfrac{s_{out}}{s_{in}} = A_\infty \cdot \dfrac{T}{1+T} + \dfrac{d}{1+T}
+\]</span></p>
+<div class="no-row-height column-margin column-container"></div><div id="cell-fig-rr-1" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-1-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.33: Feedback amplifier: return ratio framework to derive the closed-loop gain
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Visually, the expression for the closed loop gain can be summarized through the block diagram in <a href="#fig-rr-2" class="quarto-xref">Figure&nbsp;<span>7.34</span></a>: <span class="math display">\[
+\left(s_{in} - \dfrac{s_{out}}{A_\infty}\right) \cdot T A_\infty + d \cdot s_{in} = s_{out}
+\]</span> <span class="math display">\[
+A = \dfrac{s_{out}}{s_{in}} = A_\infty \cdot \dfrac{T}{1+T} + \dfrac{d}{1+T}
+\]</span></p>
+<div id="cell-fig-rr-2" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-2-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.34: Block diagram for closed-loop gain using return ratio framework
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The three terms needed to find the closed loop gain (<span class="math inline">\(A_\infty\)</span>, <span class="math inline">\(T\)</span>, <span class="math inline">\(d\)</span>) are all directly computable and measurable (SPICE), and do not rely on any idealization of the feedback network.</p>
+<p>In practical circuits the feedback network loads both the input and output of the amplifier, so idealizing its effect is not realistic. With two-port analysis incorporating the effect of loading without the use of suitable approximations/idealizations of the feedback network becomes extremely tedious.</p>
+<p>The return ratio analysis does not try to identify the transfer function of the basic amplifier and the feedback network separately. It aims to identify directly the gain around the feedback loop. From the loop gain of a circuit, we can determine:</p>
+<ul>
+<li>stability</li>
+<li>closed-loop gain</li>
+<li>nodal impedances</li>
+</ul>
+<p>The return ratio analysis can be applied to any arbitrary feedback circuit, independent of topology and port structure.</p>
+<p>The return ratio for a dependent source in a feedback loop is found as follows:</p>
+<ol type="1">
+<li>Set all independent sources to zero</li>
+<li>Identify a dependent source in the feedback loop that you want to analyze and break the loop by disconnecting the dependent source from the rest of the circuit. Leave the dependent source open-circuited if it is of the voltage type, or short-circuited if it is of the current-type</li>
+<li>On the side of the break that is not connected to the dependent source, inject an independent test source <span class="math inline">\(s_t\)</span> of the same sign and type as the dependent source</li>
+<li>Find the return signal <span class="math inline">\(s_r\)</span>, generated at the controlled source that was disconnected</li>
+<li>The return ratio <span class="math inline">\(T\)</span> for the dependent source is <span class="math inline">\(T=-s_r/s_t\)</span>
+<ul>
+<li>Provided that we have chosen a controlled source that breaks the loop globally, the return ratio of the dependent source is equal to the loop gain of the circuit.</li>
+<li>For the stabilty analysis of a feedback circuit we must have the loop gain not just any return ratio. Unless, we have a single loop feedback circuit, the return ratios computed for different dependent sources are not necessarily equal <span class="citation" data-cites="hurst2">(<a href="../../references.html#ref-hurst2" role="doc-biblioref">Hurst 1991</a>)</span>, so in general, the return ratio is not a global property of the loop <span class="citation" data-cites="hajimiri">(<a href="../../references.html#ref-hajimiri" role="doc-biblioref">Hajimiri 2023</a>)</span>.</li>
+</ul></li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="ref-hurst2" class="csl-entry" role="listitem">
+Hurst, P. J. 1991. <span>“Exact Simulation of Feedback Circuit Parameters.”</span> <em>IEEE Transactions on Circuits and Systems</em> 38 (11): 1382–89. <a href="https://doi.org/10.1109/31.99170">https://doi.org/10.1109/31.99170</a>.
+</div></div><p>The direct feedthrough <span class="math inline">\(d\)</span> is given by:</p>
+<p><span class="math display">\[
+d = \dfrac{s_{out}}{s_{in}} |_{k = 0}
+\]</span></p>
+<p>which is the transfer function from input to output evaluated for k = 0. In other words, the direct feedthrough <span class="math inline">\(d\)</span> is the signal transfer from input to output through the passive elements, it represent a signal path from input to output that goes around rather than through the controlled source k.</p>
+<p>The value of <span class="math inline">\(A_\infty\)</span> is the closed loop gain when the feedback circuit is ideal (that is when <span class="math inline">\(T \rightarrow \infty\)</span>). If <span class="math inline">\(T \rightarrow \infty\)</span> then <span class="math inline">\(A = A_\infty\)</span>, because <span class="math inline">\(\dfrac{T}{1+T} \rightarrow 1\)</span> and <span class="math inline">\(\dfrac{d}{1+T} \rightarrow 0\)</span></p>
+<p>Since letting <span class="math inline">\(k \rightarrow \infty\)</span> causes <span class="math inline">\(T \rightarrow \infty\)</span> <span class="citation" data-cites="gray">(<a href="../../references.html#ref-gray" role="doc-biblioref">Gray et al. 2009</a>)</span> the value of <span class="math inline">\(A_\infty\)</span> can be easily found by evaluating <span class="math display">\[
+\dfrac{s_{out}}{s_{in}} |_{k \rightarrow \infty}
+\]</span></p>
+<div class="no-row-height column-margin column-container"></div><p>When <span class="math inline">\(k \rightarrow \infty\)</span>, the controlling signal <span class="math inline">\(s_{ic}\)</span> for the dependent source must be zero for the output of the controlled source to be finite. The controlled source output will be finite if the feedback is negative.</p>
+<p>The key difference between the return ratio analysis and the two-port analysis can be seen comparing <a href="#fig-rr-2" class="quarto-xref">Figure&nbsp;<span>7.34</span></a> and <a href="#fig-rr-3" class="quarto-xref">Figure&nbsp;<span>7.35</span></a> In the two-port analysis all forward signal transmission is lumped in the block <span class="math inline">\(a\)</span>. In the return ratio analysis, there are two forward signal paths: one path (<span class="math inline">\(d\)</span>) for the feedback network and another path (<span class="math inline">\(TA_\infty\)</span>) for the forward gain.</p>
+<div id="cell-fig-rr-3" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-3-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.35: Block diagram model for closed-loop gain using the two-port framework
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Example 5 - common source stage with current source biasing</strong></p>
+<p>Consider the circuit in <a href="#fig-rr-4" class="quarto-xref">Figure&nbsp;<span>7.36</span></a> and its AC equivalent model in <a href="#fig-rr-5" class="quarto-xref">Figure&nbsp;<span>7.37</span></a></p>
+<div id="cell-fig-rr-4" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-4-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.36: Common source with current-source biasing
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Current source biasing in this circuit doesn’t work without feedback setting the drain voltage.</p>
+<p>Given the finite gain and the nature of the impedances of the MOS, in this circuit is hard to decouple a(s) and b(s), so using the two-port analysis is not a good option. <span class="math display">\[
+A(s) =  \dfrac{a(s)}{1+a(s)b(s)}
+\]</span></p>
+<p>In this case, since the circuit is not very complex we can use exact nodal analysis.</p>
+<div id="cell-fig-rr-5" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-5-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.37: AC equivalent model of the feedback circuit in <a href="#fig-rr-4" class="quarto-xref">Figure&nbsp;<span>7.36</span></a>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span id="eq-3"><span class="math display">\[
+\dfrac{v_{in}-v_x}{R_1} + \dfrac{v_{out}-v_x}{R_2} = 0\Leftrightarrow \dfrac{v_{in}}{R_1} - \left( \dfrac{1}{R_1} + \dfrac{1}{R_2} \right) \cdot v_x + \dfrac{v_{out}}{R_2}=0
+\tag{7.7}\]</span></span> <span id="eq-4"><span class="math display">\[
+\dfrac{v_x-v_{out}}{R_2} = g_m v_x \Leftrightarrow v_x=\dfrac{v_{out}}{1-g_m R_2}
+\tag{7.8}\]</span></span></p>
+<p>Substituting <a href="#eq-3" class="quarto-xref">Equation&nbsp;<span>7.7</span></a> in <a href="#eq-4" class="quarto-xref">Equation&nbsp;<span>7.8</span></a>: <span class="math display">\[
+\dfrac{v_{out}}{v_{in}} = \dfrac{1 - g_m R_2}{1+g_m R_1} = - \dfrac{R_2}{R_1} \left( \dfrac{1-\dfrac{1}{g_m R_2}}{1+\dfrac{1}{g_m R_1}} \right)
+\]</span></p>
+<p>If the <span class="math inline">\(g_m R\)</span> terms are much greater than 1, the result is the same as the op amp solution.</p>
+<p>Let’s now confirm that return ratio analysis produces the same result.</p>
+<p><em><ins>Return ratio calculation</ins></em></p>
+<div id="cell-fig-rr-6" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-6-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.38: return ratio calculation
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(v_{gs} = - R_1 i_t\)</span></p>
+<p><span class="math inline">\(i_r = g_m v_{gs} = - g_m R_1 i_t\)</span></p>
+<p><span class="math inline">\(\dfrac{i_r}{i_t} = - g_m R_1\)</span></p>
+<p><span class="math inline">\(T \equiv - \dfrac{i_r}{i_t} = g_m R_1\)</span></p>
+<p><em><ins>Ideal closed loop gain calculation</ins></em></p>
+<p><span class="math inline">\(A_\infty\)</span> is the transfer function when the gain element of the controlled source becomes <span class="math inline">\(\infty\)</span>. In our case this corresponds to <span class="math inline">\(g_m \rightarrow \infty\)</span>. If the gain element becomes <span class="math inline">\(\infty\)</span> the controlling signal must be zero. In our case this correspond to the input node <span class="math inline">\(v_{gs}=0\)</span>, therefore:</p>
+<div id="cell-fig-rr-7" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-7-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.39: Ideal closed loop gain Calculation
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(\dfrac{v_{in}}{R_1}=-\dfrac{v_{out}}{R_2} \Leftrightarrow A_\infty = \dfrac{v_{out}}{v_{in}} = - \dfrac{R_2}{R_1}\)</span></p>
+<p><em><ins>Direct feedtrough (d) calculation</ins></em></p>
+<div id="cell-fig-rr-8" class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-8-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.40: Direct feedthrough Calculation
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(d\)</span> is defined as the transfer function when the gain element becomes zero. In our case for <span class="math inline">\(g_m = 0\)</span></p>
+<p><span class="math inline">\(v_{out} = v_{in} \Leftrightarrow d = \dfrac{v_{out}}{v_{in}} = 1\)</span></p>
+<p>In summary:</p>
+<ul>
+<li><span class="math inline">\(T = g_m R_1\)</span></li>
+<li><span class="math inline">\(A_\infty = - \dfrac{R_2}{R_1}\)</span></li>
+<li><span class="math inline">\(d = 1\)</span></li>
+</ul>
+<p>Therefore, as expected the closed loop gain computed using the return ratio framework matches with the result obtained using exact nodal analysis:</p>
+<p><span class="math display">\[
+\begin{split}
+A &amp;= A_\infty \cdot \dfrac{T}{1+T} + \dfrac{d}{1+T} \\
+&amp;= - \dfrac{R_2}{R_1} \cdot \dfrac{g_m R_1}{1+g_m R_1} + \dfrac{1}{1+g_m R_1} \\
+&amp;= \dfrac{1 - g_m R_2}{1 + g_m R_1}
+\end{split}
+\]</span></p>
+<p><strong>Example 6 - constant-<span class="math inline">\(g_m\)</span> reference</strong></p>
+<p>In this example, we will use the return ratio framework to evaluate the stability of the bias circuit in <a href="#fig-rr-9" class="quarto-xref">Figure&nbsp;<span>7.41</span></a>. The bias circuit in <a href="#fig-rr-9" class="quarto-xref">Figure&nbsp;<span>7.41</span></a> is know as constant-<span class="math inline">\(g_m\)</span> reference or <span class="math inline">\(\Delta V_{GS}\)</span> reference.</p>
+<p>Note: this circuit has only one-port so it cannot be analyzed using the two-ports framework.</p>
+<div id="cell-fig-rr-9" class="cell" data-execution_count="25">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-9-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.41: Constant-<span class="math inline">\(g_m\)</span> reference
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\begin{split}
+I_{REF} \cdot R_2 &amp;= V_{GS1} - V_{GS2} = V_{OV1} - V_{OV2} \\
+&amp;\approx V_{OV1} \left( 1 - \dfrac{1}{\sqrt{m}} \right)
+\end{split}
+\]</span></p>
+<p><span class="math display">\[
+I_{REF} \approx \dfrac{V_{OV1} \left( 1 - \dfrac{1}{\sqrt{m}} \right)}{R_2}
+\]</span></p>
+<ul>
+<li>This circuit has positive feedback.</li>
+<li>A positive feedback system is stable only if its loop gain is less than 1 (<span class="math inline">\(T &lt; 1\)</span>)</li>
+</ul>
+<div id="cell-fig-rr-10" class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-10-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.42: AC equivalent model of the constant-<span class="math inline">\(g_m\)</span> bias circuit
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>To identify which dependent source to use for computing the loop gain <span class="math inline">\(T\)</span> of the circuit, the feedback loop we break must be global.</p>
+<ul>
+<li><span class="math inline">\(M_2\)</span> and <span class="math inline">\(R_2\)</span> degeneration, form a local feedback loop, so <span class="math inline">\(M_2\)</span> cannot be used to break the main loop</li>
+<li><span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_4\)</span> are diode-connected; their transcondactance elements are equivalent to a resistance <span class="math inline">\(1/g_m\)</span> so cannot be used to break the main loop</li>
+<li><span class="math inline">\(M_3\)</span> is the only <em>“normal”</em> CS gain stage in the circuit, so it is the only element that can be used to break the main loop</li>
+</ul>
+<p>In general, <strong>the return ratio of CG, CD, or degenerated CS cannot be used</strong> to find the “global” loop gain of a circuit.</p>
+<p>To compute the loop gain <span class="math inline">\(T\)</span> of the circuit, it is convenient to first unroll and linearize the AC equivalent model in <a href="#fig-rr-10" class="quarto-xref">Figure&nbsp;<span>7.42</span></a>:</p>
+<div id="cell-fig-rr-11" class="cell" data-execution_count="27">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-11-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.43: Unrolled AC equivalent model for the constant-<span class="math inline">\(g_m\)</span> bias circuit
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-rr-12" class="cell" data-execution_count="28">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-12-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.44: Small signal equivalent model for the constant-<span class="math inline">\(g_m\)</span> bias circuit, (a) red: circuit features that make <span class="math inline">\(s_t\)</span> insertion not possible, (b) blue: best place for <span class="math inline">\(s_t\)</span> insertion
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>and then insert the test source:</p>
+<div id="cell-fig-rr-13" class="cell" data-execution_count="29">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-13-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.45: Computing the return ratio for the constant-<span class="math inline">\(g_m\)</span> bias circuit
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(i_r = g_{m3}v_4\)</span></p>
+<p><span class="math inline">\(i_t = - g_{m1}v_1\)</span></p>
+<p><span class="math inline">\(v_4 = -i_2 \left( 1/ g_{m4}\right)\)</span></p>
+<p><span class="math inline">\(i_2 = g_{m2} v_2\)</span></p>
+<p><span class="math inline">\(v_1 = v_2 + g_{m2}v_2 R_2 \Leftrightarrow v_2 = \dfrac{v_1}{\left( 1+g_{m2}R_2 \right)}\)</span></p>
+<p>Putting the pieces together:</p>
+<p><span class="math inline">\(\dfrac{i_r}{i_t}= \left(-\dfrac{g_{m3}}{g_{m1}}\right) \left(- \dfrac{g_{m2}}{g_{m4}}\right) \left(\dfrac{1}{1+g_{m2}R_2}\right)\)</span></p>
+<p>Therefore: <span class="math inline">\(T = -\dfrac{i_r}{i_t}= -\left(\dfrac{g_{m3}}{g_{m1}}\right) \left(\dfrac{g_{m2}}{g_{m4}}\right) \left(\dfrac{1}{1+g_{m2}R_2}\right)\)</span></p>
+<p>The resulting return ratio is negative (i.e.&nbsp;the feedback is definitely not negative, even at zero frequency). The challange is to keep the magnitude of the return ratio less than unity (<span class="math inline">\(|T| &lt; 1\)</span>).</p>
+<p>The loop has two inverting gain blocks, each loaded with a “diode connected” MOS device. The gain block formed by <span class="math inline">\(M_3\)</span> is loaded by the diode connected MOS <span class="math inline">\(M_1\)</span> and the gain block formed by <span class="math inline">\(M_2\)</span> and <span class="math inline">\(R_2\)</span> is loaded by the diode connected MOS <span class="math inline">\(M_4\)</span>.</p>
+<div id="cell-fig-rr-14" class="cell" data-execution_count="30">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-14-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.46: Small signal equivalent model for the constant-<span class="math inline">\(g_m\)</span> bias circuit
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Example 7 - potential stability issue of the constant-<span class="math inline">\(g_m\)</span> reference</strong></p>
+<p>Consider the design of the constant-<span class="math inline">\(g_m\)</span> reference circuit in <a href="#fig-rr-15" class="quarto-xref">Figure&nbsp;<span>7.47</span></a>:</p>
+<p>Assume: <span class="math inline">\(I(M_3)=I(M_4)=I_{REFN}=100 μA\)</span></p>
+<p><span class="math inline">\(V_{OV1} = 200 mV\)</span></p>
+<p><span class="math inline">\(m=2\)</span></p>
+<div id="cell-fig-rr-15" class="cell" data-execution_count="31">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-15-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.47: Constant-<span class="math inline">\(g_m\)</span> reference: design example
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>For the given circuit:</p>
+<p><span class="math inline">\(g_{m4}=g_{m3} = g_{m1} = \dfrac{2 \cdot 100 μA}{200 mV} = 1 mS\)</span></p>
+<p>Recalling that (assuming square law):</p>
+<p><span class="math inline">\(V_{OV2} = \dfrac{V_{OV1}}{\sqrt{m}}\)</span></p>
+<p><span class="math inline">\(I_{REF} = \dfrac{V_{OV1} \left( 1- \dfrac{1}{\sqrt{m}} \right)}{R_2}\)</span></p>
+<p><strong>for m=2:</strong></p>
+<p><span class="math inline">\(V_{OV2} = 141 \space mV\)</span></p>
+<p><span class="math inline">\(R_2 = 586 \space \Omega\)</span></p>
+<p><span class="math inline">\(g_{m2}=\dfrac{2 \cdot 100 μA}{141 mV} = 1.41 \space mS\)</span></p>
+<p><span class="math inline">\(\dfrac{g_{m2}}{1+g_{m2}R_2} = 772 \space μS\)</span></p>
+<p>The magnitude of the return ratio is less than 1:</p>
+<p><span class="math inline">\(|T| = \dfrac{i_r}{i_t} = \left( \dfrac{g_{m2}}{1+g_{m2}R_2} \right) \left(\dfrac{1}{g_{m4}} \right) \left( \dfrac{\cancel{g_{m3}}}{\cancel{g_{m1}}} \right)= 0.772 \space (&lt; 1)\)</span></p>
+<p>Therefore, the circuit designed is stable, <strong>but is possible to have problems</strong>. Consider, <a href="#fig-rr-16" class="quarto-xref">Figure&nbsp;<span>7.48</span></a>, if the parasitic capacitance <span class="math inline">\(C\)</span> shorts <span class="math inline">\(R_2\)</span>, the return ratio becomes larger than 1 and the circuit becomes unstable.</p>
+<p><span class="math inline">\(\dfrac{i_r}{i_t} = \left( \cancelto{1}{\dfrac{1}{1+g_{m2}R_2}} \right) \left(\dfrac{g_{m2}}{g_{m4}} \right) \left( \dfrac{\cancel{g_{m3}}}{\cancel{g_{m1}}} \right) \rightarrow 1.41\)</span></p>
+<div id="cell-fig-rr-16" class="cell" data-execution_count="32">
+<div class="cell-output cell-output-display">
+<div id="fig-rr-16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rr-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-rr-16-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.48: Constant-<span class="math inline">\(g_m\)</span> reference: possible problem
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="closed-loop-impedances-using-return-ratio" class="level3 page-columns page-full" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="closed-loop-impedances-using-return-ratio"><span class="header-section-number">7.8.2</span> Closed-loop impedances using return ratio</h3>
+<p>Feedback can be used to modify the port impedances of a circuit.</p>
+<p>Given a feedback circuit with a controlled source of value k (see <a href="#fig-bf-1" class="quarto-xref">Figure&nbsp;<span>7.49</span></a>), the impedance at any port, including the input and output ports, can be computed <span class="citation" data-cites="gray">(<a href="../../references.html#ref-gray" role="doc-biblioref">Gray et al. 2009</a>)</span> using the following expression (a.k.a. <strong>Blackman’s formula</strong>):</p>
+<div class="no-row-height column-margin column-container"><div id="ref-gray" class="csl-entry" role="listitem">
+Gray, Paul R, Paul J Hurst, Stephen H Lewis, and Robert G Meyer. 2009. <em>Analysis and Design of Analog Integrated Circuits</em>. John Wiley &amp; Sons, 4/e.
+</div></div><p><span class="math display">\[
+Z_{port} = Z_{port}(k=0) \cdot \left[ \dfrac{1+T(port \space shorted)}{1+T(port \space open)} \right]
+\]</span></p>
+<ul>
+<li><span class="math inline">\(Z_{port}(k=0)\)</span> is the port impedance with the return ratio’s gain element k set to 0 (either set <span class="math inline">\(g_m=0\)</span> or <span class="math inline">\(a_v =0\)</span>)</li>
+<li><span class="math inline">\(T(port \space shorted)\)</span> is the return ratio with the port under consideration <em><ins>shorted</ins></em></li>
+<li><span class="math inline">\(T(port \space open)\)</span> is the return ratio with the port under consideration <em><ins>open</ins></em></li>
+</ul>
+<p>Often, one of the two return ratios in the formula is zero, in these cases feedback increases or decreases the impedance by a factor <span class="math inline">\((1+T)\)</span></p>
+<div id="cell-fig-bf-1" class="cell" data-execution_count="33">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-1-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.49: Feedback circuit to derive Blackman’s formula with respect to port x
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In summary, Blackman’s impedance formula:</p>
+<ul>
+<li>it applies to any feedback circuit, regardless of the type of feedback</li>
+<li>it is extremely useful and easy to use</li>
+<li>it is based on return ratio calculations</li>
+</ul>
+<p><strong>Example 8 - Input resistance of non-inverting op amp configuration</strong></p>
+<div id="cell-fig-bf-2" class="cell" width="10%" data-execution_count="34">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-2-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.50: Input resistance of non-inverting op amp circuit
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+R_{in} = R_{in0} \cdot \left[ \dfrac{1+T(port \space shorted)}{1+T(port \space open)} \right]
+\]</span></p>
+<ul>
+<li><p>To find <span class="math inline">\(R_{in0}\)</span> set the op amp gain <span class="math inline">\(a_v\)</span> to zero: <span class="math display">\[
+R_{in0} = r_i + R_1 || (R_2 + r_o|| R_L) \approx r_i
+\]</span></p></li>
+<li><p>To compute <span class="math inline">\(T(port \space shorted)\)</span> short the node <span class="math inline">\(v_p\)</span> to ground and find the return ratio:</p></li>
+</ul>
+<div id="cell-fig-bf-3" class="cell" width="10%" data-execution_count="35">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-3-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.51: T(with input port shorted) for non inverting configuration
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+T_{sc} = -\dfrac{v_r}{v_t} |_{sc} = a_v \cdot \dfrac{R_1}{r_o + R_L|| (R_2 + r_i || R_1) } \approx a_v \cdot \dfrac{R_1}{R_1+R_2}
+\]</span></p>
+<ul>
+<li>To compute <span class="math inline">\(T(port \space open)\)</span> leave the node <span class="math inline">\(v_p\)</span> floating and find the return ratio:</li>
+</ul>
+<div id="cell-fig-bf-4" class="cell" width="10%" data-execution_count="36">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-4-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.52: T(with input port open) for non inverting configuration
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+T_{open} = -\dfrac{v_r}{v_t} |_{open} = 0
+\]</span></p>
+<p>Feedback increases the input impedance of the circuit significantly. <span class="math display">\[
+R_{in} \approx r_i \cdot \dfrac{1+ a_v \cdot \dfrac{R_1}{R_1+R_2}}{1+0} = r_i \cdot \left( 1+ a_v \cdot \dfrac{R_1}{R_1+R_2} \right)
+\]</span></p>
+<p>For <span class="math inline">\(a_v=10^6\)</span>, <span class="math inline">\(R_1 = 20 k\Omega\)</span>, <span class="math inline">\(R_2 = 80k\Omega\)</span>:</p>
+<p><span class="math display">\[
+R_{in} \approx r_i \cdot 200000
+\]</span></p>
+<p><strong>Example 9 - Output resistance of non-inverting op amp configuration</strong></p>
+<div id="cell-fig-bf-5" class="cell" width="10%" data-execution_count="37">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-5-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.53: Output resistance of non-inverting op amp circuit
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+R_{out} = R_{out0} \cdot \left[ \dfrac{1+T(port \space shorted)}{1+T(port \space open)} \right]
+\]</span></p>
+<ul>
+<li><p>To find <span class="math inline">\(R_{out0}\)</span> set the op amp gain <span class="math inline">\(a_v\)</span> to zero: <span class="math display">\[
+R_{out0} = r_o || [R_2 + R_1 || (r_i + R_s)] \approx r_o
+\]</span></p></li>
+<li><p>To compute <span class="math inline">\(T(port \space shorted)\)</span> short the node <span class="math inline">\(v_{out}\)</span> to ground and find the return ratio:</p></li>
+</ul>
+<div id="cell-fig-bf-6" class="cell" width="10%" data-execution_count="38">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-6-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.54: T(with output port shorted) for non-inverting configuration
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+T_{sc} = -\dfrac{v_r}{v_t} |_{sc} = 0
+\]</span></p>
+<ul>
+<li>To compute <span class="math inline">\(T(port \space open)\)</span> leave the node <span class="math inline">\(v_{out}\)</span> floating and find the return ratio:</li>
+</ul>
+<div id="cell-fig-bf-7" class="cell" width="10%" data-execution_count="39">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-7-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.55: T(with output port open) for non-inverting configuration
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+v_n = \dfrac{v_t}{r_o + R_2 + [R_1 || (r_i + R_s)]} \cdot {R_1 || (r_i + R_s)} \approx \dfrac{v_t}{R_2 + R_1} \cdot R_1
+\]</span></p>
+<p><span class="math display">\[
+v_p = v_n \dfrac{R_s}{r_i + R_s} \approx 0
+\]</span></p>
+<p><span class="math display">\[
+T_{open} = -\dfrac{v_r}{v_t} |_{open} = - \dfrac{a_v (v_p - v_n)}{v_t} \approx a_v \cdot \dfrac{R_1}{R_1+R_2}
+\]</span></p>
+<p>Feedback decreases the output impedance of the circuit significantly.</p>
+<p><span class="math display">\[
+R_{out} \approx r_o \cdot \dfrac{1+0}{1+a_v \dfrac{R_1}{R_1+R_2}} = \dfrac{r_o}{1+a_v \dfrac{R_1}{R_1+R_2}}
+\]</span></p>
+<p>For <span class="math inline">\(a_v=10^6\)</span>, <span class="math inline">\(R_1 = 20 k\Omega\)</span>, <span class="math inline">\(R_2 = 80k\Omega\)</span>:</p>
+<p><span class="math display">\[
+R_{out} \approx \dfrac{r_o}{200000}
+\]</span></p>
+<p><strong>Example 10 - Output resistance of bootstrapped source follower</strong></p>
+<p>Consider the bootstrapped source follower stage of <a href="#fig-bf-8" class="quarto-xref">Figure&nbsp;<span>7.56</span></a> and its equivalent small signal circuit to compute the return ratio with the output port shorted (<a href="#fig-bf-9" class="quarto-xref">Figure&nbsp;<span>7.57</span></a>) and with the output port left floating (<a href="#fig-bf-10" class="quarto-xref">Figure&nbsp;<span>7.58</span></a>)</p>
+<div id="cell-fig-bf-8" class="cell" data-execution_count="40">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-8-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.56: A bootstrapped source follower stage
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The output resistance for <span class="math inline">\(k=a_v=0\)</span> is:</p>
+<p><span class="math display">\[
+R_{out0} \equiv R_{out}(k=0) \equiv R_{out}(a_v=0) = \dfrac{1}{g_m}
+\]</span></p>
+<div id="cell-fig-bf-9" class="cell" width="10%" data-execution_count="41">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-9-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.57: Finding T(with output port shorted), <span class="math inline">\(-v_d=v_{out}=0\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Output port shorted implies:</p>
+<p><span class="math inline">\(T_{sc} = -\frac{v_r}{v_t} |_{sc} = 0\)</span></p>
+<div id="cell-fig-bf-10" class="cell" width="10%" data-execution_count="42">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-10-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.58: Finding T(with output port open), <span class="math inline">\(v_{out}=-v_d=-v_{gs} + v_t\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Output port open means:</p>
+<p><span class="math inline">\(g_m \cdot v_{gs} = 0 \rightarrow v_{gs}=0 \rightarrow -v_d = v_t \rightarrow v_r = -a_v \cdot v_t\)</span></p>
+<p><span class="math inline">\(T_{open} = -\frac{v_r}{v_t} |_{open} = a_v\)</span></p>
+<p>Therefore, the closed-loop output resistance is: <span class="math display">\[
+R_{out} = R_{out0} \cdot \dfrac{1 + T_{sc}}{1+T_{open}} = \dfrac{1}{g_m} \cdot \left( \dfrac{1}{1+a_v}\right)
+\]</span></p>
+<p><strong>Example 11 - Output resistance of super source follower</strong></p>
+<p>The super-source follower uses feedback to reduce its output impedance.</p>
+<div id="cell-fig-bf-11" class="cell" data-execution_count="43">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-11-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.59: Super-source follower stage
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The small signal model of the super-source follower is shown in <a href="#fig-bf-12" class="quarto-xref">Figure&nbsp;<span>7.60</span></a>.</p>
+<div id="cell-fig-bf-12" class="cell" width="10%" data-execution_count="44">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-12-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.60: Small-signal model of the super-source follower
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>To find <span class="math inline">\(R_{out0}\)</span> we must set <span class="math inline">\(v_{in}=0\)</span> and <span class="math inline">\(k=0\)</span>. In this circuit we can use, either <span class="math inline">\(g_{m1}\)</span> or <span class="math inline">\(g_{m2}\)</span> as k. We will use, <span class="math inline">\(k=g_{m2}\)</span>.</li>
+</ul>
+<p>The current in the <span class="math inline">\(g_{m1}\)</span> generator flows only in <span class="math inline">\(r_{o1}\)</span>, so <span class="math inline">\(M_1\)</span> has no effect on the output resistance when <span class="math inline">\(g_{m2}=0\)</span></p>
+<p><span class="math display">\[
+R_{out0} \equiv R_{out}(g_{m2}=0) = r_{o2}
+\]</span></p>
+<ul>
+<li>The return ratio for <span class="math inline">\(g_{m2}\)</span> with the output port shorted is:</li>
+</ul>
+<p><span class="math display">\[
+T_{sc} = -\dfrac{i_r}{i_t} |_{sc} = 0
+\]</span></p>
+<div id="cell-fig-bf-13" class="cell" width="10%" data-execution_count="45">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-13-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.61: Return Ratio for <span class="math inline">\(g_{m2}\)</span> with the output port shorted
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Shorting the output port forces <span class="math inline">\(v_{out}=0\)</span></p>
+<p><span class="math inline">\(v_{out} \equiv v_x \Leftrightarrow v_x = 0\)</span></p>
+<p><span class="math inline">\(v_x = -v_1 \leftrightarrow v_1 = 0\)</span></p>
+<p><span class="math inline">\(g_{m1} \cdot v_1=0 \Leftrightarrow v_y = 0\)</span></p>
+<p><span class="math inline">\(v_2 = x_x - v_y = 0 \Leftarrow g_{m2}v_2 \equiv i_r = 0\)</span></p>
+<ul>
+<li>The return ratio for <span class="math inline">\(g_{m2}\)</span> with the output port open is:</li>
+</ul>
+<p><span class="math display">\[
+T_{open} = -\dfrac{i_r}{i_t} |_{open} = g_{m2}r_{o2} \left( 1 + g_{m1}r_{o1}\right)
+\]</span></p>
+<div id="cell-fig-bf-14" class="cell" width="10%" data-execution_count="46">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-14-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.62: Return Ratio for <span class="math inline">\(g_{m2}\)</span> with the output port open
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Opening the output port gives:</p>
+<p><span class="math inline">\(v_x = -i_t \cdot r_{o2} \Leftrightarrow i_t = - \dfrac{v_x}{r_{o2}}\)</span></p>
+<p><span class="math inline">\(v_x = -v_1\)</span></p>
+<p><span class="math inline">\(v_y - v_x = -g_{m1} \cdot v_1 \cdot r_{o1} \Leftrightarrow v_y = v_x +  g_{m1} \cdot r_{o1} \cdot v_x \Leftrightarrow v_y = v_x \left(1+g_{m1}r_{o1} \right)\)</span></p>
+<p><span class="math inline">\(v_2 = v_y\)</span></p>
+<p><span class="math inline">\(i_r \equiv g_{m2}v_2 = g_{m2} \left( 1 + g_{m1} \cdot r_{o1} \right) \cdot v_x\)</span></p>
+<p><span class="math inline">\(T_{open} = - \dfrac{i_r}{i_t} = g_{m2}r_{o2} \left( 1 + g_{m1}r_{o1}\right)\)</span></p>
+<ul>
+<li>The closed-loop output resistance is:</li>
+</ul>
+<p><span class="math display">\[
+R_{out} = R_{out0} \cdot \dfrac{1+ T_{sc}}{1+T_{open}} = \dfrac{r_{o2}}{1 + g_{m2}r_{o2} \left( 1 + g_{m1}r_{o1}\right) }
+\]</span></p>
+<p>Assuming <span class="math inline">\(g_m r_o \gg 1\)</span></p>
+<p><span class="math display">\[
+R_{out} \approx \dfrac{1}{g_{m1}g_{m2}r_{o1}}
+\]</span></p>
+<p><strong>Example 12 - Input and output resistance of shunt-shunt stage (TIA)</strong></p>
+<div id="cell-fig-bf-15" class="cell" data-execution_count="47">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-15-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.63: Shunt-shunt stage (Transimpedance Amplifier)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-bf-16" class="cell" data-execution_count="48">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-16-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.64: Small signal model of the shunt-shunt stage
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-bf-17" class="cell" data-execution_count="49">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-17-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.65: Small signal model to find the return ratio for <span class="math inline">\(g_{m}\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ins>
+<em>Closed-loop input resistance</em>
+</ins>
+<p><span class="math inline">\(R_{in}(g_{m}=0) = R_F + r_o\)</span></p>
+<p><span class="math inline">\(T(input \space shorted) = 0\)</span></p>
+<p><span class="math inline">\(T(input \space open) = g_m r_o\)</span></p>
+<p>Therefore, the closed-loop input resistance is: <span class="math display">\[
+R_{in} = \left(R_F + r_o \right) \cdot \dfrac{1}{1+g_mr_o} \approx \dfrac{1}{g_m} \left( 1 + \dfrac{R_F}{r_o}\right)
+\]</span></p>
+<ins>
+<em>Closed-loop output resistance</em>
+</ins>
+<p><span class="math inline">\(R_{out}(g_{m}=0) = r_o\)</span></p>
+<p><span class="math inline">\(T(input \space shorted) = 0\)</span></p>
+<p><span class="math inline">\(T(input \space open) = g_m r_o\)</span></p>
+<p>Therefore, the closed-loop output resistance is: <span class="math display">\[
+R_{out} = r_o \cdot \dfrac{1}{1+g_mr_o} \approx \dfrac{1}{g_m}
+\]</span></p>
+<p><strong>Example 13 - Output resistance of active cascode</strong></p>
+<p>The “active cascode” circuit is also referred as “regulated cascode” or “gain-boosting” technique.</p>
+<div id="cell-fig-bf-18" class="cell" data-execution_count="50">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-18-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.66: Active cascode gain stage
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>To find <span class="math inline">\(R_{out0}\)</span> we set <span class="math inline">\(v_{in}=0\)</span> and <span class="math inline">\(k=a_v=0\)</span></li>
+</ul>
+<p>With <span class="math inline">\(a_v=0\)</span> the gate of <span class="math inline">\(M_2\)</span> gets grounded:</p>
+<p><span class="math display">\[
+\begin{split}
+&amp; R_{out0} \equiv R_{out}(a_v=0) = r_{o1} + r_{o2} \left( 1 + g_{m2}' \right) \approx r_{o1} \cdot r_{o2} \cdot g'_{m2} \\
+&amp; with \space g_{m2}' = g_{m2} + g_{m2b}
+\end{split}
+\]</span></p>
+<ul>
+<li>To find the return ratio for <span class="math inline">\(a_v\)</span> with the output port open, we set <span class="math inline">\(v_{in}=0\)</span> and leave the output node floating</li>
+</ul>
+<p>The current of the <span class="math inline">\(g_{m}\)</span>-generators (<span class="math inline">\(g_{m2} v_{gs2}\)</span> and <span class="math inline">\(g_{mb2} v_{bs2}\)</span>) flows only in <span class="math inline">\(r_{o1}\)</span>, changing the drain voltage of <span class="math inline">\(M_2,\)</span> but keeping the source voltage of <span class="math inline">\(M_2\)</span> to <span class="math inline">\(v_x=0 \Rightarrow v_d=-v_x=0\)</span>. Therefore, <span class="math inline">\(v_r = a_v \cdot v_d = 0\)</span></p>
+<div id="cell-fig-bf-19" class="cell" width="10%" data-execution_count="51">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-19" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-19-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.67: Return ratio for <span class="math inline">\(a_v\)</span> with the output port open
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+T_{open} = - \dfrac{v_r}{v_t} |_{open} = 0
+\]</span></p>
+<ul>
+<li>To find the return ratio for <span class="math inline">\(a_v\)</span> with the output port shorted, we set <span class="math inline">\(v_{in}=0\)</span> and ground the output node (the output node is the drain of <span class="math inline">\(M_2\)</span>)</li>
+</ul>
+<div id="cell-fig-bf-20" class="cell" width="10%" data-execution_count="52">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-20" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-20-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.68: Return ratio for <span class="math inline">\(a_v\)</span> with the output port shorted
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>With <span class="math inline">\(M_2\)</span> drain to ground (CD), <span class="math inline">\(v_x=-v_d\)</span> is the output of a CD with <span class="math inline">\(v_t\)</span> as input.</p>
+<p><span class="math inline">\(v_t=v_{gs2} - v_d\)</span></p>
+<p>Neglecting the <span class="math inline">\(r_o\)</span> terms w.r.t. the <span class="math inline">\(1/g_{mb2}\)</span> term:</p>
+<p><span class="math inline">\(-v_d \approx \dfrac{g_{m2} v_{gs2}}{g_{mb2}} \Rightarrow v_t \approx v_{gs2} \left( 1 + \dfrac{g_{m2}}{g_{mb2}}\right) \Rightarrow -\dfrac{v_d}{v_t} \approx \dfrac{g_{m2}}{g_{m2}+g_{mb2}} \approx 1\)</span></p>
+<p>so the return ratio is: <span class="math display">\[
+T_{sc} = - \dfrac{v_r}{v_t} |_{sc} \approx a_v \cdot \dfrac{g_{m2}}{g_{m2}+g_{mb2}} \approx a_v
+\]</span></p>
+<ul>
+<li>The closed-loop output resistance is:</li>
+</ul>
+<p><span class="math display">\[
+R_{out} = R_{out0} \cdot \dfrac{1 + T_{sc}}{1+T_{open}} \approx r_{o1} \cdot r_{o2} \cdot g'_{m2} \cdot a_v
+\]</span></p>
+<p><strong>Example 14 - Using Blackman’s formula for ZVTC calculations</strong></p>
+<div id="cell-fig-bf-21" class="cell" data-execution_count="53">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-21" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-21-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.69: ZVTC calculations
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Using first principles (KVL and KCL) we can derive that:</p>
+<p><span class="math display">\[
+\tau_{Cgs} = C_{gs} \cdot \dfrac{R_i + R_G}{1+g_{m}R_i}
+\]</span></p>
+<div id="cell-fig-bf-22" class="cell" data-execution_count="54">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-22" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-22-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.70: Small signal model for ZVTC calculations, assuming <span class="math inline">\(r_o\)</span> can be ignored
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s look at the problem, using return ratio.</p>
+<p>The port (gate-source) impedance with the return ratio’s gain element <span class="math inline">\(g_m\)</span> set to 0 is:</p>
+<p><span class="math inline">\(R_{gs}(g_m=0) = R_i + R_G\)</span></p>
+<p>The return ratio for the gain element <span class="math inline">\(g_m\)</span> with port under consideration shorted is:</p>
+<p><span class="math inline">\(T_{sc} = -\dfrac{i_r}{i_t} |_{sc} = 0\)</span></p>
+<p>Shorting the port forces <span class="math inline">\(v_{gs}=0\)</span> so it “kills” the <span class="math inline">\(g_m\)</span> generator.</p>
+<p>The return ratio for the gain element <span class="math inline">\(g_m\)</span> with port under consideration open is:</p>
+<p><span class="math inline">\(T_{open} = -\dfrac{i_r}{i_t} |_{open} = g_m \cdot R_i\)</span></p>
+<div id="cell-fig-bf-23" class="cell" data-execution_count="55">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-23" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-23-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.71: return ratio with port G-S open
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(v_s = i_t \cdot R_i\)</span></p>
+<p><span class="math inline">\(v_g = 0 \Rightarrow v_{gs} = - i_t \cdot R_i\)</span></p>
+<p><span class="math inline">\(i_r = g_m v_{gs} = -g_m R_i i_t\)</span></p>
+<p>The closed-loop port impedance between G and S is: <span class="math display">\[
+R_{gs} = R_{gs}(g_m=0) \cdot \dfrac{1+T_{sc}}{1+T_{open}} = \dfrac{R_i+R_G}{1+g_mR_i}
+\]</span></p>
+<p><strong>Example 15 - Voltage gain and output resistance of common source with degeneration using return ratio</strong></p>
+<div id="cell-fig-bf-24" class="cell" data-execution_count="56">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-24" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-24-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.72: Common source with degeneration
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ins>
+<em>voltage gain (assuming <span class="math inline">\(r_o\)</span> negligible)</em>
+</ins>
+<p><span class="math display">\[
+A_v = \dfrac{v_{out}}{v_{in}} = A_{\infty} \cdot \dfrac{T}{1+T} + \dfrac{d}{1+T}
+\]</span></p>
+<p><span class="math inline">\(A_{\infty}\)</span> is the gain of the circuit when the gain element k of the controlled source tends to <span class="math inline">\(\infty\)</span> (note that if <span class="math inline">\(k = g_m = \infty\)</span>, for the current of the dependent source to be finite, it must be <span class="math inline">\(v_{gs} = 0\)</span>).</p>
+<p><span class="math inline">\(A_{\infty} = \dfrac{v_{out}}{v_{in}} |_{g_m \rightarrow \infty}= - \dfrac{R_D}{R_S}\)</span></p>
+<p><span class="math inline">\(d\)</span> is the gain of the circuit when the gain element k of the controlled source equals 0.</p>
+<p><span class="math inline">\(d = \dfrac{v_{out}}{v_{in}} |_{g_{m} = 0} = 0\)</span></p>
+<p><span class="math inline">\(T\)</span> is the return ratio of the dependent source.</p>
+<p>To compute the return ratio instead of separating the dependent source from the rest of the circuit and replacing it with an independent source of the same kind as always done so far, we will follow an equivalent procedure consisting of adding an independent source <span class="math inline">\(s_x\)</span>. In practice, this procedure is usually more easily performed, because it does not require tearing the original circuit apart. See <span class="citation" data-cites="middlebrook">(<a href="../../references.html#ref-middlebrook" role="doc-biblioref">Middlebrook 2006</a>)</span> and <span class="citation" data-cites="hajimiri">(<a href="../../references.html#ref-hajimiri" role="doc-biblioref">Hajimiri 2023</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-middlebrook" class="csl-entry" role="listitem">
+Middlebrook, R. D. 2006. <span>“The General Feedback Theorem: A Final Solution for Feedback Systems.”</span> <em>IEEE Microwave Magazine</em> 7 (2): 50–63. <a href="https://doi.org/10.1109/MMW.2006.1634022">https://doi.org/10.1109/MMW.2006.1634022</a>.
+</div><div id="ref-hajimiri" class="csl-entry" role="listitem">
+Hajimiri, Ali. 2023. <span>“Analog. Inexact Science, Vibrant Art.”</span> 2023. <a href="https://chic.caltech.edu/wp-content/uploads/2023/01/Hajimiri_Analog_DRAFT012023.pdf">https://chic.caltech.edu/wp-content/uploads/2023/01/Hajimiri_Analog_DRAFT012023.pdf</a>.
+</div></div><p>The introduction of <span class="math inline">\(s_x\)</span> is completely equivalent to using an independent source <span class="math inline">\(s_t\)</span> in place of the separated dependent source and monitoring the signal <span class="math inline">\(s_r\)</span> that returns to the separated dependent source.</p>
+<p><span class="math inline">\(s_t = s_x + s_r\)</span></p>
+<div id="cell-fig-bf-25" class="cell" data-execution_count="57">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-25" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-25-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.73: Small signal model to find the return ratio of <span class="math inline">\(g_{m}\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(v_{gs} = - i_t R_S\)</span></p>
+<p><span class="math inline">\(i_r = g_m v_{gs} = - g_m R_S i_t\)</span></p>
+<p><span class="math inline">\(T = -\dfrac{i_r}{i_t} = g_m R_S\)</span></p>
+<p>Therefore, as expected:</p>
+<p><span class="math display">\[
+A_v = \dfrac{v_{out}}{v_{in}} = A_{\infty} \cdot \dfrac{T}{1+T} + \dfrac{d}{1+T} = \dfrac{-g_m R_D}{1 + g_m R_S}
+\]</span></p>
+<ins>
+<em>Output resistance</em>
+</ins>
+<p><br> To find the output resistance we use Blackman’s formula.</p>
+<div id="cell-fig-bf-26" class="cell" data-execution_count="58">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-26" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-26-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.74: Small signal model to find the output resistance$
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The output resistance with <span class="math inline">\(g_m=0\)</span> is:</p>
+<p><span class="math inline">\(R_{out}(g_m=0) = R_S = r_o\)</span></p>
+<div id="cell-fig-bf-27" class="cell" data-execution_count="59">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-27" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-27-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.75: return ratio with output port open
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>With the output port open:</p>
+<p><span class="math inline">\(v_{gs} = - i_t R_S = 0 \Rightarrow i_r = g_m v_{gs} = 0\)</span></p>
+<p>So, the return ratio with the output port open is:</p>
+<p><span class="math inline">\(T_{open} = - \dfrac{i_r}{i_t} |_{open} = 0\)</span></p>
+<div id="cell-fig-bf-28" class="cell" data-execution_count="60">
+<div class="cell-output cell-output-display">
+<div id="fig-bf-28" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bf-28-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="partII.2_files/figure-html/fig-bf-28-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-28-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.76: return ratio with output port shorted
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>With the output port shorted:</p>
+<p><span class="math inline">\(v_{gs} = - (R_S || r_o) \cdot i_t \Rightarrow i_r = g_m v_{gs} = - g_m \cdot (R_S|| r_o) \cdot i_t\)</span></p>
+<p>So, the return ratio with the output port shorted is:</p>
+<p><span class="math inline">\(T_{sc} = - \dfrac{i_r}{i_t} |_{sc} = g_m (R_S||r_o)\)</span></p>
+<p>And the output resistance is:</p>
+<p><span class="math display">\[
+\begin{split}
+R_{out} &amp;= R_{out}(g_m=0) \cdot \dfrac{1 + T_{sc}}{1 + T_{open}} = (R_S + r_o) \left( 1 + g_m\dfrac{R_S r_o}{R_S + r_o} \right) = \\
+&amp;= R_S + r_o (1 + g_m R_S)
+\end{split}
+\]</span></p>
+</section>
+<section id="summary---return-ratio-analysis" class="level3 page-columns page-full" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="summary---return-ratio-analysis"><span class="header-section-number">7.8.3</span> Summary - Return Ratio Analysis</h3>
+<ul>
+<li>Return-ratio analysis is an alternative approach to two-port feedback analysis.</li>
+<li>Provided the return ratio T is computed for a dependnt source that breaks the feedback loop globally, the return ratio is a measure of loop gain. In general, the return ratio of a controlled source is a measure of how much of the signal generated by that controlled source is returned due to feedback, it is not necessarily the loop gain <span class="citation" data-cites="hurst">(<a href="../../references.html#ref-hurst" role="doc-biblioref">Hurst 1992</a>)</span>.</li>
+<li>For negative feedback circuits T &gt; 0</li>
+<li>In an ideal feedback system <span class="math inline">\(T \rightarrow \infty\)</span> and the closed loop gain is <span class="math inline">\(A_{\infty}\)</span></li>
+<li>Blackman’s formula gives the closed-loop impedance in terms of two return ratios. The formula is the same for any type of feedback circuit, and it applies to any port (not only the input and output ports)</li>
+<li>Return ratio analysis is often simpler than two-port analayis</li>
+<li>Return ratio analysis uses equations that are independent of the type of feedback.</li>
+<li>Two-port analysis uses four-feedback configurations (series-series, series-shunt, shunt-series, and shunt-shunt), therefore, the type of feedback must be correctly identified before starting the analysis</li>
+<li>In practice, all physical networks are multiloop feedback structures. Unwanted local return loops exists around individual transistor through the parasitic capacitances <span class="citation" data-cites="kundert">(<a href="../../references.html#ref-kundert" role="doc-biblioref">Tian et al. 2001</a>)</span> <span class="citation" data-cites="andreani">(<a href="../../references.html#ref-andreani" role="doc-biblioref">Behmanesh and Andreani 2023</a>)</span>. Dealing with multiple feedback mechanisms makes identifying an appropriate controlled source to use for the return ratio analysis more difficult. When dealing with multiloop feedback structures, the controlled source used to compute the return ratio, must be one that breaks the loop globally <span class="citation" data-cites="lewis">(<a href="../../references.html#ref-lewis" role="doc-biblioref">Hurst and Lewis 1995</a>)</span>.</li>
+<li>One aspect that is often cause of confusion, about return-ratio analysis and two-port analysisis is that the loop gain L computed through two-port analysis and the loop gain T computed using the return ratio, can be different. This is because they are intrinsically two different measures of transmission, however both methods lead to correct closed-loop expressions and both can be used to check stability <span class="citation" data-cites="chiu">(<a href="../../references.html#ref-chiu" role="doc-biblioref">Chiu 2012</a>)</span>.</li>
+</ul>
+
+
+<div class="no-row-height column-margin column-container"><div id="ref-hurst" class="csl-entry" role="listitem">
+———. 1992. <span>“A Comparison of Two Approaches to Feedback Circuit Analysis.”</span> <em>IEEE Transactions on Education</em> 35 (3): 253–61. <a href="https://doi.org/10.1109/13.144656">https://doi.org/10.1109/13.144656</a>.
+</div><div id="ref-kundert" class="csl-entry" role="listitem">
+Tian, M., V. Visvanathan, J. Hantgan, and K. Kundert. 2001. <span>“Striving for Small-Signal Stability.”</span> <em>IEEE Circuits and Devices Magazine</em> 17 (1): 31–41. <a href="https://doi.org/10.1109/101.900125">https://doi.org/10.1109/101.900125</a>.
+</div><div id="ref-andreani" class="csl-entry" role="listitem">
+Behmanesh, Baktash, and Pietro Andreani. 2023. <span>“On the Calculation and Simulation of Loop Gain in Feedback Circuits.”</span> <em>IEEE Transactions on Circuits and Systems II: Express Briefs</em> 70 (11): 4033–37. <a href="https://doi.org/10.1109/TCSII.2023.3284669">https://doi.org/10.1109/TCSII.2023.3284669</a>.
+</div><div id="ref-lewis" class="csl-entry" role="listitem">
+Hurst, P. J., and S. H. Lewis. 1995. <span>“Determination of Stability Using Return Ratios in Balanced Fully Differential Feedback Circuits.”</span> <em>IEEE Transactions on Circuits and Systems II: Analog and Digital Signal Processing</em> 42 (12): 805–17. <a href="https://doi.org/10.1109/82.476178">https://doi.org/10.1109/82.476178</a>.
+</div><div id="ref-chiu" class="csl-entry" role="listitem">
+Chiu, Yun. 2012. <span>“Demystifying Bilateral Feedback Analysis.”</span> In <em>2012 IEEE 11th International Conference on Solid-State and Integrated Circuit Technology</em>, 1–4. <a href="https://doi.org/10.1109/ICSICT.2012.6467588">https://doi.org/10.1109/ICSICT.2012.6467588</a>.
+</div></div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../contents/partII/partII.1.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Curated by Boris Murmann</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bmurmann/COCOA/edit/main/contents/partII/partII.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bmurmann/COCOA/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bmurmann/COCOA/blob/main/contents/partII/partII.2.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

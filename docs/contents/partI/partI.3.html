@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,12 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f8dc6eab18fde03278982b0b35885446.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-68f2a1e86eb87956d0dce9a9876931f0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e33efa0a5593d9d8adcbebffb5cac9ec.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -254,6 +254,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partII/partII.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
+  </div>
+</li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
@@ -269,7 +275,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -612,13 +618,13 @@ A_v(s) = \frac{v_{out}}{v_s} = \frac{-g_mR_{out}}{1 + sR_sC_{gs}} = \frac{A_{v0}
 \tag{3.18}\]</span></span></p>
 <p>where <span class="math inline">\(A_{v0}\)</span> = <span class="math inline">\(A_v(0)\)</span> is a generalized placeholder for the DC gain of the circuit. From this result, we see that the transfer function has a DC gain corresponding to the result of <a href="partI.2.html">Chapter 2</a>, and a single pole that is set by the source resistance and the intrinsic gate capacitance. As explained in <a href="#review-of-frequency-domain-analysis">Section 3-1</a>, we can now evaluate this transfer function for steady-state sinusoids by letting <span class="math inline">\(s = j\omega\)</span> . This will allow us to draw a Bode plot and compute the bandwidth of the circuit.</p>
 <p><strong><span id="example-3-4">Example 3-4</span>: Common-Source Amplifier Bandwidth Calculation</strong></p>
-<p>Calculate the 3-dB bandwidth for the amplifier in <a href="#fig-3.7" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, assuming <span class="math inline">\(W\)</span> = <span class="math inline">\(20\)</span> <span class="math inline">\(\mu m\)</span>, <span class="math inline">\(L\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(\mu m\)</span>, <span class="math inline">\(C_{ox}\)</span> = <span class="math inline">\(2.3\)</span> <span class="math inline">\(fF/\mu m^2\)</span> and <span class="math inline">\(R_s = 50\)</span> <span class="math inline">\(k\ohm\)</span>. Express the result in units of Hertz.</p>
+<p>Calculate the 3-dB bandwidth for the amplifier in <a href="#fig-3.7" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, assuming <span class="math inline">\(W\)</span> = <span class="math inline">\(20 μm\)</span>, <span class="math inline">\(L\)</span> = <span class="math inline">\(1 μm\)</span>, <span class="math inline">\(C_{ox}\)</span> = <span class="math inline">\(2.3\)</span> <span class="math inline">\(fF/μm^2\)</span> and <span class="math inline">\(R_s = 50\)</span> <span class="math inline">\(k\Omega\)</span>. Express the result in units of Hertz.</p>
 <p><strong>SOLUTION</strong></p>
 <p>For the given parameters, the gate-source capacitance is</p>
 <p><span class="math display">\[
 C_{gs} = \frac{2}{3} WLC_{ox} = 30.67 fF
 \]</span></p>
-<p>THe 3-dB bandwidth is</p>
+<p>The 3-dB bandwidth is</p>
 <p><span class="math display">\[
 \omega_{3dB} = \frac{1}{R_sC_{gs}} = 652.3 Mrad/s
 \]</span></p>
@@ -940,7 +946,7 @@ b_2 = R_s R_{out} \left( C_{gs}C_{gd} + C_{gs}C_{db} + C_{gd}C_{db} \right)
 <p>&nbsp;&nbsp;&nbsp;The denominator of the transfer function is a second-order polynomial in <span class="math inline">\(s\)</span> with complicated dependencies on all component values. All we can say at first glance from inspecting the denominator is that we expect to see two poles in the frequency response of this circuit, because it can (in principle) be factored into two binomial terms. Note that this factorization would yield an even more complicated expression.</p>
 <p>&nbsp;&nbsp;&nbsp;The main issue with a result of this complexity is that it cannot be understood intuitively. Consequently, it is difficult to recognize the main parameters that are limiting the performance, which in turn prevents the designer from identifying ways to optimize the circuit. Even though <a href="#eq-3.38" class="quarto-xref">Equation&nbsp;<span>3.38</span></a> is mathematically exact, we would rather like to work with an expression that sacrifices some accuracy and/or detail in return for transparency and focus on the main effects that limit the performance. In order to take steps in this direction, we begin by evaluating <a href="#eq-3.38" class="quarto-xref">Equation&nbsp;<span>3.38</span></a> numerically, primarily to get a feel for the pole locations in a typical circuit.</p>
 <p><strong><span id="example-3-6">Example 3-6</span>: Magnitude Response of the Common-Source Amplifier</strong></p>
-<p>Evaluate and plot the steady-state magnitude response of <a href="#eq-3.38" class="quarto-xref">Equation&nbsp;<span>3.38</span></a> numerically using the following transistor parameters: <span class="math inline">\(g_m = 1\)</span> <span class="math inline">\(mS\)</span>, <span class="math inline">\(C_{gs}\)</span> = <span class="math inline">\(40.7\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{gd}\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(fF\)</span> and <span class="math inline">\(C_{db}\)</span> = <span class="math inline">\(11.6\)</span> <span class="math inline">\(fF\)</span> (same as in <a href="#example-3-5">Example 3-5</a>). Assume <span class="math inline">\(R_{out}\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\ohm\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(50\)</span> <span class="math inline">\(k\ohm\)</span>. For comparison, also plot the magnitude response of <a href="#eq-3.18" class="quarto-xref">Equation&nbsp;<span>3.18</span></a>, i.e., considering only the intrinsic gate capacitance.</p>
+<p>Evaluate and plot the steady-state magnitude response of <a href="#eq-3.38" class="quarto-xref">Equation&nbsp;<span>3.38</span></a> numerically using the following transistor parameters: <span class="math inline">\(g_m = 1\)</span> <span class="math inline">\(mS\)</span>, <span class="math inline">\(C_{gs}\)</span> = <span class="math inline">\(40.7\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{gd}\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(fF\)</span> and <span class="math inline">\(C_{db}\)</span> = <span class="math inline">\(11.6\)</span> <span class="math inline">\(fF\)</span> (same as in <a href="#example-3-5">Example 3-5</a>). Assume <span class="math inline">\(R_{out}\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\Omega\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(50\)</span> <span class="math inline">\(k\Omega\)</span>. For comparison, also plot the magnitude response of <a href="#eq-3.18" class="quarto-xref">Equation&nbsp;<span>3.18</span></a>, i.e., considering only the intrinsic gate capacitance.</p>
 <p><strong>SOLUTION</strong></p>
 <p>The plots are generated by letting <span class="math inline">\(s = j\omega\)</span> in <a href="#eq-3.38" class="quarto-xref">Equation&nbsp;<span>3.38</span></a> and <a href="#eq-3.18" class="quarto-xref">Equation&nbsp;<span>3.18</span></a>, and subsequently plotting the magnitude of the expression as a function of frequency. The result is show in <a href="#fig-ex-3.6" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>. From the plots, we conclude the following:</p>
 <ul>
@@ -1092,7 +1098,7 @@ Figure&nbsp;3.20: Small-signal model of the common-source amplifier after applyi
 </ol>
 <p>In a typical common-source circuit without a large load capacitance as drawn in <a href="#fig-3.17" class="quarto-xref">Figure&nbsp;<span>3.20</span></a>, the Miller approximation typically holds. When a very large capacitor is connected to the output, the approximation becomes invalid and the dominant pole is set by the <span class="math inline">\(RC\)</span> time constant formed at the output.</p>
 <p><strong><span id="example-3-7">Example 3-7</span>: Calculating the Common-Source Amplifier Bandwidth Using the Miller Approximation</strong></p>
-<p>Calculate the 3-dB bandwidth for the common-source voltage amplifier of <a href="#fig-3.13" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> using (a) the Miller approximation, and (b) the dominant pole approximation result of <a href="#eq-3.48" class="quarto-xref">Equation&nbsp;<span>3.48</span></a>. Parameters: <span class="math inline">\(g_m\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(mS\)</span>, <span class="math inline">\(C_{gs}\)</span> = <span class="math inline">\(40.7\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{gd}\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{db}\)</span> = <span class="math inline">\(11.6\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(R_{out}\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\ohm\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(50\)</span> <span class="math inline">\(k\ohm\)</span> (same as in <a href="#example-3-6">Example 3-6</a>). Calculate the percent error in the result of part (a).</p>
+<p>Calculate the 3-dB bandwidth for the common-source voltage amplifier of <a href="#fig-3.13" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> using (a) the Miller approximation, and (b) the dominant pole approximation result of <a href="#eq-3.48" class="quarto-xref">Equation&nbsp;<span>3.48</span></a>. Parameters: <span class="math inline">\(g_m\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(mS\)</span>, <span class="math inline">\(C_{gs}\)</span> = <span class="math inline">\(40.7\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{gd}\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{db}\)</span> = <span class="math inline">\(11.6\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(R_{out}\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\Omega\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(50\)</span> <span class="math inline">\(k\Omega\)</span> (same as in <a href="#example-3-6">Example 3-6</a>). Calculate the percent error in the result of part (a).</p>
 <p><strong>SOLUTION</strong></p>
 <ol type="a">
 <li>Using the Miller approximation [i.e., <a href="#eq-3.56" class="quarto-xref">Equation&nbsp;<span>3.56</span></a>], we obtain</li>
@@ -1293,13 +1299,13 @@ Figure&nbsp;3.24
 \]</span></p>
 <p>Evaluating these expression with the given numbers yields</p>
 <p><span class="math display">\[
-\tau_{gso} = 50k\ohm \cdot 40.7fF= 2.035ns
+\tau_{gso} = 50k\Omega \cdot 40.7fF= 2.035ns
 \]</span></p>
 <p><span class="math display">\[
-\tau_{dbo}^{\prime} = 5k\ohm (11.6pF + 10pF) = 50.01ns
+\tau_{dbo}^{\prime} = 5k\Omega (11.6pF + 10pF) = 50.01ns
 \]</span></p>
 <p><span class="math display">\[
-\tau_{gdo} = [50k\ohm +5k\ohm + 1mS \cdot 5k\ohm \cdot 50k\ohm]10fF
+\tau_{gdo} = [50k\Omega +5k\Omega + 1mS \cdot 5k\Omega \cdot 50k\Omega]10fF
 \]</span></p>
 <!-- TYPO there is a 5 after the fF in the text: fF5-->
 <p><span class="math display">\[
@@ -1309,9 +1315,9 @@ Figure&nbsp;3.24
 <p><span class="math display">\[
 f_{3dB} = \frac{1}{2\pi} \cdot \frac{1}{2.035ns + 50.01ns + 3.05ns} = 2.89MHz
 \]</span></p>
-<p>In order to improve the bandwidth by <span class="math inline">\(20\%\)</span>, it is clear that we must reduce the dominant open-circuit time constant <span class="math inline">\(\tau_{dbo}^{\prime}\)</span>. Since <span class="math inline">\(C_L\)</span> must remain unchanged, the only option is to reduce Rout. To first-order, reducing Rout to approximately <span class="math inline">\(4\)</span> <span class="math inline">\(k\ohm\)</span> (a <span class="math inline">\(20\%\)</span> reduction from the original value of <span class="math inline">\(5\)</span> <span class="math inline">\(k\ohm\)</span>) should get us close to the desired improvement. In order to keep the DC gain of the circuit constant, we now require a larger transconductance</p>
+<p>In order to improve the bandwidth by <span class="math inline">\(20\%\)</span>, it is clear that we must reduce the dominant open-circuit time constant <span class="math inline">\(\tau_{dbo}^{\prime}\)</span>. Since <span class="math inline">\(C_L\)</span> must remain unchanged, the only option is to reduce Rout. To first-order, reducing Rout to approximately <span class="math inline">\(4\)</span> <span class="math inline">\(k\Omega\)</span> (a <span class="math inline">\(20\%\)</span> reduction from the original value of <span class="math inline">\(5\)</span> <span class="math inline">\(k\Omega\)</span>) should get us close to the desired improvement. In order to keep the DC gain of the circuit constant, we now require a larger transconductance</p>
 <p><span class="math display">\[
-g_m = \frac{A_{v0}}{R_{out}} = \frac{5}{4k\ohm} = 1.2mS
+g_m = \frac{A_{v0}}{R_{out}} = \frac{5}{4k\Omega} = 1.2mS
 \]</span></p>
 <p>There are several ways to increase the transconductance of the MOSFET. (i) Keep the device width constant and increase the bias current <span class="math inline">\(I_D\)</span>. An advantage of this option is that none of the device capacitances will change, thereby avoiding any counterproductive increase in the total time constant.(ii) Keep <span class="math inline">\(I_D\)</span> constant and increase the device width <span class="math inline">\(W\)</span>. This option has the advantage that the current consumption of the circuit will not increase. Finally, option (iii) is to increase both <span class="math inline">\(W\)</span> and <span class="math inline">\(I_D\)</span> by the same factor. This option has the advantage that the gate overdrive voltage <span class="math inline">\(V_{OV}\)</span> remains unchanged, and hence the input bias voltage and output voltage swing are unaffected. Since our primary focus in this example is to improve bandwidth, and current consumption and biasing considerations are secondary, we will apply option (i).</p>
 <p>&nbsp;&nbsp;&nbsp;Using <a href="partI.2.html#eq-2.30" class="quarto-xref">Equation&nbsp;<span>2.30</span></a>, the new value of the required <span class="math inline">\(I_B\)</span> is</p>
@@ -1321,7 +1327,7 @@ I_B = I_D = \frac{g_m^2}{2\mu_n C_{ox} \frac{W}{L}} = \frac{(1.2mS)^2}{2 \cdot 5
 <p>Note that this value is approximately <span class="math inline">\(44\%\)</span> larger than the original bias current of <span class="math inline">\(500\)</span> <span class="math inline">\(\mu\)</span><span class="math inline">\(A\)</span>.</p>
 <p>As a final verification step, we recompute the bandwidth estimate using the new value of Rout. The time constant <span class="math inline">\(\tau_{gso}\)</span> remains the same, while the change in <span class="math inline">\(\tau_{gdo}\)</span> is negligible. The dominant OCT modifies as follows</p>
 <p><span class="math display">\[
-\tau_{dbo}^{\prime} = 4k\ohm (11.6fF + 10pF) = 40.05ns
+\tau_{dbo}^{\prime} = 4k\Omega (11.6fF + 10pF) = 40.05ns
 \]</span></p>
 <p>The modified bandwidth estimate is therefore</p>
 <p><span class="math display">\[
@@ -1413,9 +1419,9 @@ Figure&nbsp;3.26: General two-port model for the common-source voltage amplifier
 </ol>
 <p><strong>P3.3</strong> Sketch the Bode plot for the magnitude, <span class="math inline">\(|I_o /I_s|_{dB}\)</span> and phase <span class="math inline">\(\angle I_o/I_s\)</span> of the circuit shown in <a href="#fig-p3-3" class="quarto-xref">Figure&nbsp;<span>3.27</span></a>, given</p>
 <ol type="a">
-<li><p><span class="math inline">\(R_1\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(R_2\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(C = 1\)</span> <span class="math inline">\(pF\)</span></p></li>
-<li><p><span class="math inline">\(R_1\)</span> = <span class="math inline">\(0.1\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(R_2\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(C = 1\)</span> <span class="math inline">\(pF\)</span></p></li>
-<li><p><span class="math inline">\(R_1\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(R_2\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(C = 10\)</span> <span class="math inline">\(pF\)</span></p></li>
+<li><p><span class="math inline">\(R_1\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(R_2\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(C = 1\)</span> <span class="math inline">\(pF\)</span></p></li>
+<li><p><span class="math inline">\(R_1\)</span> = <span class="math inline">\(0.1\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(R_2\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(C = 1\)</span> <span class="math inline">\(pF\)</span></p></li>
+<li><p><span class="math inline">\(R_1\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(R_2\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(C = 10\)</span> <span class="math inline">\(pF\)</span></p></li>
 </ol>
 <div id="fig-p3-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1447,7 +1453,7 @@ Figure&nbsp;3.28
 </figure>
 </div>
 <p><strong>P3.8</strong> Plot the magnitude of <a href="#eq-3.38" class="quarto-xref">Equation&nbsp;<span>3.38</span></a> versus frequency using a software package such as <span class="math inline">\(MATLAB^{®*}\)</span> and find the exact value of the 3-dB frequency from the resulting graph. Parameters: <span class="math inline">\(g_m
-= 1\)</span> <span class="math inline">\(mS\)</span>, <span class="math inline">\(C_{gs} = 40.7\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{gd}\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{db}\)</span> = <span class="math inline">\(11.6\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(R_{out}\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\ohm\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(50\)</span> <span class="math inline">\(k\ohm\)</span> (same as in <a href="#example-3-7">Examples 3-7</a>. Compare the obtained number with the approximate results obtained in <a href="#example-3-7">Examples 3-7</a>.</p>
+= 1\)</span> <span class="math inline">\(mS\)</span>, <span class="math inline">\(C_{gs} = 40.7\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{gd}\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(C_{db}\)</span> = <span class="math inline">\(11.6\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(R_{out}\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\Omega\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(50\)</span> <span class="math inline">\(k\Omega\)</span> (same as in <a href="#example-3-7">Examples 3-7</a>. Compare the obtained number with the approximate results obtained in <a href="#example-3-7">Examples 3-7</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1465,7 +1471,7 @@ Note
 <p><strong>P3.9</strong> Calculate the frequency of the non-dominant pole of the circuit analyzed in <a href="#example-3-6">Example 3-6</a>.</p>
 <p><strong>P3.10</strong> For <span class="math inline">\(A_{vM}\)</span> = <span class="math inline">\(1\)</span>, <a href="#eq-3.51" class="quarto-xref">Equation&nbsp;<span>3.51</span></a> predicts an effective input capacitance of <span class="math inline">\(C_{eff} = 0\)</span>. Explain this result intuitively, in words. Hint: Consider the voltage waveforms at the input and output of <a href="#fig-3.15" class="quarto-xref">Figure&nbsp;<span>3.18</span></a> for this particular case.</p>
 <p><strong>P3.11</strong> In <a href="#example-3-7">Examples 3-7</a>, we saw that the bandwidth estimate obtained through the Miller Approximation was in close agreement with the result from the full analysis (incorporating a dominant pole approximation). In contrast, if we were to apply the Miller Approximation result of <a href="#eq-3.56" class="quarto-xref">Equation&nbsp;<span>3.56</span></a> to <a href="#example-3-8">Examples 3-8</a>, we would find a large error in the resulting answer (convince yourself that this is true). Explain why it is not appropriate to use <a href="#eq-3.56" class="quarto-xref">Equation&nbsp;<span>3.56</span></a> to estimate the bandwidth of the circuit in <a href="#example-3-8">Examples 3-8</a>.</p>
-<p><strong>P3.12</strong> Consider the circuit of <a href="#fig-ex-3.8" class="quarto-xref">Figure&nbsp;<span>3.24</span></a> with the following parameters: <span class="math inline">\(W = 100\)</span> <span class="math inline">\(\mu m\)</span>, <span class="math inline">\(L = 2\)</span> <span class="math inline">\(\mu m\)</span>, <span class="math inline">\(I_B = 3\)</span> <span class="math inline">\(mA\)</span>, <span class="math inline">\(V_B\)</span> = <span class="math inline">\(2.5\)</span> <span class="math inline">\(V\)</span>, <span class="math inline">\(C_L\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(R_D\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(k\ohm\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(k\ohm\)</span> .</p>
+<p><strong>P3.12</strong> Consider the circuit of <a href="#fig-ex-3.8" class="quarto-xref">Figure&nbsp;<span>3.24</span></a> with the following parameters: <span class="math inline">\(W = 100\)</span> <span class="math inline">\(\mu m\)</span>, <span class="math inline">\(L = 2\)</span> <span class="math inline">\(\mu m\)</span>, <span class="math inline">\(I_B = 3\)</span> <span class="math inline">\(mA\)</span>, <span class="math inline">\(V_B\)</span> = <span class="math inline">\(2.5\)</span> <span class="math inline">\(V\)</span>, <span class="math inline">\(C_L\)</span> = <span class="math inline">\(100\)</span> <span class="math inline">\(fF\)</span>, <span class="math inline">\(R_D\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(k\Omega\)</span> and <span class="math inline">\(R_s\)</span> = <span class="math inline">\(10\)</span> <span class="math inline">\(k\Omega\)</span> .</p>
 <ol type="a">
 <li><p>Estimate the required DC input bias <span class="math inline">\(V_S\)</span> such that <span class="math inline">\(I_D = I_B\)</span> and <span class="math inline">\(V_{OUT} = V_B\)</span>. Neglect channel-length modulation.</p></li>
 <li><p>Calculate the MOSFET’s transconductance and all device capacitances.</p></li>
@@ -1490,7 +1496,7 @@ Figure&nbsp;3.29
 </figure>
 </div>
 <p><strong>P3.14</strong> In this chapter, we saw that using the OCT method to estimate a circuits’ bandwidth tends to be conservative. For example, in a circuit with two identical real poles (and no zeros), the bandwidth predicted using the OCT method is <span class="math inline">\(22\%\)</span> lower than the actual bandwidth [see <a href="#eq-3.75" class="quarto-xref">Equation&nbsp;<span>3.75</span></a>]. Derive an analytical expression <span class="math inline">\(f(n)\)</span> that returns the percent error of the OCT analysis for a circuit with n identical real poles and no zeros. Note that <span class="math inline">\(f(2) = –22\%\)</span>.</p>
-<p><strong>P3.15</strong> Consider the common-source voltage amplifier of <a href="#fig-ex-3.8" class="quarto-xref">Figure&nbsp;<span>3.24</span></a>. The goal of this design problem is to achieve a small-signal DC gain of <span class="math inline">\(-4\)</span> and a 3-dB bandwidth of <span class="math inline">\(80\)</span> <span class="math inline">\(MHz\)</span>. In addition, we wish to minimize the current consumption of the circuit. For simplicity in your calculations, neglect channel-length modulation and consider only the intrinsic gate capacitance. Assume the following parameters: <span class="math inline">\(R_s = 2R_D\)</span>, <span class="math inline">\(R_D\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(C_L\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(pF\)</span>.</p>
+<p><strong>P3.15</strong> Consider the common-source voltage amplifier of <a href="#fig-ex-3.8" class="quarto-xref">Figure&nbsp;<span>3.24</span></a>. The goal of this design problem is to achieve a small-signal DC gain of <span class="math inline">\(-4\)</span> and a 3-dB bandwidth of <span class="math inline">\(80\)</span> <span class="math inline">\(MHz\)</span>. In addition, we wish to minimize the current consumption of the circuit. For simplicity in your calculations, neglect channel-length modulation and consider only the intrinsic gate capacitance. Assume the following parameters: <span class="math inline">\(R_s = 2R_D\)</span>, <span class="math inline">\(R_D\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(C_L\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(pF\)</span>.</p>
 <ol type="a">
 <li><p>Show that the required drain current <span class="math inline">\(I_D\)</span> is related to the circuit’s parameters and specifications as expressed below. In your analysis, approximate <span class="math inline">\(\omega_{3dB}\)</span> using an OCT analysis. Plot <span class="math inline">\(I_D\)</span> as a function of <span class="math inline">\(V_{OV}\)</span> for <span class="math inline">\(L = 1\)</span> <span class="math inline">\(\mu m\)</span> and <span class="math inline">\(L = 1.5\)</span> <span class="math inline">\(\mu m\)</span>.<span class="math display">\[I_D = \frac{1}{2}\frac{ C_L \cdot |A_{v0}| \cdot \omega_{3{dB}} \cdot V_{OV}}{1 - \frac{2}{3} \frac{L^2}{\mu_n V_{OV}} \cdot \frac{R_s}{R_D} \cdot |A_{v0}| \, \omega_{3dB}}\]</span> Note from this result that the choice of the gate overdrive voltage <span class="math inline">\(V_{OV}\)</span> plays an important role in minimizing the required drain current.</p></li>
 <li><p>From the expression and plots found in part (a), it is clear that the minimum channel length minimizes the current consumption of the amplifier. Explain in your words why this should be the case.</p></li>
@@ -1540,7 +1546,7 @@ Figure&nbsp;3.30
 <p><strong>P3.17</strong> The circuit shown in <a href="#fig-p3-17" class="quarto-xref">Figure&nbsp;<span>3.31</span></a> is called a “source degenerated” common-source voltage amplifier. Analyze this circuit as indicated below.</p>
 <ol type="a">
 <li><p>Neglecting channel-length modulation and all capacitances in the circuit, show that the circuit’s small-signal DC gain is given by <span class="math display">\[ \frac{v_{out}}{v_{in}} \simeq -G_mR_D\]</span> where <span class="math display">\[G_m = \frac{g_m}{1+ g_mR_S}\]</span> is called the compound transconductance.</p></li>
-<li><p>Using the results stated in <a href="#p3.16">Problem 3.16</a>, estimate the DC gain and 3-dB bandwidth of the circuit assuming the following parameters: <span class="math inline">\(R_G = 10\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(R_S\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(R_D\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\ohm\)</span>, <span class="math inline">\(I_D\)</span> = <span class="math inline">\(500\)</span> <span class="math inline">\(\mu A\)</span>, <span class="math inline">\(L= 1\)</span> <span class="math inline">\(\mu m\)</span>, and <span class="math inline">\(W= 20\)</span> <span class="math inline">\(\mu m\)</span>. Consider only the two time constants contributed by <span class="math inline">\(C_{gs}\)</span> and <span class="math inline">\(C{gd}\)</span>.</p></li>
+<li><p>Using the results stated in <a href="#p3.16">Problem 3.16</a>, estimate the DC gain and 3-dB bandwidth of the circuit assuming the following parameters: <span class="math inline">\(R_G = 10\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(R_S\)</span> = <span class="math inline">\(1\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(R_D\)</span> = <span class="math inline">\(5\)</span> <span class="math inline">\(k\Omega\)</span>, <span class="math inline">\(I_D\)</span> = <span class="math inline">\(500\)</span> <span class="math inline">\(\mu A\)</span>, <span class="math inline">\(L= 1\)</span> <span class="math inline">\(\mu m\)</span>, and <span class="math inline">\(W= 20\)</span> <span class="math inline">\(\mu m\)</span>. Consider only the two time constants contributed by <span class="math inline">\(C_{gs}\)</span> and <span class="math inline">\(C{gd}\)</span>.</p></li>
 </ol>
 <div id="fig-p3-17" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1784,8 +1790,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1885,7 +1889,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
