@@ -438,8 +438,8 @@ Figure&nbsp;7.1: Block diagram of a feedback system.
 <li>Return Ratio Analysis
 <ul>
 <li>Proposed by Hendrik Bode</li>
-<li>“Asymptotic” method” does no attempt to break the circuit into pieces</li>
-<li>The closed-loop properties of the feedback circuit are described in terms of the <em>return ratio</em> of a dependent source in an active device.</li>
+<li>“Asymptotic” method. It does no attempt to break the circuit into pieces</li>
+<li>The closed-loop properties of the feedback circuit are described in terms of the <em>return ratio</em> of a dependent source in an active device</li>
 <li>The block diagram used to analyze the closed loop properties of the feedback circuit is extended to handle the feedforward through the feedback network</li>
 <li>Often easier than two-port analysis</li>
 </ul></li>
@@ -732,14 +732,14 @@ for the cubic term
 &amp;A_3 = \dfrac{a_3}{(1+a_1 b)^4} - \dfrac{2 a_2^2b}{(1+a_1b)^5}
 \end{split}
 \tag{7.6}\]</span></span></p>
-<p>The linear term <span class="math inline">\(a_1\)</span> (as expected) is reduced by <span class="math inline">\(1 + L\)</span>, with <span class="math inline">\(L\equiv a_1b\)</span></p>
+<p>The linear term <span class="math inline">\(a_1\)</span> (as expected) is reduced by <span class="math inline">\(1 + L\)</span>, where <span class="math inline">\(L\equiv a_1b\)</span></p>
 <p>The quadratic term <span class="math inline">\(a_2\)</span> is reduced by <span class="math inline">\((1 + L)^3\)</span></p>
 <p>The cubic term <span class="math inline">\(a_3\)</span> is reduced by <span class="math inline">\((1+L)^4\)</span>, but ther is also an extra term due to the interaction with the second-order term <span class="math inline">\(a_2\)</span></p>
-<p>If at different signal levels, the basic amplifier’s small-signal gain varies, since feedback reduces the overall gain (<span class="math inline">\(A = dv_{out}/dv_{in}\)</span>) variations w.r.t. the relative variations of the basic amplifier gain, then feedback also reduces distorsion.</p>
+<p>If at different signal levels, the basic amplifier’s small-signal gain varies, since feedback reduces the overall gain variations w.r.t. the gain variations of the basic amplifier, then feedback also reduces distorsion.</p>
 <p>Note:</p>
 <ul>
 <li><p>feedback reduces distorsion without reducing the output voltage range. The overall gain is reduced, but additional gain can be provided with a preamplifier that operates with smaller signal swings, and therefore less distorsion.</p></li>
-<li><p>feedback does not help with an amplifier saturation. In the case an amplifier’s output shows hard saturation (i.e., the output become independent of the input), the incremental gain of the basic amplifier <span class="math inline">\(\rightarrow 0\)</span>, so the amount of feedback also <span class="math inline">\(\rightarrow 0\)</span>, and as a result negative feedback cannot improve the situation.</p></li>
+<li><p>feedback does not help with saturation. In the case an amplifier’s output shows hard saturation (i.e., the output become independent of the input), the incremental gain of the basic amplifier <span class="math inline">\(\rightarrow 0\)</span>, so the amount of feedback also <span class="math inline">\(\rightarrow 0\)</span>, and as a result negative feedback cannot improve the situation.</p></li>
 </ul>
 </section>
 <section id="effect-of-feedback-on-bandwidth" class="level3" data-number="7.6.3">
@@ -1370,7 +1370,7 @@ Figure&nbsp;7.38: return ratio calculation
 <img src="partII.2_files/figure-html/fig-rr-7-output-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.39: Ideal closed loop gain Calculation
+Figure&nbsp;7.39: Ideal closed loop gain calculation
 </figcaption>
 </figure>
 </div>
@@ -1386,7 +1386,7 @@ Figure&nbsp;7.39: Ideal closed loop gain Calculation
 <img src="partII.2_files/figure-html/fig-rr-8-output-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rr-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.40: Direct feedthrough Calculation
+Figure&nbsp;7.40: Direct feedthrough calculation
 </figcaption>
 </figure>
 </div>
@@ -1455,7 +1455,7 @@ Figure&nbsp;7.42: AC equivalent model of the constant-<span class="math inline">
 <p>To identify which dependent source to use for computing the loop gain <span class="math inline">\(T\)</span> of the circuit, the feedback loop we break must be global.</p>
 <ul>
 <li><span class="math inline">\(M_2\)</span> and <span class="math inline">\(R_2\)</span> degeneration, form a local feedback loop, so <span class="math inline">\(M_2\)</span> cannot be used to break the main loop</li>
-<li><span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_4\)</span> are diode-connected; their transcondactance elements are equivalent to a resistance <span class="math inline">\(1/g_m\)</span> so cannot be used to break the main loop</li>
+<li><span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_4\)</span> are diode-connected; their transcondactance elements are equivalent to a resistance <span class="math inline">\(1/g_m\)</span>, so cannot be used to break the main loop</li>
 <li><span class="math inline">\(M_3\)</span> is the only <em>“normal”</em> CS gain stage in the circuit, so it is the only element that can be used to break the main loop</li>
 </ul>
 <p>In general, <strong>the return ratio of CG, CD, or degenerated CS cannot be used</strong> to find the “global” loop gain of a circuit.</p>
@@ -2174,7 +2174,7 @@ A_v = \dfrac{v_{out}}{v_{in}} = A_{\infty} \cdot \dfrac{T}{1+T} + \dfrac{d}{1+T}
 <img src="partII.2_files/figure-html/fig-bf-26-output-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bf-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.74: Small signal model to find the output resistance$
+Figure&nbsp;7.74: Small signal model to find the output resistance
 </figcaption>
 </figure>
 </div>
