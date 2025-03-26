@@ -27,7 +27,7 @@ Negative feedback was conceived in 1928 by Harold Black.
 
 - Return Ratio Analysis
   - Proposed by Hendrik Bode
-  - "Asymptotic" method" does no attempt to break the circuit into pieces
+  - "Asymptotic" method. It does no attempt to break the circuit into pieces
   - The closed-loop properties of the feedback circuit are described in terms of the *return ratio* of a dependent source in an active device. 
   - The block diagram used to analyze the closed loop properties of the feedback circuit is extended to handle the feedforward through the feedback network
   - Often easier than two-port analysis 
@@ -298,20 +298,20 @@ $$
 \end{split}
 $${#eq-6}
 
-The linear term $a_1$ (as expected) is reduced by $1 + L$, with $L\equiv a_1b$
+The linear term $a_1$ (as expected) is reduced by $1 + L$, where $L\equiv a_1b$
 
 The quadratic term $a_2$ is reduced by $(1 + L)^3$
 
 The cubic term $a_3$ is reduced by $(1+L)^4$, but ther is also an extra term due to the interaction with the second-order term $a_2$ 
 
-If at different signal levels, the basic amplifier's small-signal gain varies, since feedback reduces the overall gain ($A = dv_{out}/dv_{in}$) variations w.r.t. the relative variations of the basic amplifier gain, then feedback also reduces distorsion. 
+If at different signal levels, the basic amplifier's small-signal gain varies, since feedback reduces the overall gain variations w.r.t. the gain variations of the basic amplifier, then feedback also reduces distorsion. 
 
 Note: 
 
 - feedback reduces distorsion without reducing the output voltage range. The overall gain is reduced, but additional gain can be 
 provided with a preamplifier that operates with smaller signal swings, and therefore less distorsion. 
 
-- feedback does not help with an amplifier saturation. In the case an amplifier's output shows hard saturation (i.e., the output become independent of the input), the incremental gain of the basic amplifier $\rightarrow 0$, so the amount of feedback also $\rightarrow 0$, and as a result negative feedback cannot improve the situation.  
+- feedback does not help with saturation. In the case an amplifier's output shows hard saturation (i.e., the output become independent of the input), the incremental gain of the basic amplifier $\rightarrow 0$, so the amount of feedback also $\rightarrow 0$, and as a result negative feedback cannot improve the situation.  
 
 ### Effect of feedback on bandwidth
 
@@ -811,7 +811,7 @@ $$
 To identify which dependent source to use for computing the loop gain $T$ of the circuit, the feedback loop we break must be global.
 
 - $M_2$ and $R_2$ degeneration, form a local feedback loop, so $M_2$ cannot be used to break the main loop
-- $M_1$ and $M_4$ are diode-connected; their transcondactance elements are equivalent to a resistance $1/g_m$ so cannot be used to break the main loop
+- $M_1$ and $M_4$ are diode-connected; their transcondactance elements are equivalent to a resistance $1/g_m$, so cannot be used to break the main loop
 - $M_3$ is the only *"normal"* CS gain stage in the circuit, so it is the only element that can be used to break the main loop
 
 In general, **the return ratio of CG, CD, or degenerated CS cannot be used** to find the "global" loop gain of a circuit.
