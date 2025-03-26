@@ -1,7 +1,7 @@
 ```{python}
 #| label: fig-bf-26
 #| echo: false
-#| fig-cap: "Small signal model to find the output resistance$"
+#| fig-cap: "Small signal model to find the output resistance"
 #| 
 import schemdraw as sd
 import schemdraw.elements as elm

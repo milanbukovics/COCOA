@@ -5,7 +5,7 @@ Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
 ```{python}
 #| label: fig-rr-7
 #| echo: false
-#| fig-cap: "Ideal closed loop gain Calculation"
+#| fig-cap: "Ideal closed loop gain calculation"
 import schemdraw as sd
 import schemdraw.elements as elm
 import schemdraw.dsp as dsp
