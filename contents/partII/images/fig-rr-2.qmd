@@ -1,0 +1,42 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-2
+#| echo: false
+#| fig-cap: "Block diagram for closed-loop gain using return ratio framework"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Dot(open=True).label('$s_{in}$')
+    L1 = elm.Line().right().length(1)
+    elm.Dot()
+    elm.Line().up()
+    dsp.Arrow().right().length(3)
+    dsp.Box(w=1,h=1).label(r'$d$',mathfont='dejavuserif')
+    L2 = elm.Line().right().length(2.5).label('$_+$',loc='rgt', ofst=[-0.4,-1])
+    dsp.Arrow().down().length(1.5)
+    dsp.Arrow().at(L1.end).right().length(1).label('$_+$',loc='rgt',ofst=[-0.4,+0.4])
+    sm1 = dsp.SumSigma()
+    dsp.Arrow().right().length(1)
+    dsp.Box(w=2,h=1).label(r'$T A_\infty$',mathfont='dejavuserif')
+    dsp.Arrow().right().length(1).label('$_+$',loc='rgt',ofst=[-0.4,+0.4])
+    sm2 = dsp.SumSigma()    
+    elm.Line().right().length(1)
+    elm.Dot()
+    d.push()  # Save this drawing position/direction for later
+    elm.Line().right().length(1)
+    elm.Dot(open=True).label('$s_{out}$')
+    d.pop()   # Return to the pushed position/direction
+    elm.Line().down().length(d.unit*1)
+    dsp.Arrow().left()
+    dsp.Box(w=2,h=1).label(r'$1 / A_\infty$',mathfont='dejavuserif')
+    elm.Line().tox(sm1.S)
+    elm.Line().up().length(d.unit/2)
+    dsp.Arrow().toy(sm1.S).label('$_{-}$', loc='bottom', ofst=[0.2,0])
+```

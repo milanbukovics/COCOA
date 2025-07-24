@@ -1,0 +1,33 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-bf-21
+#| echo: false
+#| fig-cap: "ZVTC calculations"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    M1 = elm.AnalogNFet(offset_gate=False).theta(90).label(r'$M_{1}$',loc='rgt', ofst=[-0,+0]).reverse().flip()
+    Lhl = elm.Line().at(M1.source).left()
+    R1 = elm.Resistor().label(r'$R_i$').down()
+    elm.Ground()
+    Lh = elm.Line().at(Lhl.end).length(1.5).left()
+    Ii = elm.SourceI().label(r'$i_i$',loc='top',mathfont='dejavuserif').down().reverse()
+    elm.Ground()
+    Lc = elm.Line().down().length(0.9).at(Lhl.center).color('gray')
+    C = elm.Capacitor().at(Lc.end).to(M1.gate).color('gray').label(r'$C_{gs}$',loc='bot')
+    RG = elm.Resistor().down().at(M1.gate).label(r'$R_G$',loc='bot')
+    elm.Ground()
+    Lhr = elm.Line().at(M1.drain).right().label(r'$v_{out}$',mathfont='dejavuserif')
+    RL = elm.Resistor().down().label(r'$R_L$',loc='bot')
+    elm.Ground()
+    elm.Dot().at(Lhl.end)
+    elm.Dot().at(Lhl.center).color('gray')
+    elm.Dot().at(M1.gate).color('gray')
+```

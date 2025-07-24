@@ -1,0 +1,42 @@
+```{python}
+#| label: fig-bf-19
+#| echo: false
+#| fig-cap: "Return ratio for $a_v$ with the output port open"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    St = elm.SourceV().down().label(r'$v_t$',loc='bottom').reverse()
+    elm.Ground()
+    elm.Gap().left().length(2)
+    elm.Ground()
+    Sr = elm.SourceControlledV().up().label(r'$a_v v_d$',loc='top')
+    elm.Line().length(1).label(r'$v_r$',color='red').right()
+    Lg2 = elm.Line().length(1.5).label(r'$v_t$',color='red').right().at(St.start).dot(open=True).label(r'$G_2$',loc='rgt')
+    G = elm.Gap().right().length(3)
+    S2 = elm.SourceControlledI().down().at(G.end)
+    Lb = elm.Line().down().at(S2.end).length(1)   # vertical line bottom
+    Lhb = elm.Line().at(Lb.end).right().length(3) # horizontal line at bottom
+    elm.Line().up().length(1)
+    ro2 = elm.Resistor().label(r'$r_{o2}$',loc='bottom')
+    elm.Line().up().length(1)
+    Lht = elm.Line().left().length(3) # horizontal line at top
+    Lt = elm.Line().down().length(1)  # vertical line top
+    elm.Dot().at(Lt.start).color('deeppink').label(r'$D_2$',loc='rgt',color='black',ofst=(0.1,0.3))
+    elm.LoopCurrent([Lt,ro2,Lb,S2], pad=0.2).label(' ',color='black').reverse().color('blue')
+    elm.Dot().at(Lb.end).color('deeppink').label(r'$S_2$',color='black',ofst=(+0.4,0))
+    elm.Line().down().length(0.5).at(Lb.end)
+    R = elm.Resistor().down().label(r'$r_{o1}$',loc='bot')
+    elm.Ground()
+    elm.CurrentLabel(top=False, ofst=.2).at(R).label('$i=0$',color='red').color('red')
+    LF = elm.Line().up().at(Lt.start).label(r'$floating$',loc='bot')  # floating line
+    elm.CurrentLabel(top=False, ofst=-.4).at(LF).label('$i=0$',color='red',loc='top').color('red').reverse()
+    Li = elm.Line().at(Lb.end).left().length(8).label(r'$v_x=0$',color='blue',loc='bot')
+    Gi = elm.Gap().label(['$-$',' ', '$v_{d}$', ' ', '$+$']).down().at(Li.end)
+    elm.Line().down().length(0.5)
+    elm.Ground().label(r'$V_{BIAS}=0$',loc='rgt')
+    elm.Gap().label((r'$+$','$v_{gs2}$',r'$-$')).at(Lg2.end).to(Lb.end)
+```

@@ -1,0 +1,33 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-bf-11
+#| echo: false
+#| fig-cap: "Super-source follower stage"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Vdd().label('$V_{DD}$')
+    I2 = elm.SourceI().label(r'$I_2$').down()
+    M1 = elm.AnalogPFet(offset_gate=False).theta(0).label(r'$M_{1}$',loc='rgt', ofst=[-0,+0]).reverse()
+    elm.Line().left().length(1).at(M1.gate).dot(open=True).label(r'$v_{IN}$',mathfont='dejavuserif',loc='lft')
+    I1 = elm.SourceI().label(r'$I_1$').down().dot().at(M1.drain)
+    elm.Ground()
+    L1 = elm.Line().right().at(M1.drain)
+    elm.Dot().at(M1.drain)
+    M2 = elm.AnalogNFet(offset_gate=False).theta(0).label(r'$M_2$',loc='rgt').anchor('gate').reverse().at(L1.end)
+    L2 = elm.Line().right().at(M1.source).length(2.9)
+    elm.Dot().at(L2.start)
+    elm.Dot().at(L2.end)
+    L3 = elm.Line().to(M2.drain)
+    elm.CurrentLabelInline(direction='in',ofst=-0.3).at(L3).label(r'$I_2-I_1$',loc='rgt',ofst=[-0.3,0.8])
+    elm.Line().at(L2.end).right().dot(open=True).label(r'$v_{OUT}$',mathfont='dejavuserif',loc='rgt')
+    elm.Wire('-|').at(I1.end).to(M2.source)
+    elm.Line().up().to(M2.source)    
+```

@@ -1,0 +1,37 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-6
+#| echo: false
+#| fig-cap: "return ratio calculation"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Ground().down()
+    elm.Resistor().label('$R_1$').right()
+    L1 = elm.Line().right().length(1)
+    elm.Gap().label((r'$+$',r'$v_{gs}$',r'$-$')).down()
+    elm.Line().right().length(1.5)
+    IR = elm.SourceControlledI().reverse().label(r'$g_m v_{gs}$',loc='bottom')
+    L2 = elm.Line().right().length(2.5)
+    elm.CurrentLabel(top=True, ofst=.3).at(L2).label('$i_r$').reverse()
+    L3 = elm.Line().down()
+    elm.Dot()
+    elm.Ground().right()
+    elm.Line().left().at(L3.end).length(2.5)
+    elm.Line().right().at(L3.end)
+    IT = elm.SourceI().reverse().label(r'$ i_t$',loc='bottom')
+    elm.Line().right().length(1)
+    elm.Line().up().length(1.5)
+    elm.Line().left().length(2.5)
+    elm.Resistor().label('$R_2$').left()
+    elm.Line().left().length(2.5)
+    elm.Line().down().length(1.5)
+    elm.Line().right().length(1).at(IT.start)
+```

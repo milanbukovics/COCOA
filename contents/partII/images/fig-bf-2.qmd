@@ -1,0 +1,45 @@
+```{python}
+#| label: fig-bf-2
+#| echo: false
+#| fig-cap: "Input resistance of non-inverting op amp circuit"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    S1 = elm.SourceV().down().reverse().label('$v_{s}$',loc='top')
+    elm.Ground()
+    Rs = elm.Resistor().right().label('$R_s$').at(S1.start)
+    elm.Line().right().dot(open=True).length(0.5).label('$v_p$',loc='top',ofst=(0.2,-0.7))
+    Lp = elm.Line().right().length(0.5)
+    Lup = elm.Line().up().length(3).color('lightblue')
+    Lp1 = elm.Line().right().length(0.5).at(Lp.end).label('$+$',loc='top',ofst=(0.2,0.1))
+    elm.ZLabel().at(Lp.end).label('$R_{in}$').color('blue')
+    Ri = elm.Resistor().down().at(Lp1.end).label(r'$r_i$',loc='bottom')
+    Ln1 = elm.Line().left().length(0.5).label(r'$-$',loc='bottom',ofst=(-0.2,0.1))
+    Ln = elm.Line().left().length(0.5).dot(open=True).label(r'$v_n$',ofst=(+0.2,-0.1))
+    Ldown = elm.Line().down().at(Ln1.end).length(3).color('lightblue')
+    elm.Line().up().at(Ln1.end).color('lightblue')
+    elm.Line().down().length(4).at(Ln.end).dot()
+    R1 = elm.Resistor().down().label('$R_1$')
+    elm.Ground()
+    elm.Line().right().at(R1.start).length(3)
+    R2 = elm.Resistor().right().label('$R_2$')
+    elm.Line().right().length(3)
+    elm.Line().right().length(0.5)
+    elm.Line().up().length(5).dot()
+    L = elm.Line().left().length(0.5)
+    elm.Line().left().length(2)
+    Ro = elm.Resistor().left().label(r'$r_o$',loc='top')
+    elm.Line().left().length(1.5)
+    S1 = elm.SourceControlledV().down().reverse().label(r'$a_v \cdot (v_p-v_n)$',loc='bottom')
+    elm.Ground()
+    elm.Line().at(Lup.end).to(L.end).color('lightblue')
+    elm.Line().at(Ldown.end).to(L.end).color('lightblue')
+    elm.Line().right().dot(open=True).at(L.start).length(1)
+    elm.Line().right().length(1)
+    RL = elm.Resistor().down().label(r'$R_L$',loc='bottom')
+    elm.Ground()
+```

@@ -1,0 +1,43 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-fb-8
+#| echo: false
+#| fig-cap: "Effect of negative feedback on non-linearity"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Dot(open=True).label('$v_{in}$')
+    elm.Line().right().label('$_+$',loc='rgt',ofst=[-0.5,-0.1])
+    sm = dsp.SumSigma()
+    dsp.Arrow().right().label(r'$v_\epsilon$').length(2)
+    dsp.Box(w=6,h=1.5).label(r'$a_1 \cdot v_\epsilon + a_2 \cdot v_\epsilon^2 + a_3 \cdot v_\epsilon^3$',mathfont='dejavuserif')
+    elm.Line().right()
+    elm.Dot()
+    d.push()  # Save this drawing position/direction for later
+    elm.Line().right()
+    D = elm.Dot(open=True).label('$v_{out}$')
+    d.pop()   # Return to the pushed position/direction
+    elm.Line().down().length(d.unit*1.5)
+    dsp.Arrow().left().length(3)
+    dsp.Box(w=4, h=1).label('$b$')
+    elm.Line().tox(sm.S).label('$v_f$')
+    elm.Line().up().length(d.unit/2)
+    dsp.Arrow().toy(sm.S).label('$_-$', loc='bottom', ofst=[0.7,0])
+    elm.Gap().right().at(D.end)
+    elm.Label(r'$\Longleftrightarrow$',fontsize=40)
+    elm.Gap().right()
+    elm.Dot(open=True)
+    elm.Label().label(r'$v_{in}$',loc='top')
+    elm.Line().right().length(1)
+    dsp.Box(w=7,h=1.5).label(r'$A_1 \cdot v_{in} + A_2 \cdot v_{in}^2 + A_3 \cdot v_{in}^3 + ...$')
+    elm.Line().right().length(1)
+    elm.Dot(open=True)
+    elm.Label().label(r'$v_{out}$',loc='top')
+```

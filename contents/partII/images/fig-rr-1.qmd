@@ -1,0 +1,42 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-1
+#| echo: false
+#| fig-cap: "Feedback amplifier: return ratio framework to derive the closed-loop gain"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    S1 = elm.Source().down().reverse().label('$s_{in}$',loc='top')
+    L1 = elm.Line().right()              # bottom line connected to sin
+    L2 = elm.Line().right().at(S1.start) # top line connected to sin 
+    L3 = elm.Line().up().length(0.5)    
+    elm.Line().right()
+    L4 = elm.Line().down().length(0.5)
+    elm.Line().right()
+    elm.Gap().label((r' ','$s_{ic}$',' ')).down()
+    L5 = elm.Line().down().at(L4.end)
+    elm.Line().right()
+    elm.Line().down().length(d.unit*2).at(L2.end)
+    L6 = elm.Line().right().length(d.unit*6).label('rest of feedback amplifier')
+    elm.Line().down().length(0.5).at(L5.end)
+    elm.Line().right().length(d.unit*4)
+    L7 = elm.Line().up().length(0.5)
+
+    elm.Line().left()
+    S2 = elm.SourceControlled().up().reverse().label(r'$k \cdot s_{ic}$')
+    elm.Line().right()
+    elm.Line().up().at(L7.start).length(3)
+    elm.Line().right()
+    L8 = elm.Line().down().length(0.5)
+    elm.Line().right()
+    elm.Gap().label((r' ','$s_{oc}$',' ')).down()
+    elm.Line().left()
+    elm.Line().down().at(L8.end).length(4)
+```

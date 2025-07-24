@@ -1,0 +1,42 @@
+```{python}
+#| label: fig-bf-14
+#| echo: false
+#| fig-cap: "Return Ratio for $g_{m2}$ with the output port open"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    elm.Ground().color('red').label(r'$v_{in}=0$',loc='bottom')
+    elm.Gap().right()
+    S1 = elm.SourceControlledI().up().label(r'$g_{m1} \cdot v_{1}$',loc='bottom')
+    L1 = elm.Line().right().at(S1.end).length(3).label(r'$v_x$',color='blue',loc='top')
+    ro1 = elm.Resistor().down().label(r'$r_{o1}$',loc='bottom')
+    L2 = elm.Line().left().length(3).label(r'$v_y$', color='blue',loc='bottom')
+    elm.Line().left().at(L1.start)
+    elm.Gap().down().label(['$-$', '$v_1=-v_x$', '$+$'])
+    L3 = elm.Line().at(L1.end).right().length(7).dot()
+    elm.Line().down()
+    S2 = elm.SourceI().down().label(r'$i_{t}$',loc='bottom',color='red').dot()
+    elm.Line().left().length(2)
+    L4 = elm.Line().left().length(1)
+    S3 = elm.SourceControlledI().up().label(r'$g_{m2}v_2$').reverse()
+    elm.Line().at(S3.end).right().length(1).reverse()
+    LL = elm.Line().down().dot()
+    elm.CurrentLabelInline(direction='out').at(LL.end).label(r'$i_r$',color='red',loc='bottom').color('red')
+    elm.Line().at(L4.end).left().length(3)
+    elm.Gap().up().label(['$-$', '$v_2$', '$+$'])
+    elm.Line().right().at(L2.start).length(1)
+    elm.Ground().at(S2.end)
+    elm.Line().right().at(S2.start).length(3)
+    ro2 = elm.Resistor().down().label(r'$r_{o2}$',loc='bottom')
+    elm.Dot().at(S2.start)
+    elm.Dot().at(S1.end)
+    elm.Dot().at(ro1.start)
+    elm.Dot().at(ro1.end)
+    elm.Line().at(ro2.end).to(S2.end)
+    elm.Line().at(L3.end).right().dot().label('$v_{out}$',loc='rgt').length(3).label(r'$v_x = -i_t \cdot r_{o2}$',color='blue',loc='top')
+    
+```

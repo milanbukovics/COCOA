@@ -1,0 +1,44 @@
+```{python}
+#| label: fig-bf-20
+#| echo: false
+#| fig-cap: "Return ratio for $a_v$ with the output port shorted"
+#| width: 10%
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    St = elm.SourceV().down().label(r'$v_t$',loc='bottom').reverse()
+    elm.Ground()
+    elm.Gap().left().length(2)
+    elm.Ground()
+    Sr = elm.SourceControlledV().up().label(r'$a_v v_d$',loc='top')
+    elm.Line().length(1).label(r'$v_r$',color='red').right()
+    Lg2 = elm.Line().length(1.5).label(r'$v_t$',color='red').right().at(St.start).dot(open=True).label(r'$G_2$',loc='rgt')
+    G = elm.Gap().right().length(3)
+    S2 = elm.SourceControlledI().down().at(G.end).label('$g_{m2}v_{gs2}$',color='black',loc='bot')
+    Lb = elm.Line().down().at(S2.end).length(1)   # vertical line bottom
+    Lhb = elm.Line().at(Lb.end).right().length(3) # horizontal line at bottom
+    elm.Line().up().length(1)
+    ro2 = elm.Resistor().label(r'$r_{o2}$',loc='bottom')
+    elm.Line().up().length(1)
+    Lht = elm.Line().left().length(3).color('black') # horizontal line at top
+    Lt = elm.Line().down().length(1)  # vertical line top
+    elm.Dot().at(Lt.start).color('deeppink').label(r'$D_2$',loc='rgt',color='black',ofst=(0.1,0.3))
+    elm.Dot().at(Lb.end).color('deeppink').label(r'$S_2$',color='black',ofst=(+0.4,0))
+    elm.Line().down().length(0.5).at(Lb.end)
+    ro1 = elm.Resistor().down().label(r'$r_{o1}$',loc='bot')
+    elm.Ground()
+    LF = elm.Line().up().at(Lt.start).label(r'$grounded$',loc='top')  # floating line
+    Li = elm.Line().at(Lb.end).left().length(8).label(r'$v_x=-v_d$',color='blue',loc='bot')
+    Gi = elm.Gap().label(['$-$',' ', '$v_{d}$', ' ', '$+$']).down().at(Li.end)
+    elm.Line().down().length(0.5)
+    elm.Ground().label(r'$V_{BIAS}=0$',loc='rgt')
+    elm.Ground().at(LF.end).left()
+    elm.Line().down().length(0.5).at(Lhb.end)
+    rgm = elm.Resistor().down().label(r'$\dfrac{1}{g_{mb2}}$',loc='bot')
+    elm.Ground().label(r'$B_2$',loc='rgt')
+    elm.Dot().at(Lhb.end)
+    elm.Gap().label((r'$+$','$v_{gs2}$',r'$-$')).at(Lg2.end).to(Lb.end)
+```

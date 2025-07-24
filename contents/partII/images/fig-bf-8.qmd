@@ -1,0 +1,26 @@
+```{python}
+#| label: fig-bf-8
+#| echo: false
+#| fig-cap: "A bootstrapped source follower stage"
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    op = elm.Opamp().label('$a_v$',loc='center',ofst=(-0.25,0),mathfont='dejavuserif')
+    L = elm.Line().right().at(op.out)
+    M1 = elm.AnalogPFet(offset_gate=False).anchor('gate').reverse().label(r'$M_1$',loc='rgt')
+    elm.Line().at(M1.drain).down()
+    elm.Ground()
+    L1 = elm.Line().up().at(M1.source).length(1).dot()
+    elm.SourceI().reverse().label(r'$I_{BIAS}$')
+    elm.Vdd().label(r'$V_{DD}$')
+    L2 = elm.Line().left().at(op.in1).length(0.4)
+    elm.Line().at(L1.end).left().length(5.5)
+    elm.Line().down().to(L2.end)
+    L3 = elm.Line().right().at(L1.end).dot(open=True).label(r'$v_{OUT}$',mathfont='dejavuserif',loc='rgt')
+    elm.ZLabel().at(L3.start).label('$R_{out}$',loc='top',ofst=(-0.5,0)).color('blue').left().flip()
+    elm.Line().left().at(op.in2).dot(open=True).label(r'$v_{IN}$',mathfont='dejavuserif',loc='lft')
+    emb = elm.Encircle([L], padx=0).linestyle('none').linewidth(1).color('black')
+    elm.Annotate().at(emb.SSW).delta(dx=-1, dy=-1.5).label('$for$ $k=a_v=0$ $this$ $node$').label('$is$ $at$ $gnd.$', ofst=(-2.6,-0.4)).color('gray')
+```

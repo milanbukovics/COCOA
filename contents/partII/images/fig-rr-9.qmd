@@ -1,0 +1,54 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-9
+#| echo: false
+#| fig-cap: "Constant-$g_m$ reference"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Vdd().label('$V_{DD}$')
+    elm.Line().down().length(0.5)
+    M3 = elm.AnalogPFet(offset_gate=False).theta(0).label(r'$M_{3}$',loc='lft', ofst=[-0.2,+0.5])
+    L1 = elm.Line().right().at(M3.gate).length(2)
+    M4 = elm.AnalogPFet(offset_gate=False).theta(0).label(r'$M_{4}$',loc='rgt',ofst=[+0.2,+0.5]).at(L1.end).anchor('gate').reverse()
+    elm.Line().up().length(0.5).at(M4.source)
+    elm.Vdd().label('$V_{DD}$')
+    elm.Dot().at(M4.gate).color('red').label(r'$n_1$')
+    elm.Line().down().at(M4.gate).length(1)
+    elm.Line().right().length(0.9).dot()
+    L2 = elm.Line().down().length(1).at(M4.drain)
+    M2 = elm.AnalogNFet(offset_gate=False).theta(0).reverse().label((r'$m$',r'$M_{2}$',r''),loc='rgt',ofst=[+0.2,+0.5])
+    R2 = elm.Resistor().label('$R_2$').down()
+    elm.Ground().right()
+    elm.Line().left().length(2).at(M2.gate)
+    M1 = elm.AnalogNFet(offset_gate=False).theta(0).label(r'$M_{1}$',loc='lft',ofst=[-0.2,+0.5]).anchor('gate')
+    elm.Dot().at(M1.gate).color('red').label(r'$n_2$',loc='bottom')
+    elm.Line().up().at(M1.gate).length(1)
+    elm.Line().left().length(0.9).dot()
+    elm.Line().up().at(M1.drain).to(M3.drain)
+    elm.Line().down().at(M1.source)
+    elm.Line().right().to(R2.end).dot()
+    elm.Line().right().at(M4.gate)
+    Mp = elm.AnalogPFet(offset_gate=False).theta(0).anchor('gate').reverse()
+    elm.Line().up().length(0.5).at(Mp.source)
+    elm.Vdd().label('$V_{DD}$')
+    Lp = elm.Line().at(Mp.drain).down().length(1)
+    elm.CurrentLabelInline(direction='in', ofst=-0.15).at(Lp).label(r'$I_{REFP}$',loc='rgt',ofst=[0,0.7])
+    elm.Line().left().at(M1.gate)
+    Mn = elm.AnalogNFet(offset_gate=False).theta(0).anchor('gate')
+    elm.Line().down().at(Mn.source)
+    elm.Line().right().dot()
+    Ln = elm.Line().at(Mn.drain).up().length(1)
+    elm.CurrentLabelInline(direction='out', ofst=-0.15).at(Ln).label(r'$I_{REFN}$',loc='rgt',ofst=[0,0.7])
+    elm.Gap().left().length(3)
+    B = dsp.Box(w=3,h=2).label('start-up',ofst=[0,0.25]).label('network',ofst=[0,-0.25])
+    elm.Line().right().dot().at(B.NE, dy=-0.5).length(0.5).label(r'$n_1$',color='red',loc='rgt')
+    elm.Line().right().dot().at(B.SE, dy=+0.5).length(0.5).label(r'$n_2$',color='red',loc='rgt')
+```

@@ -1,0 +1,34 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-bf-15
+#| echo: false
+#| fig-cap: "Shunt-shunt stage (Transimpedance Amplifier)"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Vdd().label('$V_{DD}$')
+    IB = elm.SourceI().label(r'$I_B$',loc='bottom').down()
+    M1 = elm.AnalogNFet(offset_gate=False).theta(0).label(r'$M_{1}$',loc='rgt', ofst=[-0,+0]).reverse()
+    elm.Line().left().at(M1.drain).length(0.5)
+    RF = elm.Resistor().left().label(r'$R_F$')
+    elm.Line().left().length(0.5)
+    L = elm.Line().down().length(0.5)
+    L1 = elm.Line().down().length(0.5)
+    L2 = elm.Line().down().length(0.5)
+    Is = elm.SourceI().label(r'$i_{in}$').down().reverse()
+    elm.Line().at(M1.gate).left().length(2.1).dot()
+    elm.Ground().at(Is.end)
+    elm.Dot().at(M1.drain)
+    Ls = elm.Line().at(M1.source).down().length(1.9)
+    elm.Ground().at(Ls.end)
+    Lo = elm.Line().at(RF.start).right()
+    elm.ZLabel().at(Lo).label('$R_{out}$',loc='top',ofst=(-0.8,0),color='blue').left().reverse().color('blue')
+    elm.ZLabel().at(L1.start).label('$R_{in}$',loc='top',ofst=(0,-1.5),color='blue').up().reverse().color('blue')
+```

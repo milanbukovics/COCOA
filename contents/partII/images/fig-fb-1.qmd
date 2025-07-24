@@ -1,0 +1,33 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-fb-1
+#| echo: false
+#| fig-cap: "Block diagram of a feedback system."
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Dot(open=True).label('$s_{in}$')
+    elm.Line().right().label('$_+$',loc='rgt',ofst=[-0.5,-0.1])
+    sm = dsp.SumSigma()
+    dsp.Arrow().right().label(r'$s_i$')
+    dsp.Box(w=1,h=1).label(r'$a$',mathfont='dejavuserif')
+    elm.Line().right()
+    elm.Dot()
+    d.push()  # Save this drawing position/direction for later
+    elm.Line().right()
+    elm.Dot(open=True).label('$s_{out}$')
+    d.pop()   # Return to the pushed position/direction
+    elm.Line().down().length(d.unit*1.5)
+    dsp.Arrow().left()
+    dsp.Box(w=1,h=1).label('$b$')
+    elm.Line().tox(sm.S).label('$s_f$')
+    elm.Line().up().length(d.unit/2)
+    dsp.Arrow().toy(sm.S).label('$_{+/-}$', loc='bottom', ofst=[0.7,0])
+```

@@ -1,0 +1,34 @@
+```{python}
+#| label: fig-bf-16
+#| echo: false
+#| fig-cap: "Small signal model of the shunt-shunt stage"
+
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    S2 = elm.SourceControlledI().down().label(r'$g_{m} \cdot v$',loc='bottom',color='black').dot()
+    elm.Line().left().length(2)
+    C = elm.Capacitor().up().color('gray')
+    Lt = elm.Line().left().length(1)
+    Lb = elm.Line().left().length(1).at(C.start).color('black')
+    elm.Gap().up().label(['$-$', '$v$', '$+$'])
+    elm.Line().at(Lb.end).length(1).left()
+    S3 = elm.SourceI().up().label(r'$i_{in}$',mathfont='dejavuserif')
+    Lx = elm.Line().right().length(1)
+    elm.Line().up().length(1).at(Lx.end)
+    elm.Line().right().length(1)
+    RF = elm.Resistor().right().label(r'$R_F$')
+    elm.Line().right().length(1)
+    elm.Line().down().length(1)
+    elm.Ground().at(S2.end)
+    Ly = elm.Line().right().at(S2.start).length(1)
+    elm.Line().right().length(2)
+    ro = elm.Resistor().down().label(r'$r_{o}$',loc='bottom')
+    elm.Line().left().to(S2.end)
+    elm.Dot().at(C.start)
+    elm.Dot().at(Lx.end).color('blue')
+    elm.Dot().at(Ly.end).color('blue')
+```

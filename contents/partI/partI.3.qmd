@@ -677,8 +677,8 @@ bandwidth of the circuit.
 **[Example 3-4]{#example-3-4}: Common-Source Amplifier Bandwidth Calculation**
 
 Calculate the 3-dB bandwidth for the amplifier in
-@fig-3.7, assuming $W$ = $20$ $\mu m$, $L$ = $1$ $\mu m$,
-$C_{ox}$ =  $2.3$ $fF/\mu m^2$ and $R_s = 50$ $k\ohm$. Express the result in units of Hertz.
+@fig-3.7, assuming $W$ = $20 μm$, $L$ = $1 μm$,
+$C_{ox}$ =  $2.3$ $fF/μm^2$ and $R_s = 50$ $k\Omega$. Express the result in units of Hertz.
 
 **SOLUTION**
 
@@ -689,7 +689,7 @@ $$
 C_{gs} = \frac{2}{3} WLC_{ox} = 30.67 fF
 $$
 
-THe 3-dB bandwidth is 
+The 3-dB bandwidth is 
 
 
 $$
@@ -1247,7 +1247,7 @@ Evaluate and plot the steady-state magnitude
 response of @eq-3.38 numerically using the following
 transistor parameters: $g_m = 1$ $mS$, $C_{gs}$ = $40.7$ $fF$,
 $C_{gd}$ = $10$ $fF$ and $C_{db}$ = $11.6$ $fF$ (same as in
-[Example 3-5](#example-3-5)). Assume $R_{out}$ = $5$ $k\ohm$ and $R_s$ = $50$ $k\ohm$.
+[Example 3-5](#example-3-5)). Assume $R_{out}$ = $5$ $k\Omega$ and $R_s$ = $50$ $k\Omega$.
 For comparison, also plot the magnitude response of
 @eq-3.18, i.e., considering only the intrinsic gate
 capacitance.
@@ -1559,7 +1559,7 @@ voltage amplifier of @fig-3.13 using
 pole approximation result of @eq-3.48. Parameters:
 $g_m$ = $1$ $mS$, $C_{gs}$ = $40.7$ $fF$, $C_{gd}$ = 
 $10$ $fF$, $C_{db}$ = $11.6$ $fF$,
-$R_{out}$ = $5$ $k\ohm$ and $R_s$ = $50$ $k\ohm$ (same as in [Example 3-6](#example-3-6)).
+$R_{out}$ = $5$ $k\Omega$ and $R_s$ = $50$ $k\Omega$ (same as in [Example 3-6](#example-3-6)).
 Calculate the percent error in the result of part (a).
 
 **SOLUTION**
@@ -1970,15 +1970,15 @@ Evaluating these expression with the given numbers
 yields
 
 $$
-\tau_{gso} = 50k\ohm \cdot 40.7fF= 2.035ns
+\tau_{gso} = 50k\Omega \cdot 40.7fF= 2.035ns
 $$
 
 $$
-\tau_{dbo}^{\prime} = 5k\ohm (11.6pF + 10pF) = 50.01ns
+\tau_{dbo}^{\prime} = 5k\Omega (11.6pF + 10pF) = 50.01ns
 $$
 
 $$
-\tau_{gdo} = [50k\ohm +5k\ohm + 1mS \cdot 5k\ohm \cdot 50k\ohm]10fF
+\tau_{gdo} = [50k\Omega +5k\Omega + 1mS \cdot 5k\Omega \cdot 50k\Omega]10fF
 $$ 
 
 <!-- TYPO there is a 5 after the fF in the text: fF5--> 
@@ -1997,14 +1997,14 @@ that we must reduce the dominant open-circuit time
 constant $\tau_{dbo}^{\prime}$. Since $C_L$ must remain 
 unchanged, the only option is to reduce Rout. To 
 first-order,
-reducing Rout to approximately $4$ $k\ohm$ (a $20\%$ 
-reduction from the original value of $5$ $k\ohm$) should
+reducing Rout to approximately $4$ $k\Omega$ (a $20\%$ 
+reduction from the original value of $5$ $k\Omega$) should
 get us close to the desired improvement. In order to keep
 the DC gain of the circuit constant, we now require
 a larger transconductance
 
 $$
-g_m = \frac{A_{v0}}{R_{out}} = \frac{5}{4k\ohm} = 1.2mS
+g_m = \frac{A_{v0}}{R_{out}} = \frac{5}{4k\Omega} = 1.2mS
 $$
 
 There are several ways to increase the transconductance
@@ -2043,7 +2043,7 @@ change in $\tau_{gdo}$ is negligible. The dominant OCT
 modifies as follows
 
 $$
-\tau_{dbo}^{\prime} = 4k\ohm (11.6fF + 10pF) = 40.05ns
+\tau_{dbo}^{\prime} = 4k\Omega (11.6fF + 10pF) = 40.05ns
 $$
 
 The modified bandwidth estimate is therefore 
@@ -2290,11 +2290,11 @@ and (b).
 $|I_o /I_s|_{dB}$ and phase $\angle I_o/I_s$
 of the circuit shown in @fig-p3-3, given
 
-a. $R_1$ = $10$ $k\ohm$, $R_2$ = $100$ $k\ohm$, $C = 1$ $pF$
+a. $R_1$ = $10$ $k\Omega$, $R_2$ = $100$ $k\Omega$, $C = 1$ $pF$
 
-b. $R_1$ = $0.1$ $k\ohm$, $R_2$ = $100$ $k\ohm$, $C = 1$ $pF$
+b. $R_1$ = $0.1$ $k\Omega$, $R_2$ = $100$ $k\Omega$, $C = 1$ $pF$
 
-c. $R_1$ = $10$ $k\ohm$, $R_2$ = $100$ $k\ohm$, $C = 10$ $pF$
+c. $R_1$ = $10$ $k\Omega$, $R_2$ = $100$ $k\Omega$, $C = 10$ $pF$
 
 ![](images/png/figure-p3-3.png){#fig-p3-3 width=100%}
 
@@ -2341,7 +2341,7 @@ frequency using a software package such as $MATLAB^{®*}$ and
  find the exact value of the 3-dB
 frequency from the resulting graph. Parameters: $g_m
 = 1$ $mS$, $C_{gs} = 40.7$ $fF$, $C_{gd}$ = $10$ $fF$, $C_{db}$ = $11.6$ $fF$, $R_{out}$
-= $5$ $k\ohm$ and $R_s$ = $50$ $k\ohm$ (same as in [Examples 3-7](#example-3-7). Compare 
+= $5$ $k\Omega$ and $R_s$ = $50$ $k\Omega$ (same as in [Examples 3-7](#example-3-7). Compare 
 the obtained number with the
 approximate results obtained in [Examples 3-7](#example-3-7).
 
@@ -2375,8 +2375,8 @@ bandwidth of the circuit in [Examples 3-8](#example-3-8).
 
 **P3.12** Consider the circuit of @fig-ex-3.8 with the
 following parameters: $W = 100$ $\mu m$, $L = 2$ $\mu m$,
-$I_B = 3$ $mA$, $V_B$ = $2.5$ $V$, $C_L$ = $100$ $fF$, $R_D$ = $1$ $k\ohm$ and
-$R_s$ = $10$ $k\ohm$ .
+$I_B = 3$ $mA$, $V_B$ = $2.5$ $V$, $C_L$ = $100$ $fF$, $R_D$ = $1$ $k\Omega$ and
+$R_s$ = $10$ $k\Omega$ .
 
 (a) Estimate the required DC input bias $V_S$ such
 that $I_D = I_B$ and $V_{OUT} = V_B$. Neglect channel-length
@@ -2426,7 +2426,7 @@ the current consumption of the circuit. For simplicity
 in your calculations, neglect channel-length
 modulation and consider only the intrinsic gate
 capacitance. Assume the following parameters:
-$R_s = 2R_D$, $R_D$ = $5$ $k\ohm$, $C_L$ = $1$ $pF$.
+$R_s = 2R_D$, $R_D$ = $5$ $k\Omega$, $C_L$ = $1$ $pF$.
 
 a. Show that the required drain current $I_D$ is related to 
 the circuit’s parameters and specifications as expressed 
@@ -2531,7 +2531,7 @@ small-signal DC gain is given by $$ \frac{v_{out}}{v_{in}} \simeq -G_mR_D$$ wher
 b. Using the results stated in [Problem 3.16](#p3.16),
  estimate the DC gain and 3-dB bandwidth of the
 circuit assuming the following parameters:
-$R_G = 10$ $k\ohm$, $R_S$ = $1$ $k\ohm$, $R_D$ = $5$ $k\ohm$,
+$R_G = 10$ $k\Omega$, $R_S$ = $1$ $k\Omega$, $R_D$ = $5$ $k\Omega$,
  $I_D$ = $500$ $\mu A$,
 $L= 1$ $\mu m$, and $W= 20$ $\mu m$. Consider only the
 two time constants contributed by $C_{gs}$ and $C{gd}$.

@@ -1,0 +1,36 @@
+```{python}
+#| label: fig-bf-17
+#| echo: false
+#| fig-cap: "Small signal model to find the return ratio for $g_{m}$"
+#| 
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    S2 = elm.SourceI().down().label(r'$i_{t}$',loc='bottom',color='red').dot()
+    elm.Line().left().length(2)
+    L4 = elm.Line().left().length(1)
+    S3 = elm.SourceControlledI().up().label(r'$g_{m}v$').reverse()
+    elm.Line().at(S3.end).right().length(1).reverse()
+    LL = elm.Line().down().dot()
+    elm.CurrentLabelInline(direction='out').at(LL.end).label(r'$i_r$',color='red',loc='bottom').color('red')
+    elm.Line().at(L4.end).left().length(3)
+    C = elm.Capacitor().up().color('gray')
+    L5 = elm.Line().left().length(1)
+    elm.Line().left().length(1).at(C.start).color('none')
+    elm.Gap().up().label(['$-$', '$v$', '$+$'])
+    elm.Line().up().at(L5.end).length(1)
+    elm.Line().right().length(2.5)
+    RF = elm.Resistor().right().label(r'$R_F$')
+    elm.Line().right().length(2.5)
+    elm.Line().down().to(S2.start)
+    elm.Ground().at(S2.end)
+    elm.Line().right().at(S2.start).length(2)
+    ro = elm.Resistor().down().label(r'$r_{o}$',loc='bottom')
+    elm.Dot().at(S3.start)
+    elm.Dot().at(L5.end).color('blue')
+    elm.Dot().at(S2.start).color('blue')
+    elm.Line().at(ro.end).to(S2.end)
+```

@@ -1,0 +1,20 @@
+```{python}
+#| label: fig-bf-24
+#| echo: false
+#| fig-cap: "Common source with degeneration"
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    M1 = elm.AnalogNFet(offset_gate=False).theta(0).anchor('drain').reverse().label(r'$M_1$',loc='rgt')
+    elm.Resistor().at(M1.source).label(r'$R_S$').down()
+    elm.Ground()
+    elm.Line().at(M1.gate).left().dot(open=True).label(r'$v_{IN}$',mathfont='dejavuserif',loc='lft')
+    elm.Resistor().at(M1.drain).label(r'$R_D$').up()
+    elm.Vdd().label(r'$V_{DD}$')
+    L1 = elm.Line().right().at(M1.drain).length(1).label(r'$v_{OUT}$',mathfont='dejavuserif',loc='rgt')
+    elm.Dot(open=True).at(L1.end)
+    elm.Dot().at(M1.drain)
+```

@@ -1,0 +1,39 @@
+```{python}
+#| label: fig-bf-28
+#| echo: false
+#| fig-cap: "return ratio with output port shorted"
+#| 
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+ 
+    Sc = elm.SourceControlledI().down().label(r'$g_m v_{gs}$',loc='top',color='black')
+    Lvu = elm.Line().up().at(Sc.start).length(1)
+    elm.CurrentLabelInline(direction='out').at(Lvu.end).label(r'$i_r$',color='red',loc='bottom').color('red')
+    Lht = elm.Line().at(Lvu.end).right().length(1.5)
+    elm.Line().down().length(1).color('blue')
+    Sx = elm.SourceI().down().label(r'$i_x$',loc='bot',color='blue').color('blue')
+    Lvd = elm.Line().at(Sc.end).length(1).dot().label(r'$S$')
+    Lhb = elm.Line().right().length(1.5)
+    elm.Line().up().to(Sx.end).color('blue')
+    LL = elm.Line().down().at(Lvd.end).length(2)
+    RS = elm.Resistor().down().label(r'$R_S$').at(LL.end)
+    elm.Line().right().at(RS.start).length(1.5)
+    elm.Resistor().down().label(r'$r_o$',loc='bot')
+    elm.Ground()
+    elm.CurrentLabelInline(length=1, direction='out').at(LL.end).label(r'$i_t $',color='green',loc='bottom',ofst=0.1).color('green').reverse()
+    elm.Ground().at(RS.end)
+    elm.Dot().at(Lvu.end)
+    LvR = elm.Line().at(Lvu.end).up().length(1.5)
+    elm.CurrentLabelInline(direction='out').at(LvR.end).label(r'$i_t$',color='red', loc='bottom').color('red')
+    # RD = elm.Resistor().up().label(r'$R_D$').at(LvR.end)
+    elm.Ground().left()
+    Gh = elm.Gap().at(Lvd.end).left().length(3)
+    Gv = elm.Gap().at(Gh.end).length(2).up()
+    L = elm.Line().left()
+    elm.Dot(open=True).label('G').at(L.start)
+    elm.Ground().down().label(r'$v_{in}=0$',loc='rgt').at(L.end)
+    elm.Dot().at(RS.start)
+```

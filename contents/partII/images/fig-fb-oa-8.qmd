@@ -1,0 +1,24 @@
+```{python}
+#| label: fig-fb-oa-8
+#| echo: false
+#| fig-cap: "op amp based inverting amplifier with break in the loop ($v_f = 0$)"
+import schemdraw as sd
+import schemdraw.elements as elm
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    op = elm.Opamp().label('$a_D$',loc='center',ofst=(-0.25,0),mathfont='dejavuserif')
+    elm.Line().left().length(0.5).at(op.in2)
+    elm.Line().down(0.5)
+    elm.Ground()
+    L = elm.Line().left().length(0.5).at(op.in1).dot()
+    elm.Line().up().length(1)
+    elm.Line().right().length(0.5)
+    elm.Resistor().label('$R_2$').right()
+    elm.Line().length(1).right()
+    elm.Ground().up()
+    elm.Line().at(op.out).right().length(1).dot(open=True).label(r'$v_\mathrm{out}$',loc='rgt')
+    elm.Line().at(L.end).left().length(0.5)
+    elm.Resistor().label('$R_1$').left()
+    elm.Line().left().length(0.5).dot(open=True).label('$v_{in}$',loc='lft')
+```

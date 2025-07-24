@@ -1,0 +1,47 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-11
+#| echo: false
+#| fig-cap: "Unrolled AC equivalent model for the constant-$g_m$ bias circuit"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    M4 = elm.AnalogPFet(offset_gate=False).theta(180).label(r'$M_{4}$',loc='lft').reverse()
+    elm.Dot().at(M4.drain)
+    elm.Line().right().length(1)
+    elm.Line().down().to(M4.gate).dot()
+    #L1 = elm.Line().down().at(M4.source).length(1).dot()
+    L1 = elm.Line().down().at(M4.source).dot()
+
+    elm.Ground().right()
+    elm.Line().right().at(L1.end).length(3)
+    #elm.Line().up().length(1)
+    elm.Line().up()
+
+    M3 = elm.AnalogPFet(offset_gate=False).theta(180).label(r'$M_{3}$',loc='rgt')
+    elm.Line().at(M3.gate).to(M4.gate).label(r'$v_4$')
+    elm.Line().at(M3.drain).up().length(1)
+    elm.Line().right()
+    elm.Line().down().length(1)
+    M1 = elm.AnalogNFet(offset_gate=False).theta(0).label(r'$M_{1}$').anchor('drain')
+    elm.Dot().at(M1.gate)
+    L2 = elm.Line().up().at(M1.gate).length(1)
+    elm.Line().left().to(M1.drain).dot()
+    elm.Line().right().length(1).at(M1.gate).label(r'$v_1$')
+    M2 = elm.AnalogNFet(offset_gate=False).theta(0).reverse().label(r'$M_{2}$',loc='rgt').anchor('gate')
+    R2 = elm.Resistor().label('$R_2$').down()
+    elm.Dot()
+    elm.Ground().right()
+    elm.Line().at(M1.source)    
+    elm.Line().right().to(R2.end)
+    L3 = elm.Line().up().at(M2.drain)
+    elm.Line().up().at(M4.drain)
+    elm.Line().right().to(L3.end)
+```

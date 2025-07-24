@@ -1,0 +1,33 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-rr-3
+#| echo: false
+#| fig-cap: "Block diagram model for closed-loop gain using the two-port framework"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    elm.Dot(open=True).label('$s_{in}$')
+    elm.Line().right().label('$_+$',loc='rgt',ofst=[-0.5,-0.1])
+    sm = dsp.SumSigma()
+    dsp.Arrow().right()
+    dsp.Box(w=2,h=1).label(r'$a = L A_\infty$',mathfont='dejavuserif')
+    elm.Line().right()
+    elm.Dot()
+    d.push()  # Save this drawing position/direction for later
+    elm.Line().right()
+    elm.Dot(open=True).label('$s_{out}$')
+    d.pop()   # Return to the pushed position/direction
+    elm.Line().down().length(d.unit*1)
+    dsp.Arrow().left()
+    dsp.Box(w=2,h=1).label(r'$b = 1 / A_\infty$',mathfont='dejavuserif')
+    elm.Line().tox(sm.S)
+    elm.Line().up().length(d.unit/2)
+    dsp.Arrow().toy(sm.S).label('$_-$', loc='bottom', ofst=[0.2,0])
+```

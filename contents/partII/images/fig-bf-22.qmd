@@ -1,0 +1,50 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-bf-22
+#| echo: false
+#| fig-cap: "Small signal model for ZVTC calculations, assuming $r_o$ can be ignored"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    Idep = elm.SourceControlledI().label(r'$g_m v_{gs}$',loc='top',mathfont='dejavuserif').left()
+    Lhl = elm.Line().at(Idep.end).left().label(r'$S$')
+    Ii = elm.SourceI().label(r'$i_i$',loc='top',mathfont='dejavuserif').down().reverse()
+    elm.Ground()
+    Ri = elm.Resistor().label(r'$R_i$',loc='bot').down().at(Lhl.center)
+    elm.Ground()
+    C = elm.Capacitor().color('gray').label(r'$C_{gs}$',loc='top').at(Lhl.end).left().label(r'$G$',loc='lft',color='black',ofst=(0,-0.3))
+    RG = elm.Resistor().down().label(r'$R_G$',loc='top')
+    elm.Ground()
+    elm.Line().right().at(Idep.start).length(1).label(r'$D$')
+    RL = elm.Resistor().down().label(r'$R_L$',loc='bot')
+    elm.Ground()
+    elm.Dot().at(Lhl.center).color('black')
+    elm.Dot().at(Ii.start).color('gray')
+
+
+    # elm.Vdd().label('$V_{DD}$')
+    # IB = elm.SourceI().label(r'$I_B$',loc='bottom').down()
+    # M1 = elm.AnalogNFet(offset_gate=False).theta(0).label(r'$M_{1}$',loc='rgt', ofst=[-0,+0]).reverse()
+    # elm.Line().left().at(M1.drain).length(0.5)
+    # RF = elm.Resistor().left().label(r'$R_F$')
+    # elm.Line().left().length(0.5)
+    # L = elm.Line().down().length(0.5)
+    # L1 = elm.Line().down().length(0.5)
+    # L2 = elm.Line().down().length(0.5)
+    # Is = elm.SourceI().label(r'$i_{in}$').down().reverse()
+    # elm.Line().at(M1.gate).left().length(2.1).dot()
+    # elm.Ground().at(Is.end)
+    # elm.Dot().at(M1.drain)
+    # Ls = elm.Line().at(M1.source).down().length(1.9)
+    # elm.Ground().at(Ls.end)
+    # Lo = elm.Line().at(RF.start).right()
+    # elm.ZLabel().at(Lo).label('$R_{out}$',loc='top',ofst=(-0.8,0),color='blue').left().reverse().color('blue')
+    # elm.ZLabel().at(L1.start).label('$R_{in}$',loc='top',ofst=(0,-1.5),color='blue').up().reverse().color('blue')
+```

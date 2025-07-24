@@ -1,0 +1,38 @@
+::: {.content-hidden}
+Copyright (C) 2024 Claudio Talarico (talarico@gonzaga.edu)
+:::
+
+```{python}
+#| label: fig-bf-23
+#| echo: false
+#| fig-cap: "return ratio with port G-S open"
+import schemdraw as sd
+import schemdraw.elements as elm
+import schemdraw.dsp as dsp
+with sd.Drawing() as d:
+    d.config(unit=2)
+    d.config(fontsize=16)
+    
+    It = elm.SourceI().label(r'$i_t$',color='red',loc='top',mathfont='dejavuserif').left()
+    Lhl = elm.Line().at(It.end).left().label(r'$S$')
+    Ri = elm.Resistor().label(r'$R_i$',loc='bot').left().at(Lhl.end)
+    elm.Ground().down()
+    Lv = elm.Line().at(Lhl.center).down().length(4)
+    elm.Line().at(Lv.center).right().length(1)
+    Ir = elm.SourceControlledI().label(r'$g_m v_{gs}$',loc='top').reverse().right()
+    elm.Line().right().length(1)
+    elm.Line().down(1)
+    Lir = elm.Line().left(4).dot()
+    elm.CurrentLabelInline(direction='out', ofst=-0.15).at(Lir).label('$i_r$',loc='bot',color='red').color('red')
+    Lve = elm.Line().down().at(Lv.end).length(0.5)
+    
+    elm.Gap().right().label([r'$-$','', r'$v_{gs}$',' ', r'$+$']).at(Lve.end)
+    RG = elm.Resistor().down().label(r'$R_G$',loc='bot')
+    elm.Ground()
+    
+    RL = elm.Resistor().label(r'$R_L$',loc='bot').at(It.start).right()
+    elm.Ground().up()
+    elm.Dot().at(Lhl.center).color('blue')
+    elm.Dot().at(Lv.center)
+    elm.Dot().at(RG.start).label(r'$G$',color='black',loc='rgt').color('blue')
+```
