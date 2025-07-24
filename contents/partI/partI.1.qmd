@@ -240,7 +240,7 @@ potential limitations of working with simplified models.
 
 ![Two-port model of the transimpedance amplifier circuit in @fig-1.5.](images/png/figure1.7.png){#fig-1.7 width=100%}
 
-## Two-Port Abstraction for Amplifiers
+## Two-Port Abstraction for Amplifiers{#two-port-abstraction-for-amplifiers}
 
 High-level system block diagrams, such as
 @fig-1.2 , are typically drawn as unidirectional

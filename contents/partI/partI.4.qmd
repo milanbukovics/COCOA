@@ -1,3 +1,888 @@
-# The Common-Gate and Common-Drain Stages {#sec-ch4}
+---
+bibliography: partI.4.bib
+---
+<div style="text-align: justify">
 
-TBD.
+
+# The Common-Gate and Common-Drain Stages {#thecommon-gate-and-common-drain-stages}
+
+
+As we have seen from the discussion in the previous
+two chapters, the common-source stage can be used
+to realize a basic voltage amplifier. In this chapter,
+we will introduce the common-gate and common-drain stages, which, for instance, can be combined with the common-source amplifier to enhance
+its performance. More generally, as already 
+indicated in [Section 1-1](#sec-introduction), most analog amplifier circuits
+can be modeled as a combination of common-source,
+common-gate and common-drain configurations.
+For this reason, the three basic stage
+configurations can be viewed as the “atoms” of analog 
+circuit design.
+
+
+
+<!-- TODO make the section 1 link work--> 
+
+::: {.callout-tip} 
+## Chapter Objectives
+
+◆ Analyze the common-gate and common-drain
+stages with respect to their low- and high-frequency
+ transfer functions and port resistances
+(and impedances).
+
+◆ Extend the MOSFET model as needed to capture
+relevant new effects that must be included in the
+analysis.
+
+◆ Provide a first pass look at application examples
+for the common-gate and common-drain stages
+
+:::
+
+
+## Overview of Stage Configurations {#overview-of-stage-configurations}
+
+In the common-source (CS) amplifier discussed in
+the previous chapters, the input signal is applied to
+the gate and the output signal is taken from the
+drain. In a **common-gate (CG) amplifier**, the source
+is used as the input and the drain serves as the output
+terminal. In the **common-drain (CD) amplifier**, the
+input is applied at the gate and the output is taken
+from the source. Thus, in the context of two-port
+amplifiers with one terminal common between the
+input and output, the CS, CG, and CD circuits 
+represent all three possible configurations (see
+@fig-4.1).
+
+![Conceptual illustration of the three elementary transistor stage configurations.](images/png/figure4.1.png){#fig-4.1 width=100%}
+
+
+&nbsp;&nbsp;&nbsp;In our detailed analysis of the CG amplifier, we
+will find that this topology has a very low input resistance
+and a very high output resistance, which is
+exactly what we would want in a current amplifier.
+Conversely, the CD stage has a high input resistance
+and a small output resistance, which corresponds to
+the desired characteristics of a voltage amplifier (see
+[Section 1-3](#two-port-abstraction-for-amplifiers)).
+
+## Bulk Connection Scenarios and Required Model Extensions {# bulk-conneciton-scenarios}
+
+Before engaging in a detailed analysis of the CG and
+CD stages, we need to think about the bulk connection
+in these stages. For the CS stage discussed so far,
+it was natural to connect the bulk to the source of the
+MOSFET. However, now that the source is connected
+either to the input or output port, we need to
+develop an understanding of the available options.
+
+&nbsp;&nbsp;&nbsp; The first aspect to consider is related to technology constraints, and specifically how the n-channel
+and p-channel devices are formed in the integrated
+circuit substrate. As already indicated in
+[Section 2-1-2](#p-channel-mosfet), we assume in this module that the
+MOSFETs are built in a so-called n-well technology (see @fig-4.2). This means that the substrate is
+p-type, and the n-channel transistors are formed
+directly in the substrate. In order to create p-channels,
+n-type wells are diffused into the substrate, and
+the p-channels are subsequently formed in these
+regions.
+
+
+![Cross-section of an n-well CMOS technology.](images/png/figure4.2.png){#fig-4.2 width=100%}
+
+
+Given the cross-section of @fig-4.2, it is clear
+that all n-channel transistors share the same bulk
+node. In contrast, the bulk node of a p-channel
+MOSFET can be isolated and freely connected to an
+arbitrary potential. @fig-4.3shows the possible
+bulk connection scenarios arising from these 
+constraints. For CG and CD stages built using n-channels
+in an n-well process, the bulks are always
+connected to the substrate potential (assumed to be
+“ground” in this module) by default. On the other
+hand, we are free to choose the bulk connection in
+p-channel CG and CD amplifiers. The most common
+scenarios encountered in practice are to tie the
+p-channel bulk to the supply voltage ($V_{DD}$), or to the
+source terminal. Either choice can have advantages
+and disadvantages, depending on the given circuit.
+In order to be able to reason about the associated
+tradeoffs, we will now extend the MOSFET model
+such that the bulk node is incorporated as a fourth
+“free” terminal.
+
+![Possible bulk connection scenarios.](images/png/figure4.3.png){#fig-4.3 width=100%}
+
+
+### Well Capacitance {#well-capacitance}
+
+
+As indicated in @fig-4.2, the n-well region of the
+p-channel transistor forms a pn-junction with the
+p-type substrate ($D_{bsub}$). Similar to the junctions
+formed by the source/drain regions (see
+[Section 3-3-1](#modeling-extrinsic-mosfet-capacitance)), we can model this junction as a parasitic
+capacitance between the bulk terminal and the
+substrate. Whether or not this capacitance must be
+considered depends on the bulk connection. As
+shown in  @fig-4.4, if the bulk is tied to the supply,
+the junction capacitance is typically irrelevant, since
+it is connected between $V_{DD}$ and ground, having no
+impact on circuit nodes that carry the signal. On the
+other hand, if the bulk is connected to the source, the
+capacitance will appear across the input port for the
+CG stage, and across the output port of the CD
+stage. In this case, the parasitic capacitance contribution
+from the well must be taken into account.
+
+![Connection of the well-to-substrate diode for various configurations. (a) P-channel bulk
+connected to the supply. (b) Bulk connected to the
+source in a p-channel common-gate stage. (c) Bulk
+connected to the source in a p-channel
+common-drain stage.](images/png/figure4.4.png){#fig-4.4 width=100%}
+
+&nbsp;&nbsp;&nbsp; Similar to the expression we used to estimate the
+source/drain junction capacitances, we can obtain an
+estimate for the well capacitance using
+
+$$
+C_{bsub} = \frac{C_{Jwell \cdot A_{well}}}{(1+V_{BSUB} / PB)^{MJ}}
+$${#eq-4.1}
+
+This expression is similar to @eq-3.33, except that
+the sidewall contribution has been omitted for simplicity.
+In @eq-4.1, $V_{BSUB}$ is the voltage between the
+bulk node and the substrate 
+(a positive voltage, i.e.,the junction is reverse biased).
+$C_{Jwell}$ is the zero-bias
+depletion capacitance parameter for the junction
+and Awell is the area of the n-well under consideration.
+The well area depends strongly on the actual
+layout of the transistor. However, for approximate
+calculations it is often sufficient to assume a basic
+rectangular well shape using reasonable geometry
+estimates. We will illustrate this using an example.
+
+
+**[Example 4-1]{#example-4-1}: Well Capacitance Calculation**
+
+Consider a p-channel MOSFET that was laid out as
+shown in @fig-ex-4.1. Estimate the well-to-substrate
+capacitance Cbsub assuming the following
+parameters: $W = 10$ $μm$, $L = 3$ $μm$, $X_1 = 5$ $μm$ 
+(diffuion to well edge spacing), $X2 = 3$ $μm$ 
+(diffusion spacing), 
+$C_{Jwell} = 0.05$ $fF/μm^2$, and $V_{BSUB} = 2.5$ $V$.
+
+**SOLUTION**
+
+From @fig-ex-4.1, we see that 
+
+$$
+A_{welll} = (W + 2X_1) \cdot (L +2L_{diff} + 2X_1 +X_2)
+$$
+
+$$
+= (10 +10) \cdot (1 + 6 + 10+ 3)µm^2
+$$
+
+$$
+= 400µm^2
+$$
+
+
+Using @eq-4.1 and the technology parameters for
+$PB$ and $MJ$ from [Table 3-1](#table-3-1), we obtain
+
+<!-- TODO table 3.1 linking --> 
+
+$$
+C_{bsub} = \frac{C_{Jwell \cdot A_{well}}}{(1+V_{BSUB} / PB)^{MJ}}
+$$
+
+
+$$
+= \frac{0.05fF \cdot400}{(1+2.5 / 0.95)^{0.95}}
+$$
+
+$$
+= 10.5fF
+$$
+
+
+![](images/png/figure-ex-4.3.png){#fig-ex-4.3 width=100%}
+
+
+From the above calculation, we see that the well
+capacitance can be comparable to the intrinsic and
+extrinsic device capacitances (see [Example 3-5](#example-3-5)).
+Hence, whenever the designer chooses a bulk 
+connection for which the well capacitance appears at an
+internal circuit node (other than the supply), care
+must be taken in estimating $C_{bsub}$ and incorporating
+this capacitance in the overall circuit model.
+
+&nbsp;&nbsp;&nbsp;As a final note, it is worth mentioning that most
+circuit simulation tools, such as SPICE, do not 
+automatically account for the well capacitance. 
+Whenever relevant, the circuit designer must (manually)
+ensure that an appropriate modeling element is
+included in the simulation. This can be done, for
+example, by adding a properly modeled diode or
+capacitor to the node in question.
+
+
+### [Backgate Effect]{#backstage-effect}
+
+In [Section 2-1](#first-order-mosfet-model), 
+we analyzed the MOSFET’s I-V characteristics 
+assuming that the bulk node is connected
+to the source, i.e., $V_{SB}$ = 0. However, in the CG and
+CD configurations, this is not the case unless the
+designer opted for a source-to-bulk tie as in the 
+circuits of @fig-4.4(b) and (c). Therefore, we will now
+refine the I-V expressions from
+[Section 2-1](#first-order-mosfet-model), for the
+case of non-zero $V_{SB}$ and using an n-channel MOSFET for the analysis.
+
+
+&nbsp;&nbsp;&nbsp;For an n-channel device with positive $V_{SB}$ —i.e.,
+the source lies at a higher potential than the
+(grounded) substrate—the primary effect is that the
+depletion region between the source and the sub-
+strate is widened (see @fig-4.5). This follows from
+the usual behavior of pn junctions—the depletion
+region of a reverse biased junction widens for
+increasing reverse bias.
+
+![N-channel MOSFET with backgate bias $V_{SB} >0$. The depletion region widens in comparison with $V_{SB} = 0$.](images/png/figure4.5.png){#fig-4.5 width=100%}
+
+&nbsp;&nbsp;&nbsp; Qualitatively speaking, the widened depletion
+region increases the amount of negative fixed charge
+($NA^-$) near the source. This extra negative charge
+opposes the injection of electrons from the source,
+and hence a larger $V_{GS}$ is needed to cause the same
+drain current $I_D$. The larger required $V_{GS}$ is 
+commonly modeled as an effective increase in the
+device’s threshold voltage. The dependence of the
+threshold voltage on the bulk-source voltage is
+called **backgate effect**. A detailed analysis based on
+solid-state physics reveals that the relationship
+between the applied $V_{SB}$ and the MOSFET’s threshold
+voltage is given by the following expression (see
+[Reference 1](#reference-1)):
+
+<!-- TODO reference 1 linking --> 
+
+$$
+V_{Tn}(V_{SB}) = V_{TOn} + γ_n(\sqrt{2φ_f+V_{SB}}-\sqrt{2φ_f})
+$${#eq-4.2}
+
+where $V_{TOn}$ is the threshold voltage without backgate
+effect, $γ_n$ is the n-channel MOSFET **backgate effect
+parameter**, and $φ_f$ is the surface potential parameter.
+With backgate effect included, the large-signal I-V
+characteristic for the saturation region is
+
+$$
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn}(V_{SB}))^2 (1+\lambda_n V_{DS})
+$${#eq-4.3}
+
+which is identical to @eq-2.45, except that $V_{Tn}$ is
+now a function of $V_{SB}$, as defined in @eq-4.2.
+
+&nbsp;&nbsp;&nbsp; In order to incorporate the backgate effect into
+the small signal model of the transistor, we will fol-
+low exactly the same approach as in 
+[Section 2-3-1](#the-lambda-model).
+That is, we approximate the incremental drain current
+around the operating point as the total differential,
+now with a drain current perturbation due to $v_{bs}$
+included:
+
+$$
+i_d = \left\frac{i_D}{V_{GS}}\right|_Q \cdot v_{gs} + \left\frac{i_D}{V_{DS}}\right|_Q \cdot v_{ds} + \left\frac{i_D}{V_{BS}}\right|_Q \cdot v_{bs}
+$${#eq-4.4}
+
+<!--TODO add the partial sign to the equation --> 
+$$
+= g_mv_{gs} + g_ov_{ds} + g_{mb}v_{bs}
+$$
+
+In this expression, gm and go are the transconductance
+and output conductance, respectively, and as
+derived previously in [Chapter 2](#sec-cs_transfer).
+The new term $g_{mb}$ is
+called **backgate transconductance** and represents the
+perturbation of the drain current by an incremental
+change in the bulk-source voltage.
+
+&nbsp;&nbsp;&nbsp; To compute $g_{mb}$, it is convenient to expand
+the partial derivative in @eq-4.4 using the chain rule
+
+$$
+g_{mb} = \left\frac{i_D}{v_{SB}}\right|_Q
+$$
+
+$$
+= \left\frac{i_D}{(V_{GS}-V_{Tn})}\right|_Q \left\frac{(V_{GS}-V_{Tn})}{V_{Tn}}\right|_Q \left\frac{V_{Tn}}{v_{SB}}\right|_Q
+$${#eq-4.5}
+<!--TODO add the partial sign to the equation --> 
+
+The first partial derivative in the above expression is
+simply $g_m$. The second term is equal to –1. Therefore,
+after partial differentiation of the threshold voltage
+[@eq-4.2] we obtain
+
+$$
+g_{mb} = -g_m \left\frac{V_{Tn}}{v_{BS}}\right|_Q = \frac{g_mγ_n}{2\sqrt{2φ_f+V_{SB}}}
+$${#eq-4.6}
+
+Analogous to the way we incorporated $g_m$ and $g_o$, the
+backgate transconductance can be included in the
+transistor’s small signal model as shown in
+@fig-4.6. As defined in @eq-4.4, the $g_{mb}$ element
+captures the dependence of the drain current to
+incremental changes in the bulk-source voltage.
+From this final result, we see that the term **backgate**
+was coined to reflect that the bulk acts just like
+another gate of the transistor. The only difference
+between the backgate and the actual gate node is
+that the backgate is physical located at the back side
+of the MOSFET, separated from the channel by a
+depletion layer.
+
+&nbsp;&nbsp;&nbsp;For circuit design, it is useful 
+to have a feel for the
+magnitude of $g_{mb}$, as well as for the range of threshold
+voltage ranges for typical bias conditions. The
+following example investigates typical  numbers for
+the technology assumed in this module.
+
+
+![N-channel MOSFET small-signal model for the saturation region with backgate transconductance ($g_{mb}$) included.](images/png/figure4.6.png){#fig-4.6 width=100%}
+
+
+**[Example 4-2]{#example-4-2}: Backgate Effect**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

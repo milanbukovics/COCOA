@@ -95,6 +95,10 @@ bibliography:
   - contents/partI/partI.1.bib
   - contents/partI/partI.2.bib
   - contents/partI/partI.3.bib
+<<<<<<< Updated upstream
+=======
+  - contents/partI/partI.4.bib
+>>>>>>> Stashed changes
   - contents/partI/partI.5.bib
   - contents/partII/partII.2.bib
 
