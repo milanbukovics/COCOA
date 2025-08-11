@@ -4,7 +4,7 @@ bibliography: partI.4.bib
 <div style="text-align: justify">
 
 
-# The Common-Gate and Common-Drain Stages {#thecommon-gate-and-common-drain-stages}
+# The Common-Gate and Common-Drain Stages {#the-common-gate-and-common-drain-stages}
 
 
 As we have seen from the discussion in the previous
@@ -68,7 +68,7 @@ and a small output resistance, which corresponds to
 the desired characteristics of a voltage amplifier (see
 [Section 1-3](#two-port-abstraction-for-amplifiers)).
 
-## Bulk Connection Scenarios and Required Model Extensions {# bulk-conneciton-scenarios}
+## Bulk Connection Scenarios and Required Model Extensions {#bulk-connection-scenarios-and-required-model-extensions}
 
 Before engaging in a detailed analysis of the CG and
 CD stages, we need to think about the bulk connection
@@ -97,7 +97,7 @@ Given the cross-section of @fig-4.2, it is clear
 that all n-channel transistors share the same bulk
 node. In contrast, the bulk node of a p-channel
 MOSFET can be isolated and freely connected to an
-arbitrary potential. @fig-4.3shows the possible
+arbitrary potential. @fig-4.3 shows the possible
 bulk connection scenarios arising from these 
 constraints. For CG and CD stages built using n-channels
 in an n-well process, the bulks are always
@@ -295,8 +295,8 @@ which is identical to @eq-2.45, except that $V_{Tn}$ is
 now a function of $V_{SB}$, as defined in @eq-4.2.
 
 &nbsp;&nbsp;&nbsp; In order to incorporate the backgate effect into
-the small signal model of the transistor, we will fol-
-low exactly the same approach as in 
+the small signal model of the transistor, we will follow 
+exactly the same approach as in 
 [Section 2-3-1](#the-lambda-model).
 That is, we approximate the incremental drain current
 around the operating point as the total differential,
@@ -304,10 +304,14 @@ now with a drain current perturbation due to $v_{bs}$
 included:
 
 $$
-i_d = \left\frac{i_D}{V_{GS}}\right|_Q \cdot v_{gs} + \left\frac{i_D}{V_{DS}}\right|_Q \cdot v_{ds} + \left\frac{i_D}{V_{BS}}\right|_Q \cdot v_{bs}
-$${#eq-4.4}
+i_d =
+\left.\frac{\partial i_D}{\partial v_{GS}}\right|_{Q}\, v_{gs}
++ \left.\frac{\partial i_D}{\partial v_{DS}}\right|_{Q}\, v_{ds}
++ \left.\frac{\partial i_D}{\partial v_{BS}}\right|_{Q}\, v_{bs}
+$$ {#eq-4.4}
 
-<!--TODO add the partial sign to the equation --> 
+
+
 $$
 = g_mv_{gs} + g_ov_{ds} + g_{mb}v_{bs}
 $$
@@ -324,22 +328,29 @@ change in the bulk-source voltage.
 the partial derivative in @eq-4.4 using the chain rule
 
 $$
-g_{mb} = \left\frac{i_D}{v_{SB}}\right|_Q
+g_{mb} =
+\left.\frac{\partial i_D}{\partial v_{SB}}\right|_{Q}
 $$
 
 $$
-= \left\frac{i_D}{(V_{GS}-V_{Tn})}\right|_Q \left\frac{(V_{GS}-V_{Tn})}{V_{Tn}}\right|_Q \left\frac{V_{Tn}}{v_{SB}}\right|_Q
-$${#eq-4.5}
+= \left.\frac{\partial i_D}{\partial (V_{GS} - V_{Tn})}\right|_{Q}
+\left.\frac{\partial (V_{GS} - V_{Tn})}{\partial V_{Tn}}\right|_{Q}
+\left.\frac{\partial V_{Tn}}{\partial v_{BS}}\right|_{Q}
+$$ {#eq-4.5}
+
 <!--TODO add the partial sign to the equation --> 
 
 The first partial derivative in the above expression is
 simply $g_m$. The second term is equal to –1. Therefore,
 after partial differentiation of the threshold voltage
-[@eq-4.2] we obtain
+@eq-4.2 we obtain
 
 $$
-g_{mb} = -g_m \left\frac{V_{Tn}}{v_{BS}}\right|_Q = \frac{g_mγ_n}{2\sqrt{2φ_f+V_{SB}}}
-$${#eq-4.6}
+g_{mb}
+= -g_m \left.\frac{\partial V_{Tn}}{\partial v_{BS}}\right|_{Q}
+= \frac{g_m \gamma_n}{2\sqrt{2\phi_f + V_{SB}}}
+$$ {#eq-4.6}
+
 
 Analogous to the way we incorporated $g_m$ and $g_o$, the
 backgate transconductance can be included in the
@@ -365,151 +376,888 @@ the technology assumed in this module.
 
 ![N-channel MOSFET small-signal model for the saturation region with backgate transconductance ($g_{mb}$) included.](images/png/figure4.6.png){#fig-4.6 width=100%}
 
+<!-- continuing from here -->
 
 **[Example 4-2]{#example-4-2}: Backgate Effect**
 
+Consider an n-channel MOSFET with the following parameters $V_{T0n} = 0.5\ \mathrm{V}$,
+$\gamma_{n} = 0.6\ \mathrm{V^{1/2}}$, 
+$\phi_{f} = 0.4\ \mathrm{V}$, and $V_{SB} = 2.5\ \mathrm{V}$, $1.5\ \mathrm{V}$, and $0\ \mathrm{V}$.  
+
+For each case, calculate $V_{Tn}$ and the ratio $\frac{g_{mb}}{g_{m}}$.
+
+**SOLUTION**
+
+Evaluating Eqs. (4.2) and (4.6) for $V_{SB} = 2.5\ \mathrm{V}$, we have  
+
+$$
+V_{Tn} = V_{TOn} + \gamma_n \left( \sqrt{2\phi_f + V_{SB}} - \sqrt{2\phi_f} \right)
+$$
+
+$$
+= 0.5\ \mathrm{V} + 0.6\ \mathrm{V^{1/2}} \left( \sqrt{0.8\ \mathrm{V} + 2.5\ \mathrm{V}} - \sqrt{0.8\ \mathrm{V}} \right)
+= 1.05\ \mathrm{V}
+$$
+
+$$
+\frac{g_{mb}}{g_m} =
+\frac{\gamma_n}{2\sqrt{2\phi_f + V_{SB}}}
+= \frac{0.6\ \mathrm{V^{1/2}}}{2\sqrt{0.8\ \mathrm{V} + 2.5\ \mathrm{V}}}
+= 0.165
+$$
+
+
+
+After evaluating the same expressions for the
+remaining two cases, we can summarize the obtained
+results as shown in the table below.
+
+
+| $V_{SB}$ [V] | $V_{Tn}$ [V] | $g_{mb} / g_m$ |
+|--------------|--------------|----------------|
+| 2.5          | 1.05         | 0.165          |
+| 1.5          | 0.87         | 0.198          |
+| 0            | 0.50         | 0.335          |
+
+
+
+From these values, we see that the threshold voltage
+of an n-channel MOSFET in our technology shifts
+up by about $0.5 V$ as the source-bulk bias voltage
+approaches $2.5 V$ (half of the supply voltage
+assumed in this module). The backgate transconductance
+ranges approximately between 15% and 30%
+of gm over the same backgate bias range. Note that
+the backgate transconductance reduces for larger
+$V_{SB}$. This makes intuitive sense, since the depletion
+region widens for larger reverse bias. Qualitatively
+speaking, this increases the distance from the bulk
+electrode to the inversion layer, weakening the
+effect of backgate voltage changes on the incremental
+ drain current.
+
+[Table 4-1](#tbl-4.1) summarizes the MOSFET modeling
+parameters for our standard technology with backgate
+effect parameters included. This table
+represents the complete set of parameters used in
+this module; no further extensions will be needed.
+
+:::: {.table .striped .hover}
+Table: Standard technology parameters for the λ-model,
+with intrinsic and extrinsic capacitance parameters, as well
+as backgate effect parameters included. {#tbl-4.1}
+
+
++------------------------+:----------------------:+:----------------------:+
+| **Parameter**          | **n-channel MOSFET**   | **p-channel MOSFET**   |
++========================+:======================:+:======================:+
+| Threshold voltage      | $V_{Tn}$ = 0.5V        | $V_{Tp}$ = -0.5V       |
++------------------------+------------------------+------------------------+
+| Transconductance       | $μ_nC_{ox}= 50μA/V^2$  |$μ_pC_{ox}= 25μA/V^2$   |
+|    parameter           |                        |                        |
++------------------------+------------------------+------------------------+
+|Chanel length modulation|$\lambda_n =0.1V^{-1}/L$|$\lambda_p =0.1V^{-1}/L$|
+|    parameter           |                        |                        |
+|                        |($L$ in $\mu m$)        |($L$ in $\mu m$)        |
++------------------------+------------------------+------------------------+
+|Gate oxide capacitance  |$C_{ox} = 2.3fF/\mu m^2$                         | 
+|per unit area           |                                                 | 
++------------------------+-------------------------------------------------+
+|Overlap Capacitance     | $C_{ov} = 0.5fF/\mu m$                          | 
+|                        |                                                 | 
++------------------------+------------------------+------------------------+
+|Zero-bias planar bulk   |$C_{Jn} = 0.1fF/\mu m^2$|$C_{Jp} = 0.3fF/\mu m^2$|  
+|depletion capacitance   |                        |                        |
++------------------------+------------------------+------------------------+
+|Zero-bias sidewall bulk |$C_{JSWn}=0.5fF/\mu m$  |$C_{JSWp}=0.35fF/\mu m$ |  
+|depletion capacitance   |                        |                        |
++------------------------+------------------------+------------------------+
+|Bulk junction potential |$PB = 0.95$ $V$                                  |
++------------------------+------------------------+------------------------+
+|Planar bulk junction    |$MJ = 0.5$                                       |
+|grading coefficient     |                                                 |
++------------------------+------------------------+------------------------+
+|Sidewall bulk junction  |$MJSW = 0.33$                                    |
+|grading coefficient     |                                                 |
++------------------------+------------------------+------------------------+
+|Length of source and    | $L_{diff} = 3\mu m$                             |
+|drain diffusions        |                                                 |
++------------------------+------------------------+------------------------+
+|Backgate effect         |$\gamma_n$ =            |$\gamma_n$ =            |
+|parameter               |$0.6^{\frac{1}{2}}$     |$0.6^{\frac{1}{2}}$     |
++------------------------+------------------------+------------------------+
+|Surface potential       |$\phi_f = 0.4V$                                  |
+|parameter               |                                                 |
++------------------------+-------------------------------------------------+
+
+::::
 
 
+## Analysis of the Common-Gate Stage {#analysis-of-the-common-gate-stage}
 
 
+Using the additional modeling insight obtained in
+the previous section, we are now ready to analyze
+the CG circuit in detail. For the derivations in this
+section, we will assume the circuit topology shown in @fig-4.1. In this example configuration, the MOSFET’s
+quiescent point drain current (and $V_{GS}$) is
+established using the input bias current source $I_B$.
+The auxiliary bias voltage source $V_B$ is used to define
+the operating point node voltages at the gate and
+source of the transistor. The resistor $R_D$ sources the
+bias current and sets the quiescent point voltage at
+the output node. One minor additional point to note
+is that the circuit is drawn different from
+@fig-4.1(b) such that the drain node lies above the source.
+This is the preferred way to draw this circuit
+for large-signal analysis, since one can better visualize
+the DC bias point levels. The drain lies at a higher
+DC potential than the source.
+
 
 
+![Practical realization of a CG transresistance amplifier with biasing circuitry included.](images/png/figure4.7.png){#fig-4.7 width=100%}
 
 
 
+&nbsp;&nbsp;&nbsp; Since there are many different ways to configure
+the source, bias, and load network of the stage, we
+distinguish the circuitry outside the dashed line from
+the core of the stage, which is essentially just the
+MOSFET with its ac-grounded gate. This distinction
+makes the results derived below more modular and
+generally applicable. For instance, when we derive
+expressions for small-signal port resistances, we 
+distinguish between the core components ($R_{in}$ and $R_{out}$
+shown in @fig-4.7) and any resistances in the
+source, bias, and load network that appear in parallel.
+Also, depending on how the CG circuit is used,
+the output variable of interest may be either the voltage
+at the output or the current that flows into the
+output network. For the discussion in this chapter,
+we assume that the intended output is the voltage
+$v_{OUT}$ as indicated in @fig-4.7. With this choice, the
+(low-frequency) gain of the circuit $v_{out}/i_s$ is a transresistance.
 
 
 
+&nbsp;&nbsp;&nbsp; The detailed analysis below consists of several
+parts. First, we will establish basic expressions for the circuit’s 
+operating point and derive the conditions for MOSFET operation in the saturation
+region. Next, we will analyze the CG circuit core in
+terms of its port resistances, which will show that it is
+most appropriately modeled as a current amplifier.
+Finally, the obtained results are extended to include
+high-frequency effects due to capacitive elements.
 
 
+### Bias Point Analysis {#bias-point-analysis}
 
 
+To determine the amplifier’s node voltages at the
+operating point, we consider the circuit with the
+small-signal source $i_s$ and its (small-signal) source
+resistance $r_s$ removed (see @fig-4.8). From this 
+circuit we see that $I_D$ = $I_B$, and thus
 
+$$
+V_{OUT} = V_{DD} - I_B R_D
+$$ {#eq-4.7}
 
+A more complex analysis is needed to find the voltage at the source node, $V_S$.  
+We begin by recognizing that
 
+$$
+V_S = V_B - V_{GS}
+$$ {#eq-4.8}
 
+Assuming that the MOSFET operates in the saturation region (which is subject to verification), we know that
 
+$$
+I_D = I_B = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} (V_{GS} - V_{Tn})^2 (1 + \lambda_n V_{DS})
+$$ {#eq-4.9}
 
+where
 
+$$
+V_{Tn} = V_{TOn} + \gamma_n \left( \sqrt{2\phi_f + V_{SB}} - \sqrt{2\phi_f} \right)
+$$ {#eq-4.10}
 
+and $V_{SB} = V_S$. Neglecting channel length modulation (i.e., assuming $\lambda_n V_{DS} ≅ 0$), we can solve @eq-4.9 for $V_{GS}$:
 
+$$
+V_{GS} = V_{Tn} + \sqrt{\frac{I_B}{\frac{1}{2} \mu_n C_{ox} \frac{W}{L}}}
+= V_{Tn} + V_{OV}
+$$ {#eq-4.11}
 
+Substituting back into @eq-4.8, we have
 
+$$
+V_S = V_B - V_{Tn}(V_S) - \sqrt{\frac{I_B}{\frac{1}{2} \mu_n C_{ox} \frac{W}{L}}}
+$$ {#eq-4.12}
 
+![Simplified schematic of the CG amplifier for bias point calculations.](images/png/figure4.8.png){#fig-4.8 width=100%}
 
 
+Unfortunately this is a transcendental equation and
+obtaining a precise solution will require numerical
+iterations (using @eq-4.10 with $V_{SB}$ = $V_S$). However,
+since the dependence of $V_{Tn}$ on $V_S$ is relatively weak,
+a calculation with one or two iterations tends to give
+a satisfactory answer for the purpose of hand analysis.
+This is illustrated in [Example 4.3](#example-4-3) below.
+Once $V_S$ is computed, we can ensure that the
+MOSFET operates in saturation by checking the following
+inequality:
 
+$$
+V_{DS} = V_{OUT} - V_{S} > V_{DSsat} = V_{GS} - V_{Tn}
+$$ {#eq-4.13}
 
 
 
+**[Example 4-3]{#example-4-3}: Well Bias Point Calculation for a Common Gate Stage**
 
+Consider the common-gate circuit shown in Figure 4-8 with the following 
+parameters: $V_{DD} = 5\ \mathrm{V}$, $V_{B} = 2.5\ \mathrm{V}$,
+$I_{B} = 400\ \mu\mathrm{A}$, $R_{D} = 3\ \mathrm{k\Omega}$.  
 
+For the MOSFET, assume $W = 100\ \mu\mathrm{m}$, $L = 1\ \mu\mathrm{m}$, and the standard technology parameters given in [Table 4-1](#tbl-4.1).
 
+Compute $V_{OUT}$, $V_S$, as well as $V_{DS}$ and $V_{OV} = V_{GS} - V_{Tn}$ of the transistor.
 
+**SOLUTION** 
 
+Using @eq-4.7 we can directly compute
 
+$$
+V_{OUT} = V_{DD} - I_B R_D = 5\ \mathrm{V} - 1.2\ \mathrm{V} = 3.8\ \mathrm{V}
+$$
 
+Next, we find
 
+$$
+V_{GS} - V_{Tn} = \sqrt{\frac{I_B}{\frac{1}{2} \mu_n C_{ox} \frac{W}{L}}} = 0.4\ \mathrm{V}
+$$
 
+In order to determine $V_S$, we begin by first ignoring the backgate effect, i.e., we evaluate @eq-4.12 assuming $V_{Tn} = V_{T0n}$.
 
+$$
+g_{mb} =
+\left.\frac{\partial i_D}{\partial v_{SB}}\right|_{Q}
+= \left.\frac{\partial i_D}{\partial (V_{GS} - V_{Tn})}\right|_{Q}
+\left.\frac{\partial (V_{GS} - V_{Tn})}{\partial V_{Tn}}\right|_{Q}
+\left.\frac{\partial V_{Tn}}{\partial v_{BS}}\right|_{Q}
+$$
 
+Using this estimate of $V_S$, we can now compute an estimate of the actual threshold voltage with backgate effect included.  
+By evaluatin @eq-4.10, we find
 
+$$
+V_{Tn} = \left( 0.5\ \mathrm{V} + 0.6\ \mathrm{V}^{1/2}
+\left( \sqrt{0.8\ \mathrm{V} + 1.6\ \mathrm{V}} - \sqrt{0.8\ \mathrm{V}} \right) \right)
+= 0.893\ \mathrm{V}
+$$
 
+and thus
 
+$$
+V_S = 2.5\ \mathrm{V} - 0.893\ \mathrm{V} - 0.4\ \mathrm{V}
+= 1.207\ \mathrm{V}
+$$
 
+This result for $V_S$, which was obtained using only one iteration, differs from the exact solution $V_S = 1.273\ \mathrm{V}$ (obtained through computer simulations or further iterations) by only $-67\ \mathrm{mV}$ ($-5.2\%$).
 
+With the above numbers, we have
+$$
+V_{DS} = V_{OUT} - V_{S} = 3.8\ \mathrm{V} - 1.207\ \mathrm{V}
+= 2.59\ \mathrm{V} > V_{GS} - V_{Tn} = 0.4\ \mathrm{V}
+$$
 
+Therefore, the transistor indeed operates in the saturation region, as assumed initially.
 
 
 
+### First Pass Low-Frequency Analysis {#first-pass-low-frequency-analysis}
 
 
+In order to establish symbolic expressions for the
+stage’s small-signal transfer characteristics, we will
+first ignore capacitive elements and focus on the
+low-frequency behavior. Based on the circuit of
+@fig-4.7, we can thus construct the low-frequency
+small-signal model shown in @fig-4.9. Note here
+that, as already explained in [Chapter 2](#sec-cs_transfer), the DC bias
+current source was removed, and the DC voltage
+sources were replaced by a connection to ground.
 
+![Low-frequency small-signal model of the CG stage.](images/png/figure4.9.png){#fig-4.9 width=100%}
 
+&nbsp;&nbsp;&nbsp;In principle, we could use the circuit of @fig-4.9 directly to carry out a detailed
+analysis. However, it is beneficial to first walk through a few circuit 
+simplifications that reduce the algebraic effort and also provide qualitative 
+insight. First, note that since the gate and the bulk of the MOSFET are 
+small-signal grounds, it follows that $v_{gs} = -v_s$ and $v_{bs} = -v_s$. Thus, 
+the current generators $g_m$ and $g_{mb}$ effectively add, since they are 
+controlled by the same voltage ($-v_s$). For notational convenience, we therefore
+ define
 
+$$
+g' = g_m + g_{mb}.
+$$
 
+The resulting circuit is shown in @fig-4.10(a) (with the controlled source 
+rotated for convenience).
 
+&nbsp;&nbsp;&nbsp;As a next step, we split the controlled current
+source into two elements as depicted in
+@fig-4.10(b). Since this change does not alter the
+summation of currents at the two nodes, the  obtained circuit is 
+equivalent to that of @fig-4.10(a). Next, we recognize that the 
+controlled source on the left side is simply a resistor with value 
+$\frac{1}{g'_m}$. This is true because for this element we have
 
+$$
+i = g'_m\, v \quad \Longrightarrow \quad R = \frac{v}{i} = \frac{1}{g'_m}.
+$$
 
 
+![Modified representations of the CG small-signal circuit model. (a) Circuit with combined $g_m$ and $g_{mb}$ generators. (b) Split of controlled current source. (c) Representation of left side current generator using a resistor. (d) Approximate circuit model neglecting $r_o$.](images/png/figure4.10.png){#fig-4.10 width=100%}
 
 
+&nbsp;&nbsp;&nbsp;In the resulting circuit of@fig-4.10(c), let us
+assume for the time being that the resistance ro has
+negligible impact on the operation of the CG amplifier.
+In this case, shown in @fig-4.10(d), the core of
+the CG stage perfectly conforms with the unilateral
+current amplifier two-port model discussed in
+[Section 1-3](#two-port-abstraction-for-amplifiers). Specifically,
+ note that the circuit has low input resistance (for example, if 
+$g'm = 10mS => \frac{1}{g'm} = 100 \ohm$) and high output 
+resistance ($R_{out}$ → $\infty$), as desired for a current 
+amplifier.
+The current gain ($A_i$) of the two-port is equal to one;
+any current that enters the core part of the CG stage
+passes through it unchanged. This result makes intuitive
+sense also from the original circuit in @fig-4.7.
+Any change in the MOSFET’s source current must
+also appear at the drain side.
 
+&nbsp;&nbsp;&nbsp;A secondary conclusion to draw from this
+first-pass analysis concerns the backgate connection
+of the transistor. If the bulk terminal were not connected
+to ground, but instead tied to the source of
+the transistor (which is possible for the p-channel
+version of the circuit in our n-well technology), we
+would have $v_{bs} = 0$, and the $g'm$ term would reduce to
+$g_m$. This is undesired since the amplifier’s input resistance
+will increase correspondingly (on the order of
+15–35%, see [Example 4-2](#example-4-2)). Thus, in a CG amplifier,
+it is typically advantageous to leave the bulk node
+ac-grounded, rather than tying it to the source. Note
+that this also reduces the parasitic capacitance at the
+source, as discussed in [Section 4-2-1](#well-capacitance).
 
 
+### Detailed Low-Frequency Analysis {#detailed-low-frequency-analysis}
 
 
+We will now carry out a more detailed analysis that
+refines the result obtained in the previous subsection.
+Specifically, we wish to perform a full analysis
+with the MOSFET’s ro included to see if, and precisely
+when, this resistor can be neglected.
 
+&nbsp;&nbsp;&nbsp;We begin by computing the input resistance ($R_{in}$)
+of the CG circuit core using the full circuit from
+@fig-4.10(c), redrawn in @fig-4.11(a) with a test
+voltage source included. From this setup, the input
+resistance is found using the procedure described in
+[Section 1-3-3](#consturction-of-unilateral-two-port-models). Specifically, note that $R_D$ is included
+in the analysis since the circuit is bilateral.
 
 
+![Small-signal model used to calculate (a) the input resistance ($R_{in}$), and (b) the output resistance ($R_{out}$) of the intrinsic CG circuit.](images/png/figure4.11.png){#fig-4.11 width=100%}
 
+Now, writing KVL at the input and output nodes
+gives
 
+$$
+i_t = g'_m v_t + \frac{v_t - v_{out}}{r_o}
+$$ {#eq-4.14}
 
+$$
+0 = -g'_m v_t - \frac{v_t - v_{out}}{r_o} + \frac{v_{out}}{R_D}
+$$ {#eq-4.15}
 
 
+By solving this system of equations for $v_t$ and $i_t$, we obtain
 
+$$
+R_{in} = \frac{v_t}{i_t} =
+\frac{1 + \frac{R_D}{r_o}}{g'_m + \frac{1}{r_o}}
+$$ {#eq-4.16}
 
+Assuming $r_o \gg R_D$ and $r_o \gg 1/g'_m$, the input resistance becomes approximately
 
+$$
+R_{in} ≅ \frac{1}{g'_m}
+$$ {#eq-4.17}
 
+which is identical to the value postulated in the approximate model of 
+the previous subsection. The approximation applied to the denominator of
+ @eq-4.16 is always valid,
+since $g'_m r_o \gg 1$ for a typical MOSFET. The approximation made in the numerator may not hold when the drain is 
+terminated with a very large incremental resistance, as, for instance, 
+found in a current source. In this case, care must be taken to use the 
+exact numerator of @eq-4.16.
 
 
+&nbsp;&nbsp;&nbsp;Next, to calculate the output resistance ($R_{out}$), we
+set the small-signal input current source is equal to
+zero (open circuit) but leave the effect of its source
+resistance ($r_s$) in place as shown in @fig-4.11(b).
+As before, we place a test voltage source at the port
+of interest, and write KCL for the two nodes of the
+circuit.
 
 
+$$
+0 = g'_m v_s + \frac{v_s - v_{out}}{r_o} + \frac{v_s}{r_s}
+$$ {#eq-4.18}
 
+$$
+i_t = -g'_m v_s - \frac{v_s - v_{out}}{r_o}
+$$ {#eq-4.19}
 
+After solving for $v_t$ and $i_t$, we obtain
 
+$$
+R_{out} = \frac{v_t}{i_t} = r_o + r_s \left[ 1 + g'_m r_o \right]
+$$ {#eq-4.20}
 
+Utilizing the fact that $g'_m r_o \gg 1$, we can approximate
 
+$$
+R_{out} ≅ r_o \left[ 1 + g'_m r_s \right]
+$$ {#eq-4.21}
 
+Under the condition that $g'_m r_s \gg 1$, the expression further simplifies to
 
+$$
+R_{out} ≅ g'_m r_o r_s
+$$ {#eq-4.22}
 
 
+From this result, we note that the source resistance $r_s$
+is multiplied by a term that is on the order of the
+intrinsic voltage gain of the transistor ($g_mr_o$), which is
+typically greater than 100 in our technology (see
+[Section 2-3-2](#common-source-voltage-amplifier-analysis-using-the-lambda-model)). Thus, a CG stage can essentially be
+used to turn a current source with moderate source
+resistance ($r_s$) into a “better” current source with
+very high source resistance. This feature is widely
+used in a variety of circuit configurations, some of
+which will be discussed later in this module.
 
 
+&nbsp;&nbsp;&nbsp;Using the above results, we can now construct a
+complete circuit model that includes the CG core as
+a unilateral current amplifier two-port (see
+@fig-4.12). Using this model, the transresistance
+gain from the input current source ($i_s$) to the circuit’s
+output voltage ($v_{out}$) can be written as
 
+$$
+\frac{v_{out}}{i_s} =
+\frac{i_{in}}{i_s} \cdot \frac{v_{out}}{i_{in}} =
+\frac{r_s}{r_s + R_{in}} \cdot
+\left( \frac{1}{R_D} + \frac{1}{R_{out}} \right)^{-1}
+$$ {#eq-4.23}
 
+where the first term represents the current divider formed by $r_s$ and $R_{in}$ and the second term is the parallel combination of $R_D$ and $R_{out}$.  
+For a typical application of this circuit, where $R_{in} \ll r_s$ and $R_D \ll R_{out}$, @eq-4.23 simplifies to
 
+$$
+\frac{v_{out}}{i_s} \equiv R_D
+$$ {#eq-4.24}
+
+In words, the transresistance of the circuit is approximately
+ equal to the drain resistance. This makes
+intuitive sense since the CG core acts a current
+amplifier with a gain near unity. That is, the CG
+stage absorbs all (or most) of the current from the
+input source, and it passes this current to the termination
+resistance ($R_D$), causing a proportional
+change in the output voltage.
+
+![Small-signal unilateral two-port model of the CG stage.](images/png/figure4.12.png){#fig-4.12 width=100%}
 
+&nbsp;&nbsp;&nbsp;When employing the model of @fig-4.12, it is 
+important to remember that we are approximating a bilateral circuit using 
+a unilateral model. We have investigated the resulting error for this 
+particular configuration in [Example 1-3](#example-1-3) and found that 
+the unilateral 
+model is guaranteed to be accurate as long as the coupling resistance 
+between the input and output ports ($R_2$ in [Example 1-3](#example-1-3)
+and $r_o$ in the
+analyzed CG circuit) is larger than the termination resistance ($R_L$ in
+[Example 1-3](#example-1-3) and $R_D$ in the analyzed CG circuit). Thus, the result stated in @eq-4.23  holds with good accuracy
+as long as $R_D \ll r_o$, a condition that is satisfied in many relevant
+applications.
+
+
+
+### High-Frequency Analysis {#high-frquency-analysis}
+
+
+In order to model the frequency response of the CG amplifier, we now 
+include the capacitances of the MOSFET into the small-signal model 
+constructed in the previous section (see @fig-4.13).
+
+&nbsp;&nbsp;&nbsp;Since both the gate and bulk of the MOSFET are 
+AC-grounded, $C_{gs}$ and 
+C_{sb}$, as well as $C_{gd}$ and $C_{db}$ appear from source and drain, 
+respectively, to ground. For notational convenience, we abbreviate
+$C_{gs} + C_{sb} = C_s$ and $C_{gd} + C_{db} = C_d$ in the following 
+treatment.
+
+![High-frequency small-signal model of the CG stage.](images/png/figure4.13.png){#fig-4.13 width=100%}
+
+&nbsp;&nbsp;&nbsp;One way to analyze the circuit of @fig-4.13 is to reuse the results 
+obtained in the low-frequency analysis, but now with $C_s$ and $C_d$ 
+added in parallel to $r_s$ and $R_D$, respectively. In this spirit, we 
+begin by considering the effect of the added capacitances on the 
+circuit’s input impedance, $Z_{in}$. Reusing the result from @eq-4.16,
+we can write
+
+$$
+Z_{in} ≅
+\frac{1 + \frac{R_D \parallel \frac{1}{s C_d}}{r_o}}{g'_m}
+\ \Big\| \ \frac{1}{s C_s}
+$$ {#eq-4.25}
+
+As long as $R_D \ll r_o$, regardless of the added term due to $C_d$,
+ the numerator can be approximated as unity. Therefore, it follows that
+
+$$
+Z_{in} ≅ \frac{1}{g'_m} \ \Big\| \ \frac{1}{s C_s}
+$$ {#eq-4.26}
+
+In words, this result simply says that $Z_{in}$ is typically well 
+approximated by the parallel impedance connection of $1 / g'_m$ and $C_s$.
+
+<!-- QUESTION In Words -> in other words --> 
+
+&nbsp;&nbsp;&nbsp;Finding the (exact) output impedance ($Z_{out}$) proves 
+algebraically more difficult. However, provided that $g'_m r_s \gg 1$ and 
+for frequencies below the MOSFET’s cutoff frequency $\omega_T$, it 
+follows that (see [Problem P4.6](#p4.6))
+
+$$
+Z_{out} \equiv g'_m r_o r_s \ \Big\| \ \frac{g'_m r_o}{s C_s} \ \Big\| \ \frac{1}{s C_d}
+$$ {#eq-4.27}
+
+Thus, $Z_{out}$ consists of the parallel combination of:  
+(1) $r_s$, increased by the factor $g'_m r_o$ (this is simply $R_{in}$ 
+from the low-frequency analysis),  
+(2) the explicit capacitance present at the output ($C_d$), and  
+(3) the reactance of the source side capacitance ($C_s$) increased by the
+factor $g'_m r_o$.  
+
+From the second term, we see that the MOSFET not only boosts the 
+resistance of $r_s$ seen from the output, but also the reactance of 
+$C_s$. Since usually $C_s / g'_m r_o \ll C_d$, we can safely neglect the
+ second term of@eq-4.27 and conclude
+
+$$
+Z_{out} \equiv g'_m r_o r_s \ \Big\| \ \frac{1}{s C_d}
+$$ {#eq-4.28}
+
+&nbsp;&nbsp;&nbsp;In summary, the overall conclusion is that, to first 
+order, the drain and source side capacitances can simply be added to the
+ports of the already obtained low-frequency model of @fig-4.12. Thus, we 
+have once again arrived at a relatively simple unilateral model for the 
+circuit that holds for high frequencies. The corresponding circuit model 
+is drawn out in @fig-4.12, incorporating the assumptions $g'_m r_s \gg 1$
+and $R_D \ll r_o$.  
+
+Also, for generality, we have included a load capacitor ($C_L$) and a 
+load resistor. ($R_L$). Note that whenever $R_L$ carries a DC current,
+this resistor must also be included in the bias point calculations of 
+the circuit.
+
+&nbsp;&nbsp;&nbsp;Similar to the low-frequency analysis of the previous
+subsection, the overall transfer function of the circuit in @fig-4.14 
+is found by considering the current division at the input node, and the
+parallel impedance at the output node:
 
+$$
+\frac{v_{out}}{i_s} =
+\frac{i_{in}}{i_s} \cdot \frac{v_{out}}{i_{in}}
+$$
 
+$$
+= \frac{g'_m}{g'_m + s C_s} \cdot
+\left( \frac{1}{R_D} + \frac{1}{R_L} + s C_d + s C_L \right)^{-1}
+$$
+
+$$
+= [R_D \parallel R_L] \cdot \frac{1}{1 + s \frac{C_s}{g'_m}} \cdot
+\frac{1}{\left( 1 + s [R_D \parallel R_L] \right) (C_d + C_L)}
+$$
 
+$$
+= [R_D \parallel R_L] \cdot \frac{1}{1 - \frac{s}{p_1}} \cdot \frac{1}{1 - \frac{s}{p_2}}
+$$ {#eq-4.29}
 
+In this expression, the leading term $[R_D \parallel R_L]$ corresponds to 
+the low-frequency transresistance and $p_1 = -g'_m / C_s$ and
+ $p_2 = -1 / \left[ (R_D \parallel R_L)(C_d + C_L) \right]$  
+are the poles of the circuit.  
 
+The pole $p_1$ is associated with the input of the circuit and captures 
+the frequency dependence of the current transfer from the input current 
+to the drain current of the transistor ($i_x / i_{in}$ in @fig-4.14). The
+corresponding pole frequency $g'_m / C_s$ is very close to $\omega_T$ 
+(the cutoff frequency of the transistor) and will rarely limit the 
+bandwidth of the overall circuit. The pole $p_2$ depends on the component
+values in the load network. If the added $C-L$ is small, this pole will 
+typically also lie at a very high frequency.
 
+![Approximate unilateral two-port model of the CG transresistance amplifier for high frequencies..](images/png/figure4.14.png){#fig-4.14 width=100%}
 
 
+From the result of @eq-4.29, it is important to note that the circuit has
+two distinct and conveniently isolated poles that are not “entangled,” as 
+for instance in the frequency response of the CS stage [see [@eq-3.38]]. 
+This is a direct result of the fact that the input and output networks of
+the model in @fig-3.14 are decoupled, i.e., the networks that define the 
+time constants on each side of the circuit do not interact. Note also 
+that for approximate 3-dB bandwidth calculations, the method of 
+open-circuit time constants can be applied. This will give the sum of the 
+two time constants that make up the poles contained in @eq-4.29.
 
+**[Example 4-4]{#example-4-4}: Bandwidth Calculation for a Common-Gate Stage**
 
+Consider the CG circuit of @fig-4.7 using the same parameters used in 
+[Example 4-3](#example-4-3): $I_B = 400\ \mu\mathrm{A}$, $R_D = 3\ \mathrm
+{k\Omega}$, $W = 100\ \mu\mathrm{m}$, and $L = 1\ \mu\mathrm{m}$. Using 
+he bias point information from [Example 4-3](#example-4-3), 
+compute all device 
+capacitances and estimate the bandwidth of the circuit’s transfer 
+function using the method of open-circuit time constants.
 
+**SOLUTION**
 
+From [Example 4-3](#example-4-3), we know that $V_{OUT} = 3.8\ \mathrm{V}$ and $V_S = 1.273\ \mathrm{V}$. Using @eq-3.15 and @eq-3.32-@eq-3.34 we can therefore compute all device capacitances.
 
+$$
+C_{gs}
+= \frac{2}{3}\,(100 \cdot 1\,\mu\mathrm{m}^2)\!\left(2.3\,\frac{\mathrm{fF}}{\mu\mathrm{m}^2}\right)
++ 100\,\mu\mathrm{m}\!\left(0.5\,\frac{\mathrm{fF}}{\mu\mathrm{m}}\right)
+= 203.3\,\mathrm{fF}
+$$
 
 
 
+$$
+C_{gd} = 100\,\mu\mathrm{m}\!\left(0.5\,\frac{\mathrm{fF}}{\mu\mathrm{m}}\right) = 50\,\mathrm{fF}
+$$
 
+Evaluating @eq-3.34, using the source junction bias voltage of $V_{SB} = 1.273\ \mathrm{V}$ yields
 
+$$
+C_{sb} = 54.3\,\mathrm{fF}
+$$
 
+The drain junction has a reverse bias voltage of $V_{DB} = V_{OUT} = 3.8\ \mathrm{V}$.  
+Evaluating Eq. (3.33) with this value and the given parameters gives
 
+$$
+C_{db} = 37.1\,\mathrm{fF}
+$$
 
+The total capacitances for the model in @fig-4.14 are therefore
 
+$$
+C_s = C_{gs} + C_{sb} = 257.6\,\mathrm{fF}
+$$
 
+$$
+C_d = C_{gd} + C_{db} = 87.1\,\mathrm{fF}
+$$
 
+Now, using $V_{OV} = 0.4\ \mathrm{V}$ from [Example 4-3](#example-4-3), we have
 
+$$
+g_m = \frac{2 I_D}{V_{OV}} = 2\,\mathrm{mS}
+$$
 
+Furthermore, using @eq-4.6
 
+$$
+g_{mb} =
+\frac{2\,\mathrm{mS}\cdot 0.6\,\mathrm{V}^{1/2}}{2\sqrt{0.8\,\mathrm{V} + 1.273\,\mathrm{V}}}
+= 0.417\,\mathrm{mS}
+$$
 
+and therefore
 
+$$
+\frac{1}{g'_m} = \frac{1}{2\,\mathrm{mS} + 0.417\,\mathrm{mS}} = 413.8\,\Omega
+$$
 
+The time constants of the circuit are
 
+$$
+\tau_{so} = 413.8\,\Omega \cdot 257.6\,\mathrm{fF} = 107\,\mathrm{ps}
+$$
 
+$$
+\tau_{do} = 3\,\mathrm{k}\Omega \cdot 87.1\,\mathrm{fF} = 261\,\mathrm{ps}
+$$
 
+The bandwidth estimate is therefore
 
+$$
+f_{3\mathrm{dB}} = \frac{1}{2\pi}\cdot \frac{1}{107\,\mathrm{ps} + 261\,\mathrm{ps}}
+= 432\,\mathrm{MHz}
+$$
 
 
+By comparing the two time constants, we see that the
+bandwidth is limited by the drain network. This situation
+will be even more pronounced when an external
+load capacitance $C_L$ is added to the output node.
 
 
+## Analysis of the Common-Drain Stage {#analysis-of-the-common-drain-stage}
 
 
+
+A practical configuration of a common-drain (CD) circuit is shown in @fig-4.15. Similar to the CG stage discussed in the previous section, other configurations for the input and output network exist; we will analyze the given circuit as a representative example.
+
+![Practical realization of a CD amplifier with biasing circuitry included.](images/png/figure4.15.png){#fig-4.15 width=100%}
+
+### Bias Point Analysis {#bias-point-analysis}
+
+For a first-pass bias point analysis, consider the circuit in @fig-4.16
+first with $R_L$ disconnected, ensuring that the MOSFET drain current 
+$I_D = I_B$. Since no current flows into the gate of the MOSFET, we have 
+$V_{IN} = V_S$. The output voltage quiescent point in this circuit can 
+thus be calculated as already analyzed in the context of the CG stage, 
+using @eq-4.13 with $V_{IN}$ and $V_{OUT}$ substituted for 
+$V_B$ and $V_S$, respectively.
+
+$$
+V_{OUT} = V_{IN} - V_{Tn}(V_{OUT}) -
+\sqrt{\frac{I_B}{\frac{1}{2} \mu_n C_{ox} \frac{W}{L}}}
+$$ {#eq-4.30}
+
+If $V_B$ at the bottom of $R_L$ is chosen equal to $V_{OUT}$ as given in
+@eq-4.30, no current will flow in this resistor when reconnected and 
+$I_D = I_B$ is maintained. In cases where this condition is not met, the 
+OSFET’s drain current differs from $I_B$, but can be computed using 
+iterative calculations. For simplicity in our discussion, we will assume
+that $V_B$ (or $V_{IN}$) is properly adjusted such that $I_D = I_B$ is 
+guaranteed.
+
+![Simplified schematic of the CD amplifier for bias point calculations.](images/png/figure4.16.png){#fig-4.16 width=100%}
+
+&nbsp;&nbsp;&nbsp;As far as the MOSFET’s operating region is concerned, it is interesting
+to note that the device will essentially always operate in the saturation
+region. This is the case since
+
+$$
+V_{DS} = V_{DD} - V_{OUT}
+= V_{DD} - (V_{IN} - V_{GS})
+$${#eq-4.31}
+
+and thus
+
+$$
+V_{DS} - (V_{GS} - V_{Tn}(V_{OUT})) =
+V_{DD} - (V_{IN} - V_{Tn}(V_{OUT}))
+$${#eq-4.32}
+
+is greater than zero as long as $V_{IN} < V_{DD} + V_{Tn}(V_{OUT})$, which is almost always the case in a practical realization.
+
+
+### Low-Frequency Analysis {#low-frequency-analysis}
+
+To analyze the circuit’s transfer characteristics at low frequencies, we 
+draw its small-signal model (without any capacitances) as shown
+in @fig-4.17.1(a). While this circuit can be analyzed directly by 
+writing nodal 
+equations, it is worth considering a few basic equivalent 
+transformations. First, note that we can split the source controlled by 
+$v_{gs}$ into two 
+components, $g_m v_g$ and $-g_m v_s$, where $v_g = v_{in}$ and
+$v_s = v_{out}$ [see [@fig-4.17.1(b)]]. Similarly, the backgate generator 
+is split into $g_{mb} v_b$ and $-g_{mb} v_s$, where $v_b = 0$ (which 
+means that this source can be discarded) and $v_s = v_{out}$.
+
+
+![(a) CD small-signal, low-frequency circuit model. (b) Split of controlled current source.](images/png/figure4.17.1.png){#fig-4.17.1 width=100%}
+
+
+Finally, recognizing that the two sources controlled by $v_{out}$ are simply resistors of value $1/g_m$ and $1/g_{mb}$, we arrive at the final circuit in @fig-4.17.2.
+
+![(c) Representation of output-controlled current generators using a resistor.](images/png/figure4.17.2.png){#fig-4.17.2 width=100%}
+
+From this simplified representation, we can immediately see
+
+$$
+R_{in} \to \infty
+$$ {#eq-4.33}
+
+$$
+R_{out} = r_o \parallel \frac{1}{g_m} \parallel \frac{1}{g_{mb}}
+\equiv \frac{1}{g_m + g_{mb}} = \frac{1}{g'_m}
+$$ {#eq-4.34}
+
+&nbsp;&nbsp;&nbsp;Consequently, the CD circuit core most closely 
+resembles the properties of a voltage amplifier (high $R_{in}$, 
+low $R_{out}$) and is thus most appropriately modeled using the two-port 
+representation shown in Figure @fig-4.18. The final parameter needed for 
+this model is the open-circuit voltage gain $A_v$. To find $A_v$, we 
+apply an ideal test voltage to the circuit of @fig-4.17.2(c) (i.e., a 
+voltage source with $R_S = 0$) and measure the voltage at the 
+open-circuited output port ($R_L$ disconnected). Neglecting $r_o$ in this analysis, the reader can prove that
+
+$$
+A_v = \frac{g_m}{g_m + g_{mb}} = \frac{1}{1 + \frac{g_{mb}}{g_m}} < 1
+$$ {#eq-4.35}
+
+With $g_{mb}/g_m$ values on the order of 20% (see [Example 4-2](#example-4-2)), the open-circuit voltage gain of the analyzed n-channel CD stage is on the order of 0.8.  
+
+![Unilateral two-port model for the CD stage at low frequencies.](images/png/figure4.18.png){#fig-4.18 width=100%}
+
+
+$A_v$ can approach unity when the source is tied to the bulk of the 
+MOSFET. In this case, $v_{bs} = 0$, and the $1/g_{mb}$ resistor in 
+@fig-4.17.2 is eliminated. Note that for the technology considered in 
+this module, this option is available only for the p-channel version of 
+the circuit. Accordingly, @fig-4.19 summarizes the three different CD 
+configurations that are possible in the assumed technology. In practice, 
+the designer will decide case by case if a source-bulk connection (for 
+the p-channel circuit) is advantageous in the intended application. A 
+disadvantage of the configuration in @fig-4.19(c) is that the 
+bulk-to-substrate ($C_{bsub}$) capacitance contributes to the capacitive 
+load of the stage (see [Section 4-2](#bulk-connection-scenarios-and-required-model-extensions) and also 
+@fig-4.22).  
+
+Since the CD stage achieves a positive voltage gain near unity, this 
+circuit is often called **source follower**. The output (the source of 
+the transistor) carries a signal that closely follows the applied input 
+voltage.
+
+
+![Possible configurations for CD amplifiers.](images/png/figure4.19.png){#fig-4.19 width=100%}
+
+
+**[Example 4-5]{#example-4-5}: Low-Frequency Analysis of a CD Amplifier**
 
 
 

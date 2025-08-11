@@ -1887,7 +1887,7 @@ interest: the intrinsic voltage gain stage of
 @fig-2.22(a) and the common-source amplifier of
 @fig-2.19(a).
 
-### Common-Source Voltage Amplifier Analysis Using the $\lambda$-Model
+### Common-Source Voltage Amplifier Analysis Using the $\lambda$-Model {#common-source-voltage-amplifier-analysis-using-the-lambda-model}
 
 
 For the intrinsic voltage gain stage, the small-signal
