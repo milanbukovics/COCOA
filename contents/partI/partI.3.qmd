@@ -1151,7 +1151,6 @@ Table: Standard technology parameters for the $\lambda$-model, with intrinsic an
 |drain diffusions        |                                                 |
 +------------------------+------------------------+------------------------+
 
-<!-- QUESTION in the last row of the table, is that 3 µ "m" ?--> 
 ::::
 
 ### [Frequency Response with Intrinsic and Extrinsic Gate Capacitances]{#frequency-response-with-intrinsic-and-extrinsic-gate-capacitances}

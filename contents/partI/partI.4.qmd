@@ -21,8 +21,6 @@ circuit design.
 
 
 
-<!-- TODO make the section 1 link work--> 
-
 ::: {.callout-tip} 
 ## Chapter Objectives
 
@@ -182,7 +180,7 @@ $C_{Jwell} = 0.05$ $fF/μm^2$, and $V_{BSUB} = 2.5$ $V$.
 From @fig-ex-4.1, we see that 
 
 $$
-A_{welll} = (W + 2X_1) \cdot (L +2L_{diff} + 2X_1 +X_2)
+A_{welll} = (W + 2X_1) \cdot (L +3L_{diff} + 2X_1 +X_2)
 $$
 
 $$
@@ -197,9 +195,9 @@ $$
 
 
 Using @eq-4.1 and the technology parameters for
-$PB$ and $MJ$ from [Table 3-1](#tbl-3-1), we obtain
+$PB$ and $MJ$ from [Table 3-1](#tbl-3.1), we obtain
 
-<!-- TODO table 3.1 linking --> 
+
 
 $$
 C_{bsub} = \frac{C_{Jwell \cdot A_{well}}}{(1+V_{BSUB} / PB)^{MJ}}
@@ -251,12 +249,11 @@ refine the I-V expressions from
 case of non-zero $V_{SB}$ and using an n-channel MOSFET for the analysis.
 
 
-&nbsp;&nbsp;&nbsp;For an n-channel device with positive $V_{SB}$ —i.e.,
+&nbsp;&nbsp;&nbsp;For an n-channel device with positive $V_{SB}$ — i.e.,
 the source lies at a higher potential than the
-(grounded) substrate—the primary effect is that the
-depletion region between the source and the sub-
-strate is widened (see @fig-4.5). This follows from
-the usual behavior of pn junctions—the depletion
+(grounded) substrate — the primary effect is that the
+depletion region between the source and the substrate is widened (see @fig-4.5). This follows from
+the usual behavior of pn junctions — the depletion
 region of a reverse biased junction widens for
 increasing reverse bias.
 
@@ -331,7 +328,7 @@ the partial derivative in @eq-4.4 using the chain rule
 
 $$
 g_{mb} =
-\left.\frac{\partial i_D}{\partial v_{SB}}\right|_{Q}
+\left.\frac{\partial i_D}{\partial v_{BS}}\right|_{Q}
 $$
 
 $$
@@ -340,7 +337,7 @@ $$
 \left.\frac{\partial V_{Tn}}{\partial v_{BS}}\right|_{Q}
 $$ {#eq-4.5}
 
-<!--TODO add the partial sign to the equation --> 
+
 
 The first partial derivative in the above expression is
 simply $g_m$. The second term is equal to –1. Therefore,
@@ -378,7 +375,7 @@ the technology assumed in this module.
 
 ![N-channel MOSFET small-signal model for the saturation region with backgate transconductance ($g_{mb}$) included.](images/png/figure4.6.png){#fig-4.6 width=100%}
 
-<!-- continuing from here -->
+
 
 **[Example 4-2]{#example-4-2}: Backgate Effect**
 
@@ -620,7 +617,7 @@ $$ {#eq-4.13}
 
 **[Example 4-3]{#example-4-3}: Well Bias Point Calculation for a Common Gate Stage**
 
-Consider the common-gate circuit shown in Figure 4-8 with the following 
+Consider the common-gate circuit shown in @fig-4.8 with the following 
 parameters: $V_{DD} = 5\ \mathrm{V}$, $V_{B} = 2.5\ \mathrm{V}$,
 $I_{B} = 400\ \mu\mathrm{A}$, $R_{D} = 3\ \mathrm{k\Omega}$.  
 
@@ -642,7 +639,9 @@ $$
 V_{GS} - V_{Tn} = \sqrt{\frac{I_B}{\frac{1}{2} \mu_n C_{ox} \frac{W}{L}}} = 0.4\ \mathrm{V}
 $$
 
-In order to determine $V_S$, we begin by first ignoring the backgate effect, i.e., we evaluate @eq-4.12 assuming $V_{Tn} = V_{T0n}$.
+In order to determine $V_S$, we begin by first ignoring 
+the backgate effect, i.e., the evaluation of @eq-4.12 
+using the given numbers
 
 $$
 g_{mb} =
@@ -946,10 +945,10 @@ $$
 Z_{in} ≅ \frac{1}{g'_m} \ \Big\| \ \frac{1}{s C_s}
 $$ {#eq-4.26}
 
-In words, this result simply says that $Z_{in}$ is typically well 
+In other words, this result simply says that $Z_{in}$ is typically well 
 approximated by the parallel impedance connection of $1 / g'_m$ and $C_s$.
 
-<!-- QUESTION In Words -> in other words --> 
+
 
 &nbsp;&nbsp;&nbsp;Finding the (exact) output impedance ($Z_{out}$) proves 
 algebraically more difficult. However, provided that $g'_m r_s \gg 1$ and 
@@ -961,7 +960,7 @@ Z_{out} \equiv g'_m r_o r_s \ \Big\| \ \frac{g'_m r_o}{s C_s} \ \Big\| \ \frac{1
 $$ {#eq-4.27}
 
 Thus, $Z_{out}$ consists of the parallel combination of:  
-(1) $r_s$, increased by the factor $g'_m r_o$ (this is simply $R_{in}$ 
+(1) $r_s$, increased by the factor $g'_m r_o$ (this is simply $R_{out}$ 
 from the low-frequency analysis),  
 (2) the explicit capacitance present at the output ($C_d$), and  
 (3) the reactance of the source side capacitance ($C_s$) increased by the
@@ -1006,7 +1005,7 @@ $$
 
 $$
 = [R_D \parallel R_L] \cdot \frac{1}{1 + s \frac{C_s}{g'_m}} \cdot
-\frac{1}{\left( 1 + s [R_D \parallel R_L] \right) (C_d + C_L)}
+\frac{1}{\left( [R_D \parallel R_L][C_d + C_L] \right)}
 $$
 
 $$
@@ -1070,24 +1069,24 @@ $$
 Evaluating @eq-3.34, using the source junction bias voltage of $V_{SB} = 1.273\ \mathrm{V}$ yields
 
 $$
-C_{sb} = 54.3\,\mathrm{fF}
+C_{sb} = 19.6\,\mathrm{fF}
 $$
 
 The drain junction has a reverse bias voltage of $V_{DB} = V_{OUT} = 3.8\ \mathrm{V}$.  
 Evaluating Eq. (3.33) with this value and the given parameters gives
 
 $$
-C_{db} = 37.1\,\mathrm{fF}
+C_{db} = 13.4\,\mathrm{fF}
 $$
 
 The total capacitances for the model in @fig-4.14 are therefore
 
 $$
-C_s = C_{gs} + C_{sb} = 257.6\,\mathrm{fF}
+C_s = C_{gs} + C_{sb} = 223\,\mathrm{fF}
 $$
 
 $$
-C_d = C_{gd} + C_{db} = 87.1\,\mathrm{fF}
+C_d = C_{gd} + C_{db} = 63.4\,\mathrm{fF}
 $$
 
 Now, using $V_{OV} = 0.4\ \mathrm{V}$ from [Example 4-3](#example-4-3), we have
@@ -1113,18 +1112,18 @@ $$
 The time constants of the circuit are
 
 $$
-\tau_{so} = 413.8\,\Omega \cdot 257.6\,\mathrm{fF} = 107\,\mathrm{ps}
+\tau_{so} = 413.8\,\Omega \cdot 257.6\,\mathrm{fF} = 92.25\,\mathrm{ps}
 $$
 
 $$
-\tau_{do} = 3\,\mathrm{k}\Omega \cdot 87.1\,\mathrm{fF} = 261\,\mathrm{ps}
+\tau_{do} = 3\,\mathrm{k}\Omega \cdot 87.1\,\mathrm{fF} = 190.2\,\mathrm{ps}
 $$
 
 The bandwidth estimate is therefore
 
 $$
 f_{3\mathrm{dB}} = \frac{1}{2\pi}\cdot \frac{1}{107\,\mathrm{ps} + 261\,\mathrm{ps}}
-= 432\,\mathrm{MHz}
+= 563\,\mathrm{MHz}
 $$
 
 
@@ -1149,7 +1148,7 @@ first with $R_L$ disconnected, ensuring that the MOSFET drain current
 $I_D = I_B$. Since no current flows into the gate of the MOSFET, we have 
 $V_{IN} = V_S$. The output voltage quiescent point in this circuit can 
 thus be calculated as already analyzed in the context of the CG stage, 
-using @eq-4.13 with $V_{IN}$ and $V_{OUT}$ substituted for 
+using @eq-4.12 with $V_{IN}$ and $V_{OUT}$ substituted for 
 $V_B$ and $V_S$, respectively.
 
 $$
@@ -1450,7 +1449,7 @@ larger than that of a CS stage.
 
 Estimate the bandwidth of the CD stage in @fig-ex-4.5 assuming the 
 following parameters:
-$R_s = 10\ \text{k}\Omega$, $R_L = 5\ \text{k}\Omega$,
+$R_s = 5\ \text{k}\Omega$, $R_L = 5\ \text{k}\Omega$,
 $g_m = 2\ \text{mS}$, $g_{mb} = 0.417\ \text{mS}$ 
 (from [Example 4-5](#example-4-5)) and $C_L = 0$,
 $C_{gs} = 203\ \text{fF}$, $C_{gd} = 50\ \text{fF}$, and 
@@ -1547,11 +1546,11 @@ very high frequencies and closely approximated by $1 / g'_m$.
 
 &nbsp;&nbsp;&nbsp;For the case of finite $R_S$, we write KCL at the two nodes of the 
 circuit and solve for $Z_{out} = v / i_t$. Approximating 
-$g'_m \equiv 1 / g'_m$ and neglecting $C_{sb}$ (as justified above) for
+$g'_m \equiv 1 / g_m$ and neglecting $C_{sb}$ (as justified above) for
 algebraic simplicity, this yields
 
 $$
-Z_{out} \equiv \frac{1}{g'_m} 
+Z_{out} \equiv \frac{1}{g_m} 
 \cdot \frac{1 + s(C_{gs} + C_{gd})R_S}
 {1 + s\left(\frac{C_{gs}}{g_m} + R_S C_{gd}\right) + s^2\left(\frac{R_S C_{gs} C_{gd}}{g_m}\right)}
 $$
@@ -1772,9 +1771,9 @@ characteristics.{#tbl-4.2}
 | **Property**      | **CS**                                   | **CG**              | **CD**                |
 |-------------------|------------------------------------------|---------------------|-----------------------|
 | Two-port model    | Transconductance or Voltage Amplifier    | Current Amplifier   | Voltage Amplifier     |
-| Gain              | $g_m$ or $A_v = g_m r_o$                 | $A_i  ≅  1$         | $A_v  ≅  0.7 \dots 1$ |
-| $R_{in}$          | $\infty$                                 | $ ≅  1 / g'_m$      | $\infty$              |
-| $R_{out}$         | $r_o$                                    | $r_o(1 + g_m r_s)$  | $ ≅  1 / g'_m$        |
+| Gain              | $g_m$ or $A_v = g_m r_o$                 | $A_i  ≅ -1$         | $A_v  ≅  0.7 \dots 1$ |
+| $R_{in}$          | $\infty$                                 | $≅  1 / g'_m$       | $\infty$              |
+| $R_{out}$         | $r_o$                                    | $r_o(1 +g'_m r_s)$  | $≅  1 / g'_m$         |
 
 ::::
 
@@ -1812,17 +1811,16 @@ Compute the ratio $C_{bsub} / C_{gs}$.
 ![](images/png/figure-p4-1.png){#fig-p4-1 width=100%}
 
 
-**P4.2** Repeat [Example 4-3](#example-4-3) assuming that the bulk is tied to 
+**P4.2** Repeat [Example 4-3](#example-4-3) using $I_B =200\ \text{µA}$ and assuming that the bulk is tied to 
 the source of the MOSFET, i.e., $V_{SB} = 0$. Recompute $V_{OUT}$, $V_S$, as 
 well as $V_{DS}$ and $V_{OV} = V_{GS} - V_{Tn}$ of the transistor.
 
-**P4.3** The p-channel common-gate amplifier shown in @fig-p4-3 has a power 
-dissipation of $1\ \text{mW}$. The MOSFET has a channel length of 
-$2\ \mu\text{m}$.
+**P4.3** The p-channel common-gate amplifier shown in @fig-p4-3 has a power dissipation of 1 mW. The MOSFET has a channel length of $2\ \mu\text{m}$ and the current gain $i_{out} / i_s = 0.8$. The circuit is biased such that no DC current flows into the resistor connected to the drain.
 
-(a) What is the $W/L$ required for $i_{out} / i_s = 0.8$?
+**(a)** What is the required $W$? For simplicity, neglect the backgate effect in this part of the problem. Also explain why channel-length modulation can be safely ignored.
 
-(b) If the transistor is placed in an n-well so that $V_{SB} = 0\ \text{V}$, what is the new overall current gain $i_{out} / i_s$?
+**(b)** Re-compute the current gain taking the backgate effect into account (bulk connected to the positive supply). You will need to perform numerical iterations to solve this problem. Based on the results from your first 1–2 iterations, is including the backgate effect worth the effort? Does the current gain increase or decrease relative to part (a)?
+
 
 ![](images/png/figure-p4-3.png){#fig-p4-3 width=100%}
 
@@ -1931,7 +1929,7 @@ justify your answer.
 circuit using the term $b_1$ in the circuit’s transfer function. Given the 
 parameter values used in Example 4-6, plot the magnitude of the exact transfer 
 function given by Eq. (4.36) (using any computer program that is available to 
-you) and find the 3dB bandwidth from this plot numerically. Compare the obtained 
+you).Find the 3dB bandwidth using a numerical solver. Compare the obtained 
 value with the numbers found in Example 4-6.
 
 **P4.14** In @fig-4.21, we used a qualitative reasoning to explain the Miller 
@@ -1958,7 +1956,7 @@ $RL$ circuit as shown in @fig-p4-16(b). Express $L$, $R_1$, and $R_2$ in terms
 of $R_S$, $g_m$, and $C_{gs}$.
 
 (c) Calculate numerical values for $L$, $R_1$, and $R_2$ assuming the following 
-arameters: $I_B = 1\ \text{mA}$, $V_S = 1\ \text{V}$, 
+arameters: $I_B = 1\ \text{mA}$, 
 $R_S = 1\ \text{M}\Omega$, $W = 20\ \mu\text{m}$, and $L = 1\ \mu\text{m}$. 
 Verify that $R_S > 1 / g_m$.
 
