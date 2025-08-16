@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,12 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f8dc6eab18fde03278982b0b35885446.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-68f2a1e86eb87956d0dce9a9876931f0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-e33efa0a5593d9d8adcbebffb5cac9ec.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -349,7 +349,7 @@ Chapter Objectives
 </div>
 </div>
 <section id="first-order-mosfet-model" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="first-order-mosfet-model"><span class="header-section-number">2.1</span> First-Order MOSFET Model</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="first-order-mosfet-model"><span class="header-section-number">2.1</span> <span id="first-order-mosfet-model">First-Order MOSFET Model</span></h2>
 <p>The device-level derivations of this section assume familiarity with basic solid-state physics and electrostatics. For a ground-up treatment from first principles, the reader is referred to introductory solid-state device material (see Reference 1).</p>
 <section id="derivation-of-i-v-characteristics" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="derivation-of-i-v-characteristics"><span class="header-section-number">2.1.1</span> Derivation of I-V Characteristics</h3>
@@ -1049,7 +1049,7 @@ Figure&nbsp;2.23: (a) Intrinsic voltage gain stage. (b) Load line plot.
 <p>&nbsp;&nbsp;&nbsp;Note that similar to the case considered in the previous section, the output operating point voltage in this circuit will shift by large amounts for relatively small changes in <span class="math inline">\(I_B\)</span> (or MOSFET parameters). This issue must be addressed when this circuit is used in practice, for example by providing a feedback mechanism that adjusts <span class="math inline">\(I_B\)</span> such that the desired <span class="math inline">\(V_{OUT}\)</span> is maintained in the presence of component variations.</p>
 <p>&nbsp;&nbsp;&nbsp;Assuming that a well-defined operating point has been established by some means, incremental changes in <span class="math inline">\(v_{IN}\)</span> applied around the bias point <span class="math inline">\(Q\)</span> will force the intersection of the horizontal load line with the MOSFET’s drain characteristics to move sideways (since the drain current cannot change), creating a finite output voltage excursion vout. The magnitude of this voltage excursion, and thus the voltage gain of the circuit, depends on the slope of the MOSFET’s drain characteristic in saturation. The voltage gain achieved in this configuration is commonly called the <strong>intrinsic voltage gain</strong> of the MOSFET, as it represents the voltage gain of the transistor by itself, without any added resistances in the drain bias network. By the same reasoning, the circuit of <a href="#fig-2.22" class="quarto-xref">Figure&nbsp;<span>2.23</span></a>(a) is often called the <strong>intrinsic voltage gain stage</strong>. The voltage gain and other parameters of more complex amplifier circuits are often directly related to the intrinsic voltage gain of their constituent transistors, giving this parameter a fundamental significance in circuit design.</p>
 <section id="the-λ-model" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="the-λ-model"><span class="header-section-number">2.3.1</span> The λ-Model</h3>
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="the-λ-model"><span class="header-section-number">2.3.1</span> <span id="the-lambda-model">The λ-Model</span></h3>
 <p>Unfortunately, the intrinsic voltage gain of a MOSFET cannot be predicted using the MOSFET model established so far. We will therefore extend the first-order MOSFET model to incorporate the dependence of the saturation current on the drain-source voltage. As a first step, we will describe the effect in terms of large-signal equations. Next, we will apply a small-signal approximation that makes it possible to capture the <span class="math inline">\(I_{Dsat} – V_{DS}\)</span> dependence through a single resistor added to the MOSFET’s small-signal model.</p>
 <p>&nbsp;&nbsp;&nbsp;We begin by revisiting an approximation that was made in <a href="#first-order-mosfet-model">Section 2-1</a>. In order to arrive at the constant drain current expression in saturation (<a href="#eq-2.7" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>), it was assumed that <span class="math inline">\(ΔL\)</span>, the distance from the pinch-off point to the drain, is negligible relative to the channel length L. In reality, this approximation is fine only as long we do not care about the <span class="math inline">\(I_D-V_{DS}\)</span> dependence seen in <a href="#fig-2.21" class="quarto-xref">Figure&nbsp;<span>2.22</span></a>. Therefore, in order to get a quantitative handle on the MOSFET’s intrinsic voltage gain, we must further investigate the impact of the physics at the drain side.</p>
 <p>The simplest possible way to proceed is to factor <span class="math inline">\(ΔL\)</span> into the existing derivation of <a href="#first-order-mosfet-model">Section 2-1</a>. Instead of integrating <a href="#eq-2.5" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> over the length L, we use <span class="math inline">\(L– ΔL\)</span> as the upper limit of the integral. Recall that <span class="math inline">\(L– ΔL\)</span> is the actual location where the mobile charge vanishes, i.e., <span class="math inline">\(Qn(y)= 0\)</span>. With this change we obtain the following expression for the saturation region.</p>
@@ -1622,6 +1622,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1721,6 +1723,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

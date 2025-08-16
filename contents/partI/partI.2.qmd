@@ -22,7 +22,7 @@ and range limitations of simple modeling expressions.
 
 :::
 
-## First-Order MOSFET Model
+## [First-Order MOSFET Model]{#first-order-mosfet-model}
 
 The device-level derivations of this section assume
 familiarity with basic solid-state physics and electrostatics. 
@@ -437,7 +437,7 @@ always be on the lookout for model inadequacies.
 We will encounter and discuss situations where
 either model expansions or critical insight on modeling accuracy are needed throughout this module.
 
-### P-Channel MOSFET
+### P-Channel MOSFET {#p-channel-mosfet}
 
 The n-channel MOSFET discussed so far conducts
 current through an electron inversion layer in a
@@ -1696,7 +1696,7 @@ often directly related to the intrinsic voltage gain of
 their constituent transistors, giving this parameter a
 fundamental significance in circuit design.
 
-### The λ-Model
+### [The λ-Model]{#the-lambda-model}
 
 Unfortunately, the intrinsic voltage gain of a MOSFET
 cannot be predicted using the MOSFET model
@@ -1887,7 +1887,7 @@ interest: the intrinsic voltage gain stage of
 @fig-2.22(a) and the common-source amplifier of
 @fig-2.19(a).
 
-### Common-Source Voltage Amplifier Analysis Using the $\lambda$-Model
+### Common-Source Voltage Amplifier Analysis Using the $\lambda$-Model {#common-source-voltage-amplifier-analysis-using-the-lambda-model}
 
 
 For the intrinsic voltage gain stage, the small-signal

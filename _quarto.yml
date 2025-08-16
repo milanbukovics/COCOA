@@ -40,9 +40,10 @@ book:
     search: true
   page-navigation: true
   title: "COCOA: Collaborative Compendium on Analog Integrated Circuits"
+  
   subtitle: ""
   abstract: ""
-  repo-url: https://github.com/bmurmann/COCOA
+  repo-url: https://github.com/bmurmann/COCOA 
   repo-branch: main
   repo-actions: [edit, issue, source]
   downloads: [pdf]
@@ -95,6 +96,7 @@ bibliography:
   - contents/partI/partI.1.bib
   - contents/partI/partI.2.bib
   - contents/partI/partI.3.bib
+  - contents/partI/partI.4.bib
   - contents/partI/partI.5.bib
   - contents/partII/partII.2.bib
 

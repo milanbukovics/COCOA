@@ -240,7 +240,7 @@ potential limitations of working with simplified models.
 
 ![Two-port model of the transimpedance amplifier circuit in @fig-1.5.](images/png/figure1.7.png){#fig-1.7 width=100%}
 
-## Two-Port Abstraction for Amplifiers
+## Two-Port Abstraction for Amplifiers{#two-port-abstraction-for-amplifiers}
 
 High-level system block diagrams, such as
 @fig-1.2 , are typically drawn as unidirectional
@@ -525,7 +525,7 @@ reverse transmission, this increase in complexity is
 not welcome, and would also hinder us from developing
 intuition from inspection-driven analysis.
 
-### Construction of Unilateral Two-Port Models
+### Construction of Unilateral Two-Port Models {#consturction-of-unilateral-two-port-models}
 
 We will now describe the general procedures to calculate
 the controlled sources, as well as the input and
@@ -681,7 +681,7 @@ depend on $R_S$ and $R_L$, which must therefore
 always be included in the general two-port modeling
 calculations.
 
-**Example 1-3: Two-Port Model Calculations for a Bilateral Amplifier**
+**Example 1-3 {#example-1-3}: Two-Port Model Calculations for a Bilateral Amplifier**
 
 For the current amplifier in @fig-1.12(a), calculate
 the following unilateral two-port model parameters:
