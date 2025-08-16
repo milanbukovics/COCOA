@@ -1,0 +1,287 @@
+---
+bibliography: partI.6.bib
+---
+<div style="text-align: justify">
+
+# Multistage Amplifiers {#multistage-amplifiers}
+
+As we have already learned in [Chapter 1](#sec-introduction), amplifier
+circuits can be grouped into four categories: voltage,
+current, transconductance, and transresistance
+amplifiers, depending on whether the intended input
+and output signals are voltages or currents. While it
+is in principle possible to construct each one of these
+amplifier types using a single-stage circuit, the
+designer will usually combine multiple stages for
+improved performance. Generally speaking, multistage
+amplifiers are used to increase the gain and/or
+transform input and output resistances for minimum
+signal attenuation at the ports of the amplifier circuit.
+
+&nbsp;&nbsp;&nbsp;Several issues must be understood and addressed
+when designing multistage transistor amplifiers.
+First, the DC biasing that sets the quiescent node
+voltages and currents must be properly chosen so
+that the stages can be directly coupled. Second,
+proper approximations must be applied so that the
+circuit’s frequency response can be obtained by hand
+and becomes transparent for design. Lastly,
+multi-stage circuit design necessitates a systematic
+optimization approach to handle the increased number
+of design variables and degrees of freedom. This
+chapter covers elements of each one of these aspects
+through a variety of examples.
+
+
+::: {.callout-tip} 
+## Chapter Objectives
+
+◆ Design and analyze the low-frequency gain and
+input and output resistances of multistage amplifiers
+based on cascading single-stage amplifiers.
+
+◆ Analyze the frequency response of multi-stage
+amplifiers using suitable approximations.
+
+◆ Illustrate an example of a systematic design procedure
+for a three-stage transresistance amplifier.
+:::
+
+## Low-Frequency Analysis {#low-frequency-analysis}
+
+In the following treatment, several examples of cascading
+the two-port models of single-stage amplifiers 
+will be used to help us understand how
+multistage amplifiers can achieve increased gain and
+transform input/output resistances. The desired
+input and output resistances, as well as high gain, can
+be achieved with proper selection of the constituent
+single-stage amplifiers. For the time being, we will
+limit the discussion to low-frequency behavior, and
+address the analysis of frequency response in the
+next section. For our discussion, we will utilize the 
+three prototype amplifier configurations shown in
+@fig-6.1.
+
+![Amplifier configurations assumed in this section.](images/png/figure6.1.png){#fig-6.1 width=100%}
+
+###  Voltage Amplifier {#voltage-amplifier}
+
+Recall that a voltage amplifier requires a high input
+resistance, a low output resistance, and (typically) a
+large voltage gain. From [Chapter 2](#sec-cs_transfer) we know that a
+common-source amplifier has an infinite input resistance 
+since the MOS transistor has an insulating gate
+with no input current. Therefore, assuming that a
+common-source amplifier is the proper input stage
+for a voltage amplifier, we can explore cascading two
+of these stages to increase the voltage gain. The
+small-signal model of two cascaded common-source
+amplifiers is given in @fig-6.2.
+
+![Amplifier configurations assumed in this section.](images/png/figure6.2.png){#fig-6.2 width=100%}
+
+&nbsp;&nbsp;&nbsp;The input resistance of this cascade is infinite and
+the overall open-circuit voltage gain is given by the multiplication of 
+the voltage gain of each stage as shown in
+
+$$
+A_v = g_{m1}(r_{o1}||R_{D1})g_{m2}(r_{o2}||R_{D2})
+$$ {#eq-6.1}
+
+The output resistance of this amplifier is
+
+$$
+R_{out} = r_{o2}||R_{D2}
+$$ {#eq-6.2}
+
+&nbsp;&nbsp;&nbsp;This cascaded common-source voltage amplifier
+has two of the three required characteristics, namely
+a large input resistance and a high voltage gain.
+However, assuming that $R_{D2}$ is reasonably large for
+high gain, it still has a high output resistance. This
+will degrade the voltage transfer from the amplifier
+to the load resistor.
+
+&nbsp;&nbsp;&nbsp;From [Chapter 4](#the-common-gate-and-common-drain-stages) we know that a common-drain
+amplifier has an infinite input resistance, a low output 
+resistance, and a voltage gain near unity (modeled
+as unity here for simplicity). We can cascade the
+small-signal, two-port model of a common-drain
+amplifier with the small-signal model of the common-source
+cascade described above. This
+three-stage amplifier is shown in @fig-6.3. As
+before, the cascaded common-source amplifiers are
+modeled with an infinite input resistance, a voltage
+gain $A_v$, and an output resistance given by @eq-6.1
+and @eq-6.2, respectively.
+
+
+![Small-signal model of a CS-CS-CD cascade.](images/png/figure6.3.png){#fig-6.3 width=100%}
+
+There is no interstage loss of voltage gain because
+the common-drain amplifier has infinite input resistance. 
+In addition, the output resistance is reduced to
+approximately equal to the reciprocal of the
+transconductance plus the backgate transconductance 
+of the common-drain amplifier. This usually
+gives a significant reduction in output resistance and
+allows this three-stage voltage amplifier to drive
+small load resistances while still maintaining a significant 
+transfer of the open-circuit voltage to the load.
+
+
+### Transconductance Amplifier {#transconductance-amplifier}
+
+A transconductance amplifier requires a large input
+resistance, a large transconductance, and a large output 
+resistance to be able to pass most of its output
+current to the load. Let us explore using cascaded
+common-source amplifiers for a transconductance
+amplifier. In @fig-6.4 we show the small-signal
+model of two cascaded common-source amplifiers.
+We use the Norton equivalent output network since
+current is the output variable of interest. The short
+circuit transconductance of this amplifier is equal to
+
+![Small-signal model for a CS-CS cascade used as a transconductance amplifier.](images/png/figure6.4.png){#fig-6.4 width=100%}
+
+$$
+G_m= \frac{i_{out}}{V_{in1}} = -g_{m1} (r_{o1}||R_{D1})g_{m2} = A_{v1}G_{m2}
+$$ {#eq-6.3}
+
+Notice that the additional common-source stage
+increases the transconductance by the voltage gain of 
+the first stage. There is no interstage loss since the
+input resistance to the second stage is infinite.
+
+&nbsp;&nbsp;&nbsp;The output resistance of the 
+transconductance amplifier is 
+
+$$
+R_{out} =r_2 || R_{D2} 
+$$ {#eq-6.4}
+
+which is the output resistance of a single 
+common-source amplifier stage.
+
+&nbsp;&nbsp;&nbsp; We can add a current buffer to increase 
+the output resistance of the cascaded common-source
+amplifier. An ideal current buffer is defined as a circuit 
+whose input resistance is very small, output
+resistance is very large, and has a current gain of 
+unity. The common-gate amplifier studied in 
+[Chapter 4](#the-common-gate-and-common-drain-stages) 
+is a good example of a current buffer. The
+small-signal model of a common-gate amplifier 
+cascaded with two common-source amplifiers is shown
+in @fig-6.5.
+
+![Small-signal model a CS-CS-CG cascade that forms a transconductance amplifier.](images/png/figure6.5.png){#fig-6.5 width=100%}
+
+The output resistance is now 
+
+$$
+R_{out} ≅ g_{m3}r_{o3}(r_{o2} || R_{D2}) || R_{D3}
+$$ {#eq-6.5}
+
+
+Assuming that we can make RD3 negligibly large (by
+supplying the drain current using a long-channel,
+cascoded current source), the $R_{out}$ is increased by
+$g_{m3}r_{o3}$ with the help of the CG stage. The short 
+circuit transconductance is given by
+
+$$
+G_m = \frac{i_{out}}{v_{in}}
+$$
+
+$$
+= -g_{m1}(r_{o1} \parallel R_{D1}) g_{m2} 
+\left( \frac{r_{o2} \parallel R_{D2}}{r_{o2} \parallel R_{D2} + 1/g'_{m3}} \right)
+$$
+
+$$
+\equiv -g_{m1}(r_{o1} \parallel R_{D1}) g_{m2}
+$${#eq-6.6}
+
+
+Note that the transconductance is only slightly
+degraded when compared to @eq-6.3 due to the
+parallel combination of the common-source output
+resistance with the common-gate input resistance.
+This degradation is negligible since the CG input
+resistance is small compared to the CS output resistance.
+
+**[Example 6-1]{#example-6-1}: Transresistance Amplifier**
+
+This example explores how to cascade two amplifier
+stages to form a transresistance amplifier. Select the
+stages and calculate  $R_{in}$, $R_{out}$, and $R_m$. Assume that
+the employed CS and CG stages ([@fig-6.1]) have drain 
+resistors of value $R_D << r_o$ in their output 
+networks. Hint: Recall that a transresistance amplifier
+typically requires a low input resistance, a low output 
+resistance, and a large transresistance.
+
+**SOLUTION**
+
+To obtain a low input resistance, we choose a CG
+amplifier as the first stage. The choice of the second
+stage depends on the specifications required. Let’s
+try a CS amplifier. The small-signal two-port model
+for a CG-CS cascade is shown in @fig-ex-6.1.1 . $R_{in}$ the input 
+resistance, is $1 / g'_m1$. $R_{out}$, the output resistance, is 
+equal to $R_{D2}$. We need to find the unloaded ($R_L \to \infty$) 
+transfer function between $v_{out}$ and $i_{in1}$ to calculate 
+$R_m$. We begin by writing
+
+$$
+v_{gs2} = i_{in1} R_{D1}
+$$
+
+$$
+v_{out} = -g_{m2} v_{gs2} R_{D2}
+$$
+
+$$
+R_m = \frac{v_{out}}{i_{in1}} = -g_{m2} R_{D1} R_{D2}
+$$
+
+If we use a CD amplifier instead of a CS for the second stage, we 
+expect a lower output resistance at the expense of lower 
+transresistance. The small-signal two-port model for a CG-CD 
+amplifier is shown in @fig-ex-6.1.2, assuming for simplicity that 
+the CD stage has unity voltage gain.
+
+
+![](images/png/figure-ex-6.1.1.png){#fig-ex-6.1.1 width=100%}
+
+![](images/png/figure-ex-6.1.2.png){#fig-ex-6.1.2 width=100%}
+
+
+&nbsp;&nbsp;&nbsp;The input resistance is the same for both 
+amplifiers since both use a CG stage as the input. The output 
+resistance is 
+
+$$
+R_{out} = \frac{1}{(g_{m2} + g_{mb2})}.
+$$
+
+The transresistance 
+
+$$
+R_m = \frac{v_{out}}{i_{in1}} = R_{D1}
+$$ 
+
+for the CG-CD configuration. Note that the output resistance and 
+transresistance of the CG-CD configuration are lower than the CG-CS
+configuration by $g_{m2} r_{o2}$. The proper topological choice 
+depends on the specifications required and the relative value of 
+$R_L$ compared to $R_{out}$.
+
+
+
+
+
+</div>

@@ -236,6 +236,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multistage Amplifiers</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -251,13 +257,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -275,7 +281,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -428,6 +434,7 @@ Figure&nbsp;4.5
 </figure>
 </div>
 <p>Using <a href="#eq-4.1" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> and the technology parameters for <span class="math inline">\(PB\)</span> and <span class="math inline">\(MJ\)</span> from <a href="#tbl-3.1">Table 3-1</a>, we obtain</p>
+<!-- TODO table 3.1 linking -->
 <p><span class="math display">\[
 C_{bsub} = \frac{C_{Jwell \cdot A_{well}}}{(1+V_{BSUB} / PB)^{MJ}}
 \]</span></p>
@@ -1255,7 +1262,7 @@ Figure&nbsp;4.28: Frequency dependence of the common-drain stage’s output impe
 </figcaption>
 </figure>
 </div>
-<p>In summary, and for the purpose of the multi-stage circuit analysis in <a href="#multistage-amplifiers">Chapter 6</a>, an appropriate (but approximate) two-port model that includes the most relevant impedances is shown in <a href="#fig-4.25" class="quarto-xref">Figure&nbsp;<span>4.29</span></a>. This model is reasonably accurate up to frequencies close to the bandwidth of the stage when driven with a relatively large source resistance <span class="math inline">\(R_S &gt; 1/g_m\)</span>. Inductive effects are omitted for simplicity. When confronted with applications that necessitate a different set of approximations, the reader is encouraged to revisit the accurate transfer function result of <a href="#eq-4.36" class="quarto-xref">Equation&nbsp;<span>4.36</span></a> and recustomize it as needed for the specific use case.</p>
+<p>In summary, and for the purpose of the multi-stage circuit analysis in <a href="partI.6.html">Chapter 6</a>, an appropriate (but approximate) two-port model that includes the most relevant impedances is shown in <a href="#fig-4.25" class="quarto-xref">Figure&nbsp;<span>4.29</span></a>. This model is reasonably accurate up to frequencies close to the bandwidth of the stage when driven with a relatively large source resistance <span class="math inline">\(R_S &gt; 1/g_m\)</span>. Inductive effects are omitted for simplicity. When confronted with applications that necessitate a different set of approximations, the reader is encouraged to revisit the accurate transfer function result of <a href="#eq-4.36" class="quarto-xref">Equation&nbsp;<span>4.36</span></a> and recustomize it as needed for the specific use case.</p>
 <div id="fig-4.25" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1270,7 +1277,7 @@ Figure&nbsp;4.29: Two-port model of the CD stage, including relevant frequency d
 </section>
 <section id="application-examples-of-common-gate-and-common-drain-stages" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="application-examples-of-common-gate-and-common-drain-stages"><span class="header-section-number">4.5</span> <span id="application-examples-of-common-gate-and-common-drain-stages">Application Examples of Common-Gate and Common-Drain Stages</span></h2>
-<p>In this section we will discuss a few common applications of the CG and CD stages. The discussion is mostly qualitative and is meant to help solidify the qualitative understanding of the basic properties for all stage configurations discussed so far. Further analytical details for a subset of these applications is covered in <a href="#multistage-amplifiers">Chapter 6</a>.</p>
+<p>In this section we will discuss a few common applications of the CG and CD stages. The discussion is mostly qualitative and is meant to help solidify the qualitative understanding of the basic properties for all stage configurations discussed so far. Further analytical details for a subset of these applications is covered in <a href="partI.6.html">Chapter 6</a>.</p>
 <section id="cs-cg-cascade-cascode-amplifier" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="cs-cg-cascade-cascode-amplifier"><span class="header-section-number">4.5.1</span> <span id="cs-cg-cascade-cascode-amplifier">CS-CG Cascade (Cascode Amplifier)</span></h3>
 <p>A commonly used circuit called the <strong>cascode amplifier</strong> combines a CS and CG stage as shown in <a href="#fig-4.26" class="quarto-xref">Figure&nbsp;<span>4.30</span></a>. This configuration comes with several benefits, both in terms of low- and high-frequency behavior. From a low-frequency perspective, a key benefit is that the resistance (<span class="math inline">\(R_{out}\)</span>) looking into the drain of the CG device (<span class="math inline">\(M_2\)</span>) is extremely high. This follows directly from <a href="#eq-4.22" class="quarto-xref">Equation&nbsp;<span>4.22</span></a>, with <span class="math inline">\(r_s\)</span> substituted by <span class="math inline">\(r_{o1}\)</span> (the output resistance of MOSFET <span class="math inline">\(M_1\)</span>), which leads to</p>
@@ -1336,7 +1343,7 @@ Figure&nbsp;4.33: Common-source common-drain cascade.
 </section>
 <section id="summary" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.6</span> Summary</h2>
-<p>In this chapter, we discussed the common-gate and common-drain stage configurations. As we have seen, the core sections of these circuits operate as a current buffer and voltage buffer, respectively. <a href="#fig-4.30" class="quarto-xref">Figure&nbsp;<span>4.34</span></a> summarizes the corresponding low-frequency model structure in comparison with the common-source stage. Focusing only on the core circuits and cting any auxiliary elements such as drain resistance <span class="math inline">\(R_D\)</span>, <a href="#tbl-4.2">Table 4-2</a> lists the main model parameters. As exemplified in <a href="#application-examples-of-common-gate-and-common-drain-stages">Section 4-5</a>, combining these three configurations with their different characteristics gives the designer the freedom to construct a wide range of application-optimized amplifiers. This idea is studied further in <a href="#multistage-amplifiers">Chapter 6</a>.</p>
+<p>In this chapter, we discussed the common-gate and common-drain stage configurations. As we have seen, the core sections of these circuits operate as a current buffer and voltage buffer, respectively. <a href="#fig-4.30" class="quarto-xref">Figure&nbsp;<span>4.34</span></a> summarizes the corresponding low-frequency model structure in comparison with the common-source stage. Focusing only on the core circuits and cting any auxiliary elements such as drain resistance <span class="math inline">\(R_D\)</span>, <a href="#tbl-4.2">Table 4-2</a> lists the main model parameters. As exemplified in <a href="#application-examples-of-common-gate-and-common-drain-stages">Section 4-5</a>, combining these three configurations with their different characteristics gives the designer the freedom to construct a wide range of application-optimized amplifiers. This idea is studied further in <a href="partI.6.html">Chapter 6</a>.</p>
 <div id="fig-4.30" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.30-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
