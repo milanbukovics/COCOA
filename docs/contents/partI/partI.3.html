@@ -236,6 +236,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multistage Amplifiers</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -251,13 +257,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -275,7 +281,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -902,7 +908,6 @@ Table&nbsp;3.1: Standard technology parameters for the <span class="math inline"
 </div>
 </figure>
 </div>
-<!-- QUESTION in the last row of the table, is that 3 µ "m" ?-->
 </div>
 </section>
 <section id="frequency-response-with-intrinsic-and-extrinsic-gate-capacitances" class="level3" data-number="3.3.3">
@@ -1365,7 +1370,7 @@ Figure&nbsp;3.25: Circuit example with three open-circuit time constants.
 </section>
 <section id="high-frequency-two-port-model-for-the-common-source-voltage-amplifier" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="high-frequency-two-port-model-for-the-common-source-voltage-amplifier"><span class="header-section-number">3.5</span> <span id="high-frequency-two-port-model-for-the-common-source-voltage-amplifier">High-Frequency Two-Port Model for the Common-Source Voltage Amplifier</span></h2>
-<p>To summarize, <a href="#fig-3.22" class="quarto-xref">Figure&nbsp;<span>3.26</span></a> shows the most general two-port model for the common-source voltage amplifier [similar to <a href="#fig-3.13" class="quarto-xref">Figure&nbsp;<span>3.15</span></a>] with source and load networks included. The advantage of this model representation is that it is valid for arbitrary component values. The disadvantage is that analyzing a circuit based on this model leads to complex equations. Generally, one should use this model as the starting point for the analysis of more complex circuits that contain a CS amplifier (see <a href="#multistage-amplifiers">Chapter 6</a>). Then, whenever suitable, we can invoke simplifications such as the Miller approximation or open-circuit time constants to simplify the analysis.</p>
+<p>To summarize, <a href="#fig-3.22" class="quarto-xref">Figure&nbsp;<span>3.26</span></a> shows the most general two-port model for the common-source voltage amplifier [similar to <a href="#fig-3.13" class="quarto-xref">Figure&nbsp;<span>3.15</span></a>] with source and load networks included. The advantage of this model representation is that it is valid for arbitrary component values. The disadvantage is that analyzing a circuit based on this model leads to complex equations. Generally, one should use this model as the starting point for the analysis of more complex circuits that contain a CS amplifier (see <a href="partI.6.html">Chapter 6</a>). Then, whenever suitable, we can invoke simplifications such as the Miller approximation or open-circuit time constants to simplify the analysis.</p>
 <p>&nbsp;&nbsp;&nbsp;Finally, note that the model of <a href="#fig-3.22" class="quarto-xref">Figure&nbsp;<span>3.26</span></a> is not well suited for a translation into a native voltage amplifier model (using a voltage controlled voltage source) as done for the low-frequency circuit in <a href="partI.2.html#two-port-model-for-the-common-source-voltage-amplifier">Section 2-4</a>. The capacitors connected to the output port would lead to a frequency-dependent open-circuit gain and output impedance (<span class="math inline">\(Z_{out}\)</span> rather than <span class="math inline">\(R_{out}\)</span>) that give a non-intuitive representation of the circuit. It is therefore preferred to describe this voltage amplifier using the transconductance model as shown.</p>
 <div id="fig-3.22" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

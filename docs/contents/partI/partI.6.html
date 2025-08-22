@@ -483,16 +483,897 @@ Figure&nbsp;6.7
 </figcaption>
 </figure>
 </div>
-<p>&nbsp;&nbsp;&nbsp;The input resistance is the same for both amplifiers since both use a CG stage as the input. The output resistance is</p>
-<p><span class="math display">\[
-R_{out} = \frac{1}{(g_{m2} + g_{mb2})}.
-\]</span></p>
-<p>The transresistance</p>
-<p><span class="math display">\[
-R_m = \frac{v_{out}}{i_{in1}} = R_{D1}
-\]</span></p>
-<p>for the CG-CD configuration. Note that the output resistance and transresistance of the CG-CD configuration are lower than the CG-CS configuration by <span class="math inline">\(g_{m2} r_{o2}\)</span>. The proper topological choice depends on the specifications required and the relative value of <span class="math inline">\(R_L\)</span> compared to <span class="math inline">\(R_{out}\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;The input resistance is the same for both amplifiers since both use a CG stage as the input. The output resistance is <span class="math inline">\(R_{out} = \frac{1}{(g_{m2} + g_{mb2})}\)</span>. The transresistance <span class="math inline">\(R_m = \frac{v_{out}}{i_{in1}} = R_{D1}\)</span> for the CG-CD configuration. Note that the output resistance and transresistance of the CG-CD configuration are lower than the CG-CS configuration by <span class="math inline">\(g_{m2} r_{o2}\)</span>. The proper topological choice depends on the specifications required and the relative value of <span class="math inline">\(R_L\)</span> compared to <span class="math inline">\(R_{out}\)</span>.</p>
 </section>
+</section>
+<section id="high-frequency-analysis" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="high-frequency-analysis"><span class="header-section-number">6.2</span> <span id="high-frequency-analysis">High-Frequency Analysis</span></h2>
+<p>As we have already seen in our treatment of single-stage amplifiers, analyzing the frequency response of an amplifier by hand (as opposed to computer simulation) usually necessitates approximations. The approximations are needed not only to manage complexity, but also to gain intuition about the limiting components in the circuit. Clearly, as we cascade stages, this need for simplifying approximations becomes only stronger. &nbsp;&nbsp;&nbsp;In this section, we will examine typical strategies for the analysis of multistage amplifiers using two multi-stage amplifier examples: CG-CD and CS-CG (cascode amplifier). Our analysis of these circuits will heavily rely on the toolkit developed in <a href="#frequency-response-of-the-common-souyrce-amplifier">Chapters 3</a> and <a href="partI.4.html">4</a> and will invoke concepts such as the method of open-circuit time constants and the Miller approximation.</p>
+<section id="oct-based-analysis-of-the-cg-cd-cascadeoct-based-analysis-of-the-cg-cd-cascade" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="oct-based-analysis-of-the-cg-cd-cascadeoct-based-analysis-of-the-cg-cd-cascade"><span class="header-section-number">6.2.1</span> [OCT-Based Analysis of the CG-CD Cascade]{OCT-based-analysis-of-the-CG-CD-cascade}</h3>
+<p>We begin our discussion by considering the CG-CD transresistance amplifier shown in <a href="#fig-6.6" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>(a), along with its small-signal model in <a href="#fig-6.6" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>(b). The latter circuit is constructed by cascading the respective small-signal models from <a href="partI.4.html">Chapter 4</a> (<a href="partI.4.html#fig-4.13" class="quarto-xref">Figure&nbsp;<span>4.15</span></a> and <a href="partI.4.html#fig-4.20" class="quarto-xref">Figure&nbsp;<span>4.24</span></a>) and contains no approximations.</p>
+<div id="fig-6.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.6.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.8: (a) CG-CD transresistance amplifier. (b) Corresponding small-signal model.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;At least in principle, the exact frequency response of the model in <a href="#fig-6.6" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>(b) can be found by writing KCL at the three nodes of the circuit, and solving a 3x3 system of equations to find <span class="math inline">\(V_{out}(s)/I_s(s)\)</span>. However, this procedure not only will be tedious, but will also produce long equations that are hard to interpret for design. Generally, accurate symbolic or numerical analysis of a large circuit is best left to a computer and is useful mainly to check our understanding and provide fine-tuned numerical answers. &nbsp;&nbsp;&nbsp;As circuit designers, we must always look for ways to simplify the circuit and consider only the main effects that set the performance metrics of interest. A first step to take in this direction is to simplify the small-signal model based on our understanding of the individual stages. In <a href="#fig-6.7" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>, the following simplifications have been made:</p>
+<p>◆ The resistance ro1 is omitted per the argument from <a href="partI.4.html#detailed-low-frequency-analysis">Section 4-3-3</a>. As long as <span class="math inline">\(R_{D1} &lt;&lt; r_{o1}\)</span>, a unilateral model for the CG stage without ro1 is sufficiently accurate.</p>
+<p>◆ The resistance <span class="math inline">\(r_{o2}\)</span> is omitted since typically <span class="math inline">\(r_{o2} \gg 1 / g'_{m2}\)</span>.</p>
+<p>◆ The capacitance <span class="math inline">\(C_{sb2}\)</span> is omitted as discussed in <a href="partI.4.html#detailed-low-frequency-analysis">Section 4-4-3</a>. Due to the low output resistance of the CD stage, this capacitance will affect the behavior of the amplifier only at very high frequencies beyond our interest in a hand analysis.</p>
+<div id="fig-6.7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.7.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.9: (a) CG-CD transresistance amplifier. (b) Corresponding small-signal model.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;With these simplifications in place, the circuit has become much more manageable for hand analysis, but has the remaining issue that the second stage is bilateral due to <span class="math inline">\(C_{gs2}\)</span>. Again, while it is possible to analyze the circuit using KCL equations, the designer will typically look for further simplifications. These simplifications will now depend on the exact objective of the analysis. As a first example, suppose that we are only interested in obtaining a first-order estimate of the circuit’s bandwidth. In this case, applying the method of open-circuit time (OCT) constants is a suitable direction to take. As we have already seen in <a href="partI.4.html">Chapter 4</a>, the main advantage of an OCT-based analysis is that it breaks the overall task into manageable steps and simultaneously provides insight about bandwidth bottlenecks. We will reiterate this point in the following example.</p>
+<p><strong><span id="example-6-2">Example 6-2</span>: OCT Analysis of a CG-CD Transresistance Amplifier</strong></p>
+<p>Consider the CG-CD small-signal model of <a href="#fig-6.7" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> with the following parameters: <span class="math inline">\(g_{m1} = g_{m2} = 1\ \text{mS}\)</span>, <span class="math inline">\(g_{mb}/g_m = 0.2\)</span>, <span class="math inline">\(r_s = 50\ \text{k}\Omega\)</span>, <span class="math inline">\(R_{D1} = 10\ \text{k}\Omega\)</span>, <span class="math inline">\(R_L = 3\ \text{k}\Omega\)</span>, <span class="math inline">\(C_{s1} = 1\ \text{pF}\)</span>, <span class="math inline">\(C_x = 200\ \text{fF}\)</span> and <span class="math inline">\(C_{gs2} = 200\ \text{fF}\)</span>. Estimate the circuit’s bandwidth using the method of open-circuit time constants.</p>
+<p><strong>Solution</strong></p>
+<p>First note that the two open-circuit time constants associated with <span class="math inline">\(C_{s1}\)</span> and <span class="math inline">\(C_{d1}\)</span> can be identified by inspection:</p>
+<p><span class="math display">\[
+\tau_{s1o} = C_{s1} \cdot \left( r_s \parallel \frac{1}{g'_m1} \right) = 0.82\ \text{ns}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{1o} = C_{d1} \cdot R_{D1} = 2\ \text{ns}
+\]</span></p>
+<p>Now, in order to find the Thévenin resistance associated with <span class="math inline">\(C_{gs2}\)</span>, we must consider a larger portion of the circuit, as shown below. Note that this setup resembles almost exactly the circuit of <a href="partI.3.html#fig-3.19" class="quarto-xref">Figure&nbsp;<span>3.22</span></a>, where we determined the Thévenin resistance for <span class="math inline">\(C_{gd}\)</span> in a CS stage. The only difference here is that the sign of the controlled source is flipped, simply because the CD stage is non-inverting.</p>
+<div id="fig-ex-6.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-6.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-6.2.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-6.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.10: (a) CG-CD transresistance amplifier. (b) Corresponding small-signal model.
+</figcaption>
+</figure>
+</div>
+<p>We can therefore directly apply the result of Eq. (3.66): “<span class="math inline">\(R_{left} + R_{right} + g_m R_{left} R_{right}\)</span>” but now with <span class="math inline">\(g_m\)</span> replaced by <span class="math inline">\(-g_m\)</span>.</p>
+<p><span class="math display">\[
+R_{Tgs2} = R_{D1} + \left( R_L \parallel \frac{1}{g'_m2} \right)
+- g_{m2} R_{D1} \left( R_L \parallel \frac{1}{g'_m2} \right)
+\]</span></p>
+<p><span class="math display">\[
+= R_{D1} \left( 1 - g_{m2} \left( R_L \parallel \frac{1}{g'_m2} \right) \right)
++ \left( R_L \parallel \frac{1}{g'_m2} \right)
+\]</span></p>
+<p><span class="math display">\[
+= R_{D1}(1 - A'_{v20}) + \left( R_L \parallel \frac{1}{g'_m2} \right)
+\]</span></p>
+<p>where <span class="math inline">\(A'_{v20} = v_{out} / v_x\)</span> is the loaded voltage gain of the CD stage at low frequencies.<br>
+Note that the first term of the above expression accounts for the Miller gain across <span class="math inline">\(C_{gs2}\)</span>; we have already seen this term in our analysis of <a href="partI.4.html#detailed-low-frequency-analysis">Section 4-4-3</a>. Evaluating this result numerically, we find <span class="math inline">\(A'_{v20} = 0.652\)</span> and <span class="math inline">\(R_{Tgs2} = 4.13\ \text{k}\Omega\)</span>, and thus:</p>
+<p><span class="math display">\[
+\tau_{gs2o} = C_{gs2} \cdot R_{Tgs2} = 0.826\ \text{ns}
+\]</span></p>
+<p><span class="math display">\[
+f_{3dB} \equiv \frac{1}{2\pi} \cdot \frac{1}{0.82\ \text{ns} + 2\ \text{ns} + 0.26\ \text{ns} + 0.826\ \text{ns}}
+= 43.7\ \text{MHz}
+\]</span></p>
+<p>A simulation of the full circuit reveals <span class="math inline">\(f_{3dB} = 61\ \text{MHz}\)</span>. The OCT result is therefore off by about –26%, which is consistent with our understanding from <a href="#frequency-response-of-the-common-souyrce-amplifier">Chapter 3</a>. OCT bandwidth estimates are always conservative and tend to be off by 20–30% when there are several significant time constants.</p>
+</section>
+<section id="pole-calculations-for-the-cg-cd-cascade" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="pole-calculations-for-the-cg-cd-cascade"><span class="header-section-number">6.2.2</span> <span id="pole-calculations-for-the-cg-cd-cascade">Pole Calculations for the CG-CD Cascade<span class="math inline">\(^*\)</span></span></h3>
+<p>As indicated earlier, the OCT analysis above is useful as long as we are only interested in a first-order estimate of the circuit’s bandwidth. However, in some situations we may require knowledge of the circuit’s most significant poles and zeros. This would be the case, for example, if the amplifier was employed in a feedback system, where the exact location of the poles and zeros (rather than just the bandwidth estimate) play a significant role. While the analysis of feedback systems is beyond the scope of this module, it is worth introducing the reader to techniques suitable for pole-estimation in multi-stage circuits.</p>
+<p>&nbsp;&nbsp;&nbsp;One typical approach that designers tend to follow for pole estimations is to try and approximate the circuit by a cascade of unilateral two-ports. As we have established in <a href="#time-constants-versus-time">Section 3-4-4</a>, for a cascade of unilateral two-ports with parallel RC sections, the circuit poles are directly set by the time constants at each port. Even though this strategy does not always give precise numerical results, it provides a great deal of intuition on how to influence the position of significant poles. We will now illustrate this approach using the CG-CD amplifier.</p>
+<p><strong><span id="example-6-3">Example 6-3</span>: Estimation of the Most Significant Poles in a CG-CD Transresistance Amplifier</strong></p>
+<p>Consider the CG-CD small-signal model of <a href="#fig-6.7" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> with the same parameters as in <a href="#example-6-2">Example 6-2</a>: <span class="math inline">\(g_{m1} = g_{m2} = 1\ \text{mS}\)</span>, <span class="math inline">\(g_{mb}/g_m = 0.2\)</span>, <span class="math inline">\(r_s = 50\ \text{k}\Omega\)</span>, <span class="math inline">\(R_{D1} = 10\ \text{k}\Omega\)</span>, <span class="math inline">\(R_L = 3\ \text{k}\Omega\)</span>, <span class="math inline">\(C_{s1} = 1\ \text{pF}\)</span>, <span class="math inline">\(C_x = 200\ \text{fF}\)</span>, and <span class="math inline">\(C_{gs2} = 200\ \text{fF}\)</span>. Estimate the locations of the circuit’s most significant poles.</p>
+<p><strong>Solution</strong></p>
+<p>In order to estimate the most significant poles without resorting to complex algebra, we construct a unilateral model for the CD portion of the circuit (as already established in <a href="partI.4.html#fig-4.25" class="quarto-xref">Figure&nbsp;<span>4.29</span></a>). The corresponding simplified circuit (shown in <a href="#fig-ex-6.3.2" class="quarto-xref">Figure&nbsp;<span>6.11</span></a>) uses the Miller approximation to translate <span class="math inline">\(C_{gs2}\)</span> into an equivalent parallel capacitance at the input port of the CD stage. This approximation is reasonable since in this example the voltage gain of the CD stage is constant up to very high frequencies, beyond the poles that we are trying to estimate.</p>
+<div id="fig-ex-6.3.2" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-6.3.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-6.3.2.png" id="fig-ex-6.3.2" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-ex-6.3.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.11
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;From the simplified circuit, we can immediately identify the approximate pole locations by inspection and write the complete circuit transfer function as</p>
+<p><span class="math display">\[
+p_1 = -\frac{1}{\left(r_s \parallel \frac{1}{g'_m}\right) C_{s1}}
+\]</span></p>
+<p><span id="eq-6.7"><span class="math display">\[
+p_2 = -\frac{1}{R_{D1} \left[ C_{d1} + \left(1 - A'_{v20}\right) C_{gs2} \right]}
+\tag{6.7}\]</span></span></p>
+<p><span class="math display">\[
+\frac{v_{out}}{i_s} = R_{m0} \cdot \frac{1}{1 - \tfrac{s}{p_1}} \cdot \frac{1}{1 - \tfrac{s}{p_2}}
+\]</span></p>
+<p>where <span class="math inline">\(R_{m0} = R_{D1} A'_{v20}\)</span> is the low-frequency transresistance. Evaluating the pole frequencies numerically, we find <span class="math inline">\(f_{p1} = 194 \,\text{MHz}\)</span> and <span class="math inline">\(f_{p2} = 59 \,\text{MHz}\)</span>.</p>
+<p>An accurate analysis of the full circuit reveals that there are three (real, LHP) poles and one (LHP) zero at the following respective frequencies: 67 MHz, 194 MHz, 1100 MHz, and 796 MHz (for the zero).</p>
+<p>From the above example, we conclude that the simplified analysis has done a reasonable job at estimating the first two poles. This overall approach is very powerful, because it lets the designer quickly see which components set the most significant pole frequencies. For example, if we wanted to increase <span class="math inline">\(f_{p2}\)</span>, the result shows that reducing <span class="math inline">\(R_{D1}\)</span> would be an option to consider.<br>
+Such guidance would have been harder to obtain from lengthy algebraic expressions that capture the complete circuit transfer function.</p>
+</section>
+<section id="oct-based-analysis-of-the-cs-cg-cascade-cascode-amplifier" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="oct-based-analysis-of-the-cs-cg-cascade-cascode-amplifier"><span class="header-section-number">6.2.3</span> <span id="oct-based-analysis-of-the-cs-cg-cascode">OCT-Based Analysis of the CS-CG Cascade (Cascode Amplifier)</span></h3>
+<p>In this section, we explore the frequency response of another important multistage amplifier called the <strong>cascode amplifier</strong>. We have already briefly discussed this circuit in <a href="partI.4.html#application-examples-of-common-gate-and-common-drain-stages">Section 4-5</a> and qualitatively argued that it should not suffer from the Miller effect, which often severely degrades the frequency response of the common-source amplifier. In the following discussion, we will analyze the frequency response of a cascode amplifier in the same spirit as we have done this in the previous section. That is, we will illustrate strategies that allow us to analyze and reason about the frequency response of the circuit intuitively, without much algebraic complexity.</p>
+<p>&nbsp;&nbsp;&nbsp;For our analysis, we consider the circuit shown in <a href="#fig-6.8" class="quarto-xref">Figure&nbsp;<span>6.12</span></a>(a), along with its small-signal model in <a href="#fig-6.8" class="quarto-xref">Figure&nbsp;<span>6.12</span></a>(b). The shown model is complete, except that the output resistances of the two transistors have been neglected due to presence of the <span class="math inline">\(1/g_{m2}\)</span> and <span class="math inline">\(R_D\)</span> resistors (we assume <span class="math inline">\(1/g′_{m2} &lt;&lt; r_{o1}\)</span> and <span class="math inline">\(R_D &lt;&lt; r_{o2}\)</span>).</p>
+<div id="fig-6.8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.8.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.12: (a) Cascode amplifier. (b) Corresponding small-signal model.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;We begin by calculating the small-signal voltage gain of this amplifier at low frequencies by open-circuiting the capacitors.<br>
+This voltage gain is given by</p>
+<p><span id="eq-6.8"><span class="math display">\[
+A_{v0} = \frac{v_x}{v_s} \cdot \frac{v_{out}}{v_x}
+= -\frac{g_{m1}}{g'_{m2}} \cdot g'_{m2} R_D
+= -g_{m1} R_D
+\tag{6.8}\]</span></span></p>
+<p>&nbsp;&nbsp;&nbsp;Note that this is the same as the low-frequency voltage gain that is obtained from a common-source amplifier; the advantage of the cascode amplifier ies mainly in its wideband frequency response, as we will show next.</p>
+<p>&nbsp;&nbsp;&nbsp;For a first-order estimate of the circuit’s bandwidth, we can consider its open-circuit time constants. Once again, we find the time constants by nspection, and using the<br>
+“<span class="math inline">\(R_{left} + R_{right} + g_m R_{left} R_{right}\)</span>” rule to find the open-circuit time constant for <span class="math inline">\(C_{gd1}\)</span>.</p>
+<p><span id="eq-6.9"><span class="math display">\[
+\tau_{gs1o} = R_s C_{gs}
+\tag{6.9}\]</span></span></p>
+<p><span id="eq-6.9"><span class="math display">\[
+\tau_{xo} = \frac{C_x}{g'_{m2}}
+\tag{6.10}\]</span></span></p>
+<p><span id="eq-6.11"><span class="math display">\[
+\tau_{gd1o} =
+\left[
+R_S + \frac{1}{g'_{m2}} + g_{m1} R_S \frac{1}{g'_{m2}}
+\right] C_{gd1}
+\tag{6.11}\]</span></span></p>
+<p><span class="math display">\[
+= \left[
+\frac{1}{g'_{m2}} + \left( 1 + \frac{g_{m1}}{g'_{m2}} \right) R_S
+\right] C_{gd1}
+\]</span></p>
+<p>Next, we consider the time constant at the output node:</p>
+<p><span id="eq-6.12"><span class="math display">\[
+\tau_{d2o} = R_D C_{d2s}
+\tag{6.12}\]</span></span></p>
+<p>Thus, the bandwidth estimate of the stage is:</p>
+<p><span id="eq-6.13"><span class="math display">\[
+\omega_{3dB} = \frac{1}{\tau_{gs1o} + \tau_{xo} + \tau_{gd1o} + \tau_{d2o}}
+\tag{6.13}\]</span></span></p>
+<p>&nbsp;&nbsp;&nbsp;One key difference compared to a common-source amplifier lies in the time constant associated with <span class="math inline">\(C_{gd1}\)</span>. For the basic common-source amplifier in Chapter 3, we had</p>
+<p><span id="eq-6.14"><span class="math display">\[
+\tau_{gdo} = \left[ R_D + (1 + g_m R_D)R_S \right] C_{gd}
+\tag{6.14}\]</span></span></p>
+<p>which suffers from Miller amplification of the gate-drain capacitance by the factor <span class="math inline">\(g_m R_D\)</span>, which is the magnitude of the circuit’s DC voltage gain.<br>
+In contrast, no significant Miller amplification occurs in the cascode amplifier. Even if the cascode amplifier is designed for large overall voltage gain, the magnitude of the voltage gain across <span class="math inline">\(C_{gd1}\)</span> is limited to <span class="math inline">\(g_{m1}/g'_{m2}\)</span>, which is typically close to unity. The following example looks at a numerical evaluation of this advantage.</p>
+</section>
+<section id="example-6-4-cascode-amplifier-bandwidth-estimate-using-an-oct-analysis" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="example-6-4-cascode-amplifier-bandwidth-estimate-using-an-oct-analysis"><span class="header-section-number">6.2.4</span> <span id="example-6-4">Example 6-4</span>: Cascode Amplifier Bandwidth Estimate Using an OCT Analysis</h3>
+<p>Consider the circuit shown in Figure Ex6-4 and assume the following component values: <span class="math inline">\(R_D = 5 \, k\Omega\)</span>, <span class="math inline">\(R_s = 50 \, k\Omega\)</span> and for both MOSFETs: <span class="math inline">\(g_m = 1 \, \text{mS}\)</span>, <span class="math inline">\(C_{gs} = 40.7 \, \text{fF}\)</span>, <span class="math inline">\(C_{gd} = 10 \, \text{fF}\)</span>, <span class="math inline">\(C_{db} = C_{sb} = 11.6 \, \text{fF}\)</span></p>
+<p>These are the same parameter values we used in <a href="#example-3-7">Example 3-7</a>, an OCT analysis of a basic CS amplifier. Assume that the body of <span class="math inline">\(M_2\)</span> is connected to ground and that <span class="math inline">\(g_{mb2}/g_m = 0.2\)</span>.<br>
+Estimate the 3-dB bandwidth using an OCT analysis and compare the result to the bandwidth estimate of the original CS circuit from <a href="#example-3-7">Example 3-7</a>.</p>
+<!--TODO fix exaple 3-7 linking -->
+<div id="fig-ex-6.4" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-6.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-ex-6.4.png" id="fig-ex-6.4" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-ex-6.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.13
+</figcaption>
+</figure>
+</div>
+<p><strong>SOLUTION</strong></p>
+<p>Evaluating <a href="#eq-6.9" class="quarto-xref">Equation&nbsp;<span>6.10</span></a> through <a href="#eq-6.13" class="quarto-xref">Equation&nbsp;<span>6.13</span></a> numerically with the given values yields</p>
+<p><span class="math display">\[
+\tau_{gs1o} = 50k\Omega \cdot 40.7 \, \text{fF} = 2.035 \, \text{ns}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{xo} = \frac{11.6 \, \text{fF} + 40.7 \, \text{fF} + 11.6 \, \text{fF}}{1 \, \text{mS}} = 64 \, \text{ps}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{gd1o} =
+\left[ \frac{1}{1.2 \, \text{mS}} + \left( 1 + \frac{1 \, \text{mS}}{1.2 \, \text{mS}} \right) 50k\Omega \right] 10 \, \text{fF}
+= 925 \, \text{ps}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{d2o} = 5k\Omega (10 \, \text{fF} + 11.6 \, \text{fF}) = 108 \, \text{ps}
+\]</span></p>
+<p>The bandwidth estimate is therefore</p>
+<p><span class="math display">\[
+f_{3dB} = \frac{1}{2\pi} \cdot \frac{1}{2.035 \, \text{ns} + 64 \, \text{ps} + 925 \, \text{ps} + 108 \, \text{ps}}
+= 50.8 \, \text{MHz}
+\]</span></p>
+<p>&nbsp;&nbsp;&nbsp;For comparison, the three time constants of the corresponding common-source amplifier (without <span class="math inline">\(M_2\)</span>) would be (see <a href="#example-3-7">Example 3-7</a>, with <span class="math inline">\(C_L = 0\)</span>)</p>
+<p><span class="math display">\[
+\tau_{gso} = 50k\Omega \cdot 40.7 \, \text{fF} = 2.035 \, \text{ns}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{db} = 5k\Omega \cdot 11.6 \, \text{fF} = 58 \, \text{ps}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{gdo} = \left[ 5k\Omega + (1 + 1 \, \text{mS} \cdot 5k\Omega) 50k\Omega \right] 10 \, \text{fF} = 3.05 \, \text{ns}
+\]</span></p>
+<p>and thus</p>
+<p><span class="math display">\[
+f_{3dB, \, CS} = \frac{1}{2\pi} \cdot \frac{1}{2.035 \, \text{ns} + 58 \, \text{ps} + 3.05 \, \text{ns}}
+= 30.9 \, \text{MHz}
+\]</span></p>
+<p>The cascode amplifier’s bandwidth is about 62% larger than that of the basic common-source voltage amplifier, which is a significant improvement.</p>
+</section>
+<section id="pole-calculations-for-the-cs-cg-cascade-cascode-amplifier" class="level3" data-number="6.2.5">
+<h3 data-number="6.2.5" class="anchored" data-anchor-id="pole-calculations-for-the-cs-cg-cascade-cascode-amplifier"><span class="header-section-number">6.2.5</span> Pole Calculations for the CS-CG Cascade (Cascode Amplifier)<span class="math inline">\(^*\)</span></h3>
+<p>While the bandwidth increase seen in <a href="#example-6-4">Example 6-4</a> is a welcome feature of the cascode amplifier, it comes with the issue that an additional pole is introduced. This is illustrated in <a href="#fig-6.9" class="quarto-xref">Figure&nbsp;<span>6.14</span></a>, which shows a computer simulation of he frequency response for both circuits considered in <a href="#example-6-4">Example 6-4</a>. The cascode amplifier has a larger 3-dB corner frequency, but exhibits an extra pole that bends the response more sharply at high frequencies. In many cases this behavior is not troublesome. However, it turns out that these non-dominant poles must usually be considered in feedback amplifiers and often limit performance. Consequently, there is a general need for the circuit designer to be able to calculate the location of the high-frequency poles in a cascode amplifier.</p>
+<div id="fig-6.9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.9.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.14: Comparison of the magnitude response for the cascode amplifier and common-source amplifier (assuming the component values from <a href="#xample-6-4">Example 6-4)</a>.
+</figcaption>
+</figure>
+</div>
+<p>There are several ways by which one can estimate the location of the poles for the cascode amplifier. The most appropriate method is to invoke the expressions we have already derived in Chapter 3 for the dominant and non-dominant pole of a CS amplifier. Specifically, we note that the left portion of the model in <a href="#fig-6.8" class="quarto-xref">Figure&nbsp;<span>6.12</span></a>(b) is equivalent to the CS amplifier analyzed in Chapter 3 (<a href="partI.3.html#fig-3.13" class="quarto-xref">Figure&nbsp;<span>3.15</span></a>) with the following variable changes: <span class="math inline">\(C_{db} \to C_x\)</span> and <span class="math inline">\(R_{out} \to 1 / g_m^{\prime 2}\)</span>.<br>
+With these substitutions, the dominant pole frequency is most concisely written using the Miller approximation result from <a href="partI.3.html#eq-3.56" class="quarto-xref">Equation&nbsp;<span>3.56</span></a>, which becomes</p>
+<p><span id="eq-6.15"><span class="math display">\[
+\omega_{p1} = \frac{1}{R_s \left[ C_{gs1} + \left( 1 + \frac{g_{m1}}{g_m^{\prime 2}} \right) C_{gd1} \right]}
+\tag{6.15}\]</span></span></p>
+<p>From this expression, we immediately see that the dominant pole does not suffer from significant Miller multiplication. This is analogous to the improvement we have seen in the zero value time constant of <span class="math inline">\(C_{gd1}\)</span>.</p>
+<p>An expression for the second pole frequency was derived in Eq. (3.56), which in the present context becomes</p>
+<p><span id="eq-6.16"><span class="math display">\[
+\omega_{p2} \cong \frac{g_m^{\prime 2}}{C_x} + \frac{1}{R_s C_{gs1}} + \frac{g_{m1}}{C_x} \cdot \frac{C_{gd1}}{C_{gs1}}
+\tag{6.16}\]</span></span></p>
+<p>For the particular example that we consider here, we know that <span class="math inline">\(R_s C_{gs1} \gg C_x / g_m^{\prime 2}\)</span>. Also, since <span class="math inline">\(g_{m1}\)</span> and <span class="math inline">\(g_m^{\prime 2}\)</span> are typically comparable and <span class="math inline">\(C_{gd1} \ll C_{gs1}\)</span>, we can drop all but the first term in <a href="#eq-6.16" class="quarto-xref">Equation&nbsp;<span>6.16</span></a> to obtain</p>
+<p><span id="eq-6.17"><span class="math display">\[
+\omega_{p2} \cong \frac{g_m'}{C_x} \quad
+\tag{6.17}\]</span></span></p>
+<p>Since <span class="math inline">\(C_x\)</span> is usually dominated by the gate capacitance of <span class="math inline">\(M_2\)</span> (<span class="math inline">\(C_{gs2}\)</span>), <span class="math inline">\(\omega_{p2}\)</span> is typically close to the transistor’s transit frequency <span class="math inline">\((g_{m2}/C_{gg2})\)</span>. For a minimum length n-channel device in our technology, this frequency is on the order of 1 GHz for typical biasing conditions (see Chapter 3).</p>
+<p>Finally, we can easily identify the third pole frequency of the cascode amplifier directly from Figure 6-8(b). The RC network at the output branch is unilaterally coupled to the CS amplifier portion and therefore contributes a pole corresponding the branch’s parallel RC time constant.</p>
+<p><span id="eq-6.18"><span class="math display">\[
+\omega_{p3} \cong \frac{1}{R_D C_{d2}} \quad
+\tag{6.18}\]</span></span></p>
+<p>From these pole frequency expressions, we see that the cascode amplifier can be conveniently modeled as shown in Figure 6-10. We have thus once again arrived at a relatively simple and intuitive unilateral model that captures most of the relevant ircuit behavior, and specifically the circuit’s pole locations. It can be shown that this model is still valid for scenarios where the dominant pole is not at the input, but instead associated with the output of the circuit.</p>
+<p><strong><span id="example-6-5">Example 6-5</span>: Pole Calculations for a Cascode Amplifier</strong></p>
+<p>Compute the pole frequencies for the cascode amplifier considered in <a href="#example-6-4">Example 6-4</a> (<a href="#fig-ex-6.4" class="quarto-xref">Figure&nbsp;<span>6.13</span></a>). The parameters are: <span class="math inline">\(R_D = 5k\Omega, R_S = 50k\Omega\)</span>, and for both MOSFETs: <span class="math inline">\(g_m = 1 \,\text{mS}, \quad C_{gs} = 40.7 \,\text{fF}, \quad C_{gd} = 10 \,\text{fF},\)</span><br>
+<span class="math inline">\(C_{db} = C_{sb} = 11.6 \,\text{fF}, \quad \text{and } g_{mb}/g_m = 0.2.\)</span></p>
+<p><strong>SOLUTION</strong></p>
+<p>Evaluating <a href="#eq-6.15" class="quarto-xref">Equation&nbsp;<span>6.15</span></a>, <a href="#eq-6.17" class="quarto-xref">Equation&nbsp;<span>6.17</span></a>, and <a href="#eq-6.18" class="quarto-xref">Equation&nbsp;<span>6.18</span></a> numerically gives</p>
+<p><span class="math display">\[
+f_{p1} = \frac{1}{2 \pi} \cdot \frac{1}{50k\Omega \left[ 40.7 \,\text{fF} + \left(1 + \frac{1\,\text{mS}}{1.2\,\text{mS}}\right) 10\,\text{fF} \right]}
+= 53.9 \,\text{MHz} \quad
+\]</span></p>
+<p><span class="math display">\[
+f_{p2} \cong \frac{1.2\,\text{mS}}{2 \pi (40.7\,\text{fF} + 11.7\,\text{fF} + 11.7\,\text{fF})}
+= 3.0 \,\text{GHz} \quad
+\]</span></p>
+<p><span class="math display">\[
+f_{p3} \cong \frac{1}{2 \pi (5k\Omega)(10\,\text{fF} + 11.7\,\text{fF})}
+= 1.47 \,\text{GHz} \quad
+\]</span></p>
+<p>Note that these pole frequencies correspond to the magnitude response that was shown in <a href="#fig-6.9" class="quarto-xref">Figure&nbsp;<span>6.14</span></a>. There is one dominant pole, and two non-dominant poles beyond 1 GHz.</p>
+</section>
+</section>
+<section id="design-of-a-three-stage-transresistance-amplifier" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="design-of-a-three-stage-transresistance-amplifier"><span class="header-section-number">6.3</span> <span id="design-of-a-three-stage-amplifier">Design of a Three-Stage Transresistance Amplifier</span></h2>
+<p>In this section we will explore the design and optimization of a three-stage transresistance amplifier for use in a fiber optic receiver. The objective is to illustrate the process that a designer faced with this problem would have to go through. Furthermore, we present a systematic approach for the sizing of the amplifier components to achieve near-optimum performance under a given set of constraints.</p>
+<section id="problem-definition" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="problem-definition"><span class="header-section-number">6.3.1</span> <span id="problem-definition">Problem Definition</span></h3>
+<p>As illustrated in <a href="#fig-6.11" class="quarto-xref">Figure&nbsp;<span>6.15</span></a>, we wish to amplify the signal delivered from a photodiode over a wide bandwidth and drive this amplified signal into a capacitive load. The overall specifications for the problem are summarized in <a href="#tbl-6.1">Table 6-1</a>.</p>
+<div id="fig-6.11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.11.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.15: High-level schematic of the design problem.
+</figcaption>
+</figure>
+</div>
+<p>In order to appreciate why an amplifier is needed in the first place to solve this problem, let us consider the “trivial” solutions shown in <a href="#fig-6.12" class="quarto-xref">Figure&nbsp;<span>6.16</span></a>. Interestingly, if all we did was to connect a resistance of value <span class="math inline">\(R_{m0}\)</span> to the diode, we would already meet the low-frequency transresistance specification of the circuit without using any transistors (<span class="math inline">\(v_{out}/i_d = R_{m0}\)</span>).</p>
+<p>However, the key issue then is that we would not be able to achieve high bandwidth. In this solution, the bandwidth is only</p>
+<p><span class="math display">\[
+\frac{1}{2 \pi R_{m0}(C_L + C_D)} = 5.3 \,\text{MHz}
+\]</span></p>
+<p>We will be able to do better with an active circuit.</p>
+<div id="fig-6.12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.12.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.16: An attempt to solve the design problem using a single resistor.
+</figcaption>
+</figure>
+</div>
+<div class="table striped hover">
+<div id="tbl-6.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-6.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: Specifications for a fiber-optic amplifier.
+</figcaption>
+<div aria-describedby="tbl-6.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Symbol</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low Frequency Transresistance</td>
+<td><span class="math inline">\(R_{m0}\)</span></td>
+<td>2 k<span class="math inline">\(\Omega\)</span></td>
+</tr>
+<tr class="even">
+<td>Load Capacitance</td>
+<td><span class="math inline">\(C_L\)</span></td>
+<td>10 pF</td>
+</tr>
+<tr class="odd">
+<td>Diode Capacitance</td>
+<td><span class="math inline">\(C_D\)</span></td>
+<td>5 pF</td>
+</tr>
+<tr class="even">
+<td>Total Drain Current</td>
+<td><span class="math inline">\(I_{Dtot}\)</span></td>
+<td>3 mA</td>
+</tr>
+<tr class="odd">
+<td>Bandwidth</td>
+<td><span class="math inline">\(f_{3dB}\)</span></td>
+<td>Maximize</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="circuit-architecture-considerations" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="circuit-architecture-considerations"><span class="header-section-number">6.3.2</span> <span id="circuit-architecture-considerations">Circuit Architecture Considerations</span></h3>
+<p>In order to achieve high bandwidth, we must ensure that the large capacitors at the input and output of the circuit “see” low resistances, such that their presence does not create large time constants. Based on we have learned in this module, one possible solution is to employ a CG stage at the input and a CD stage at the output of the circuit. This option is shown in <a href="#fig-6.13" class="quarto-xref">Figure&nbsp;<span>6.17</span></a>, where we have qualitatively annotated the signal flow and relevant gain terms and port resistances in the circuit. A representation of this style is sometimes used by experienced designers who are already familiar with the small-signal model of each stage, and usually won’t bother to draw it out. We use this representation here and in the following figures to prepare the reader toward this transition.</p>
+<div id="fig-6.13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.13.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.17: First-cut circuit architecture.
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp; Here, <span class="math inline">\(CD\)</span> is presented with the low input resistance of the CG stage and <span class="math inline">\(C_L\)</span> sees the low output resistance of the CD buffer. In terms of signal flow, the CG stage acts as a current buffer and passes <span class="math inline">\(i_d\)</span> essentially unchanged to <span class="math inline">\(R_{D1}\)</span>. The resistor <span class="math inline">\(R_{D1}\)</span> performs a current-to-voltage conversion that corresponds to the desired transresistance, while the CD stage buffers the generated voltage to handle the large load capacitance <span class="math inline">\(C_L\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;This proposed circuit would in principle work but contains one significant challenge. Essentially, all of the transresistance is due to <span class="math inline">\(R_{D1}\)</span>, which must therefore be set to approximately <span class="math inline">\(2 kΩ\)</span>. Together with the input capacitance of the CD stage, this resistor creates a time constant that may dominate the circuit and may again not allow us to achieve large bandwidth. A typical remedy to this problem is to do a better job at distributing the gain among several stages of the amplifier. One such option is shown in <a href="#fig-6.14" class="quarto-xref">Figure&nbsp;<span>6.18</span></a>. Here, we employed a basic CS voltage amplifier between the CG and CD stages. Since the CS stage will have voltage gain, the resistance <span class="math inline">\(R_{D1}\)</span> can be reduced by this gain factor to achieve the same overall transresistance. This will reduce the time constants that are proportional to <span class="math inline">\(R_{D1}\)</span> and therefore help maximize the bandwidth.</p>
+<div id="fig-6.14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.14.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.18: Improved circuit architecture.
+</figcaption>
+</figure>
+</div>
+<p>An additional improvement that could be considered in this circuit is to use a cascode amplifier rather than simple CS stage to implement the gain stage (see <a href="#reference6">Reference 1</a>). This would help to reduce the capacitance seen by <span class="math inline">\(R_{D1}\)</span> and therefore speed up the circuit. For simplicity, we will not pursue this idea and instead work with the circuit of <a href="#fig-6.14" class="quarto-xref">Figure&nbsp;<span>6.18</span></a> toward a final solution. The reader is invited to explore using a cascode stage for improved performance.</p>
+<!-- TODO reference 1 -->
+</section>
+<section id="biasing-considerations" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="biasing-considerations"><span class="header-section-number">6.3.3</span> <span id="biasing-Considerations">Biasing Considerations</span></h3>
+<p>As we have seen in <a href="partI.2.html">Chapters 2</a> and <a href="partI.5.html">5</a>, biasing a common-source stage properly can be a difficult task. One issue in the prototype circuit of <a href="#fig-6.14" class="quarto-xref">Figure&nbsp;<span>6.18</span></a> is that any parameter variation in <span class="math inline">\(I_{B1}\)</span> or <span class="math inline">\(R_{D1}\)</span> will directly impact the quiescent point voltage at the gate of the CS stage. Since this stage has voltage gain, such variations will then show up amplified at its output and potentially drive parts of the circuit out of saturation and/or limit the available signal swing.</p>
+<p>To overcome this issue, we employ the replica biasing approach introduced in <a href="partI.5.html">Chapter 5</a> (see <a href="#fig-6.15" class="quarto-xref">Figure&nbsp;<span>6.19</span></a>). Here, the bias point at the gate of <span class="math inline">\(M_2\)</span> is set via the replica device <span class="math inline">\(M_2\)</span>. This diode-connected transistor is biased with the same current as <span class="math inline">\(M_2\)</span>, and thereby “computes” the correct bias voltage that will also track threshold voltage process variations. Also, this voltage is to first-order independent of variations in <span class="math inline">\(I_{B1}\)</span> and <span class="math inline">\(R_{D1}\)</span>. As long as <span class="math inline">\(I_{B1a}\)</span> and <span class="math inline">\(I_{B1b}\)</span> match, these currents can vary in their absolute value without disturbing the bias point of <span class="math inline">\(M_2\)</span>. Similarly, the bias point of <span class="math inline">\(M_2\)</span> is not disturbed by changes in the value of <span class="math inline">\(R_x\)</span>, since this resistor (to first-order) carries no current at the quiescent point.</p>
+<p>At the drain side of <span class="math inline">\(M_2\)</span>, we employ a resistive divider to set the bias point gate potential for <span class="math inline">\(M_3\)</span>. In this arrangement, the division ratio can be adjusted for the proper input bias voltage for the CD stage (e.g., <span class="math inline">\(V_{DD}/2\)</span>), and the absolute resistor value is determined by the desired gain of the CS stage (the <span class="math inline">\(g_{m2}R_{D2}\)</span> product).</p>
+<div id="fig-6.15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.15.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.19: Amplifier circuit with proper biasing.
+</figcaption>
+</figure>
+</div>
+<p>The current sources required in <a href="#fig-6.15" class="quarto-xref">Figure&nbsp;<span>6.19</span></a> can be realized using the current mirror circuits discussed in <a href="partI.5.html">Chapter 5</a>, and supplied for example by a globally shared constant-<span class="math inline">\(g_m\)</span> reference current source. A variety of options exists for the generation of the CG bias voltage <span class="math inline">\(V_{B1}\)</span>. This voltage can be set up by one of the two methods shown in <a href="partI.5.html#fig-5.25" class="quarto-xref">Figure&nbsp;<span>5.28</span></a>. Without further working through the details required to complete the bias circuit, we will now investigate a proper procedure for sizing the ignal path devices.</p>
+</section>
+<section id="examination-of-tradeoffs" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="examination-of-tradeoffs"><span class="header-section-number">6.3.4</span> <span id="examination-of-tradeoffs">Examination of Tradeoffs</span></h3>
+<p>To complete our design, we must determine all bias currents, transistor geometries and resistor values. As we shall see, this is a non-trivial task, especially if we want to achieve optimum performance, as for instance maximum bandwidth in the given problem. Even though the circuit has only three transistors, there are several degrees of freedom among the different design variables.</p>
+<p>A first step in the right direction is to begin and identify the relationships that govern the performance of the circuit and analyze these for the key tradeoffs. Furthermore, in this process, we must make reasonable approximations to keep the algebraic</p>
+<p>To keep the algebraic complexity low, let us begin by writing an expression for the circuit’s low-frequency transresistance.</p>
+<p><span id="eq-6.19"><span class="math display">\[
+R_{m0} = R_{D1} A_{v20} A_{v30} \equiv -R_{D1} \cdot g_{m2} R_{D2} \cdot \frac{g_{m3}}{g_{m3}^\prime}
+\tag{6.19}\]</span></span></p>
+<p>Since the last term in <a href="#eq-6.19" class="quarto-xref">Equation&nbsp;<span>6.19</span></a> is close to unity, it is clear that <span class="math inline">\(R_{m0}\)</span> is primarily set by the product of <span class="math inline">\(R_{D1}\)</span> and the CS stage voltage gain. Now, since we are only interested in the circuit’s bandwidth, and not the exact pole/zero locations, using an OCT estimate for further analysis is most appropriate and convenient.</p>
+<p>The schematic in <a href="#fig-6.16" class="quarto-xref">Figure&nbsp;<span>6.20</span></a> includes all of the relevant capacitances that give rise to time constants. Several of the indicated capacitances are parallel combinations and for simplicity it is important to immediately discard small capacitances that may not impact the design significantly. For instance, we neglect <span class="math inline">\(C_{sb1}\)</span> relative to the large diode capacitance at the input node. In addition, we neglect several other extrinsic capacitances that should limit the bandwidth significantly.</p>
+<p>Once the design is completed, all of these assumptions can be checked, for instance through a computer simulation of the full circuit. By inspection, we identify the following six open-circuit time constants.</p>
+<div id="fig-6.16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.16.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.20: Amplifier circuit with relevant capacitances for OCT calculations.
+</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\tau_{i1o} = \frac{C_D + C_{gs1}}{g_m^{\prime}1}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{i2o} = R_{D1}C_{gs2}
+\]</span></p>
+<p><span id="eq-6.20"><span class="math display">\[
+\tau_{gd2o} = (R_{D1} + R_{D2} + g_{m2}R_{D1}R_{D2})C_{gd2}
+\tag{6.20}\]</span></span></p>
+<p><span class="math display">\[
+\tau_{i3o} = R_{D2}C_{gd3}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{gs3o} = \left(R_{D2} + \frac{1}{g_m^{\prime}3} - \frac{g_{m3}}{g_m^{\prime}3}R_{D2}\right)C_{gs3}
+\]</span></p>
+<p><span class="math display">\[
+\tau_{outo} = \frac{C_L}{g_m^{\prime}3}
+\]</span></p>
+<p>where we have again made use of the “<span class="math inline">\(R_{left} + R_{right}
+\pm g_mR_{left}R_{right}\)</span>” rule to find <span class="math inline">\(\tau_{gd2o}\)</span> and <span class="math inline">\(\tau_{gs3o}\)</span>. Now, since <span class="math inline">\(R_{D1}\)</span> and <span class="math inline">\(R_{D2}\)</span> are among the key parameters that set the overall transresistance, it makes sense to collect the respective proportional terms in <a href="#eq-6.20" class="quarto-xref">Equation&nbsp;<span>6.20</span></a>.</p>
+<p><span id="eq-6.21"><span class="math display">\[
+\tau_{core} = R_{D1}(C_{gs2} + [1 + g_{m2}R_{D2}]C_{gd2}) \\
++ R_{D2}\left(C_{gd3} + \left[1 - \frac{g_{m3}}{g_m^{\prime}3}\right]C_{gs3}\right)
+\tag{6.21}\]</span></span></p>
+<p>We call this time constant <span class="math inline">\(\tau_{core}\)</span>, since it is associated with the resistors in the core of the overall amplifier.</p>
+<p>To gain further insight into the tradeoffs dictated by this expression, we can rewrite as <span id="eq-6.22"><span class="math display">\[
+\tau_{core} = \frac{R_m}{|A_{v20}| A_{v30}} \big(C_{gs2} + [1 + |A_{v20}|]C_{gd2}\big) + \frac{|A_{v20}|}{g_{m2}} \big(C_{gd3} + [1 - A_{v30}]C_{gs3}\big)
+\tag{6.22}\]</span></span></p>
+<p>From this formula, we see that one part of the time constant increases with <span class="math inline">\(A_{v20}\)</span>, while the other component decreases. This suggests that choosing the right amount of voltage gain may be key to maximizing the bandwidth. As far as the remaining terms of <a href="#eq-6.20" class="quarto-xref">Equation&nbsp;<span>6.20</span></a> are concerned, it makes sense to group these together in a similar fashion; that is, to collect terms for the input and output network, respectively.</p>
+<p><span id="eq-6.23"><span class="math display">\[
+\tau_{in} = \frac{C_D + C_{gs1}}{g'_ {m1}}
+\tag{6.23}\]</span></span> <span id="eq-6.24"><span class="math display">\[
+\tau_{out} = \frac{C_L + C_{gs3}}{g'_{m3}}
+\tag{6.24}\]</span></span></p>
+<p>At first glance, these expressions do not provide any interesting opportunity for tradeoffs.</p>
+<p>Given our finite budget for drain current, the amount of <span class="math inline">\(g_m\)</span> we can generate will be limited, and this will essentially set <span class="math inline">\(\tau_{in}\)</span> and <span class="math inline">\(\tau_{out}\)</span>. The main degree of freedom here is what fraction of the available current we are going to use in the input and output branches.</p>
+</section>
+<section id="optimization-procedure" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="optimization-procedure"><span class="header-section-number">6.3.5</span> <span id="optimization-procedure">Optimization Procedure</span></h3>
+<p>Given the above observations, the key question that remains is how we should distribute the available current among the three amplifier stages. There are several ways in which we can perform this optimization. One would be to immediately engage in circuit simulations and iterate over current distributions and device geometries until we have identified a satisfactory answer. This approach, however, not only is time-consuming, but also gives little insight about the quality and robustness of the obtained design point. The other extreme would be to try to formulate a closed form expression for the optimal sizing. Unfortunately, for all but the most trivial circuits this turns out to be impossible or infeasible.</p>
+<p>&nbsp;&nbsp;&nbsp; An approach that lies about midway between these extremes is to set up an insight-based, hand-crafted calculation script that allows the designer to quickly sweep through the design space by specifying a few reasonable assumptions and exercising the key “knobs” that control the tradeoffs. For example, as we have explained above, one such knob in our design is the voltage gain of the CS stage. <a href="#fig-6.17" class="quarto-xref">Figure&nbsp;<span>6.21</span></a> shows one possible way of setting up a calculation script for our design problem. The script contains five distinct sections:</p>
+<p>◆ The definition of process technology parameters such as <span class="math inline">\(\mu_n C_{ox}\)</span>, etc. Here, we can also define first-order estimates that may be needed in the calculations—for instance, a typical value for <span class="math inline">\(g_{mb} / g_m\)</span>.</p>
+<p>◆ The design specifications (desired <span class="math inline">\(R_{m0}, C_L\)</span>, etc.).</p>
+<p>◆ A set of design choices that represent reasonable guess values for some of the unknowns that are not expected to play a significant role in the optimization or that we want to fix to specific values. For instance, in the shown script we set all channel lengths to minimum length (for high speed) and set all gate overdrive voltages to a typical value of 0.3 V. The latter choice could be imposed r instance by linearity or signal swing requirements. These parameters can, of course, be changed in the design process, but are not viewed as the main degrees of freedom.</p>
+<p>◆ The main variables, which are the voltage gain of the CS stage (<span class="math inline">\(A_{v20}\)</span>) and the allocation of current for the input and output branches (<span class="math inline">\(I_{D1}/I_{Dtot}\)</span> and <span class="math inline">\(I_{D3}/I_{Dtot}\)</span>). These are the primary knobs that we wish to adjust to search for optima.</p>
+<p>◆ The performance and sizing calculations based on the given design choices and values set for the main variables. The output of this part is essentially the objective function of the optimization, which is bandwidth (or the total sum of the time constants) in our example.</p>
+<div id="fig-6.17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.17.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.21: Design script for circuit optimization.
+</figcaption>
+</figure>
+</div>
+<p>Once such a script has been generated, it is straightforward to explore the design space and adjust the main variables to find a suitable design point. This can be done manually, or automatically using for loops. <a href="#fig-6.18" class="quarto-xref">Figure&nbsp;<span>6.22</span></a> shows a plot that was generated by sweeping the CS stage’s gain while leaving the current allocations for input branches at the values indicated in <a href="#fig-6.17" class="quarto-xref">Figure&nbsp;<span>6.21</span></a>. This plot shows the existence of an optimum that we had already suspected from <a href="#eq-6.22" class="quarto-xref">Equation&nbsp;<span>6.22</span></a>: one part of the amplifier core’s time constant increases with <span class="math inline">\(A_{v20}\)</span>, while the other component decreases. Given our process parameters, specifications and design choices, the best value for the CS voltage gain is in the range of 10–20. Similar sweeps can be performed with the other variables to arrive at a final design point that is acceptable.</p>
+<div id="fig-6.18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure6.18.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.22: Time constants of the amplifier as a function of CS stage voltage gain (<span class="math inline">\(A_{v20}\)</span>).
+</figcaption>
+</figure>
+</div>
+<p>Interestingly, the tradeoff curve in <a href="#fig-6.18" class="quarto-xref">Figure&nbsp;<span>6.22</span></a> exhibits a rather shallow optimum. This is a quite typical and welcome feature in circuit design problems. Anything but a shallow optimum would make us wonder whether the chosen point would be robust in presence of PVT variations and mismatch. A clear advantage of working with a design script (as opposed to repetitive simulation) is that we can visualize the region surrounding the chose design point.</p>
+</section>
+<section id="performance-verification" class="level3" data-number="6.3.6">
+<h3 data-number="6.3.6" class="anchored" data-anchor-id="performance-verification"><span class="header-section-number">6.3.6</span> <span id="performance-verification">Performance Verification</span></h3>
+<p>Even though the circuit simulator is not the best tool for optimization, it is the ultimate tool for verifying the circuit’s performance and to track down discrepancies due to simplifications in made in the design script. Once we have determined all parameters in our design script, we can use the computed currents and transistor geometries as input for a simulation that is based on the complete circuit and full transis tor models. As an example, we consider here the design point summarized in <a href="#tbl-6.2">Table 6-2</a>.</p>
+<div class="table striped hover">
+<div id="tbl-6.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-6.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2: Chosen design point for the transresistance amplifier (from design script).
+</figcaption>
+<div aria-describedby="tbl-6.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Symbol</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fractional input branch current</td>
+<td><span class="math inline">\(I_{D1}/I_{Dtot}\)</span></td>
+<td>0.25</td>
+</tr>
+<tr class="even">
+<td>Fractional output branch current</td>
+<td><span class="math inline">\(I_{D3}/I_{Dtot}\)</span></td>
+<td>0.25</td>
+</tr>
+<tr class="odd">
+<td>CS Stage voltage gain</td>
+<td><span class="math inline">\(|A_{v20}|\)</span></td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Width of <span class="math inline">\(M_1\)</span></td>
+<td><span class="math inline">\(W_1\)</span></td>
+<td>333 μm</td>
+</tr>
+<tr class="odd">
+<td>Width of <span class="math inline">\(M_2\)</span></td>
+<td><span class="math inline">\(W_2\)</span></td>
+<td>666 μm</td>
+</tr>
+<tr class="even">
+<td>Width of <span class="math inline">\(M_3\)</span></td>
+<td><span class="math inline">\(W_3\)</span></td>
+<td>333 μm</td>
+</tr>
+<tr class="odd">
+<td>Drain resistance of CG stage</td>
+<td><span class="math inline">\(R_{D1}\)</span></td>
+<td>250 Ω</td>
+</tr>
+<tr class="even">
+<td>Drain resistance of CS stage</td>
+<td><span class="math inline">\(R_{D2}\)</span></td>
+<td>1 kΩ</td>
+</tr>
+<tr class="odd">
+<td>Total time constant</td>
+<td><span class="math inline">\(\tau_{tot}\)</span></td>
+<td>4.16 ns</td>
+</tr>
+<tr class="even">
+<td>Bandwidth estimate</td>
+<td><span class="math inline">\(f_{3dB}\)</span></td>
+<td>38.2 MHz</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<p>A computer simulation of the full circuit with the above geometries, currents and resistor values shows</p>
+<p><span class="math inline">\(R_{m0} = 2.13 \, \text{k}\Omega \quad \text{and} \quad f_{3dB} = 70 \, \text{MHz}.\)</span></p>
+<p>The corresponding errors in the design script values are −6.5% and −45%, respectively. The majority of the error in the $f_{3dB}$ estimate is systematic and due to the conservative nature of OCT bandwidth estimates (see <a href="#frequency-response-of-the-common-souyrce-amplifier">Chapter 3</a>).</p>
+<p>The remaining percent differences can be tracked down to a slightly higher than desired $I_{D2}$ in the actual circuit due to channel length modulation (which can be significant at minimum length). This and other discrepancies can usually be explained and either resolved or properly incorporated in the design script and do not negatively interfere with the proposed optimization flow.</p>
+<p>Quite contrary, comparing and resolving discrepancies between the script and simulation improve insight and lead to a form of <em>“double book keeping”</em> in the design flow that helps prevent erroneous design outcomes.</p>
+<p>Finally, it is important to note that in addition to the discussed verification of small-signal performance, the circuit must always be simulated under large-signal (transient) conditions for the ultimate performance check.</p>
+</section>
+<section id="considerations-for-advanced-technologies" class="level3" data-number="6.3.7">
+<h3 data-number="6.3.7" class="anchored" data-anchor-id="considerations-for-advanced-technologies"><span class="header-section-number">6.3.7</span> <span id="considerations-for-advanced-technologies">Considerations for Advanced Technologies</span></h3>
+<p>The above-discussed example provided a framework for circuit design with square-law equations. A significant, but not insurmountable, hurdle that must be overcome when applying this approach with modern CMOS technologies lies in the growing complexity of transistor models. The latest generation of short-channel MOSFET models is based on hundreds of modeling parameters, a complexity that is manageable by a computer, but not practical for hand calculations and direct scripting. A solution to this problem that fits seamlessly into the proposed flow is to replace the square-law equations with computer generated look-up tables that relate the transistor parameters of interest numerically. An example is a look-up table that relates the gate-overdrive voltage to the transconductance per unit width of a MOSFET. Suitable ways to parameterize and use such tables are discussed in advanced literature on this subject, see for example <a href="#references6">References 2</a> and <a href="#references6">3</a>.</p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.4</span> Summary</h2>
+<p>In this chapter, we discussed the analysis and design of multistage amplifiers. The small-signal two-port models were used to investigate the use of various types of amplifiers to transform the input or output resistance as well as increase the gain (voltage, current, transconductance, transresistance). Next, we analyzed two important examples of two-stage amplifiers in terms of their frequency response. We ended the chapter with a design of a transresistance amplifier to apply the concepts studied in this module. Specifically, we showed</p>
+<p>◆ How to use the two-port models to find a quick approximation of the overall amplifier performance at low frequencies.</p>
+<p>◆ How to approach the high-frequency analysis of multistage amplifiers using OCT bandwidth estimates and unilateral two-port models for the quick extraction of significant pole frequencies.</p>
+<p>◆ How to design a larger circuit systematically, with the help of insight-based design scripts.</p>
+</section>
+<section id="references" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="references"><span class="header-section-number">6.5</span> <span id="references6">References</span></h2>
+<ol type="1">
+<li><p>Y. Shim et al., “Design of Full Band UWB Common-Gate LNA,” <em>IEEE Microwave and Wireless Components Letters</em>, vol.&nbsp;17, no. 10, pp.&nbsp;721–723, Oct.&nbsp;2007.</p></li>
+<li><p>P. Jespers, <em>The <span class="math inline">\(gₘ/I_D\)</span> Methodology, a sizing tool for low-voltage analog CMOS Circuits</em>, Springer, 2010.</p></li>
+<li><p>T. Konishi, K. Inazu, J.G. Lee, M. Natsui, S. Masui, and B. Murmann, “Design Optimization of High-Speed and Low-Power Operational Transconductance Amplifier Using <span class="math inline">\(gₘ/I_D\)</span> Lookup Table Methodology,” <em>IEICE Trans. Electronics</em>, vol.&nbsp;E94-C, no. 3, pp.&nbsp;334–345, March 2011.</p></li>
+</ol>
+</section>
+<section id="problems" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="problems"><span class="header-section-number">6.6</span> Problems</h2>
+<p>Unless otherwise stated, use the standard model parameters specified in <a href="#tbl-4.1">Table 4-1</a> for the problems given below. Consider only first-order MOSFET behavior and include channel-length modulation (as well as any other second-order effects) only where explicitly stated.</p>
+<p><strong>P6.1</strong> This problem compares a CS-CS voltage amplifier with a CS-CD voltage amplifier. If you are given that the <span class="math inline">\(g_m\)</span> of the MOS devices is 1 mS and <span class="math inline">\(r_o\)</span> is 100 k <span class="math inline">\(\Omega\)</span> (assume that <span class="math inline">\(R_D\)</span> is infinite), which topology yields the highest overall voltage gain, given</p>
+<ol type="a">
+<li><p><span class="math inline">\(R_S = 1 \, \text{k}\Omega\)</span> and <span class="math inline">\(R_L = 100 \, \Omega\)</span></p></li>
+<li><p><span class="math inline">\(R_S = 1 \, \text{k}\Omega\)</span> and <span class="math inline">\(R_L = 10 \, \text{k}\Omega\)</span></p></li>
+<li><p>Repeat (a) and (b) when <span class="math inline">\(g_m = 100 \, \mu S\)</span> and <span class="math inline">\(r_o = 10 \, \text{M}\Omega\)</span></p></li>
+</ol>
+<p><strong>P6.2</strong> This problem compares a CS-CS transconductance amplifier with a CS-CG transconductance amplifier. If you are given that the <span class="math inline">\(g_m\)</span> of the MOS devices is 1 mS and <span class="math inline">\(r_o\)</span> is 100 k<span class="math inline">\(\Omega\)</span> (assume that <span class="math inline">\(R_D\)</span> is infinite), which topology gives the highest overall transconductance, given</p>
+<ol type="a">
+<li><p><span class="math inline">\(R_S = 1 \, \text{k}\Omega\)</span> and <span class="math inline">\(R_L = 100 \, \Omega\)</span></p></li>
+<li><p><span class="math inline">\(R_S = 1 \, \text{k}\Omega\)</span> and <span class="math inline">\(R_L = 10 \, \text{k}\Omega\)</span></p></li>
+<li><p>Repeat (a) and (b) when <span class="math inline">\(g_m = 100 \, \mu S\)</span> and <span class="math inline">\(r_o = 10 \, \text{M}\Omega\)</span></p></li>
+</ol>
+<p><strong>P6.3</strong> A voltage buffer is shown in <a href="#fig-p6-3" class="quarto-xref">Figure&nbsp;<span>6.23</span></a>. We have assumed that the circuit is fabricated in an n-well CMOS process where we can short the back-gate and source of the p-channel device. Parameters:<br>
+<span class="math inline">\(I_{B1} = I_{B2} = 200 \, \mu A\)</span>, <span class="math inline">\((W/L)_1 = (W/L)_2 = 50\)</span>. Neglect channel-length modulation.</p>
+<ol type="a">
+<li><p>What is <span class="math inline">\(V_{OUT}\)</span> given <span class="math inline">\(V_{IN} = 0 \, V\)</span>?</p></li>
+<li><p>Find the open-circuit voltage gain (<span class="math inline">\(R_L \to \infty\)</span>).</p></li>
+<li><p>What is the minimum load resistor that the amplifier can drive and still maintain a voltage gain of 0.6?</p></li>
+</ol>
+<div id="fig-p6-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-3.png" id="fig-p6-3" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.23
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.4</strong> Repeat P6.3 given that the circuit is fabricated in a p-well CMOS process and that the n-channel device has its backgate shorted to the source and the p-channel device has its backgate tied to the positive power supply.</p>
+<p><strong>P6.5</strong> You are given the voltage amplifier shown in <a href="#fig-p6-5" class="quarto-xref">Figure&nbsp;<span>6.24</span></a> with <span class="math inline">\((W/L)_1 = 20\)</span> and <span class="math inline">\((W/L)_3 = 50\)</span>. In this problem we will assume (for simplicity) that all backgates are shorted to their respective source terminals. Neglect channel-length modulation.</p>
+<ol type="a">
+<li><p>Find the <span class="math inline">\(W/L\)</span> for <span class="math inline">\(M_2\)</span>, <span class="math inline">\(M_{2B}\)</span>, and <span class="math inline">\(M_4\)</span> (same for all three transistors) so that each MOSFET has a drain current of <span class="math inline">\(500 \,\mu A\)</span>.</p></li>
+<li><p>What is the required voltage at the gate of <span class="math inline">\(M_3\)</span> so that the output level will be 0 V?</p></li>
+<li><p>Calculate <span class="math inline">\(V_{BIAS}\)</span> so that <span class="math inline">\(M_1\)</span> sinks the current from <span class="math inline">\(M_2\)</span>.</p></li>
+<li><p>Draw a two-port model of this CS–CD stage and calculate the parameters.</p></li>
+<li><p>Calculate the overall voltage gain if <span class="math inline">\(R_S = 10 \, \text{k}\Omega\)</span> and <span class="math inline">\(R_L = 1 \, \text{k}\Omega\)</span>.</p></li>
+</ol>
+<div id="fig-p6-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-5.png" id="fig-p6-5" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.24
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.6</strong> A cascode transconductance amplifier is shown in <a href="#fig-p6-6" class="quarto-xref">Figure&nbsp;<span>6.25</span></a>. Neglect the backgate effect for this problem.</p>
+<ol type="a">
+<li><p>Calculate <span class="math inline">\((W/L)_1\)</span> of <span class="math inline">\(M_1\)</span> such that the small-signal transconductance, <span class="math inline">\(i_{out}/v_s = 1 \, \text{mS}\)</span>. Assume <span class="math inline">\(R_L = 0 \, \Omega\)</span> (short-circuit output current) for this part.</p></li>
+<li><p>Calculate the value of <span class="math inline">\(V_{BIAS}\)</span> using the <span class="math inline">\((W/L)_1\)</span> calculated in part (a) such that <span class="math inline">\(I_{OUT} = 0 \, A\)</span>.</p></li>
+<li><p>Calculate the output resistance of this transconductance amplifier.</p></li>
+<li><p>Calculate the overall transconductance at DC given that <span class="math inline">\(R_S = 10 \, k\Omega\)</span> and <span class="math inline">\(R_L = 1 \, k\Omega\)</span>.</p></li>
+<li><p>Estimate the bandwidth of this circuit given that <span class="math inline">\(R_S = 10 \, k\Omega\)</span> and <span class="math inline">\(R_L = 1 \, k\Omega\)</span>.</p></li>
+</ol>
+<div id="fig-p6-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-6.png" id="fig-p6-6" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.25
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.7</strong><br>
+In this problem we will investigate an interesting case in which the benefit of cascoding is dependent upon operating frequency. In the cascode amplifier shown in <a href="#fig-p6-7" class="quarto-xref">Figure&nbsp;<span>6.26</span></a>, all devices are biased in the saturation region. You may neglect backgate effect, but you must include finite output resistance (<span class="math inline">\(r_o\)</span>) of <span class="math inline">\(M_1\)</span>. Neglect all device capacitances, and consider only the explicitly shown <span class="math inline">\(C_L\)</span>. Simplify your analysis by assuming <span class="math inline">\(g_m r_o \gg 1\)</span>.</p>
+<ol type="a">
+<li><p>Derive an analytical expression for the impedance <span class="math inline">\(Z_x(s)\)</span> looking into the source of <span class="math inline">\(M_1\)</span> in terms of small-signal device parameters and <span class="math inline">\(C_L\)</span>.</p></li>
+<li><p>Sketch <span class="math inline">\(|Z_x(j\omega)|\)</span> versus frequency using logarithmic scales on both axes. Mark pertinent breakpoints symbolically, using the involved circuit parameters.</p></li>
+<li><p>Explain in a few words for which frequency range M1 helps alleviate the Miller multiplication of <span class="math inline">\(C_{gd2}\)</span>.</p></li>
+</ol>
+<div id="fig-p6-7" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-7.png" id="fig-p6-7" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.26
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.8</strong> In the transresistance amplifier shown in <a href="#fig-p6-7" class="quarto-xref">Figure&nbsp;<span>6.26</span></a>, all devices operate in the saturation region. Neglect channel-length modulation in all parts of this problem.</p>
+<ol type="a">
+<li><p>After building this circuit in the lab, you measure <span class="math inline">\(V_X = 1 \text{ V}\)</span> at the operating point. What is the corresponding value of the bias current <span class="math inline">\(I_B\)</span>? In this calculation, be sure to consider the back-gate effect. Given parameters: <span class="math inline">\(W_1 / L_1 = 20\)</span>, <span class="math inline">\(V_{BI} = 2.5 \text{ V}\)</span>.</p></li>
+<li><p>Assuming that the transresistance <span class="math inline">\(R_m = v_{out} / i_{in}\)</span> is equal to <span class="math inline">\(50 \text{ k}\Omega\)</span>, compute the values of <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> that minimize <span class="math inline">\(\tau_{tot}\)</span>, the sum of all open-circuit time constants in the circuit. In this calculation, ignore all capacitances other than the explicitly drawn <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. Given parameters: <span class="math inline">\(g_{m2} = 2 \text{ mS}\)</span>, <span class="math inline">\(C_1 = 1
+\text{ pF}\)</span>, <span class="math inline">\(C_2 = 2 \text{ pF}\)</span>.</p></li>
+</ol>
+<div id="fig-p6-8" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-8.png" id="fig-p6-8" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.27
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.9</strong> In the amplifier circuit shown in <a href="#fig-p6-9" class="quarto-xref">Figure&nbsp;<span>6.28</span></a>, ignore finite output resistance, extrinsic device capacitances and the backgate effect. Both transistors operate in the saturation region. Parameters: <span class="math inline">\(g_m = 5 \text{ mS}\)</span>, <span class="math inline">\(f_T = 5 \text{ GHz}\)</span>, <span class="math inline">\(R = 1 \text{ k}\Omega\)</span>. Calculate:</p>
+<ol type="a">
+<li><p>The amplifier’s small signal gain <span class="math inline">\(v_{out} / v_{in}\)</span> at low frequencies (ignore all capacitances). Be sure to include the appropriate sign.</p></li>
+<li><p>The amplifier’s 3-dB bandwidth using the open-circuit time constant method.</p></li>
+</ol>
+<div id="fig-p6-9" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-9.png" id="fig-p6-9" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.28
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.10</strong> Consider the cascode amplifier from Example 6-4. Assuming the same parameters values for <span class="math inline">\(M_1\)</span> and all other components, we are interested in finding out how varying the width of <span class="math inline">\(M_2\)</span> affects the OCT bandwidth estimate.</p>
+<ol type="a">
+<li><p>Recalculate the OCT bandwidth estimate assuming that the width of <span class="math inline">\(M_2\)</span> has been doubled.</p></li>
+<li><p>Recalculate the OCT bandwidth estimate assuming that the width of <span class="math inline">\(M_2\)</span> has been halved.</p></li>
+</ol>
+<p><strong>P6.11</strong> Consider the cascode amplifier from Example 6-5. Assuming the same parameters values for <span class="math inline">\(M_1\)</span> and all other components, we are interested in finding out how varying the width of <span class="math inline">\(M_2\)</span> affects the pole frequencies.</p>
+<ol type="a">
+<li><p>Recalculate the pole frequencies assuming that the width of <span class="math inline">\(M_2\)</span> has been doubled.</p></li>
+<li><p>Recalculate the pole frequencies assuming that the width of <span class="math inline">\(M_2\)</span> has been halved.</p></li>
+</ol>
+<p><strong>P6.12</strong> Consider the cascode amplifier with replica biasing shown in <a href="#fig-p6-12" class="quarto-xref">Figure&nbsp;<span>6.29</span></a>. In this circuit, <span class="math inline">\(M_0\)</span> and <span class="math inline">\(M_1\)</span> are identical and have <span class="math inline">\(W/L = 4\)</span>. For <span class="math inline">\(M_3\)</span>, assume that <span class="math inline">\(L_3 = nL\)</span>, that is, the length for <span class="math inline">\(M_3\)</span> is increased by a factor of <span class="math inline">\(n\)</span> relative to <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>. Ignore channel-length modulation throughout this problem.</p>
+<ol type="a">
+<li><p>For <span class="math inline">\(n = 2\)</span> and <span class="math inline">\(I_0 = 50 \, \mu A\)</span>, determine the minimum and maximum values for <span class="math inline">\(V_O\)</span> and <span class="math inline">\(V_2\)</span> in the quiescent point so that all transistors remain saturated. Ignore the backgate effect in this part of the problem.</p></li>
+<li><p>Repeat part (a) taking the backgate effect into account.</p></li>
+<li><p>Assuming that the devices are all operating in saturation, write a symbolic expression for the circuit’s low-frequency small-signal voltage gain in terms of <span class="math inline">\(g_m\)</span> and <span class="math inline">\(g_{mb}\)</span>. Compute this voltage gain numerically.</p></li>
+</ol>
+<div id="fig-p6-12" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-12.png" id="fig-p6-12" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.29
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.13</strong> Consider the CS-CD amplifier shown <a href="#fig-p6-13" class="quarto-xref">Figure&nbsp;<span>6.30</span></a>. In this problem we will consider a biasing technique used to address PVT variation issues and will look at ways to optimize this circuit using a design script. All devices in the circuit can be assumed to have <span class="math inline">\(L = L_{min} = 1 \, \mu m\)</span>. The resistor <span class="math inline">\(R_1\)</span> and transistor <span class="math inline">\(M_1\)</span> serve as an input bias circuit for the CD stage and also as the drain resistance for the CS stage. To make the circuit robust against PVT variations, we impose the constraint <span class="math inline">\(\frac{I_{D2}}{I_{D1}} = \frac{R_2}{R_1} = \frac{W_2}{W_1} = n.\)</span></p>
+<ol type="a">
+<li><p>Assume that <span class="math inline">\(I_{BIAS} = 100 \, \mu A\)</span> and that <span class="math inline">\(n = 3\)</span>. Additionally, assume <span class="math inline">\(W_A = W_B = 16 \, \mu m\)</span> and <span class="math inline">\(W_1 = 9 \, \mu m\)</span>. Also, initially you can neglect finite <span class="math inline">\(r_o\)</span> and backgate effect. By design, we want <span class="math inline">\(V_O\)</span> to be 0 V in the quiescent point. Determine the gate overdrive voltages (<span class="math inline">\(V_{OV}\)</span>) for <span class="math inline">\(M_2\)</span> and <span class="math inline">\(M_1\)</span>, as well as values for <span class="math inline">\(R_2\)</span> and <span class="math inline">\(R_1\)</span>.</p></li>
+<li><p>If you now consider the backgate effect, how would that change the results? If the threshold voltage increased to 0.75 V due to process and temperature variations, what would change?</p></li>
+<li><p>Derive an expression for the small-signal gain <span class="math inline">\(v_o/v_i\)</span>, again neglecting finite <span class="math inline">\(r_o\)</span> and the backgate effect. Based on the assumed values for currents, ratios, and device widths given in part (a) what is the resulting low-frequency voltage gain?</p></li>
+<li><p>Derive an expression for the OCT 3-dB bandwidth estimate of the circuit in terms of <span class="math inline">\(C_x\)</span>, <span class="math inline">\(C_L\)</span>, <span class="math inline">\(I_{BIAS}\)</span>, the ratio <span class="math inline">\(n\)</span>, <span class="math inline">\(V_{OV}\)</span>, <span class="math inline">\(R_1\)</span> and device parameters <span class="math inline">\(\mu_n\)</span>, and <span class="math inline">\(L_{min}\)</span>. For simplicity assume <span class="math inline">\(g_m R_1 \gg 1\)</span>. Consider only the <span class="math inline">\(C_{gs}\)</span> associated with <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> and two explicitly shown capacitors <span class="math inline">\(C_x\)</span> and <span class="math inline">\(C_L\)</span>.</p></li>
+<li><p>Use the derived expression from part (d) to find the value of <span class="math inline">\(V_{OV}\)</span> (in terms of <span class="math inline">\(n, I_{BIAS}, C_L, \mu_n, \text{and } L_{min}\)</span>) that maximizes the bandwidth of the circuit. Verify your result by plotting <span class="math inline">\(f_{3dB}\)</span> versus <span class="math inline">\(V_{OV}\)</span> for <span class="math inline">\(n = 1\)</span> to <span class="math inline">\(5\)</span>. For this part, take $I_{BIAS} = 10</p></li>
+</ol>
+<div id="fig-p6-13" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-13.png" id="fig-p6-13" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.30
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.14</strong> Consider the cascade connection of three CS stages in <a href="#fig-p6-14" class="quarto-xref">Figure&nbsp;<span>6.31</span></a>. In this problem, we consider the general case of <em>N</em> stages connected in cascade. For simplicity, include only intrinsic capacitances in your analysis. Show the following:</p>
+<ol type="a">
+<li><p>The bandwidth of the cascade connection is equal to the bandwidth of one individual stage times <span class="math inline">\((2^{1/N} - 1)^{1/2}\)</span>.</p></li>
+<li><p>For a given specification on the overall voltage gain (<span class="math inline">\(A_{vtot}\)</span>) and fixed <span class="math inline">\(R_D\)</span>, the current consumption of the <em>N</em>-stage circuit is proportional to</p></li>
+</ol>
+<p><span class="math display">\[
+N \cdot \frac{A_{vtot}^{2/N}}{\sqrt{2^{1/N} - 1}}
+\]</span></p>
+<ol start="3" type="a">
+<li>Plot the proportionality factor of part (b) against <em>N</em> for <span class="math inline">\(A_{vtot} = 10, 100, 1000\)</span> in one diagram. Comment on the overall shape of the resulting curves and the location of the optima.</li>
+</ol>
+<div id="fig-p6-14" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-14.png" id="fig-p6-14" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.31
+</figcaption>
+</figure>
+</div>
+<p><strong>P6.15</strong> Design Project. The first task at your new job at NanoBioEnergy (NBE) Inc.&nbsp;is to port a transresistance amplifier used in an opto-electrical interface to a new technology. Due to time-to-market constraints, your manager insists that you must not change the architecture of the circuit (shown in <a href="#fig-p6-15" class="quarto-xref">Figure&nbsp;<span>6.32</span></a>). Your focus is to size all of the MOSFETs and resistors, and the bias current source in the circuit to meet the following objectives:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 83%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Operating temperature</td>
+<td>25° C</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{DD}\)</span></td>
+<td>5 V</td>
+</tr>
+<tr class="odd">
+<td>Power dissipation</td>
+<td>≤ 20 mW</td>
+</tr>
+<tr class="even">
+<td>Small-signal transresistance</td>
+<td>≥ 100 kΩ</td>
+</tr>
+<tr class="odd">
+<td>Peak input amplitude (maximum <span class="math inline">\(i_{in}\)</span> that does not result in clipping)</td>
+<td>10 μA</td>
+</tr>
+<tr class="even">
+<td>Bandwidth</td>
+<td>Maximize</td>
+</tr>
+<tr class="odd">
+<td>Photodetector capacitance (<span class="math inline">\(C_D\)</span>)</td>
+<td>1 pF</td>
+</tr>
+<tr class="even">
+<td>Output load (<span class="math inline">\(C_L\)</span>)</td>
+<td>2 pF</td>
+</tr>
+</tbody>
+</table>
+<div id="fig-p6-15" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p6-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/png/figure-p6-15.png" id="fig-p6-15" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-p6-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.32
+</figcaption>
+</figure>
+</div>
+<p>In addition to these above specifications, a major goal of NBE is to create the most robust products on the market. For example, all designers at NBE must refrain from using academically small currents in auxiliary bias nodes. In addition, all current source devices must have at least twice the minimum channel length. Your manager sets the following guidelines for your circuit.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(I_{A1}/I_{B1}\)</span></td>
+<td><span class="math inline">\(\geq 20\%\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(I_{A1}/I_{\text{tail}}\)</span>.</td>
+<td><span class="math inline">\(\geq 20\%\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(I_B\)</span></td>
+<td><span class="math inline">\(\geq 500 \, \mu A\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L_{\text{current\_source}}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>(applies to MBP, MBP0, MBP1, MBP2, MBPC,</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>MBN0, MBN1, MBN2, MBN3)</td>
+<td><span class="math inline">\(\geq 2 \, \mu m\)</span></td>
+</tr>
+<tr class="odd">
+<td>Triode device width ratio</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((W_{MTR}/W_{MC})\)</span></td>
+<td><span class="math inline">\(1/5\)</span></td>
+</tr>
+<tr class="odd">
+<td>Gate overdrive <span class="math inline">\((V_{OV})\)</span> for all devices</td>
+<td><span class="math inline">\(\geq 150 \, mV\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>You may implement all current mirrors simply by sizing their width ratios. There is no need to work with unit devices (unless you would like to practice doing that). Also, for simplicity in this short project, you are not required to verify the design across PVT variations. In practice, this would be the next logical step after getting your “nominal” design to work. Your manager suggests the following design flow:</p>
+<p>◆ Familiarize yourself with the schematic in <a href="#fig-p6-15" class="quarto-xref">Figure&nbsp;<span>6.32</span></a> and try to identify key blocks. Review how the bias point of the circuit is established. Draw a simplified half-circuit model that will allow you to identify the “main knobs” in the design.</p>
+<p>◆ Setup a design script that allows you to optimize your design iteratively. Identify the key variables that you will focus on; calculate important time constants based on reasonable design choices.</p>
+<p>◆ Simulate your design and compare the results to your calculations. Inspect and track down discrepancies. Verify the circuit in a transient simulation using the given input amplitude. A practical hint: The first design you simulate does not have to and probably should not look exactly like the circuit in <a href="#fig-p6-15" class="quarto-xref">Figure&nbsp;<span>6.32</span></a>. For instance, there is no need to implement all the biasing branches in the very beginning. Start by using ideal current sources for biasing, ideal voltage sources to setup cascodes, etc. Once your idealized design works, it is fairly easy to translate it into the final version that complies with all the constraints (of course, additional parasitics may factor in).</p>
+<p>◆ Compile a project report for your boss containing the sections outlined below.</p>
+<ol type="a">
+<li><p>Outline of your design. How did you approach this problem? What are some of your key design choices?</p></li>
+<li><p>Schematic diagram of final design, with component values, node voltages, and bias currents clearly labeled. Show component values right next to the components, and currents next to the branches. Annotate all transistors with their gate overdrive <span class="math inline">\(V_{OV}\)</span> (from simulation).</p></li>
+<li><p>Calculation of key design parameters, such as transconductances, bias currents, etc. This is the most important section of your report. Compare the most relevant hand calculated values with final simulation values in a table and discuss discrepancies.</p></li>
+<li><p>Simulated bode plot of <span class="math inline">\(R_m(j\omega)\)</span>, phase, and magnitude. Clearly annotate the achieved bandwidth, and transresistance. Annotate your hand calculated values in the same plot.</p></li>
+<li><p>Show a transient simulation plot of <span class="math inline">\(v_O\)</span>. Set the input amplitude and frequency to 10 μA and 1 MHz, respectively. Show two periods of the waveform and annotate expected quiescent points and peak voltages using horizontal marker lines.</p></li>
+<li><p>Comments and Conclusion. Here, you can convey issues you may have had, or things you’ve learned/not learned in this project.</p></li>
+<li><p>Appendix: Final circuit netlist or circuit diagram and operating point output from the simulator.</p></li>
+</ol>
 </section>
 </div>
 
