@@ -490,7 +490,7 @@ Figure&nbsp;6.7
 </figcaption>
 </figure>
 </div>
-<p>&nbsp;&nbsp;&nbsp;The input resistance is the same for both amplifiers since both use a CG stage as the input. The output resistance is <span class="math inline">\(R_{out} = \frac{1}{(g_{m2} + g_{mb2})}\)</span>. The transresistance <span class="math inline">\(R_m = \frac{v_{out}}{i_{in1}} = R_{D1}\)</span> for the CG-CD configuration. Note that the output resistance and transresistance of the CG-CD configuration are lower than the CG-CS configuration by <span class="math inline">\(g_{m2} r_{o2}\)</span>. The proper topological choice depends on the specifications required and the relative value of <span class="math inline">\(R_L\)</span> compared to <span class="math inline">\(R_{out}\)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;The input resistance is the same for both amplifiers since both use a CG stage as the input. The output resistance is <span class="math inline">\(R_{out} = \frac{1}{(g_{m2} + g_{mb2})}\)</span>. The transresistance <span class="math inline">\(R_m = \frac{v_{out}}{i_{in1}} = R_{D1}\)</span> for the CG-CD configuration. Note that the output resistance and transresistance of the CG-CD configuration are lower than those of the CG-CS configuration by <span class="math inline">\(g_{m2} R_{D2}\)</span>. The proper topological choice depends on the specifications required and the relative value of <span class="math inline">\(R_L\)</span> compared to <span class="math inline">\(R_{out}\)</span>.</p>
 </section>
 </section>
 <section id="high-frequency-analysis" class="level2" data-number="6.2">
@@ -591,7 +591,7 @@ Figure&nbsp;6.11
 p_1 = -\frac{1}{\left(r_s \parallel \frac{1}{g'_m}\right) C_{s1}}
 \]</span></p>
 <p><span id="eq-6.7"><span class="math display">\[
-p_2 = -\frac{1}{R_{D1} \left[ C_{d1} + \left(1 - A'_{v20}\right) C_{gs2} \right]}
+p_2 = -\frac{1}{R_{D1} \left[ C_{x} + \left(1 - A'_{v20}\right) C_{gs2} \right]}
 \tag{6.7}\]</span></span></p>
 <p><span class="math display">\[
 \frac{v_{out}}{i_s} = R_{m0} \cdot \frac{1}{1 - \tfrac{s}{p_1}} \cdot \frac{1}{1 - \tfrac{s}{p_2}}

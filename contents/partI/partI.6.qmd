@@ -265,8 +265,9 @@ amplifiers since both use a CG stage as the input. The output
 resistance is $R_{out} = \frac{1}{(g_{m2} + g_{mb2})}$.
 The transresistance $R_m = \frac{v_{out}}{i_{in1}} = R_{D1}$ 
 for the CG-CD configuration. Note that the output resistance and 
-transresistance of the CG-CD configuration are lower than the CG-CS
-configuration by $g_{m2} r_{o2}$. The proper topological choice 
+transresistance of the CG-CD configuration are lower 
+than those of the CG-CS configuration 
+by $g_{m2} R_{D2}$. The proper topological choice 
 depends on the specifications required and the relative value of 
 $R_L$ compared to $R_{out}$.
 
@@ -494,7 +495,7 @@ p_1 = -\frac{1}{\left(r_s \parallel \frac{1}{g'_m}\right) C_{s1}}
 $$
 
 $$
-p_2 = -\frac{1}{R_{D1} \left[ C_{d1} + \left(1 - A'_{v20}\right) C_{gs2} \right]}
+p_2 = -\frac{1}{R_{D1} \left[ C_{x} + \left(1 - A'_{v20}\right) C_{gs2} \right]}
 $${#eq-6.7}
 
 $$
