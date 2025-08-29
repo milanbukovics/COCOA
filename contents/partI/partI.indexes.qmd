@@ -1,0 +1,522 @@
+---
+bibliography: partI.indexes.bib
+---
+<div style="text-align: justify">
+
+
+# Index
+
+## A
+
+- **Advanced technologies**, three-stage transresistance amplifier design, 162–163  
+
+- **Amplifier types**  
+  - current model, 6  
+  - transconductance model, 6, 7–8  
+  - transresistance or transimpedance model, 6  
+  - voltage model, 6  
+
+- **Application examples**, common-gate and common-drain stages, 106–108  
+  - CG stage as load device, 107  
+  - CS–CD cascade, 107  
+  - CS–CG cascade, 106  
+
+- **Auxiliary bias current**, 39  
+
+
+
+## B
+
+- **Backgate effect**, 87–90  
+- **Backgate effect parameter**, 88  
+- **Backgate transconductance**, 88  
+
+- **Bandwidth**, 55  
+- **Bandwidth and supply current tradeoff**, 61–63  
+
+- **Biasing**, 29–31  
+  - input bias voltage, 30  
+  - operating point, 30  
+  - quiescent point, 30  
+
+- **Biasing circuits**, 113–142  
+  - current mirrors, 117–132  
+  - current references, 132–134  
+  - process variation and device mismatch, 114–117  
+  - voltage biasing considerations, 134–138  
+
+- **Biasing considerations**, three-stage transresistance amplifier design, 157–158  
+
+- **Bias point analysis**, common-drain stage, 98–99  
+- **Bias point analysis**, common-gate stage, 91–92  
+
+- **Bilateral two-port**, 8  
+
+- **Bode plots**, 54–56  
+
+- **Breakpoint frequency**, 55  
+
+- **Building a common-source voltage amplifier**, 26–41  
+  - biasing, 29–31  
+  - load line analysis, 28–29  
+  - modeling bounds for gate overdrive voltage, 36–37  
+  - P-channel common-source voltage amplifier, 35–36  
+  - sensitivity of bias point to component mismatch, 39–41  
+  - small-signal approximation, 31–33  
+  - transconductance, 33–35  
+  - voltage gain and drain biasing considerations, 37–39  
+  - voltage transfer characteristics, 26–28  
+
+- **Bulk connection scenarios and required model extensions**, 85–90  
+  - backgate effect, 87–90  
+  - well capacitance, 86–87  
+
+
+## C  
+
+- **Cascode amplifier**, 106  
+- **Cascode current mirror**, 125–127  
+
+- **CG stage as load device**, 107  
+
+- **Channel length**, 19  
+
+- **Channel length modulation**, 41–46  
+  - λ–model, 42–44  
+  - output conductance, 44  
+  - output resistance, 44  
+  - parameter, 43  
+
+- **Channel width**, 19  
+
+- **Circuit architecture considerations**, three-stage transresistance amplifier, 156–157  
+
+- **CMOS technology. See** Complementary metal-oxide-semiconductor (CMOS) technology  
+
+- **Common-drain amplifier**, 84  
+- **Common-drain stage**, 3  
+
+- **Common-drain stage analysis**, 98–106  
+  - bias point, 98–99  
+  - low frequency, 99–106  
+
+- **Common-drain stage, voltage biasing**, 138  
+
+- **Common-gate amplifier**, 84  
+- **Common-gate stage**, 3  
+
+- **Common-gate and common-drain stages**, 84–112  
+  - analysis, common-drain stage, 98–106  
+  - analysis, common-gate stage, 90–98  
+  - application examples, 106–108  
+  - bulk connection scenarios and required model extensions, 85–90  
+  - stage configurations, 84–85  
+
+- **Common-gate stage analysis**, 90–98  
+  - bias point, 91–92  
+  - detailed low-frequency analysis, 94–95  
+  - first pass low-frequency, 93–94  
+  - high frequency, 96–98  
+
+- **Common-gate stage, voltage biasing**, 137–138  
+
+- **Common-source stage**, 3  
+
+- **Common-source stage, voltage biasing**, 135–137  
+
+- **Common-source voltage amplifier**, 26–48  
+  - analysis using λ-model, 44–46  
+  - biasing, 29–31  
+  - channel length modulation, 41–46  
+  - inverting amplifier, 26  
+  - load line analysis, 28–29  
+  - modeling bounds for gate overdrive voltage, 36–37  
+  - p-channel, 35–36  
+  - sensitivity of bias point to component mismatch, 39–41  
+  - small-signal approximation, 31–33  
+  - supply voltage, 26  
+  - transconductance, 33–35  
+  - two-port model, 47–48  
+  - voltage gain and drain biasing considerations, 37–39  
+  - voltage transfer characteristics, 26–28  
+
+- **Complementary metal-oxide-semiconductor (CMOS) technology**, 1, 24  
+
+- **Compliance voltage**, 118  
+
+- **CS-CD cascade**, 107  
+- **CS-CG cascade**, 106  
+
+- **Current amplifier model**, 6  
+
+- **Current mirrors**, 117–132  
+  - cascode current mirror, 125–127  
+  - first-pass analysis, 117–119  
+  - high-swing cascode current mirror, 127–132  
+  - multiple sources and sinks, 123-125
+  - second-pass analysis, 119-123
+  - Current references, 132-134
+
+## D
+
+- **Depletion regions**, 19  
+
+- **Derivation of MOSFET I–V characteristics**, 19–24  
+  - channel length, 19  
+  - channel width, 19  
+  - depletion regions, 19  
+  - drain characteristic, 22  
+  - enhancement mode n-channel, 19  
+  - gate capacitance, 20  
+  - gate overdrive, 21  
+  - gradual channel approximation, 20  
+  - inversion layer, 19  
+  - mobility, 20  
+  - output characteristic, 22  
+  - p-channel, 19  
+  - pinch-off effect, 21  
+  - Poisson Equation, 21  
+  - saturation region, 21  
+  - square law model, 23  
+  - sub-threshold region, 23  
+  - threshold voltage, 20  
+  - transfer characteristic, 22–23  
+  - triode region, 21  
+
+- **Detailed low-frequency analysis, common-gate stage**, 94–95  
+- **Device mismatch**, 114  
+- **Dominant pole approximation**, 52  
+- **Drain characteristic**, 22  
+
+
+
+## E
+
+- **Enhancement mode n-channel**, 19  
+- **Examination of tradeoffs, three-stage transresistance amplifier design**, 158–160  
+- **Extrinsic capacitances**, 52  
+
+
+
+## F
+
+- **First-order MOSFET model**, 19–25  
+  - derivation of I–V characteristics, 19–24  
+  - p-channel MOSFET, 24–25  
+  - standard technology parameters, 25  
+
+- **First-pass analysis, basic current mirror**, 117–119  
+
+- **First-pass analysis, frequency response of the common-source voltage amplifier**, 58–63  
+  - frequency response with intrinsic gate capacitance, 60–63  
+  - modeling intrinsic MOSFET capacitance, 59–60  
+
+- **First-pass low-frequency, common gate analysis**, 93–94  
+
+- **Frequency domain analysis**, 53–56  
+  - Bode plots, 54–56  
+  - Bode plots of arbitrary system functions with real poles and zeroes, 57–58  
+  - poles and zeroes, 56–58  
+
+- **Frequency response of the common-source voltage amplifier**, 52–83  
+  - analysis review, 53–58  
+  - first-pass analysis, 58–63  
+  - open-circuit time constant analysis, 73–78  
+  - second-pass analysis, 63–73  
+
+## G
+
+- **Gate capacitance**, 20  
+- **Gate overdrive**, 21  
+- **Global process variations**, 114  
+- **Gradual channel approximation**, 20  
+
+
+## H
+
+- **High frequency analysis, common-gate stage**, 96–98  
+
+- **High-frequency analysis, multistage amplifiers**, 147–155  
+  - OCT-based analysis of the CG-CD cascade, 147–150  
+  - OCT-based analysis of the CS-CG cascade (cascode amplifier), 151–153  
+  - pole calculations for the CG-CD cascode, 150–151  
+  - pole calculations for the CS-CG cascade (cascode amplifier), 153–155  
+
+- **High-frequency two-port model for the common-source voltage amplifier**, 79  
+- **High-swing cascode current mirror**, 127–132  
+
+
+
+## I
+- **IC technology**. *See Integrated circuit (IC) technology*  
+
+- **Input bias voltage**, 30  
+- **Input resistance**, 10  
+
+- **Integrated circuit design versus printed circuit board design**, 14–15  
+
+- **Integrated circuit (IC) technology**, 1–17  
+  - complexity, managing, 4–5  
+  - integrated circuit design versus printed circuit board design, 14–15  
+  - mixed-signal integrated circuits, 2–4  
+  - notation, 15  
+  - prerequisites and advanced material, 15  
+  - two-port abstraction for amplifiers, 5–14  
+
+- **Intrinsic and extrinsic gate capacitances**, 67–70  
+
+
+- **Intrinsic capacitance**, 52  
+- **Inversion layer**, 19  
+- **Inverting amplifier**, 26  
+
+## L  
+
+- **λ-model**, 42–44  
+- **λ-model analysis**, 44–46  
+- **Laplace transform models**, 53  
+- **Large-signal transfer characteristic**, 31  
+- **Left half plane zero**, 57  
+- **Load line analysis**, 28–29  
+- **Low-frequency analysis**, common-drain stage, 99–106  
+- **Low-frequency analysis**, multistage amplifiers, 144–147  
+  - transconductance amplifier, 145–147  
+  - voltage amplifier, 144–145  
+
+
+## M  
+
+- **Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET)**, 18–51  
+  - building a common-source voltage amplifier, 26–41  
+  - channel length modulation, 41–46  
+  - first-order model, 19–25  
+
+- **Miller gain**, 70  
+- **Miller theorem and Miller approximation**, 52, 70–73  
+- **Mixed-signal integrated circuits**, 1–2, 4  
+  - photodiode interface circuit, 3–4  
+  - single-chip radio, 2–3  
+
+- **Mobility**, 20  
+- **Modeling bounds for gate overdrive voltage**, 36–37  
+- **Modeling extrinsic MOSFET capacitance**, 63–65  
+- **Modeling intrinsic MOSFET capacitance**, 59–60  
+- **MOSFET**. *See* Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET)  
+- **Multiple sources and sinks**, basic current mirrors, 123–125  
+- **Multistage amplifiers**, 143–171  
+  - design of a three-stage transresistance amplifier, 155–163  
+  - high-frequency analysis, 147–155  
+  - low-frequency analysis, 143–147  
+
+## N  
+
+- **Non-dominant pole calculation**, 73  
+- **N-well technology**, 24  
+
+
+## O  
+
+- **OCT**. *See* Open-circuit time constant (OCT)  
+- **OCT analysis of a common-source stage**, 74–77  
+- **OCT-based analysis of the CG-CD cascade**, 147–150  
+
+- **OCT-based analysis of the CS-CG cascade (cascode amplifier)**, 151–153  
+
+- **OCT extensions**, 77–78  
+
+- **OCT time constraints versus poles**, 78  
+
+- **Open-circuit time constant (OCT)**, 52  
+  - analysis of a common-source stage, 74–77  
+  - extensions, 77–78  
+  - general framework, 73–74  
+  - high-frequency two-port model for the common-source voltage amplifier, 79  
+  - time constants versus poles, 78  
+
+- **Open-circuit voltage gain**, 9  
+
+- **Optimization procedure**, three-stage transresistance amplifier design, 160–161  
+
+- **Output bias voltage**, 39  
+
+- **Output characteristic**, 22  
+
+- **Output conductance**, 44  
+
+- **Output resistance**, 10, 44  
+
+- **Overlap capacitance**, 64  
+
+
+## P  
+
+- **P-channel**, 19  
+
+- **P-channel common-source voltage amplifier**, 35–36  
+
+- **P-channel MOSFET**, 24–25  
+  - Complementary Metal-Oxide-Semiconductor (CMOS) technology, 24  
+  - n-well technology, 24  
+
+- **Performance verification**, three-stage transresistance amplifier design, 161–162  
+
+- **Phase vectors**, 53  
+
+- **Phasors**, 53  
+
+- **Photodiode interface circuit**, 3–4  
+  - common-drain stage, 3  
+  - common-gate stage, 3  
+  - common-source stage, 3  
+  - transimpedance amplifier, 3  
+
+- **Pinch-off effect**, 21  
+
+- **Poisson Equation**, 21  
+
+- **Pole calculations for the CG-CD cascade**, 150–151  
+
+- **Pole calculations for the CS-CG cascade (cascode amplifier)**, 153–155  
+
+- **Poles**, 56  
+
+- **Poles and zeroes**, 56–58  
+
+- **Problem definition**, three-stage transresistance amplifier design, 155–156  
+
+- **Process corners**, 115  
+
+- **Process variation and device mismatch**, 114–117  
+  - mismatch, 116–117  
+  - process and temperature variations, 114–116  
+
+- **PVT variations**, 114  
+
+
+## Q
+
+- **Quiescent point**, 30  
+
+## R
+
+- **Ratiometric design**, 108  
+- **Replica device**, 135  
+- **Right half plane zero**, 57  
+
+## S
+
+- **Saturation region**, 21  
+
+- **Second-pass analysis**, basic current mirror, 119–123  
+
+- **Second-pass analysis**, frequency response of the common-source voltage amplifier, 63–73  
+  - with intrinsic and extrinsic gate capacitances, 67–70  
+  - Miller theorem and Miller approximation, 70–73  
+  - modeling extrinsic MOSFET capacitance, 63–65  
+  - non-dominant pole calculation, 73  
+  - transit frequency with extrinsic capacitances, 65–66  
+
+- **Sensitivity of bias point to component mismatch**, 39–41  
+- **Short-circuit current gain**, 10  
+- **Short-circuit time constants**, 78  
+- **Signal clipping**, 32  
+- **Single-chip radio**, 2–3  
+
+- **Small-signal analysis**, 33–34  
+
+- **Small-signal approximation**, 31–33  
+  - large-signal transfer characteristic, 31  
+  - signal clipping, 32  
+  - voltage gain, 31  
+
+- **Small signal models**, 34  
+- **Source follower**, 100  
+- **Square law model**, 23  
+
+- **Stage configurations**, common-gate and common-drain, 84–85  
+
+- **Standard MOSFET technology parameters**, 25  
+  - design parameters, 25  
+  - feature size, 25  
+  - technology parameters, 25  
+
+- **Steady-state component**, 53  
+- **Sub-threshold region**, 23  
+- **Supply voltage**, 26  
+- **Surface potential parameter**, 88  
+
+## T
+
+- **Three-stage transresistance amplifier**, design of, 155–163  
+  - advanced technologies, 162–163  
+  - biasing considerations, 157–158  
+  - circuit architecture considerations, 156–157  
+  - examination of tradeoffs, 158–160  
+  - optimization procedure, 160–161  
+  - performance verification, 161–162  
+
+- **Threshold voltage**, 20  
+
+- **Transient part**, 53  
+
+- **Transit frequency**, 63  
+
+- **Transconductance**, 33–35  
+  - Siemens, 34  
+  - small-signal analysis, 33–34  
+  - small signal models, 34  
+
+- **Transconductance amplifier, low frequency analysis**, 145–147  
+
+- **Transconductance amplifier model**, 6  
+
+- **Transfer characteristic**, 22–23  
+
+- **Transimpedance amplifier**, 3  
+
+- **Transit frequency with extrinsic capacitances**, 65–66  
+
+- **Transresistance (transimpedance) amplifier model**, 6  
+
+- **Triode region**, 21  
+
+- **Two-port abstraction for amplifiers**, 5–14  
+  - amplifier types, 5–8  
+  - construction of unilateral two-port models, 9–14  
+  - unilateral versus bilateral two-ports, 8–9  
+
+- **Two-port model for common-source voltage amplifier**, 47–48  
+
+
+## U
+
+- **Unilateral two-port**, 8  
+- **Unilateral versus bilateral two-ports**, 8–9  
+
+## V
+
+- **Voltage amplifier**, low-frequency analysis, 144–145  
+- **Voltage amplifier model**, 6  
+
+- **Voltage biasing considerations**, 134–138  
+  - common-drain stage, 138  
+  - common-gate stage, 137–138  
+  - common-source stage, 135  
+
+- **Voltage gain and drain biasing considerations**, 37–39  
+  - auxiliary bias current, 39  
+  - output bias voltage, 39  
+
+- **Voltage transfer characteristics**, 26–28  
+
+## W
+
+- **Well capacitance**, 86–87  
+
+## Z
+
+- **Zeroes**, 56  
+- **Zero-value time constant analysis**, 78  
+
+
+</div> 

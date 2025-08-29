@@ -221,7 +221,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partI/partI.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><span id="frequency-response-of-the-common-souyrce-amplifier">Frequency Response of the Common-Source Voltage Amplifier</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Frequency Response of the Common-Source Voltage Amplifier</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -234,6 +234,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../contents/partI/partI.5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multistage Amplifiers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.indexes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Index</span></span></a>
   </div>
 </li>
       </ul>
@@ -251,13 +263,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -275,7 +287,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +361,7 @@ Chapter Objectives
 </div>
 </div>
 <section id="first-order-mosfet-model" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="first-order-mosfet-model"><span class="header-section-number">2.1</span> <span id="first-order-mosfet-model">First-Order MOSFET Model</span></h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="first-order-mosfet-model"><span class="header-section-number">2.1</span> First-Order MOSFET Model</h2>
 <p>The device-level derivations of this section assume familiarity with basic solid-state physics and electrostatics. For a ground-up treatment from first principles, the reader is referred to introductory solid-state device material (see Reference 1).</p>
 <section id="derivation-of-i-v-characteristics" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="derivation-of-i-v-characteristics"><span class="header-section-number">2.1.1</span> Derivation of I-V Characteristics</h3>
@@ -543,7 +555,6 @@ Figure&nbsp;2.6: (a) Cross-section of a p-channel MOSFET. (b) Schematic symbol.)
 <p>A p-channel transistor is operated with the following terminal voltages relative to ground: <span class="math inline">\(V_{G}\)</span> = 2.5 <span class="math inline">\(V\)</span>, <span class="math inline">\(V_{S}\)</span> = <span class="math inline">\(V_{B}\)</span> = 5 <span class="math inline">\(V\)</span>, <span class="math inline">\(V_{D}\)</span> = 1 <span class="math inline">\(V\)</span>. Calculate the drain current <span class="math inline">\(I_D\)</span> using the standard technology parameters given in <a href="#tbl-standard-technology-paramaters" class="quarto-xref">Table&nbsp;<span>2.2</span></a> and assuming <span class="math inline">\(W/L = 5\)</span>.</p>
 <p><strong>SOLUTION</strong></p>
 <p>From the given terminal voltages, we find <span class="math inline">\(V_{SG}\)</span> = 5 <span class="math inline">\(V\)</span>– 2.5 <span class="math inline">\(V\)</span> = 2.5 <span class="math inline">\(V\)</span> and <span class="math inline">\(V_{SD}\)</span> = 5 <span class="math inline">\(V\)</span> – 1 <span class="math inline">\(V\)</span> = 4 <span class="math inline">\(V\)</span>. Since <span class="math inline">\(V_{SG}\)</span> &gt; <span class="math inline">\(V_{Tp}\)</span>, the transistor is on, and since <span class="math inline">\(V_{SD}\)</span> &gt; <span class="math inline">\(V_{SG}\)</span> + <span class="math inline">\(V_{Tp}\)</span> = 2.5 <span class="math inline">\(V\)</span> – 0.5 <span class="math inline">\(V\)</span> = 2 <span class="math inline">\(V\)</span>, it operates in saturation. Therefore, using <a href="#eq-2.11" class="quarto-xref">Equation&nbsp;<span>2.11</span></a> we find</p>
-<!-- FIXME typo for mu_n , changed it to mu_p -->
 <p><span class="math display">\[
 -{I_D = \frac{1}{2} \mu_p C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tp})^2}
 \]</span> <span class="math display">\[
@@ -589,8 +600,6 @@ Table&nbsp;2.2: Standard technology parameters for the first-order MOSFET model
 </figure>
 </div>
 </div>
-<!--: **Table 2-2**: Standard technology parameters for the first-order
-MOSFET model. -->
 </section>
 </section>
 <section id="building-a-common-source-voltage-amplifier" class="level2" data-number="2.2">
@@ -691,7 +700,7 @@ Figure&nbsp;2.8: Load line plot for the CS amplifier in <a href="#fig-2.7" class
 </figure>
 </div>
 <p>The points A, B, C, and D marked in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> correspond to the points shown with the same annotation in <a href="#fig-2.7" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>(b). Since the transistor drain characteristics are overlaid in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>, it is easy to identify the operating regions that correspond to each point. For example, we can immediately see that point B lies in saturation, since the intersect occurs in a region of constant drain current.</p>
-<p><strong>Example 2-3: Output Voltage Calculations for a Common-Source Voltage Amplifier</strong></p>
+<p><strong><span id="example-2-3">Example 2-3</span>: Output Voltage Calculations for a Common-Source Voltage Amplifier</strong></p>
 <p>Construct a load line plot to verify the solution of <a href="#example-2-2">Example 2-2</a>(b) using <span class="math inline">\(V_{DD}\)</span> = 5 <span class="math inline">\(V\)</span>, <span class="math inline">\(R_D\)</span> = 10 kΩ , and W/L =10. Use <span class="math inline">\(V_{IN}\)</span> = <span class="math inline">\(V_{GS}\)</span> = 1 <span class="math inline">\(V\)</span>, 1.5 <span class="math inline">\(V\)</span>, and 2 <span class="math inline">\(V\)</span> for the drain characteristic plot.</p>
 <p><strong>SOLUTION</strong></p>
 <p>The solution is shown in <a href="#fig-ex-2.3" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>. The load line is most easily drawn by connecting the points (0, <span class="math inline">\(V_{DD}\)</span>/<span class="math inline">\(R_D\)</span> = 0.5 <span class="math inline">\(mA\)</span>) and (<span class="math inline">\(V_{DD}\)</span> = 5 <span class="math inline">\(V\)</span>, 0). The drain characteristics are drawn for the three given <span class="math inline">\(V_{GS}\)</span> using the expressions of <a href="#tbl-first-order-mosfet" class="quarto-xref">Table&nbsp;<span>2.1</span></a>, by sweeping <span class="math inline">\(V_{DS}\)</span> = <span class="math inline">\(V_{OUT}\)</span> from 0 <span class="math inline">\(V\)</span> to 5 <span class="math inline">\(V\)</span>. The intersect of the load line with the drain characteristic for <span class="math inline">\(V_{IN}\)</span> = 1.5 <span class="math inline">\(V\)</span> confirms the result already obtained in <a href="#example-2-2">Example 2-2</a>(b).</p>
@@ -993,7 +1002,6 @@ Figure&nbsp;2.20: (a) CS amplifier with modified drain biasing scheme. (b) Load 
 </section>
 <section id="sensitivity-of-the-bias-point-to-component-mismatch" class="level3" data-number="2.2.9">
 <h3 data-number="2.2.9" class="anchored" data-anchor-id="sensitivity-of-the-bias-point-to-component-mismatch"><span class="header-section-number">2.2.9</span> Sensitivity of the Bias Point to Component Mismatch<span class="math inline">\(^*\)</span></h3>
-<!--QUESTION check star after "mismatch" two lines above, no actual star bulletpoint-->
 <p>Consider a CS amplifier biased at the gate as done previously with a bias voltage <span class="math inline">\(V_{IN}\)</span>, directly setting up the quiescent point drain current <span class="math inline">\(I_D\)</span> (depending on <span class="math inline">\(W/L\)</span> and other relevant device parameters). Our goal in using the drain bias network of <a href="#fig-2.19" class="quarto-xref">Figure&nbsp;<span>2.20</span></a>(a) is then to set <span class="math inline">\(I_B\)</span> = <span class="math inline">\(I_D\)</span> and chose <span class="math inline">\(VB\)</span> such the output is biased at a reasonable, desired <span class="math inline">\(V_{OUT}\)</span>. Unfortunately, in practice, we can never achieve <span class="math inline">\(I_B\)</span> = <span class="math inline">\(I_D\)</span> exactly; there will always be a non- zero <span class="math inline">\(ΔI\)</span> = <span class="math inline">\(I_B\)</span> – <span class="math inline">\(I_D\)</span>. This case is shown in <a href="#fig-2.20" class="quarto-xref">Figure&nbsp;<span>2.21</span></a>. As illustrated, the finite <span class="math inline">\(ΔI\)</span> leads to a shift <span class="math inline">\(ΔV\)</span> away from the desired output operating point <span class="math inline">\(V_B\)</span>. This shift is proportional to <span class="math inline">\(R_D\)</span>, since the current difference <span class="math inline">\(ΔI\)</span> flows into <span class="math inline">\(R_D\)</span>, creating the undesired <span class="math inline">\(ΔV\)</span>.</p>
 <div id="fig-2.20" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1048,8 +1056,8 @@ Figure&nbsp;2.23: (a) Intrinsic voltage gain stage. (b) Load line plot.
 </div>
 <p>&nbsp;&nbsp;&nbsp;Note that similar to the case considered in the previous section, the output operating point voltage in this circuit will shift by large amounts for relatively small changes in <span class="math inline">\(I_B\)</span> (or MOSFET parameters). This issue must be addressed when this circuit is used in practice, for example by providing a feedback mechanism that adjusts <span class="math inline">\(I_B\)</span> such that the desired <span class="math inline">\(V_{OUT}\)</span> is maintained in the presence of component variations.</p>
 <p>&nbsp;&nbsp;&nbsp;Assuming that a well-defined operating point has been established by some means, incremental changes in <span class="math inline">\(v_{IN}\)</span> applied around the bias point <span class="math inline">\(Q\)</span> will force the intersection of the horizontal load line with the MOSFET’s drain characteristics to move sideways (since the drain current cannot change), creating a finite output voltage excursion vout. The magnitude of this voltage excursion, and thus the voltage gain of the circuit, depends on the slope of the MOSFET’s drain characteristic in saturation. The voltage gain achieved in this configuration is commonly called the <strong>intrinsic voltage gain</strong> of the MOSFET, as it represents the voltage gain of the transistor by itself, without any added resistances in the drain bias network. By the same reasoning, the circuit of <a href="#fig-2.22" class="quarto-xref">Figure&nbsp;<span>2.23</span></a>(a) is often called the <strong>intrinsic voltage gain stage</strong>. The voltage gain and other parameters of more complex amplifier circuits are often directly related to the intrinsic voltage gain of their constituent transistors, giving this parameter a fundamental significance in circuit design.</p>
-<section id="the-λ-model" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="the-λ-model"><span class="header-section-number">2.3.1</span> <span id="the-lambda-model">The λ-Model</span></h3>
+<section id="the-lambda-model" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="the-lambda-model"><span class="header-section-number">2.3.1</span> The <span class="math inline">\(\lambda\)</span>-Model</h3>
 <p>Unfortunately, the intrinsic voltage gain of a MOSFET cannot be predicted using the MOSFET model established so far. We will therefore extend the first-order MOSFET model to incorporate the dependence of the saturation current on the drain-source voltage. As a first step, we will describe the effect in terms of large-signal equations. Next, we will apply a small-signal approximation that makes it possible to capture the <span class="math inline">\(I_{Dsat} – V_{DS}\)</span> dependence through a single resistor added to the MOSFET’s small-signal model.</p>
 <p>&nbsp;&nbsp;&nbsp;We begin by revisiting an approximation that was made in <a href="#first-order-mosfet-model">Section 2-1</a>. In order to arrive at the constant drain current expression in saturation (<a href="#eq-2.7" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>), it was assumed that <span class="math inline">\(ΔL\)</span>, the distance from the pinch-off point to the drain, is negligible relative to the channel length L. In reality, this approximation is fine only as long we do not care about the <span class="math inline">\(I_D-V_{DS}\)</span> dependence seen in <a href="#fig-2.21" class="quarto-xref">Figure&nbsp;<span>2.22</span></a>. Therefore, in order to get a quantitative handle on the MOSFET’s intrinsic voltage gain, we must further investigate the impact of the physics at the drain side.</p>
 <p>The simplest possible way to proceed is to factor <span class="math inline">\(ΔL\)</span> into the existing derivation of <a href="#first-order-mosfet-model">Section 2-1</a>. Instead of integrating <a href="#eq-2.5" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> over the length L, we use <span class="math inline">\(L– ΔL\)</span> as the upper limit of the integral. Recall that <span class="math inline">\(L– ΔL\)</span> is the actual location where the mobile charge vanishes, i.e., <span class="math inline">\(Qn(y)= 0\)</span>. With this change we obtain the following expression for the saturation region.</p>
@@ -1128,7 +1136,6 @@ Figure&nbsp;2.25: Small-signal model for the circuit of <a href="#fig-2.19" clas
 </figcaption>
 </figure>
 </div>
-<!-- TODO Schemdraw -->
 <p>For <span class="math inline">\(R_D\)</span> → <span class="math inline">\(∞\)</span> , the small signal voltage gain approaches the intrinsic voltage gain as given by <a href="#eq-2.50" class="quarto-xref">Equation&nbsp;<span>2.50</span></a>. For <span class="math inline">\(R_D \ll r_o\)</span>, we can approximate <span class="math inline">\(A_v ≅ –g_m R_D\)</span>. More generally, without even knowing the exact values of <span class="math inline">\(r_o\)</span> and <span class="math inline">\(R_D\)</span>, we can argue that as long as the desired gain is much less (in magnitude) than the intrinsic voltage gain, <span class="math inline">\(r_o\)</span> can be neglected in the voltage gain calculation. To see this, we can rewrite <a href="#eq-2.51" class="quarto-xref">Equation&nbsp;<span>2.51</span></a> as</p>
 <p><span class="math display">\[
 \frac{1}{|A_v|} = \frac{1}{g_m r_o} + \frac{1}{g_m
@@ -1197,9 +1204,8 @@ r_o = \frac{1}{\lambda_n I_D} = \frac{1 }{0.5V^{-1} \cdot 250\mu A} = 80kΩ
 A_v = -1mS (\frac{1}{80kΩ} + \frac{1}{50kΩ})^{-1} = -30.8
 \]</span></p>
 <p>Relative to the accurate calculation from <a href="#example-2-6">Example 2-6</a> (<span class="math inline">\(A_v\)</span> = –33.9), this result is in error by only about 9.1%.</p>
-<!-- FIXME typo example 3-6  example 2-6-->
 <p>There are several reasons why it is commonly acceptable to neglect the <span class="math inline">\(\lambda\)</span><span class="math inline">\(V_{DS}\)</span> term in bias point hand calculations. First, without this approximation, the calculations can become cumbersome and lead to transcendental equations that are tedious and undesirable to solve in light of only a moderate percent-improvement in the obtained accuracy. If a more accurate result is desired, it can often be obtained more easily from computer simulations, which often follow a hand calculation in practice anyway. Last, one can argue that any circuit in which the operating point parameters strongly depend on <span class="math inline">\(\lambda\)</span> may be impractical in the first place. The accuracy of the <span class="math inline">\(\lambda\)</span>-model as far as absolute I-V values are concerned can only be approximate due to its empirical nature. For high accuracy analysis, much more complex models (such as the one described in <a href="#Reference7">Reference 7</a>) must be used, carefully calibrated with physical measurements and subsequently evaluated in computer simulations. For the purpose of developing an introductory feel for circuits, however, the <span class="math inline">\(\lambda\)</span>-model is still the most appropriate, mainly due its simplicity.</p>
-<p>&nbsp;&nbsp;&nbsp;<a href="#">Table 2-3</a> summarizes the technology parameters introduced in this chapter.</p>
+<p>&nbsp;&nbsp;&nbsp;<a href="#tbl-lambda-model">Table 2-3</a> summarizes the technology parameters introduced in this chapter.</p>
 <div class="table striped hover">
 <div id="tbl-lambda-model" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1242,7 +1248,6 @@ Table&nbsp;2.3: Standard technology parameters for the <span class="math inline"
 </figure>
 </div>
 </div>
-<!--: **Table 2-3**: Standard technology parameters for the $\lambda$-model.-->
 </section>
 </section>
 <section id="two-port-model-for-the-common-source-voltage-amplifier" class="level2" data-number="2.4">
@@ -1919,8 +1924,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../contents/partI/partI.3.html" class="pagination-link" aria-label="[Frequency Response of the Common-Source Voltage Amplifier]{#frequency-response-of-the-common-souyrce-amplifier}">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><span id="frequency-response-of-the-common-souyrce-amplifier">Frequency Response of the Common-Source Voltage Amplifier</span></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../contents/partI/partI.3.html" class="pagination-link" aria-label="Frequency Response of the Common-Source Voltage Amplifier">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Frequency Response of the Common-Source Voltage Amplifier</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -240,7 +240,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partI/partI.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><span id="frequency-response-of-the-common-souyrce-amplifier">Frequency Response of the Common-Source Voltage Amplifier</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Frequency Response of the Common-Source Voltage Amplifier</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -253,6 +253,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../contents/partI/partI.5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multistage Amplifiers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.indexes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Index</span></span></a>
   </div>
 </li>
       </ul>
@@ -270,13 +282,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -294,7 +306,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -563,7 +575,8 @@ Figure&nbsp;1.10: Voltage amplifier with connected source and load resistances.
 \tag{1.1}\]</span></span></p>
 <p>As we can see from this expression, the overall voltage gain is maximized when the amplifier has a large input resistance (relative to <span class="math inline">\(R_s\)</span>) and a small output resistance (relative to <span class="math inline">\(R_L\)</span>). For the ideal case of infinite input resistance and zero output resistance, <span class="math inline">\(v_{out}\)</span>/<span class="math inline">\(v_s\)</span> becomes equal to <span class="math inline">\(A_v\)</span>.</p>
 <p>For the sake of compact notation, we will often want to use a symbol for the overall circuit gain. The notation used in this module uses primed variables to distinguish between the gain of the controlled source and the gain of the overall amplifier circuit. For example, for the above-discussed voltage amplifier we define <span class="math inline">\(A'_v\)</span> = <span class="math inline">\(v_{out}\)</span> ⁄ <span class="math inline">\(v_s\)</span>. This notation is meant to emphasize the connection between the two symbols. <span class="math inline">\(A'_v\)</span> is usually smaller than <span class="math inline">\(A_v\)</span>, but can approach <span class="math inline">\(A_v\)</span> for ideal source and load configurations.</p>
-<p><strong>Example 1-1: Transfer Function Transconductance Amplifier.</strong></p>
+<section id="example-1-1-transfer-function-transconductance-amplifier." class="level4">
+<h4 class="anchored" data-anchor-id="example-1-1-transfer-function-transconductance-amplifier."><span id="example-1-1">Example 1-1</span>: Transfer Function Transconductance Amplifier.</h4>
 <p>For the transconductance amplifier circuit in <a href="#fig-ex-1.1" class="quarto-xref">Figure&nbsp;<span>1.11</span></a>, calculate the overall transconductance <span class="math inline">\(G'_m = i_{out} ⁄ v_s\)</span>.</p>
 <div id="fig-ex-1.1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -584,6 +597,7 @@ G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{v_{in}}{v_s}\Bigr) \cdot G_m \cdot \Big
 <p>As a final remark for this sub-section, it is important to recognize that all of the models in <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a> can be used interchangeability to describe the exact same electrical behavior (see Problem P1-1). For instance, a voltage amplifier model can be converted into a transconductance amplifier model by applying a Thevénin to Norton transformation for the controlled source.</p>
 <p>A corollary to this equivalence is that we can for example use a transconductance amplifier model to describe a voltage amplifier circuit. This is illustrated through the circuit of <a href="#fig-1.11" class="quarto-xref">Figure&nbsp;<span>1.12</span></a>, which is electrically equivalent to that of <a href="#fig-1.10" class="quarto-xref">Figure&nbsp;<span>1.10</span></a> (see Problem P1-2). Note that the output is taken as the voltage across the output port instead of the output current; this indicates that the circuit is viewed as a voltage amplifier. Just as in the original circuit of <a href="#fig-1.10" class="quarto-xref">Figure&nbsp;<span>1.10</span></a>, we require a large input resistance and small output resistance for this circuit to maximize the overall voltage gain.</p>
 <p>The choice of amplifier model depends on several factors. At first glance, it seems natural to model each amplifier type using its “native” model that directly corresponds to the intended function. For example, we could always describe a voltage amplifier using the corresponding voltage amplifier model that contains a voltage controlled voltage source. However, as we shall see throughout this module, it is sometimes more convenient to align the amplifier model with the physical amplification mechanism or a structural feature of the underlying transistor circuit. For instance, the common-source voltage amplifier discussed in Chapter 2 naturally invokes a transconductance-based model due to the physical model of the employed transistor.</p>
+</section>
 </section>
 <section id="unilateral-versus-bilateral-two-ports" class="level3 page-columns page-full" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="unilateral-versus-bilateral-two-ports"><span class="header-section-number">1.3.2</span> Unilateral versus Bilateral Two-Ports</h3>
@@ -613,8 +627,8 @@ Figure&nbsp;1.13: (a) Example of a bilateral current amplifier. (b) Correspondin
 Gray, Paul R, Paul J Hurst, Stephen H Lewis, and Robert G Meyer. 2009. <em>Analysis and Design of Analog Integrated Circuits</em>. John Wiley &amp; Sons.
 </div></div><p>There are two reasons why we will work exclusively with unilateral two-port approximations in this module. First, the circuits considered are designed primarily to implement forward gain rather than reverse gain; feedback circuits are not treated in this module. For example, referring to the model of <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(b), the reverse gain Air will be negligibly small in any current amplifier circuit that we will consider. Second, a clear drawback of working with bilateral two-port models would be a significant increase in analysis complexity. As we have seen in Example 1-1, the overall transfer function of a unilateral two-port circuit can be written by applying simple voltage and current divider rules. This also extends to cascade connections of multiple two-ports. For example, the overall transfer function of the circuit in <a href="#fig-1.7" class="quarto-xref">Figure&nbsp;<span>1.7</span></a> is easily written by inspection, without requiring extensive algebra. With reverse transmission included, the transfer function analysis will generally require solving a linear system of equations. In light of the fact that we do not intend to design circuits in this module that have significant reverse transmission, this increase in complexity is not welcome, and would also hinder us from developing intuition from inspection-driven analysis.</p>
 </section>
-<section id="construction-of-unilateral-two-port-models" class="level3" data-number="1.3.3">
-<h3 data-number="1.3.3" class="anchored" data-anchor-id="construction-of-unilateral-two-port-models"><span class="header-section-number">1.3.3</span> Construction of Unilateral Two-Port Models</h3>
+<section id="consturction-of-unilateral-two-port-models" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="consturction-of-unilateral-two-port-models"><span class="header-section-number">1.3.3</span> Construction of Unilateral Two-Port Models</h3>
 <p>We will now describe the general procedures to calculate the controlled sources, as well as the input and output resistances, for the unilateral two-port models of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>. The approach is based on applying test voltages and currents to find the desired model parameters.</p>
 <p>The most important parameter of any amplifier circuit is its gain. To identify the gain parameters for the models of <a href="#fig-1.9" class="quarto-xref">Figure&nbsp;<span>1.9</span></a>(a)-(d), we apply the tests shown in <a href="#fig-1.13" class="quarto-xref">Figure&nbsp;<span>1.14</span></a>(a)-(d), respectively.</p>
 <ul>
@@ -679,7 +693,7 @@ G'_m = \frac{i_{out}}{v_s} = \Bigl(\frac{R_{in}}{R_{in} + R_s}\Bigr) \cdot G_m \
 G'_m = \frac{i_{out}}{v_s} = \frac{g_m R_2 R_3}{(R_1 + R_2 + R_S)(R_L + R_3 + R_4)}
 \]</span></p>
 <p>In the preceding example, we have seen that the source and load resistances have no effect on the extracted two-port parameters. In the following example, we will investigate a bilateral circuit to show that in general, the input and output resistances depend on <span class="math inline">\(R_S\)</span> and <span class="math inline">\(R_L\)</span>, which must therefore always be included in the general two-port modeling calculations.</p>
-<p><strong>Example 1-3: Two-Port Model Calculations for a Bilateral Amplifier</strong></p>
+<p><strong><span id="example-1-3">Example 1-3</span>: Two-Port Model Calculations for a Bilateral Amplifier</strong></p>
 <p>For the current amplifier in <a href="#fig-1.12" class="quarto-xref">Figure&nbsp;<span>1.13</span></a>(a), calculate the following unilateral two-port model parameters: the current gain <span class="math inline">\(A_i\)</span>, the input resistance <span class="math inline">\(R_{in}\)</span>, and the output resistance <span class="math inline">\(R_{out}\)</span>. Also, compute the overall transfer function <span class="math inline">\(i_{out} / v_s\)</span> using the obtained unilateral two-port model. Compare the result to a direct KCL-based analysis of the transfer function. Assume that the circuit is driven by a current source with resistance <span class="math inline">\(R_S\)</span> and loaded by a resistance <span class="math inline">\(R_L\)</span>. For algebraic simplicity, assume <span class="math inline">\(R_1 = 1 / g_m\)</span> (this case corresponds to the common-gate amplifier circuit covered in Chapter 4).</p>
 <p><strong>SOLUTION</strong></p>
 <p>To find the current gain Ai, we short the output port and apply an ideal test current source (<span class="math inline">\(i_t\)</span>) at the input (see <a href="#fig-ex-1.3" class="quarto-xref">Figure&nbsp;<span>1.17</span></a>(a)). From this circuit, we see that</p>

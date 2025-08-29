@@ -402,7 +402,7 @@ to emphasize the connection between the two symbols.
 $A'_v$ is usually smaller than $A_v$, but can approach
 $A_v$ for ideal source and load configurations.
 
-**Example 1-1: Transfer Function Transconductance Amplifier.**
+#### [Example 1-1]{#example-1-1}: Transfer Function Transconductance Amplifier.
 
 For the transconductance amplifier circuit in @fig-ex-1.1,
 calculate the overall transconductance $G'_m = i_{out} ⁄ v_s$.
@@ -681,7 +681,7 @@ depend on $R_S$ and $R_L$, which must therefore
 always be included in the general two-port modeling
 calculations.
 
-**Example 1-3 {#example-1-3}: Two-Port Model Calculations for a Bilateral Amplifier**
+**[Example 1-3]{#example-1-3}: Two-Port Model Calculations for a Bilateral Amplifier**
 
 For the current amplifier in @fig-1.12(a), calculate
 the following unilateral two-port model parameters:

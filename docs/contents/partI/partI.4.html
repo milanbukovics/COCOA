@@ -221,7 +221,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partI/partI.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><span id="frequency-response-of-the-common-souyrce-amplifier">Frequency Response of the Common-Source Voltage Amplifier</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Frequency Response of the Common-Source Voltage Amplifier</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -234,6 +234,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../contents/partI/partI.5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biasing Circuits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multistage Amplifiers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/partI/partI.indexes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Index</span></span></a>
   </div>
 </li>
       </ul>
@@ -251,13 +263,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partII/partII.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to Feedback</span></span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -275,7 +287,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/partIII/partIII.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -428,6 +440,7 @@ Figure&nbsp;4.5
 </figure>
 </div>
 <p>Using <a href="#eq-4.1" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> and the technology parameters for <span class="math inline">\(PB\)</span> and <span class="math inline">\(MJ\)</span> from <a href="#tbl-3.1">Table 3-1</a>, we obtain</p>
+<!-- TODO table 3.1 linking -->
 <p><span class="math display">\[
 C_{bsub} = \frac{C_{Jwell \cdot A_{well}}}{(1+V_{BSUB} / PB)^{MJ}}
 \]</span></p>
@@ -450,8 +463,8 @@ Figure&nbsp;4.6
 <p>From the above calculation, we see that the well capacitance can be comparable to the intrinsic and extrinsic device capacitances (see <a href="#example-3-5">Example 3-5</a>). Hence, whenever the designer chooses a bulk connection for which the well capacitance appears at an internal circuit node (other than the supply), care must be taken in estimating <span class="math inline">\(C_{bsub}\)</span> and incorporating this capacitance in the overall circuit model.</p>
 <p>&nbsp;&nbsp;&nbsp;As a final note, it is worth mentioning that most circuit simulation tools, such as SPICE, do not automatically account for the well capacitance. Whenever relevant, the circuit designer must (manually) ensure that an appropriate modeling element is included in the simulation. This can be done, for example, by adding a properly modeled diode or capacitor to the node in question.</p>
 </section>
-<section id="backgate-effect" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="backgate-effect"><span class="header-section-number">4.2.2</span> <span id="backstage-effect">Backgate Effect</span></h3>
+<section id="backstage-effect" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="backstage-effect"><span class="header-section-number">4.2.2</span> Backgate Effect</h3>
 <p>In <a href="partI.2.html#first-order-mosfet-model">Section 2-1</a>, we analyzed the MOSFET’s I-V characteristics assuming that the bulk node is connected to the source, i.e., <span class="math inline">\(V_{SB}\)</span> = 0. However, in the CG and CD configurations, this is not the case unless the designer opted for a source-to-bulk tie as in the circuits of <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>(b) and (c). Therefore, we will now refine the I-V expressions from <a href="partI.2.html#first-order-mosfet-model">Section 2-1</a>, for the case of non-zero <span class="math inline">\(V_{SB}\)</span> and using an n-channel MOSFET for the analysis.</p>
 <p>&nbsp;&nbsp;&nbsp;For an n-channel device with positive <span class="math inline">\(V_{SB}\)</span> — i.e., the source lies at a higher potential than the (grounded) substrate — the primary effect is that the depletion region between the source and the substrate is widened (see <a href="#fig-4.5" class="quarto-xref">Figure&nbsp;<span>4.7</span></a>). This follows from the usual behavior of pn junctions — the depletion region of a reverse biased junction widens for increasing reverse bias.</p>
 <div id="fig-4.5" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -473,7 +486,7 @@ V_{Tn}(V_{SB}) = V_{TOn} + γ_n(\sqrt{2φ_f+V_{SB}}-\sqrt{2φ_f})
 I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tn}(V_{SB}))^2 (1+\lambda_n V_{DS})
 \tag{4.3}\]</span></span></p>
 <p>which is identical to <a href="partI.2.html#eq-2.45" class="quarto-xref">Equation&nbsp;<span>2.45</span></a>, except that <span class="math inline">\(V_{Tn}\)</span> is now a function of <span class="math inline">\(V_{SB}\)</span>, as defined in <a href="#eq-4.2" class="quarto-xref">Equation&nbsp;<span>4.2</span></a>.</p>
-<p>&nbsp;&nbsp;&nbsp; In order to incorporate the backgate effect into the small signal model of the transistor, we will follow exactly the same approach as in <a href="#the-lambda-model">Section 2-3-1</a>. That is, we approximate the incremental drain current around the operating point as the total differential, now with a drain current perturbation due to <span class="math inline">\(v_{bs}\)</span> included:</p>
+<p>&nbsp;&nbsp;&nbsp; In order to incorporate the backgate effect into the small signal model of the transistor, we will follow exactly the same approach as in <a href="partI.2.html#the-lambda-model">Section 2-3-1</a>. That is, we approximate the incremental drain current around the operating point as the total differential, now with a drain current perturbation due to <span class="math inline">\(v_{bs}\)</span> included:</p>
 <p><span id="eq-4.4"><span class="math display">\[
 i_d =
 \left.\frac{\partial i_D}{\partial v_{GS}}\right|_{Q}\, v_{gs}
@@ -512,7 +525,7 @@ Figure&nbsp;4.8: N-channel MOSFET small-signal model for the saturation region w
 </figcaption>
 </figure>
 </div>
-<p><strong><span id="example-4-2">Example 4-2</span>: Backgate Effect</strong></p>
+<p><strong>Example 4-2 {#example-4-2}: Backgate Effect</strong></p>
 <p>Consider an n-channel MOSFET with the following parameters <span class="math inline">\(V_{T0n} = 0.5\ \mathrm{V}\)</span>, <span class="math inline">\(\gamma_{n} = 0.6\ \mathrm{V^{1/2}}\)</span>, <span class="math inline">\(\phi_{f} = 0.4\ \mathrm{V}\)</span>, and <span class="math inline">\(V_{SB} = 2.5\ \mathrm{V}\)</span>, <span class="math inline">\(1.5\ \mathrm{V}\)</span>, and <span class="math inline">\(0\ \mathrm{V}\)</span>.</p>
 <p>For each case, calculate <span class="math inline">\(V_{Tn}\)</span> and the ratio <span class="math inline">\(\frac{g_{mb}}{g_{m}}\)</span>.</p>
 <p><strong>SOLUTION</strong></p>
@@ -783,7 +796,7 @@ Figure&nbsp;4.12: Modified representations of the CG small-signal circuit model.
 <section id="detailed-low-frequency-analysis" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="detailed-low-frequency-analysis"><span class="header-section-number">4.3.3</span> Detailed Low-Frequency Analysis</h3>
 <p>We will now carry out a more detailed analysis that refines the result obtained in the previous subsection. Specifically, we wish to perform a full analysis with the MOSFET’s ro included to see if, and precisely when, this resistor can be neglected.</p>
-<p>&nbsp;&nbsp;&nbsp;We begin by computing the input resistance (<span class="math inline">\(R_{in}\)</span>) of the CG circuit core using the full circuit from <a href="#fig-4.10" class="quarto-xref">Figure&nbsp;<span>4.12</span></a>(c), redrawn in <a href="#fig-4.11" class="quarto-xref">Figure&nbsp;<span>4.13</span></a>(a) with a test voltage source included. From this setup, the input resistance is found using the procedure described in <a href="#consturction-of-unilateral-two-port-models">Section 1-3-3</a>. Specifically, note that <span class="math inline">\(R_D\)</span> is included in the analysis since the circuit is bilateral.</p>
+<p>&nbsp;&nbsp;&nbsp;We begin by computing the input resistance (<span class="math inline">\(R_{in}\)</span>) of the CG circuit core using the full circuit from <a href="#fig-4.10" class="quarto-xref">Figure&nbsp;<span>4.12</span></a>(c), redrawn in <a href="#fig-4.11" class="quarto-xref">Figure&nbsp;<span>4.13</span></a>(a) with a test voltage source included. From this setup, the input resistance is found using the procedure described in <a href="partI.1.html#consturction-of-unilateral-two-port-models">Section 1-3-3</a>. Specifically, note that <span class="math inline">\(R_D\)</span> is included in the analysis since the circuit is bilateral.</p>
 <div id="fig-4.11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1124,7 +1137,7 @@ A_v' = \frac{v_{out}}{v_s} = A_v \frac{R_L}{R_{out} + R_L} = 0.764
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="high-frequency-analysis"><span class="header-section-number">4.4.3</span> High-Frequency Analysis</h3>
 <p>To predict the high-frequency behavior of the CD stage, we consider the circuit shown in <a href="#fig-4.20" class="quarto-xref">Figure&nbsp;<span>4.24</span></a>. This circuit was constructed using the model of <a href="#fig-4.17.2" class="quarto-xref">Figure&nbsp;<span>4.20</span></a>(c), with all relevant MOSFET capacitances included. Note that <span class="math inline">\(C_{db}\)</span> is not part of this model, since this capacitance is connected between <span class="math inline">\(V_{DD}\)</span> and GND (bulk node) and does not influence the signal path. For notational convenience, we define <span class="math inline">\(C_{tot} = C_L + C_{sb}\)</span> and <span class="math inline">\(R_{tot} = R_L \parallel \frac{1}{g_m'}\)</span>.</p>
 <p>The following analysis is partitioned into several steps. First, we will carry out a full KCL-based derivation of the frequency response from first principles. To simplify, we will then customize the obtained general expressions for a specific and typical range of component values. This will greatly simplify the result and also make it amenable for an intuitive interpretation using the Miller theorem. Finally, for the simplified circuit, we will inspect the input and output impedances to construct a two-port model that is valid up to high frequencies.</p>
-<p>We begin by noting that the model of <a href="#fig-4.20" class="quarto-xref">Figure&nbsp;<span>4.24</span></a> resembles the CS circuit analyzed in <a href="partI.3.html#frequency-response-with-intrinsic-and-extrinsic-gate-capacitances">Section 3-3-3</a>: the input and output network are coupled through a capacitor, they contain an RC network on each side, and use a controlled current source in the output network. The main difference lies in the polarity of the controlled source, which reflects the fact that the CD stage is a non-inverting amplifier, whereas a CS stage is an inverting amplifier (i.e., the low-frequency voltage gain is a negative number). This difference has a profound impact on the Miller amplification of the coupling capacitor between the input and output (see <a href="#the-miller-theorem-and-miller-approximation">Section 3-3-5</a>). We will analyze this in more detail below, after interpreting the general KCL-based result.</p>
+<p>We begin by noting that the model of <a href="#fig-4.20" class="quarto-xref">Figure&nbsp;<span>4.24</span></a> resembles the CS circuit analyzed in <a href="partI.3.html#frequency-response-with-intrinsic-and-extrinsic-gate-capacitances">Section 3-3-3</a>: the input and output network are coupled through a capacitor, they contain an RC network on each side, and use a controlled current source in the output network. The main difference lies in the polarity of the controlled source, which reflects the fact that the CD stage is a non-inverting amplifier, whereas a CS stage is an inverting amplifier (i.e., the low-frequency voltage gain is a negative number). This difference has a profound impact on the Miller amplification of the coupling capacitor between the input and output (see <a href="partI.3.html#the-miller-theorem-and-miller-approximation">Section 3-3-5</a>). We will analyze this in more detail below, after interpreting the general KCL-based result.</p>
 <div id="fig-4.20" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1151,7 +1164,7 @@ b_2 = R_s R_{tot} ( C_{gs} C_{gd} + C_{gs} C_{tot} + C_{gd} C_{tot} )
 A_v' = \frac{g_m}{g_m' + \frac{1}{R_L}}
 \tag{4.39}\]</span></span></p>
 <p>is the overall low-frequency voltage gain from <span class="math inline">\(v_s\)</span> to <span class="math inline">\(v_{out}\)</span>.</p>
-<p>Once again, while this result is algebraically complex, it is possible to draw a few basic conclusions. First note that the zero in the transfer function occurs at approximately <span class="math inline">\(\omega_T\)</span>, the MOSFET’s cutoff frequency. Hence, the zero will only rarely be relevant for the behavior of the circuit within typical frequencies of interest. Second, if we assume that a dominant pole condition exists, the bandwidth of the circuit will be approximately equal to <span class="math inline">\(1 / b_1\)</span> (see <a href="partI.3.html#the-dominant-pole-approximation">Section 3-3-4</a>). Note also that the derived <span class="math inline">\(b_1\)</span> term can alternatively be found using the method of open-circuit time constants (see <a href="#open-circuit-time-contant-analysis">Section 3-4</a> and <a href="#p4.5">Problem 4-5</a>).</p>
+<p>Once again, while this result is algebraically complex, it is possible to draw a few basic conclusions. First note that the zero in the transfer function occurs at approximately <span class="math inline">\(\omega_T\)</span>, the MOSFET’s cutoff frequency. Hence, the zero will only rarely be relevant for the behavior of the circuit within typical frequencies of interest. Second, if we assume that a dominant pole condition exists, the bandwidth of the circuit will be approximately equal to <span class="math inline">\(1 / b_1\)</span> (see <a href="partI.3.html#the-dominant-pole-approximation">Section 3-3-4</a>). Note also that the derived <span class="math inline">\(b_1\)</span> term can alternatively be found using the method of open-circuit time constants (see <a href="partI.3.html#open-circuit-time-contant-analysis">Section 3-4</a> and <a href="#p4.5">Problem 4-5</a>).</p>
 <p>Inspecting <a href="#eq-4.37" class="quarto-xref">Equation&nbsp;<span>4.37</span></a> further, we can consider several approximations. First note that <span class="math inline">\(R_{tot}\)</span> is a very small resistance <span class="math inline">\(&lt; 1 / g_m\)</span>. Consequently, the time constants <span class="math inline">\(R_{tot} C_{gs}\)</span> and <span class="math inline">\(R_{tot} C_{sb}\)</span> (contained in <span class="math inline">\(R_{tot} C_{tot}\)</span>) are typically not dominant, and we can approximate</p>
 <p><span id="eq-4.40"><span class="math display">\[
 b_1 \cong R_s C_{gs} (1 - A_v') + R_s C_{gd} + R_{tot} C_L  
@@ -1255,7 +1268,7 @@ Figure&nbsp;4.28: Frequency dependence of the common-drain stage’s output impe
 </figcaption>
 </figure>
 </div>
-<p>In summary, and for the purpose of the multi-stage circuit analysis in <a href="#multistage-amplifiers">Chapter 6</a>, an appropriate (but approximate) two-port model that includes the most relevant impedances is shown in <a href="#fig-4.25" class="quarto-xref">Figure&nbsp;<span>4.29</span></a>. This model is reasonably accurate up to frequencies close to the bandwidth of the stage when driven with a relatively large source resistance <span class="math inline">\(R_S &gt; 1/g_m\)</span>. Inductive effects are omitted for simplicity. When confronted with applications that necessitate a different set of approximations, the reader is encouraged to revisit the accurate transfer function result of <a href="#eq-4.36" class="quarto-xref">Equation&nbsp;<span>4.36</span></a> and recustomize it as needed for the specific use case.</p>
+<p>In summary, and for the purpose of the multi-stage circuit analysis in <a href="partI.6.html">Chapter 6</a>, an appropriate (but approximate) two-port model that includes the most relevant impedances is shown in <a href="#fig-4.25" class="quarto-xref">Figure&nbsp;<span>4.29</span></a>. This model is reasonably accurate up to frequencies close to the bandwidth of the stage when driven with a relatively large source resistance <span class="math inline">\(R_S &gt; 1/g_m\)</span>. Inductive effects are omitted for simplicity. When confronted with applications that necessitate a different set of approximations, the reader is encouraged to revisit the accurate transfer function result of <a href="#eq-4.36" class="quarto-xref">Equation&nbsp;<span>4.36</span></a> and recustomize it as needed for the specific use case.</p>
 <div id="fig-4.25" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1269,10 +1282,10 @@ Figure&nbsp;4.29: Two-port model of the CD stage, including relevant frequency d
 </section>
 </section>
 <section id="application-examples-of-common-gate-and-common-drain-stages" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="application-examples-of-common-gate-and-common-drain-stages"><span class="header-section-number">4.5</span> <span id="application-examples-of-common-gate-and-common-drain-stages">Application Examples of Common-Gate and Common-Drain Stages</span></h2>
-<p>In this section we will discuss a few common applications of the CG and CD stages. The discussion is mostly qualitative and is meant to help solidify the qualitative understanding of the basic properties for all stage configurations discussed so far. Further analytical details for a subset of these applications is covered in <a href="#multistage-amplifiers">Chapter 6</a>.</p>
+<h2 data-number="4.5" class="anchored" data-anchor-id="application-examples-of-common-gate-and-common-drain-stages"><span class="header-section-number">4.5</span> Application Examples of Common-Gate and Common-Drain Stages</h2>
+<p>In this section we will discuss a few common applications of the CG and CD stages. The discussion is mostly qualitative and is meant to help solidify the qualitative understanding of the basic properties for all stage configurations discussed so far. Further analytical details for a subset of these applications is covered in <a href="partI.6.html">Chapter 6</a>.</p>
 <section id="cs-cg-cascade-cascode-amplifier" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="cs-cg-cascade-cascode-amplifier"><span class="header-section-number">4.5.1</span> <span id="cs-cg-cascade-cascode-amplifier">CS-CG Cascade (Cascode Amplifier)</span></h3>
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="cs-cg-cascade-cascode-amplifier"><span class="header-section-number">4.5.1</span> CS-CG Cascade (Cascode Amplifier)</h3>
 <p>A commonly used circuit called the <strong>cascode amplifier</strong> combines a CS and CG stage as shown in <a href="#fig-4.26" class="quarto-xref">Figure&nbsp;<span>4.30</span></a>. This configuration comes with several benefits, both in terms of low- and high-frequency behavior. From a low-frequency perspective, a key benefit is that the resistance (<span class="math inline">\(R_{out}\)</span>) looking into the drain of the CG device (<span class="math inline">\(M_2\)</span>) is extremely high. This follows directly from <a href="#eq-4.22" class="quarto-xref">Equation&nbsp;<span>4.22</span></a>, with <span class="math inline">\(r_s\)</span> substituted by <span class="math inline">\(r_{o1}\)</span> (the output resistance of MOSFET <span class="math inline">\(M_1\)</span>), which leads to</p>
 <p><span class="math display">\[
 R_{out} \equiv r_{o1} \cdot g'_m m_2 r_{o2}
@@ -1288,7 +1301,7 @@ Figure&nbsp;4.30: The cascode configuration and its low-frequency equivalent cir
 </figcaption>
 </figure>
 </div>
-<p>The net effect is that the product <span class="math inline">\(G_m R_{out}\)</span> of the compound device rmed by <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> is on the order of <span class="math inline">\((g_m r_o)^2\)</span>, the intrinsic voltage gain of a single MOSFET squared. Thus, an important application of the cascode stage turns out to be in operational amplifiers that implement very large voltage gains. An additional application that takes advantage of the large <span class="math inline">\(R_{out}\)</span> alone is a precision current mirror, discussed in <a href="#sec-biasingcircuits">Chapter 5</a>.</p>
+<p>The net effect is that the product <span class="math inline">\(G_m R_{out}\)</span> of the compound device rmed by <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> is on the order of <span class="math inline">\((g_m r_o)^2\)</span>, the intrinsic voltage gain of a single MOSFET squared. Thus, an important application of the cascode stage turns out to be in operational amplifiers that implement very large voltage gains. An additional application that takes advantage of the large <span class="math inline">\(R_{out}\)</span> alone is a precision current mirror, discussed in <a href="partI.5.html">Chapter 5</a>.</p>
 <p>Interestingly, the cascode configuration offers high-frequency benefits as well. To see this, consider the two-port model of the cascode stage in <a href="#fig-4.27" class="quarto-xref">Figure&nbsp;<span>4.31</span></a>. The capacitance looking into the stage is <span class="math inline">\(C_{gs1}\)</span> plus the Miller amplified <span class="math inline">\(C_{gd1}\)</span>. However, with <span class="math inline">\(M_2\)</span> present, the low-frequency voltage gain from the input to the drain node (<span class="math inline">\(v_x\)</span>) of <span class="math inline">\(M_1\)</span> (i.e., the Miller gain <span class="math inline">\(A_{vM}\)</span>) is limited to approximately the ratio of the two device transconductances (provided that <span class="math inline">\(R_D \ll r_{o2}\)</span>). This means that only a relatively insignificant amount of Miller multiplication occurs; the voltage swing at the circuit output is effectively isolated from the drain node of <span class="math inline">\(M_1\)</span>.</p>
 <div id="fig-4.27" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1330,13 +1343,13 @@ Figure&nbsp;4.33: Common-source common-drain cascade.
 </figcaption>
 </figure>
 </div>
-<p>&nbsp;&nbsp;An advantage of using a MOSFET over a resistor is that the voltage gain is defined by two components of the same type. Circuit designers refer to this concept as <strong>ratiometric design</strong>. Even if the transconductance of each MOSFET varies substantially (e.g., due to a large temperature change), the voltage gain will remain relatively constant. This concept will be better appreciated once we have discussed sources of parameter variations in <a href="#sec-biasingcircuits">Chapter 5</a>.</p>
+<p>&nbsp;&nbsp;An advantage of using a MOSFET over a resistor is that the voltage gain is defined by two components of the same type. Circuit designers refer to this concept as <strong>ratiometric design</strong>. Even if the transconductance of each MOSFET varies substantially (e.g., due to a large temperature change), the voltage gain will remain relatively constant. This concept will be better appreciated once we have discussed sources of parameter variations in <a href="partI.5.html">Chapter 5</a>.</p>
 <p>&nbsp;&nbsp;&nbsp;Similar to the CD buffer discussed in the previous subsection, a disadvantage of this circuit topology is that it does not support a very large output swing. In addition to the voltage drop from the gate to the ource of <span class="math inline">\(M_2\)</span>, note that the output can swing from the quiescent point in the positive direction by at most <span class="math inline">\(V_{OV2}\)</span> before <span class="math inline">\(M_2\)</span> enters cutoff.</p>
 </section>
 </section>
 <section id="summary" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.6</span> Summary</h2>
-<p>In this chapter, we discussed the common-gate and common-drain stage configurations. As we have seen, the core sections of these circuits operate as a current buffer and voltage buffer, respectively. <a href="#fig-4.30" class="quarto-xref">Figure&nbsp;<span>4.34</span></a> summarizes the corresponding low-frequency model structure in comparison with the common-source stage. Focusing only on the core circuits and cting any auxiliary elements such as drain resistance <span class="math inline">\(R_D\)</span>, <a href="#tbl-4.2">Table 4-2</a> lists the main model parameters. As exemplified in <a href="#application-examples-of-common-gate-and-common-drain-stages">Section 4-5</a>, combining these three configurations with their different characteristics gives the designer the freedom to construct a wide range of application-optimized amplifiers. This idea is studied further in <a href="#multistage-amplifiers">Chapter 6</a>.</p>
+<p>In this chapter, we discussed the common-gate and common-drain stage configurations. As we have seen, the core sections of these circuits operate as a current buffer and voltage buffer, respectively. <a href="#fig-4.30" class="quarto-xref">Figure&nbsp;<span>4.34</span></a> summarizes the corresponding low-frequency model structure in comparison with the common-source stage. Focusing only on the core circuits and cting any auxiliary elements such as drain resistance <span class="math inline">\(R_D\)</span>, <a href="#tbl-4.2">Table 4-2</a> lists the main model parameters. As exemplified in <a href="#application-examples-of-common-gate-and-common-drain-stages">Section 4-5</a>, combining these three configurations with their different characteristics gives the designer the freedom to construct a wide range of application-optimized amplifiers. This idea is studied further in <a href="partI.6.html">Chapter 6</a>.</p>
 <div id="fig-4.30" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.30-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1351,7 +1364,12 @@ Figure&nbsp;4.34: Summary of low-frequency two-port model structures for the CS,
 <p>The main finding from the detailed frequency response analysis of the CG and CD stages is that these circuits can operate (under certain conditions) up to very high frequencies, nearing the cutoff frequency (<span class="math inline">\(\omega_T\)</span>) of the constituent MOSFET.</p>
 <p>An important detail in the design of CG and CD stages is the connection of the MOSFET’s bulk. The circuit designer must understand the various options afforded by the process technology and then decide about a suitable configuration that helps maximize performance. As we have shown, it is typically advantageous to connect the bulk to the supply voltage (GND for an n-channel, and <span class="math inline">\(V_{DD}\)</span> for a p-channel) in a CG stage. In a CD stage, it is sometimes advantageous to opt for a source-bulk tie, especially when a voltage gain as close as possible to unity is required.</p>
 <div class="table striped hover">
-<p>Comparison of low-frequency stage characteristics.{#tbl-4.2}</p>
+<div id="tbl-4.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-4.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.2: Comparison of low-frequency stage characteristics.
+</figcaption>
+<div aria-describedby="tbl-4.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
@@ -1394,6 +1412,9 @@ Figure&nbsp;4.34: Summary of low-frequency two-port model structures for the CS,
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </div>
 </section>
 <section id="references4" class="level2" data-number="4.7">
@@ -2048,8 +2069,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../contents/partI/partI.3.html" class="pagination-link" aria-label="[Frequency Response of the Common-Source Voltage Amplifier]{#frequency-response-of-the-common-souyrce-amplifier}">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><span id="frequency-response-of-the-common-souyrce-amplifier">Frequency Response of the Common-Source Voltage Amplifier</span></span></span>
+      <a href="../../contents/partI/partI.3.html" class="pagination-link" aria-label="Frequency Response of the Common-Source Voltage Amplifier">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Frequency Response of the Common-Source Voltage Amplifier</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
