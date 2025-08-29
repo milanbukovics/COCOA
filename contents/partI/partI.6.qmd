@@ -271,7 +271,7 @@ depends on the specifications required and the relative value of
 $R_L$ compared to $R_{out}$.
 
 
-## [High-Frequency Analysis]{#high-frequency-analysis}
+## High-Frequency Analysis {#high-frequency-analysis}
 
 As we have already seen in our treatment of single-stage 
 amplifiers, analyzing the frequency response of an amplifier 
@@ -287,12 +287,12 @@ for the analysis of multistage amplifiers using two
 multi-stage amplifier examples: CG-CD and CS-CG
 (cascode amplifier). Our analysis of these circuits
 will heavily rely on the toolkit developed in
-[Chapters 3](#frequency-response-of-the-common-souyrce-amplifier) and 
+[Chapters 3](#frequency-response-of-the-common-source-amplifier) and 
 [4](#the-common-gate-and-common-drain-stages) and will invoke concepts such as
 the method of open-circuit time constants and the
 Miller approximation.
 
-### [OCT-Based Analysis of the CG-CD Cascade]{OCT-based-analysis-of-the-CG-CD-cascade}
+### OCT-Based Analysis of the CG-CD Cascade {#OCT-based-analysis-of-the-CG-CD-cascade}
 
 We begin our discussion by considering the CG-CD
 transresistance amplifier shown in @fig-6.6(a),
@@ -391,7 +391,7 @@ because the CD stage is non-inverting.
 
 ![(a) CG-CD transresistance amplifier. (b) Corresponding small-signal model.](images/png/figure-ex-6.2.png){#fig-ex-6.2 width=100%}
 
-We can therefore directly apply the result of Eq. (3.66): 
+We can therefore directly apply the result of @eq-3.66:
 “$R_{left} + R_{right} + g_m R_{left} R_{right}$” 
 but now with $g_m$ replaced by $-g_m$.
 
@@ -429,14 +429,15 @@ $$
 
 
 A simulation of the full circuit reveals $f_{3dB} = 61\ \text{MHz}$. 
-The OCT result is therefore off by about –26%, which is consistent with our 
-understanding from 
-[Chapter 3](#frequency-response-of-the-common-souyrce-amplifier). OCT bandwidth 
-estimates are always conservative and 
-tend to be off by 20–30% when there are several significant time constants.
+The OCT result is therefore off by about –26%, which is consistent with 
+our  understanding from [Chapter 3](#frequency-response-of-the-common-source-amplifier). 
+OCT bandwidth estimates are always conservative and 
+tend to be off by 20–30% when there are several 
+significant time constants.
 
 
-### [Pole Calculations for the CG-CD Cascade$^*$]{#pole-calculations-for-the-cg-cd-cascade}
+
+### Pole Calculations for the CG-CD Cascade$^*$ {#pole-calculations-for-the-cg-cd-cascade}
 
 As indicated earlier, the OCT analysis above is useful as long as we are only 
 interested in a first-order estimate of the circuit’s bandwidth. However, in some 
@@ -522,7 +523,7 @@ Such guidance would have been harder to obtain from lengthy
 algebraic expressions that capture the complete circuit transfer 
 function.
 
-### [OCT-Based Analysis of the CS-CG Cascade (Cascode Amplifier)]{#oct-based-analysis-of-the-cs-cg-cascode}
+### OCT-Based Analysis of the CS-CG Cascade (Cascode Amplifier) {#oct-based-analysis-of-the-cs-cg-cascode}
 
 In this section, we explore the frequency response of
 another important multistage amplifier called the
@@ -619,7 +620,7 @@ is typically close to unity. The following example looks at a numerical evaluati
 of this advantage.  
 
 
-### [Example 6-4]{#example-6-4}: Cascode Amplifier Bandwidth Estimate Using an OCT Analysis  
+**[Example 6-4]{#example-6-4}: Cascode Amplifier Bandwidth Estimate Using an OCT Analysis**
 
 Consider the circuit shown in Figure Ex6-4 and assume the following component 
 values: $R_D = 5 \, k\Omega$, $R_s = 50 \, k\Omega$ and for both MOSFETs: 
@@ -633,7 +634,6 @@ Estimate the 3-dB bandwidth using an OCT analysis and compare the result to the
 bandwidth estimate of the original CS circuit from [Example 3-7](#example-3-7).  
 
 
-<!--TODO fix exaple 3-7 linking --> 
 
 ![](images/png/figure-ex-6.4.png){#fig-ex-6.4 width=100%}
 
@@ -694,7 +694,7 @@ The cascode amplifier’s bandwidth is about 62% larger than that of the basic c
 
 
 
-### Pole Calculations for the CS-CG Cascade (Cascode Amplifier)$^*$
+### Pole Calculations for the CS-CG Cascade (Cascode Amplifier)$^*$ {#pole-calculations}
 
 While the bandwidth increase seen in [Example 6-4](#example-6-4) is a welcome 
 feature of the cascode amplifier, it comes with the issue that an additional pole is 
@@ -788,7 +788,7 @@ $$
 Note that these pole frequencies correspond to the magnitude response that was 
 shown in @fig-6.9. There is one dominant pole, and two non-dominant poles beyond 1 GHz.
 
-## [Design of a Three-Stage Transresistance Amplifier]{#design-of-a-three-stage-amplifier}
+## Design of a Three-Stage Transresistance Amplifier {#design-of-a-three-stage-amplifier}
 
 In this section we will explore the design and optimization 
 of a three-stage transresistance amplifier for
@@ -798,7 +798,7 @@ would have to go through. Furthermore, we
 present a systematic approach for the sizing of the amplifier components to achieve 
 near-optimum performance under a given set of constraints.
 
-###  [Problem Definition]{#problem-definition}
+###  Problem Definition {#problem-definition}
 
 As illustrated in @fig-6.11, we wish to amplify the signal delivered from a 
 photodiode over a wide bandwidth and drive this amplified signal into a capacitive 
@@ -839,7 +839,7 @@ Table: Specifications for a fiber-optic amplifier. {#tbl-6.1}
 
 ::::
 
-### [Circuit Architecture Considerations]{#circuit-architecture-considerations}
+### Circuit Architecture Considerations {#circuit-architecture-considerations}
 
 In order to achieve high bandwidth, we must ensure
 that the large capacitors at the input and output of
@@ -901,10 +901,9 @@ and instead work with the circuit of @fig-6.14
 toward a final solution. The reader is invited to
 explore using a cascode stage for improved performance.
 
-<!-- TODO reference 1 -->
 
 
-### [Biasing Considerations]{#biasing-Considerations}
+### Biasing Considerations {#biasing-Considerations}
 
 As we have seen in [Chapters 2](#sec-cs_transfer) and 
 [5](#sec-biasingcircuits), biasing a common-source stage 
@@ -957,7 +956,7 @@ ignal path devices.
 
 
 
-###  [Examination of Tradeoffs]{#examination-of-tradeoffs}
+###  Examination of Tradeoffs {#examination-of-tradeoffs}
 
 To complete our design, we must determine all bias 
 currents, transistor geometries and resistor values. As we 
@@ -1080,7 +1079,7 @@ degree of freedom here is what fraction of the available
 current we are going to use in the input and output 
 branches.  
 
-###  [Optimization Procedure]{#optimization-procedure}  
+###  Optimization Procedure {#optimization-procedure}  
 
 Given the above observations, the key question that 
 remains is how we should distribute the available current 
@@ -1171,7 +1170,7 @@ advantage of working with a design script (as
 opposed to repetitive simulation) is that we can 
 visualize the region surrounding the chose design point.  
 
-### [Performance Verification]{#performance-verification}
+### Performance Verification {#performance-verification}
 
 Even though the circuit simulator is not the best tool
 for optimization, it is the ultimate tool for verifying
@@ -1235,7 +1234,7 @@ the circuit must always be simulated under
 large-signal (transient) conditions for the ultimate
 performance check.
 
-###  [Considerations for Advanced Technologies]{#considerations-for-advanced-technologies}
+###  Considerations for Advanced Technologies {#considerations-for-advanced-technologies}
 
 
 The above-discussed example provided a framework
@@ -1286,7 +1285,7 @@ quick extraction of significant pole frequencies.
 the help of insight-based design scripts.
 
 
-## [References]{#references6}
+## References {#references6}
 
 1. Y. Shim et al., “Design of Full Band UWB Common-Gate LNA,” *IEEE Microwave and Wireless Components Letters*, vol. 17, no. 10, pp. 721–723, Oct. 2007.  
 

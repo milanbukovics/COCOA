@@ -22,7 +22,7 @@ and range limitations of simple modeling expressions.
 
 :::
 
-## [First-Order MOSFET Model]{#first-order-mosfet-model}
+## First-Order MOSFET Model {#first-order-mosfet-model}
 
 The device-level derivations of this section assume
 familiarity with basic solid-state physics and electrostatics. 
@@ -547,7 +547,7 @@ From the given terminal voltages, we find $V_{SG}$ = 5 $V$– 2.5 $V$ = 2.5 $V$ 
  since $V_{SD}$ > $V_{SG}$ + $V_{Tp}$
 = 2.5 $V$ – 0.5 $V$ = 2 $V$, it operates in saturation. Therefore, using @eq-2.11 we find
 
-<!-- FIXME typo for mu_n , changed it to mu_p -->
+
 $$
 -{I_D = \frac{1}{2} \mu_p C_{ox} \frac{W}{L} ({V_{GS}} - V_{Tp})^2}
 $$
@@ -576,8 +576,8 @@ MOSFET model {#tbl-standard-technology-paramaters}
 +-----------------------+----------------------+---------------------+
 
 ::::
-<!--: **Table 2-2**: Standard technology parameters for the first-order
-MOSFET model. -->
+
+
 
 ## Building a Common-Source Voltage Amplifier 
 
@@ -825,7 +825,7 @@ each point. For example, we can immediately see
 that point B lies in saturation, since the intersect
 occurs in a region of constant drain current.
 
-**Example 2-3: Output Voltage Calculations for a Common-Source Voltage Amplifier**
+**[Example 2-3]{#example-2-3}: Output Voltage Calculations for a Common-Source Voltage Amplifier**
 
 Construct a load line plot to verify the solution of
 [Example 2-2](#example-2-2)(b) using $V_{DD}$ = 5 $V$, 
@@ -972,6 +972,7 @@ a linear model around its operating point, which we
 will discuss next.
 
 ### The Small-Signal Approximation
+
 @eq-2.22 is written in a format that suggests
 an opportunity for simplification. Provided that 
 $v_{in}$ $\ll$ $v_{OV}$, the bracketed term is 
@@ -1538,7 +1539,7 @@ voltage gain, discussed next.
 
 ### Sensitivity of the Bias Point to Component Mismatch$^*$
 
-<!--QUESTION check star after "mismatch" two lines above, no actual star bulletpoint--> 
+
 Consider a CS amplifier biased at the gate as done
 previously with a bias voltage $V_{IN}$, directly setting up
 the quiescent point drain current $I_D$ (depending on
@@ -1696,7 +1697,7 @@ often directly related to the intrinsic voltage gain of
 their constituent transistors, giving this parameter a
 fundamental significance in circuit design.
 
-### [The λ-Model]{#the-lambda-model}
+### The $\lambda$-Model {#the-lambda-model}
 
 Unfortunately, the intrinsic voltage gain of a MOSFET
 cannot be predicted using the MOSFET model
@@ -1934,7 +1935,7 @@ $${#eq-2.51}
 
 ![Small-signal model for the circuit of @fig-2.19(a), with finite output conductance.](images/png/figure2.24.png){#fig-2.24 width=100%}
 
-<!-- TODO Schemdraw --> 
+
 For $R_D$ → $∞$ , the small signal voltage gain
 approaches the intrinsic voltage gain as given by
 @eq-2.50. For $R_D \ll r_o$, we can approximate $A_v ≅ –g_m R_D$. 
@@ -2072,7 +2073,7 @@ Relative to the accurate calculation from
 [Example 2-6](#example-2-6) ($A_v$ = –33.9), this result is in error by
 only about 9.1%.
 
-<!-- FIXME typo example 3-6  example 2-6--> 
+
 
 There are several reasons why it is commonly
 acceptable to neglect the $\lambda$$V_{DS}$ term in bias point
@@ -2099,7 +2100,7 @@ $\lambda$-model is still the most appropriate, mainly due its
 simplicity.
 
 
-&nbsp;&nbsp;&nbsp;[Table 2-3](#) summarizes the technology parameters
+&nbsp;&nbsp;&nbsp;[Table 2-3](#tbl-lambda-model) summarizes the technology parameters
 introduced in this chapter.
 
 :::: {.table .striped .hover}
@@ -2118,7 +2119,7 @@ Table: Standard technology parameters for the $\lambda$-model. {#tbl-lambda-mode
 +------------------------+------------------------+------------------------+
 ::::
 
-<!--: **Table 2-3**: Standard technology parameters for the $\lambda$-model.-->
+
 
 
 

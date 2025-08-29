@@ -3,7 +3,7 @@ bibliography: partI.3.bib
 ---
 <div style="text-align: justify">
 
-# [Frequency Response of the Common-Source Voltage Amplifier]{#frequency-response-of-the-common-souyrce-amplifier}
+# Frequency Response of the Common-Source Voltage Amplifier {#frequency-response-of-the-common-source-amplifier}
 
 
 
@@ -194,7 +194,7 @@ in the capacitor. Its current is given by $C \cdot dv/dt$, and
 differentiation of a sine wave yields a cosine wave
 that is $–90^\circ$ shifted in phase.
 
-### [Bode Plots]{#bode-plots}
+### Bode Plots {#bode-plots}
 
 In order to gain further insight from the magnitude
 and phase of a circuit, it is customary to plot the
@@ -278,7 +278,7 @@ $$
 $$
 
 Next, we let $s = j\omega$ and obtain 
-<!-- TYPO: omega and "and" is together  -->
+
 $$
 \frac{V_{out}}{V_{in}} = \left. \frac{v_{out}}{v_{in}}\right|_{s=j\omega} = \frac{1 + j\omega RC}{1 + 2 j\omega RC}
 $$
@@ -312,7 +312,7 @@ phase.
 ![](images/png/figure-ex-3.2.png){#fig-ex-3.2 width=100%}
 
 
-### [Poles and Zeros]{#poles-and-zeros}
+### Poles and Zeros {#poles-and-zeros}
 
 In linear system theory, **poles** and **zeros** are the $s$-values for which the value of the $s$-domain transfer
 function becomes infinity or zero, respectively. Since
@@ -381,7 +381,7 @@ it is possible to create a set of rules that allow the
 construction of a bode plot by inspection. These
 rules are summarized in the next section.
 
-### [Bode Plots of Arbitrary System Functions with Real Poles and Zeros]{#bode-plots-of-arbitary-system-functions-with-real-poles-and-zeros}
+### Bode Plots of Arbitrary System Functions with Real Poles and Zeros {#bode-plots-of-arbitary-system-functions-with-real-poles-and-zeros}
 
 For the case of real negative poles and zeros, and letting $s = j\omega$ , @eq-3.4 becomes
 
@@ -501,7 +501,7 @@ yields the Bode plot shown in @fig-ex-3.3.
 
 ![](images/png/figure-ex-3.3.png){#fig-ex-3.3 width=100%}
 
-##  [Frequency Response of the Common-Source Voltage Amplifier — First-Pass Analysis]{#frequency-response-of-the-common-source-voltage-amplifier-first-pass-analysis}
+##  Frequency Response of the Common-Source Voltage Amplifier — First-Pass Analysis {#frequency-response-of-the-common-source-voltage-amplifier-first-pass-analysis}
 
 We now wish to apply the analysis tools reviewed in
 the previous section to get a handle on the frequency
@@ -535,7 +535,7 @@ capacitance only, beginning with a derivation of a
 circuit model that can be used to model this capacitance 
 in the frequency response calculations.
 
-### [Modeling Intrinsic MOSFET Capacitance]{#modeling-intrinsic-mosfet-capacitance}
+### Modeling Intrinsic MOSFET Capacitance {#modeling-intrinsic-mosfet-capacitance}
 
 Just as in the derivation of device transconductance
 and output conductance, the operating point must
@@ -614,7 +614,7 @@ includes this capacitance is shown in @fig-3.6.
 
 
 
-### [Frequency Response with Intrinsic Gate Capacitance]{#frequency-response-with-intrinsic-gate-capacitance}
+### Frequency Response with Intrinsic Gate Capacitance {#frequency-response-with-intrinsic-gate-capacitance}
 
 
 To analyze the frequency response of the common-source amplifier with the intrinsic gate capacitance, we insert the model of @fig-3.6 into the
@@ -697,13 +697,13 @@ $$
 $$
 
 and therefore 
-<!-- TYPO there is a dot after therefore in the book --> 
+
 
 $$
 f_{3dB} = \frac{\omega_{3dB}}{2\pi} = 103.8 MHz
 $$
 
-<!-- TYPO hz unit changed to Hz --> 
+
 
 &nbsp;&nbsp;&nbsp;An important question to ask at this point of the
 discussion is whether there is anything we can do to
@@ -718,7 +718,7 @@ tradeoff in the achievable bandwidth versus supply
 current for the circuit in consideration.
 
 
-### [Tradeoff Between Bandwidth and Supply Current]{#tradeoff-between-bandwidth-and-supply-current}
+### Tradeoff Between Bandwidth and Supply Current {#tradeoff-between-bandwidth-and-supply-current}
 
 Consider a design problem involving the circuit of
 @fig-3.7 and assume that the general objective is
@@ -874,7 +874,7 @@ improvements in manufacturable channel lengths.
 Since the 1970s, $L_{min}$ has been improved from $10$ $\mu m$
 to approximately $22$ $nm$ today; a $~400x$ reduction!
 
-### [Transit Frequency]{#transit-frequency}
+### Transit Frequency {#transit-frequency}
 
 The figure of merit given in @eq-3.25 is also known
 as the **transit frequency** of the transistor and coincidentally
@@ -923,7 +923,7 @@ The bandwidth of most practical circuit configurations
 is limited to a fraction of $\omega_T$, often about one
 order of magnitude below.
 
-## [Frequency Response of the Common-Source Voltage Amplifier— Second-Pass Analysis]{#frequency-response-of-the-common-source-voltage-amplifier-second-pass-analysis}
+## Frequency Response of the Common-Source Voltage Amplifier— Second-Pass Analysis {#frequency-response-of-the-common-source-voltage-amplifier-second-pass-analysis}
 
 We will now extend the results from the previous
 section to obtain a more accurate understanding of
@@ -931,7 +931,7 @@ the frequency response of a realistic common-source
 amplifier. To begin, we will extend the MOSFET
 model to include extrinsic capacitances.
 
-### [Modeling Extrinsic MOSFET Capacitance]{#modeling-extrinsic-mosfet-capacitance}
+### Modeling Extrinsic MOSFET Capacitance {#modeling-extrinsic-mosfet-capacitance}
 
 @fig-3.10 shows the cross section of a MOSFET
 device for further study of its associated capacitive
@@ -1026,7 +1026,7 @@ capacitances are also critical for evaluating the
 performance of any integrated circuit.
 
 
-### [Transit Frequency with Extrinsic Capacitances]{#transit-frequency-with-extrensic-capacitances}
+### Transit Frequency with Extrinsic Capacitances {#transit-frequency-with-extrensic-capacitances}
 
 With extrinsic capacitances included in the model,
 the transit frequency expression of @eq-3.30 modifies to
@@ -1085,7 +1085,6 @@ $$
 The drain junction has a bias voltage of $V_{DB}$ = $V_{OUT}$
 = $2.5$ $V$. Evaluating @eq-3.33 with this value and the given parameters gives
 
-<!-- TYPO before "Evaluating" there is a , instead of a "." . Corrected in here --> 
 
 $$
 C_{db} = 11.6fF
@@ -1153,7 +1152,7 @@ Table: Standard technology parameters for the $\lambda$-model, with intrinsic an
 
 ::::
 
-### [Frequency Response with Intrinsic and Extrinsic Gate Capacitances]{#frequency-response-with-intrinsic-and-extrinsic-gate-capacitances}
+### Frequency Response with Intrinsic and Extrinsic Gate Capacitances {#frequency-response-with-intrinsic-and-extrinsic-gate-capacitances}
 
 To analyze the frequency response of the common-source
 amplifier with intrinsic and extrinsic
@@ -1300,7 +1299,7 @@ technique that allows us to simplify expressions of
 the form of @eq-3.38 is therefore discussed in the
 next sub-section.
 
-### [The Dominant Pole Approximation]{#the-dominant-pole-approximation}
+### The Dominant Pole Approximation {#the-dominant-pole-approximation}
 
 In general, the denominator of the transfer function
 given in @eq-3.38 can be factored into two binomial
@@ -1378,7 +1377,7 @@ application of the Miller theorem and the Miller
 approximation, discussed in the next subsection.
 
 
-### [The Miller Theorem and the Miller Approximation]{#the-miller-theorem-and-miller-approximation}
+### The Miller Theorem and the Miller Approximation {#the-miller-theorem-and-miller-approximation}
 
 The **Miller theorem** is a general linear circuit theorem
 that can be used to replace an impedance connected
@@ -1550,7 +1549,7 @@ capacitor is connected to the output, the approximation
 becomes invalid and the dominant pole is set by
 the $RC$ time constant formed at the output.
 
-**[Example 3-7]{#example-3-7}: Calculating the Common-Source Amplifier Bandwidth Using the Miller Approximation**
+**[Example 3-7]{#example-3-7} : Calculating the Common-Source Amplifier Bandwidth Using the Miller Approximation** 
 
 Calculate the 3-dB bandwidth for the common-source
 voltage amplifier of @fig-3.13 using
@@ -1598,7 +1597,7 @@ The error of $2.1\%$ seen in this example is acceptable
 and will in practice be overshadowed by uncertainty
 in the transistor model parameters.
 
-### [Calculating the Non-Dominant Pole*]{#calculating-the-non-dominant-pole}
+### Calculating the Non-Dominant Pole* {#calculating-the-non-dominant-pole}
 
 The reader may wonder how the non-dominant pole
 frequency can be calculated within the above-discussed
@@ -1655,9 +1654,9 @@ combination” of time constants (analogous to parallel
 connections of resistors)—that is, the smallest time
 constant in the expression sets the pole frequency.
 
-## [ Open-Circuit Time Constant Analysis]{#open-circuit-time-contant-analysis}
+## Open-Circuit Time Constant Analysis {#open-circuit-time-contant-analysis}
 
-### [ General Framework]{#general-framework}
+### General Framework {#general-framework}
 
 In [Section 3-3-4](#the-dominant-pole-approximation), 
 we derived an approximate expression for the 3-dB 
@@ -1721,7 +1720,7 @@ heavily to $b_1$. To increase the bandwidth, we can try
 circuit by lowering the Thévenin resistance or the
 capacitor value of that time constant.
 
-### [OCT Analysis of a Common-Source Stage]{#oct-analysis-of-a-common-source-stage}
+### OCT Analysis of a Common-Source Stage {#oct-analysis-of-a-common-source-stage}
 
 Consider the common-source amplifier shown in
 @fig-3.18(a) as an example to further understand
@@ -1980,7 +1979,7 @@ $$
 \tau_{gdo} = [50k\Omega +5k\Omega + 1mS \cdot 5k\Omega \cdot 50k\Omega]10fF
 $$ 
 
-<!-- TYPO there is a 5 after the fF in the text: fF5--> 
+
 $$
 = 3.05 ns
 $$
@@ -2055,7 +2054,7 @@ which is about $22\%$ larger than the original
 bandwidth, satisfying our design intent.
 
 
-### [OCT Extensions]{#oct-extensions}
+### OCT Extensions {#oct-extensions}
 
 The OCT analysis covered in this section is tailored
 toward finding the upper corner frequency in circuits
@@ -2084,7 +2083,7 @@ discussion of such methods.
 
 
 
-### [Time Constants versus Poles]{#time-constants-versus-time}
+### Time Constants versus Poles {#time-constants-versus-time}
 
 The distinction between open-circuit time constants
 and poles tends to be a source of confusion among
@@ -2147,7 +2146,7 @@ constants (for $g_mR = 2$): $1/(4RC + RC + RC) = 0.167/RC$,
 which, as expected, is slightly conservative.
 
 
-## [High-Frequency Two-Port Model for the Common-Source Voltage Amplifier]{#high-frequency-two-port-model-for-the-common-source-voltage-amplifier}
+## High-Frequency Two-Port Model for the Common-Source Voltage Amplifier {#high-frequency-two-port-model-for-the-common-source-voltage-amplifier}
 
 To summarize, @fig-3.22 shows the most general
 two-port model for the common-source voltage
@@ -2237,7 +2236,7 @@ is an excellent design tool since it assists in finding
 which capacitors and Thévenin resistances are
 dominating the dynamic performance.
 
-## References 
+## References {#refrences3}
 
 1. [R. F. Pierret]{#reference-3.1}, **Semiconductor Device Fundamentals**,
  Prentice Hall, 1995.

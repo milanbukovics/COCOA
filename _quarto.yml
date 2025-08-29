@@ -70,6 +70,7 @@ book:
       - contents/partI/partI.4.qmd
       - contents/partI/partI.5.qmd
       - contents/partI/partI.6.qmd
+      - contents/partI/partI.indexes.qmd
     - text: "---"
     - part: Learn to Walk — Real Transistors, Noise, Mismatch, and Distortion
       chapters:
@@ -100,6 +101,7 @@ bibliography:
   - contents/partI/partI.4.bib
   - contents/partI/partI.5.bib
   - contents/partI/partI.6.bib
+  - contents/partI/partI.indexes.bib
   - contents/partII/partII.2.bib
 
 #comments:

@@ -235,7 +235,7 @@ example, by adding a properly modeled diode or
 capacitor to the node in question.
 
 
-### [Backgate Effect]{#backstage-effect}
+### Backgate Effect {#backstage-effect}
 
 In [Section 2-1](#first-order-mosfet-model), 
 we analyzed the MOSFET’s I-V characteristics 
@@ -377,7 +377,7 @@ the technology assumed in this module.
 
 
 
-**[Example 4-2]{#example-4-2}: Backgate Effect**
+**Example 4-2 {#example-4-2}: Backgate Effect**
 
 Consider an n-channel MOSFET with the following parameters $V_{T0n} = 0.5\ \mathrm{V}$,
 $\gamma_{n} = 0.6\ \mathrm{V^{1/2}}$, 
@@ -1605,7 +1605,7 @@ the specific use case.
 
 
 
-## [Application Examples of Common-Gate and Common-Drain Stages]{#application-examples-of-common-gate-and-common-drain-stages}
+## Application Examples of Common-Gate and Common-Drain Stages {#application-examples-of-common-gate-and-common-drain-stages}
 
 In this section we will discuss a few common applications 
 of the CG and CD stages. The discussion is
@@ -1615,7 +1615,7 @@ all stage configurations discussed so far. Further analytical
 details for a subset of these applications is
 covered in [Chapter 6](#multistage-amplifiers).
 
-### [CS-CG Cascade (Cascode Amplifier)]{#cs-cg-cascade-cascode-amplifier}
+### CS-CG Cascade (Cascode Amplifier) {#cs-cg-cascade-cascode-amplifier}
 
 A commonly used circuit called the **cascode amplifier** combines a CS 
 and CG stage as shown in @fig-4.26. This configuration comes with several
@@ -1765,8 +1765,8 @@ especially when a voltage gain as close as possible to unity is required.
 
 
 :::: {.table .striped .hover}
-Comparison of low-frequency stage
-characteristics.{#tbl-4.2}
+Table: Comparison of low-frequency stage
+characteristics. {#tbl-4.2}
 
 | **Property**      | **CS**                                   | **CG**              | **CD**                |
 |-------------------|------------------------------------------|---------------------|-----------------------|
